@@ -1,0 +1,215 @@
+{
+ "version": "vietsight_v1",
+ "config": "configs/versions/v1_first_gear.yaml",
+ "description": "Mapillary Vistas v2 subset (~2k images; all 11 classes labelled; layered polygons -> visible masks). Images with two-wheelers / riders / other vehicles always selected, other images sampled (hash, 15%). Val = the selected images of Mapillary's OFFICIAL validation split (disjoint from training by construction).",
+ "fingerprint_sha256": "5612ab422858c4289690d68d0ac69092bd4f05400133f3af459acdcd271fb529",
+ "val_list": "/kaggle/working/VietSight/configs/val_frozen.txt",
+ "images": {
+  "train": 1469,
+  "val": 262
+ },
+ "images_by_source": {
+  "train": {
+   "mapillary_vistas": 1469
+  },
+  "val": {
+   "mapillary_vistas": 262
+  }
+ },
+ "instances": {
+  "train": {
+   "Car": 7427,
+   "Bus": 342,
+   "Truck": 463,
+   "Other vehicle": 223,
+   "Motorcycle": 358,
+   "Motorcyclist": 263,
+   "Bicycle": 419,
+   "Cyclist": 381,
+   "Pedestrian": 2795,
+   "Sign": 3502,
+   "Traffic light": 2463
+  },
+  "val": {
+   "Car": 1166,
+   "Bus": 37,
+   "Truck": 75,
+   "Other vehicle": 35,
+   "Motorcycle": 69,
+   "Motorcyclist": 49,
+   "Bicycle": 71,
+   "Cyclist": 60,
+   "Pedestrian": 554,
+   "Sign": 617,
+   "Traffic light": 436
+  }
+ },
+ "instances_by_source": {
+  "train": {
+   "mapillary_vistas": {
+    "Car": 7427,
+    "Sign": 3502,
+    "Pedestrian": 2795,
+    "Bus": 342,
+    "Other vehicle": 223,
+    "Truck": 463,
+    "Bicycle": 419,
+    "Traffic light": 2463,
+    "Motorcyclist": 263,
+    "Motorcycle": 358,
+    "Cyclist": 381
+   }
+  },
+  "val": {
+   "mapillary_vistas": {
+    "Pedestrian": 554,
+    "Car": 1166,
+    "Truck": 75,
+    "Sign": 617,
+    "Bus": 37,
+    "Cyclist": 60,
+    "Traffic light": 436,
+    "Motorcycle": 69,
+    "Motorcyclist": 49,
+    "Bicycle": 71,
+    "Other vehicle": 35
+   }
+  }
+ },
+ "duplicates_removed": 0,
+ "group_leak_removed": 0,
+ "notebook_report": {
+  "splits": {
+   "train": {
+    "images": 1469,
+    "empty_images": 12,
+    "instances": 18636
+   },
+   "val": {
+    "images": 262,
+    "empty_images": 3,
+    "instances": 3169
+   }
+  },
+  "per_class": {
+   "Car": {
+    "train_instances": 7427,
+    "val_instances": 1166,
+    "train_images": 1363,
+    "val_images": 233,
+    "tiny": 0
+   },
+   "Bus": {
+    "train_instances": 342,
+    "val_instances": 37,
+    "train_images": 245,
+    "val_images": 33,
+    "tiny": 0
+   },
+   "Truck": {
+    "train_instances": 463,
+    "val_instances": 75,
+    "train_images": 316,
+    "val_images": 57,
+    "tiny": 0
+   },
+   "Other vehicle": {
+    "train_instances": 223,
+    "val_instances": 35,
+    "train_images": 170,
+    "val_images": 22,
+    "tiny": 0
+   },
+   "Motorcycle": {
+    "train_instances": 358,
+    "val_instances": 69,
+    "train_images": 200,
+    "val_images": 42,
+    "tiny": 0
+   },
+   "Motorcyclist": {
+    "train_instances": 263,
+    "val_instances": 49,
+    "train_images": 203,
+    "val_images": 37,
+    "tiny": 0
+   },
+   "Bicycle": {
+    "train_instances": 419,
+    "val_instances": 71,
+    "train_images": 247,
+    "val_images": 41,
+    "tiny": 0
+   },
+   "Cyclist": {
+    "train_instances": 381,
+    "val_instances": 60,
+    "train_images": 254,
+    "val_images": 48,
+    "tiny": 0
+   },
+   "Pedestrian": {
+    "train_instances": 2795,
+    "val_instances": 554,
+    "train_images": 722,
+    "val_images": 123,
+    "tiny": 0
+   },
+   "Sign": {
+    "train_instances": 3502,
+    "val_instances": 617,
+    "train_images": 1113,
+    "val_images": 201,
+    "tiny": 0
+   },
+   "Traffic light": {
+    "train_instances": 2463,
+    "val_instances": 436,
+    "train_images": 559,
+    "val_images": 104,
+    "tiny": 0
+   }
+  },
+  "tiny_total": 0,
+  "imbalance_ratio": 33.30493273542601,
+  "warnings": [
+   "Mất cân bằng lớp: Car có 7427 đối tượng, Other vehicle chỉ có 223 (tỉ lệ 33:1 > 30:1). Bổ sung ảnh cho lớp hiếm.",
+   "29 đa giác không hợp lệ (xem danh sách bên dưới); sửa hoặc xóa trước khi huấn luyện."
+  ],
+  "fatal": [],
+  "ok": true
+ },
+ "invalid_polygons": [
+  "train/mapillary_vistas__0SwKfhBnc7IP95xNnnjdLw__9c388a14.txt dòng 14 (Car): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__0UFny3cOYkXq9J8RhLRMhw__0b2efdff.txt dòng 7 (Car): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__0Yx-EqG0Edv2xInd-Tpz1w__6a148ad5.txt dòng 23 (Car): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__29dUxlLqBUPnAtH8fxvPGw__0513d0b7.txt dòng 8 (Car): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__2dH-WFUdE2s7TjgxYqN3ZQ__72cff401.txt dòng 12 (Pedestrian): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__2dm06RRLp8igUCkWodhW9w__73c255aa.txt dòng 5 (Car): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__39FHkg5ZmNCokV4koVRi5w__851d759f.txt dòng 16 (Truck): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__3UTkl8opuwdk8UJdrRjryQ__ad3724bb.txt dòng 3 (Pedestrian): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__5oFaVvMiVrece2YDzeA2Sg__8d56cba2.txt dòng 1 (Cyclist): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__5oFaVvMiVrece2YDzeA2Sg__8d56cba2.txt dòng 4 (Cyclist): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__6LIwpzIhgvw6aXxNRvR7jg__71238378.txt dòng 2 (Traffic light): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__6RuBccaC0aJiS8xjUMJQGw__0bb1ef69.txt dòng 13 (Truck): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__6WmSX-n63zVXXEiFwikTYw__143aabad.txt dòng 1 (Bicycle): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__6Zh0suYlpaee9oupW-mnJA__8c491759.txt dòng 17 (Car): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__78ejU4dx_CRrZzuwWvBTxw__d6ce5299.txt dòng 1 (Cyclist): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__7BTeQI902vbTnfpgVbGGng__b40c3e17.txt dòng 8 (Pedestrian): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__7aAFB1DtWeD-GyAmvWytDg__97651aed.txt dòng 2 (Bicycle): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__7x_AlX-xKY2r393hI2qozA__778e66b2.txt dòng 9 (Traffic light): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__80FYbxt_SMrU6j0tXiaSvw__2de50c94.txt dòng 8 (Car): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__8JZCQmzYYZKQ9mfHpAla7g__d4cf2efd.txt dòng 3 (Bicycle): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__8Xoyefc39XlNGpc9BV3iKQ__4937aec7.txt dòng 6 (Bus): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__95jitagmLQVmFP71TwD0mQ__6592a6d1.txt dòng 6 (Motorcycle): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__9AGo4Bqzz4Dv6OQ-YiqPIw__83d1e2a8.txt dòng 3 (Truck): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "train/mapillary_vistas__9TnRAuITstsV0UcPaSFKMw__30828b4f.txt dòng 17 (Pedestrian): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "val/mapillary_vistas__1zhhrktcVNH36SoqA_3ejw__c5296d09.txt dòng 2 (Motorcyclist): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "val/mapillary_vistas__7i2d77jTiJo6KK5rgoMe9w__047999f9.txt dòng 7 (Pedestrian): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "val/mapillary_vistas__AU07yidhmL_qakR6Dv7cYg__2c7307c5.txt dòng 1 (Motorcyclist): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "val/mapillary_vistas__B5ejGxmls3CalohO48DxQA__183e2395.txt dòng 16 (Car): các cạnh tự cắt nhau (đa giác bị xoắn)",
+  "val/mapillary_vistas__jGzo9blhVkb-GgmTnYzHg__e79c817b.txt dòng 3 (Motorcycle): các cạnh tự cắt nhau (đa giác bị xoắn)"
+ ],
+ "leak_exact": [],
+ "leak_near": []
+}

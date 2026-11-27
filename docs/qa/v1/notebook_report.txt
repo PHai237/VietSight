@@ -1,0 +1,35 @@
+==============================================================================
+BÁO CÁO KIỂM TRA DỮ LIỆU (trước khi huấn luyện)
+==============================================================================
+train:  1469 ảnh |  18636 đối tượng |   12 ảnh không có đối tượng
+  val:   262 ảnh |   3169 đối tượng |    3 ảnh không có đối tượng
+Số đối tượng mỗi ảnh: trung bình 12.6, trung vị 12, lớn nhất 48
+
+id  lớp            tên tiếng Việt           train   ảnh    val   ảnh   nhỏ<64
+ 0  Car            Ô tô con                  7427  1363   1166   233        0
+ 1  Bus            Xe buýt / xe khách         342   245     37    33        0
+ 2  Truck          Xe tải                     463   316     75    57        0
+ 3  Other vehicle  Phương tiện khác           223   170     35    22        0
+ 4  Motorcycle     Xe máy (không người)       358   200     69    42        0
+ 5  Motorcyclist   Xe máy (có người)          263   203     49    37        0
+ 6  Bicycle        Xe đạp (không người)       419   247     71    41        0
+ 7  Cyclist        Xe đạp (có người)          381   254     60    48        0
+ 8  Pedestrian     Người đi bộ               2795   722    554   123        0
+ 9  Sign           Biển báo                  3502  1113    617   201        0
+10  Traffic light  Đèn giao thông            2463   559    436   104        0
+
+Đa giác không hợp lệ (29), hiển thị tối đa 10:
+  - train/mapillary_vistas__0SwKfhBnc7IP95xNnnjdLw__9c388a14.txt dòng 14 (Car): các cạnh tự cắt nhau (đa giác bị xoắn)
+  - train/mapillary_vistas__0UFny3cOYkXq9J8RhLRMhw__0b2efdff.txt dòng 7 (Car): các cạnh tự cắt nhau (đa giác bị xoắn)
+  - train/mapillary_vistas__0Yx-EqG0Edv2xInd-Tpz1w__6a148ad5.txt dòng 23 (Car): các cạnh tự cắt nhau (đa giác bị xoắn)
+  - train/mapillary_vistas__29dUxlLqBUPnAtH8fxvPGw__0513d0b7.txt dòng 8 (Car): các cạnh tự cắt nhau (đa giác bị xoắn)
+  - train/mapillary_vistas__2dH-WFUdE2s7TjgxYqN3ZQ__72cff401.txt dòng 12 (Pedestrian): các cạnh tự cắt nhau (đa giác bị xoắn)
+  - train/mapillary_vistas__2dm06RRLp8igUCkWodhW9w__73c255aa.txt dòng 5 (Car): các cạnh tự cắt nhau (đa giác bị xoắn)
+  - train/mapillary_vistas__39FHkg5ZmNCokV4koVRi5w__851d759f.txt dòng 16 (Truck): các cạnh tự cắt nhau (đa giác bị xoắn)
+  - train/mapillary_vistas__3UTkl8opuwdk8UJdrRjryQ__ad3724bb.txt dòng 3 (Pedestrian): các cạnh tự cắt nhau (đa giác bị xoắn)
+  - train/mapillary_vistas__5oFaVvMiVrece2YDzeA2Sg__8d56cba2.txt dòng 1 (Cyclist): các cạnh tự cắt nhau (đa giác bị xoắn)
+  - train/mapillary_vistas__5oFaVvMiVrece2YDzeA2Sg__8d56cba2.txt dòng 4 (Cyclist): các cạnh tự cắt nhau (đa giác bị xoắn)
+CẢNH BÁO:
+  ! Mất cân bằng lớp: Car có 7427 đối tượng, Other vehicle chỉ có 223 (tỉ lệ 33:1 > 30:1). Bổ sung ảnh cho lớp hiếm.
+  ! 29 đa giác không hợp lệ (xem danh sách bên dưới); sửa hoặc xóa trước khi huấn luyện.
+==============================================================================
