@@ -7,10 +7,10 @@
 **Rights status: UNCONFIRMED_THIRD_PARTY_FOOTAGE.** Publisher declares CC BY 4.0; original third-party footage rights have not been separately confirmed. Technical READY does not assert rights clearance. Team member supplied the relabelled 11-class annotations; AI assistance unspecified.
 
 - Local ZIP: `C:\My Future\VietSight-data-qa\data\versions\vietsight_vn_dashcam_final001_v2.zip`
-- [Claude handoff](../configs/handoff/v2.json): schema-compatible, `status: READY` scoped to technical readiness, separate rights/delivery fields. Drive URI is the intended destination; **upload pending**, no remote availability claimed.
+- [Claude handoff](../configs/handoff/v2.json): schema-compatible, `status: READY` scoped to technical readiness, separate rights/delivery fields and explicit `rights_confirmed: false`. Drive URI is the intended destination; **upload pending**, no remote availability claimed.
 - Dataset fingerprint: `7b11b51e9a1bc644b902524e88f1772d7683046a052c299e9637ca153e028641`
 - Frozen Vietnam val filename SHA256: `22e40f3164c7f2c52a5038214518acba11bfd6f32233f46a28035e598c8505ac`
-- ZIP SHA256: `ff0438ca47acecbe215d7720eec335e2fb0269eeac354951bd2938cd1f8085ed`
+- ZIP SHA256: `79d87c0f118d90f9edf034c24405cfed9d3527aafe8af6d922d204b8ab62e08f`
 - [Counts, checks and limitations](qa/evidence/V2_FINAL_TECHNICAL.json). ZIP contains attribution, per-image manifest, exclusion list, split evidence, official audit and per-file checksums. Rare classes remain small: Bicycle train/val 17/2; Other vehicle 31/4. These are limitations for e12, not missing-class coverage.
 
 Everything below is historical intake/review status, superseded by this final technical handoff.
