@@ -1,0 +1,2568 @@
+{
+  "status": "BLOCKED",
+  "ready_train_images": 0,
+  "ready_val_images": 0,
+  "retained_images": 9,
+  "baseline_serialized_instances": 201,
+  "repaired_serialized_instances": 109,
+  "baseline_flags": {
+    "ambiguous_association": 19,
+    "coverage_review_required_all_11_classes": 9,
+    "decoded_overlap": 7,
+    "ontology_review_required": 5,
+    "rider_without_vehicle": 9,
+    "roundtrip_iou_below_gate": 4,
+    "scorer_area_under_64": 80,
+    "short_side_guideline_review": 80,
+    "source_license_evidence_required": 9,
+    "unresolved_crowd_or_group": 6,
+    "unrepresentable_polygon_without_pixel_loss": 2
+  },
+  "repaired_flags": {
+    "ambiguous_association": 10,
+    "coverage_review_required_all_11_classes": 9,
+    "decoded_overlap": 2,
+    "scorer_area_under_64": 7,
+    "source_license_evidence_required": 9,
+    "ontology_review_required": 1,
+    "rider_without_vehicle": 7,
+    "unresolved_crowd_or_group": 4,
+    "unrepresentable_polygon_without_pixel_loss": 1
+  },
+  "instances_by_class": {
+    "Car": 10,
+    "Bus": 0,
+    "Truck": 1,
+    "Other vehicle": 0,
+    "Motorcycle": 16,
+    "Motorcyclist": 41,
+    "Bicycle": 2,
+    "Cyclist": 1,
+    "Pedestrian": 23,
+    "Sign": 15,
+    "Traffic light": 0
+  },
+  "quality_candidate_images_excluding_metadata_and_scorer_advisories": [
+    "Qhd_ZpAkyRpB-pLxJs2Zhg.jpg",
+    "Ua_bgqpPpJRkHZqH-fU2tw.jpg",
+    "bpqabUdDEwaw9gVaiRoQUw.jpg",
+    "lFr49FF9fjS6doEXbt1Zkw.jpg"
+  ],
+  "excluded_final_or_tiny_crowd": 81,
+  "human_qa_performed": false,
+  "nonhuman_instance_decisions": {
+    "Ua_bgqpPpJRkHZqH-fU2tw.jpg": {
+      "country": "VN",
+      "location_verified": true,
+      "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.74579826, lon 106.653119925, strict geoBoundaries VN ADM0 contains point",
+      "license_verified": false,
+      "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+      "group": "mapillary_vistas:Ua_bgqpPpJRkHZqH-fU2tw",
+      "coverage_reviewed": false,
+      "qa_method": "native_source_plus_automated_full_check_and_visual_sample",
+      "reviewer": null,
+      "is_v1_frozen": false
+    },
+    "UK7t19FMgwvNeluFwy3tOw.jpg": {
+      "country": "VN",
+      "location_verified": true,
+      "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.75255528, lon 106.68010264, strict geoBoundaries VN ADM0 contains point",
+      "license_verified": false,
+      "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+      "group": "mapillary_vistas:UK7t19FMgwvNeluFwy3tOw",
+      "coverage_reviewed": false,
+      "qa_method": "native_source_plus_automated_full_check_and_visual_sample",
+      "reviewer": null,
+      "is_v1_frozen": false
+    },
+    "Qhd_ZpAkyRpB-pLxJs2Zhg.jpg": {
+      "country": "VN",
+      "location_verified": true,
+      "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.780699575, lon 106.679877045, strict geoBoundaries VN ADM0 contains point",
+      "license_verified": false,
+      "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+      "group": "mapillary_vistas:Qhd_ZpAkyRpB-pLxJs2Zhg",
+      "coverage_reviewed": false,
+      "qa_method": "native_source_plus_automated_full_check_and_visual_sample",
+      "reviewer": null,
+      "is_v1_frozen": false
+    },
+    "630R_r2tSsx5psiy0M6eCg.jpg": {
+      "country": "VN",
+      "location_verified": true,
+      "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.76589172, lon 106.64217356, strict geoBoundaries VN ADM0 contains point",
+      "license_verified": false,
+      "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+      "group": "mapillary_vistas:630R_r2tSsx5psiy0M6eCg",
+      "coverage_reviewed": false,
+      "qa_method": "native_source_plus_automated_full_check_and_visual_sample",
+      "reviewer": null,
+      "is_v1_frozen": false,
+      "instances": {
+        "87": {
+          "vehicle_id": "103",
+          "assessment": {
+            "method": "ai_visual",
+            "evidence": "runs/review/mapillary_repair002/targeted.jpg",
+            "reason": "Visible rider belongs to this motorcycle, including front child/rear passenger; same physical vehicle.",
+            "human_reviewed": false
+          }
+        },
+        "104": {
+          "target": "ignore",
+          "assessment": {
+            "method": "ai_visual",
+            "evidence": "runs/review/mapillary_repair002/targeted.jpg",
+            "reason": "Hand-pushed vending cart; excluded by BTC guideline, not a motor vehicle.",
+            "human_reviewed": false
+          }
+        },
+        "105": {
+          "target": "ignore",
+          "assessment": {
+            "method": "ai_visual",
+            "evidence": "runs/review/mapillary_repair002/targeted.jpg",
+            "reason": "Hand-pushed vending cart; excluded by BTC guideline, not a motor vehicle.",
+            "human_reviewed": false
+          }
+        },
+        "106": {
+          "target": "ignore",
+          "assessment": {
+            "method": "ai_visual",
+            "evidence": "runs/review/mapillary_repair002/targeted.jpg",
+            "reason": "Hand-pushed vending cart; excluded by BTC guideline, not a motor vehicle.",
+            "human_reviewed": false
+          }
+        }
+      }
+    },
+    "j7__n4nGaeRrsRhqpqU71Q.jpg": {
+      "country": "VN",
+      "location_verified": true,
+      "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.849170130009, lon 106.76796964001, strict geoBoundaries VN ADM0 contains point",
+      "license_verified": false,
+      "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+      "group": "mapillary_vistas:j7__n4nGaeRrsRhqpqU71Q",
+      "coverage_reviewed": false,
+      "qa_method": "native_source_plus_automated_full_check_and_visual_sample",
+      "reviewer": null,
+      "is_v1_frozen": false
+    },
+    "bpqabUdDEwaw9gVaiRoQUw.jpg": {
+      "country": "VN",
+      "location_verified": true,
+      "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.754386825, lon 106.65846212, strict geoBoundaries VN ADM0 contains point",
+      "license_verified": false,
+      "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+      "group": "mapillary_vistas:bpqabUdDEwaw9gVaiRoQUw",
+      "coverage_reviewed": false,
+      "qa_method": "native_source_plus_automated_full_check_and_visual_sample",
+      "reviewer": null,
+      "is_v1_frozen": false,
+      "instances": {
+        "175": {
+          "vehicle_id": "192",
+          "assessment": {
+            "method": "ai_visual",
+            "evidence": "runs/review/mapillary_repair002/targeted.jpg",
+            "reason": "Visible rider belongs to this motorcycle, including front child/rear passenger; same physical vehicle.",
+            "human_reviewed": false
+          }
+        }
+      }
+    },
+    "PnQCZsOv-TJZbyY-vwOdGw.jpg": {
+      "country": "VN",
+      "location_verified": true,
+      "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.79534884, lon 106.69044659, strict geoBoundaries VN ADM0 contains point",
+      "license_verified": false,
+      "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+      "group": "mapillary_vistas:PnQCZsOv-TJZbyY-vwOdGw",
+      "coverage_reviewed": false,
+      "qa_method": "native_source_plus_automated_full_check_and_visual_sample",
+      "reviewer": null,
+      "is_v1_frozen": false
+    },
+    "lFr49FF9fjS6doEXbt1Zkw.jpg": {
+      "country": "VN",
+      "location_verified": true,
+      "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.79871009, lon 106.73003639, strict geoBoundaries VN ADM0 contains point",
+      "license_verified": false,
+      "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+      "group": "mapillary_vistas:lFr49FF9fjS6doEXbt1Zkw",
+      "coverage_reviewed": false,
+      "qa_method": "native_source_plus_automated_full_check_and_visual_sample",
+      "reviewer": null,
+      "is_v1_frozen": false
+    },
+    "Fau3ybaTE-9u5jxbutbgoA.jpg": {
+      "country": "VN",
+      "location_verified": true,
+      "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.790847710002, lon 106.79153661999, strict geoBoundaries VN ADM0 contains point",
+      "license_verified": false,
+      "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+      "group": "mapillary_vistas:Fau3ybaTE-9u5jxbutbgoA",
+      "coverage_reviewed": false,
+      "qa_method": "native_source_plus_automated_full_check_and_visual_sample",
+      "reviewer": null,
+      "is_v1_frozen": false
+    }
+  },
+  "near_duplicate_pairs_hamming4": [],
+  "unique_encoded_rgb_sha256": 9,
+  "frozen_v1_sha256": "04b9cbb2d7f3ca0058d2eb9e9d9ceac2ddd19c12be5607d2a7faead91b723514",
+  "preserved_baseline_zip_sha256": "b38f408b1f6987c6ff6a4ea55675aa4aea20c497a21ef1c973451f5c8b2af39c",
+  "blockers": [
+    "Mapillary Vistas original research-use terms not recovered; no public redistribution permission asserted.",
+    "Residual association/crowd/topology issues in 5 of 9 images.",
+    "Independent capture/sequence holdout not established; per-image grouping is not proof.",
+    "Coverage evidence not yet approved; human reviewer remains null."
+  ],
+  "records": [
+    {
+      "file": "mapillary_vn_repair004_v2__630R_r2tSsx5psiy0M6eCg__df65a05b.jpg",
+      "orig": "630R_r2tSsx5psiy0M6eCg.jpg",
+      "group": "mapillary_vistas:630R_r2tSsx5psiy0M6eCg",
+      "status": "review",
+      "flags": [
+        "ambiguous_association:86",
+        "coverage_review_required_all_11_classes",
+        "decoded_overlap:103:96",
+        "decoded_overlap:86:103",
+        "scorer_area_under_64:93",
+        "source_license_evidence_required"
+      ],
+      "w": 1024,
+      "h": 768,
+      "instances": {
+        "Pedestrian": 9,
+        "Bicycle": 1,
+        "Motorcyclist": 4,
+        "Motorcycle": 1,
+        "Sign": 2,
+        "Car": 4
+      },
+      "geometry": [
+        {
+          "instance_id": "86",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 190,
+          "original_pixels": 1175,
+          "decoded_pixels": 1175,
+          "issues": [],
+          "short_side_ratio": 0.04785099999999998
+        },
+        {
+          "instance_id": "91",
+          "class_id": 6,
+          "class_name": "Bicycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 118,
+          "original_pixels": 1113,
+          "decoded_pixels": 1113,
+          "issues": [],
+          "short_side_ratio": 0.04003875000000001
+        },
+        {
+          "instance_id": "97",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 3,
+          "vertices": 300,
+          "original_pixels": 6087,
+          "decoded_pixels": 6087,
+          "issues": [],
+          "short_side_ratio": 0.07128899999999999
+        },
+        {
+          "instance_id": "100",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 5,
+          "vertices": 322,
+          "original_pixels": 5445,
+          "decoded_pixels": 5445,
+          "issues": [],
+          "short_side_ratio": 0.081055
+        },
+        {
+          "instance_id": "101",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 218,
+          "original_pixels": 2141,
+          "decoded_pixels": 2141,
+          "issues": [],
+          "short_side_ratio": 0.047852000000000006
+        },
+        {
+          "instance_id": "102",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 136,
+          "original_pixels": 1029,
+          "decoded_pixels": 1029,
+          "issues": [],
+          "short_side_ratio": 0.03320299999999998
+        },
+        {
+          "instance_id": "103",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 0.9978932463002297,
+          "lost_pixels": 54,
+          "added_pixels": 68,
+          "rings": 3,
+          "vertices": 349,
+          "original_pixels": 57841,
+          "decoded_pixels": 57855,
+          "issues": [],
+          "short_side_ratio": 0.189454
+        },
+        {
+          "instance_id": "73",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 86,
+          "original_pixels": 281,
+          "decoded_pixels": 281,
+          "issues": [],
+          "short_side_ratio": 0.02343699999999993
+        },
+        {
+          "instance_id": "74",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 4,
+          "vertices": 76,
+          "original_pixels": 240,
+          "decoded_pixels": 240,
+          "issues": [],
+          "short_side_ratio": 0.018554999999999988
+        },
+        {
+          "instance_id": "75",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 134,
+          "original_pixels": 759,
+          "decoded_pixels": 759,
+          "issues": [],
+          "short_side_ratio": 0.017577999999999983
+        },
+        {
+          "instance_id": "76",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 192,
+          "original_pixels": 1803,
+          "decoded_pixels": 1803,
+          "issues": [],
+          "short_side_ratio": 0.04394600000000004
+        },
+        {
+          "instance_id": "77",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 5,
+          "vertices": 130,
+          "original_pixels": 560,
+          "decoded_pixels": 560,
+          "issues": [],
+          "short_side_ratio": 0.02636700000000003
+        },
+        {
+          "instance_id": "78",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 170,
+          "original_pixels": 3243,
+          "decoded_pixels": 3243,
+          "issues": [],
+          "short_side_ratio": 0.042969000000000035
+        },
+        {
+          "instance_id": "79",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 70,
+          "original_pixels": 338,
+          "decoded_pixels": 338,
+          "issues": [],
+          "short_side_ratio": 0.016602000000000006
+        },
+        {
+          "instance_id": "80",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 56,
+          "original_pixels": 299,
+          "decoded_pixels": 299,
+          "issues": [],
+          "short_side_ratio": 0.015625
+        },
+        {
+          "instance_id": "89",
+          "class_id": 9,
+          "class_name": "Sign",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 144,
+          "original_pixels": 2024,
+          "decoded_pixels": 2024,
+          "issues": [],
+          "short_side_ratio": 0.046875
+        },
+        {
+          "instance_id": "90",
+          "class_id": 9,
+          "class_name": "Sign",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 84,
+          "original_pixels": 2111,
+          "decoded_pixels": 2111,
+          "issues": [],
+          "short_side_ratio": 0.055663999999999936
+        },
+        {
+          "instance_id": "93",
+          "class_id": 0,
+          "class_name": "Car",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 3,
+          "vertices": 46,
+          "original_pixels": 147,
+          "decoded_pixels": 147,
+          "issues": [],
+          "short_side_ratio": 0.017578000000000038
+        },
+        {
+          "instance_id": "94",
+          "class_id": 0,
+          "class_name": "Car",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 102,
+          "original_pixels": 729,
+          "decoded_pixels": 729,
+          "issues": [],
+          "short_side_ratio": 0.03320299999999998
+        },
+        {
+          "instance_id": "95",
+          "class_id": 0,
+          "class_name": "Car",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 174,
+          "original_pixels": 2860,
+          "decoded_pixels": 2860,
+          "issues": [],
+          "short_side_ratio": 0.05371124999999993
+        },
+        {
+          "instance_id": "96",
+          "class_id": 0,
+          "class_name": "Car",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 4,
+          "vertices": 174,
+          "original_pixels": 882,
+          "decoded_pixels": 882,
+          "issues": [],
+          "short_side_ratio": 0.034179000000000015
+        }
+      ],
+      "v2_policy": 2,
+      "reviewer": null,
+      "provenance": {
+        "country": "VN",
+        "location_verified": true,
+        "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.76589172, lon 106.64217356, strict geoBoundaries VN ADM0 contains point",
+        "license_verified": false,
+        "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+        "capture_group": "mapillary_vistas:630R_r2tSsx5psiy0M6eCg",
+        "source_url": "https://www.mapillary.com/dataset/vistas",
+        "license": "CC BY-NC-SA 4.0 (stated in the mirror's LICENSE.md, citing mapillary.com/dataset/vistas). Non-commercial, share-alike, attribution.",
+        "instance_decisions": {
+          "87": {
+            "vehicle_id": "103",
+            "assessment": {
+              "method": "ai_visual",
+              "evidence": "runs/review/mapillary_repair002/targeted.jpg",
+              "reason": "Visible rider belongs to this motorcycle, including front child/rear passenger; same physical vehicle.",
+              "human_reviewed": false
+            }
+          },
+          "104": {
+            "target": "ignore",
+            "assessment": {
+              "method": "ai_visual",
+              "evidence": "runs/review/mapillary_repair002/targeted.jpg",
+              "reason": "Hand-pushed vending cart; excluded by BTC guideline, not a motor vehicle.",
+              "human_reviewed": false
+            }
+          },
+          "105": {
+            "target": "ignore",
+            "assessment": {
+              "method": "ai_visual",
+              "evidence": "runs/review/mapillary_repair002/targeted.jpg",
+              "reason": "Hand-pushed vending cart; excluded by BTC guideline, not a motor vehicle.",
+              "human_reviewed": false
+            }
+          },
+          "106": {
+            "target": "ignore",
+            "assessment": {
+              "method": "ai_visual",
+              "evidence": "runs/review/mapillary_repair002/targeted.jpg",
+              "reason": "Hand-pushed vending cart; excluded by BTC guideline, not a motor vehicle.",
+              "human_reviewed": false
+            }
+          }
+        }
+      },
+      "coverage_reviewed": false,
+      "exclusions": [
+        {
+          "instance_id": "92",
+          "class_id": 6,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "98",
+          "class_id": 5,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "99",
+          "class_id": 4,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "70",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "71",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "72",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        }
+      ]
+    },
+    {
+      "file": "mapillary_vn_repair004_v2__Fau3ybaTE-9u5jxbutbgoA__bf118134.jpg",
+      "orig": "Fau3ybaTE-9u5jxbutbgoA.jpg",
+      "group": "mapillary_vistas:Fau3ybaTE-9u5jxbutbgoA",
+      "status": "review",
+      "flags": [
+        "ambiguous_association:260",
+        "coverage_review_required_all_11_classes",
+        "ontology_review_required:275:Truck",
+        "source_license_evidence_required"
+      ],
+      "w": 1024,
+      "h": 768,
+      "instances": {
+        "Motorcycle": 1,
+        "Motorcyclist": 3,
+        "Sign": 2,
+        "Truck": 1
+      },
+      "geometry": [
+        {
+          "instance_id": "270",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 54,
+          "original_pixels": 188,
+          "decoded_pixels": 188,
+          "issues": [],
+          "short_side_ratio": 0.015624750000000076
+        },
+        {
+          "instance_id": "271",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 98,
+          "original_pixels": 830,
+          "decoded_pixels": 830,
+          "issues": [],
+          "short_side_ratio": 0.037109999999999976
+        },
+        {
+          "instance_id": "272",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 64,
+          "original_pixels": 355,
+          "decoded_pixels": 355,
+          "issues": [],
+          "short_side_ratio": 0.016600999999999977
+        },
+        {
+          "instance_id": "273",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 302,
+          "original_pixels": 5790,
+          "decoded_pixels": 5790,
+          "issues": [],
+          "short_side_ratio": 0.061522999999999994
+        },
+        {
+          "instance_id": "266",
+          "class_id": 9,
+          "class_name": "Sign",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 64,
+          "original_pixels": 837,
+          "decoded_pixels": 837,
+          "issues": [],
+          "short_side_ratio": 0.030273000000000022
+        },
+        {
+          "instance_id": "267",
+          "class_id": 9,
+          "class_name": "Sign",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 72,
+          "original_pixels": 865,
+          "decoded_pixels": 865,
+          "issues": [],
+          "short_side_ratio": 0.03125025000000001
+        },
+        {
+          "instance_id": "275",
+          "class_id": 2,
+          "class_name": "Truck",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 56,
+          "original_pixels": 321,
+          "decoded_pixels": 321,
+          "issues": [],
+          "short_side_ratio": 0.01464825000000003
+        }
+      ],
+      "v2_policy": 2,
+      "reviewer": null,
+      "provenance": {
+        "country": "VN",
+        "location_verified": true,
+        "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.790847710002, lon 106.79153661999, strict geoBoundaries VN ADM0 contains point",
+        "license_verified": false,
+        "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+        "capture_group": "mapillary_vistas:Fau3ybaTE-9u5jxbutbgoA",
+        "source_url": "https://www.mapillary.com/dataset/vistas",
+        "license": "CC BY-NC-SA 4.0 (stated in the mirror's LICENSE.md, citing mapillary.com/dataset/vistas). Non-commercial, share-alike, attribution.",
+        "instance_decisions": {}
+      },
+      "coverage_reviewed": false,
+      "exclusions": [
+        {
+          "instance_id": "260",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "269",
+          "class_id": 5,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "274",
+          "class_id": 5,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "258",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "268",
+          "class_id": 0,
+          "reason": "final_instance_short_side_below_0.0125"
+        }
+      ]
+    },
+    {
+      "file": "mapillary_vn_repair004_v2__PnQCZsOv-TJZbyY-vwOdGw__2bdb268a.jpg",
+      "orig": "PnQCZsOv-TJZbyY-vwOdGw.jpg",
+      "group": "mapillary_vistas:PnQCZsOv-TJZbyY-vwOdGw",
+      "status": "review",
+      "flags": [
+        "ambiguous_association:206",
+        "ambiguous_association:213",
+        "ambiguous_association:216",
+        "coverage_review_required_all_11_classes",
+        "rider_without_vehicle:207",
+        "rider_without_vehicle:208",
+        "rider_without_vehicle:209",
+        "rider_without_vehicle:210",
+        "rider_without_vehicle:211",
+        "rider_without_vehicle:219",
+        "scorer_area_under_64:213",
+        "scorer_area_under_64:216",
+        "scorer_area_under_64:231",
+        "scorer_area_under_64:238",
+        "scorer_area_under_64:241",
+        "source_license_evidence_required",
+        "unresolved_crowd_or_group:247"
+      ],
+      "w": 1024,
+      "h": 768,
+      "instances": {
+        "Pedestrian": 9,
+        "Cyclist": 1,
+        "Motorcycle": 5,
+        "Motorcyclist": 4,
+        "Sign": 3,
+        "Car": 1
+      },
+      "geometry": [
+        {
+          "instance_id": "213",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 3,
+          "vertices": 40,
+          "original_pixels": 47,
+          "decoded_pixels": 47,
+          "issues": [],
+          "short_side_ratio": 0.012695000000000012
+        },
+        {
+          "instance_id": "216",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 3,
+          "vertices": 64,
+          "original_pixels": 141,
+          "decoded_pixels": 141,
+          "issues": [],
+          "short_side_ratio": 0.02246100000000001
+        },
+        {
+          "instance_id": "231",
+          "class_id": 7,
+          "class_name": "Cyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 48,
+          "original_pixels": 136,
+          "decoded_pixels": 136,
+          "issues": [],
+          "short_side_ratio": 0.013672000000000017
+        },
+        {
+          "instance_id": "234",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 112,
+          "original_pixels": 845,
+          "decoded_pixels": 845,
+          "issues": [],
+          "short_side_ratio": 0.035156250000000056
+        },
+        {
+          "instance_id": "238",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 4,
+          "vertices": 64,
+          "original_pixels": 125,
+          "decoded_pixels": 125,
+          "issues": [],
+          "short_side_ratio": 0.020508000000000026
+        },
+        {
+          "instance_id": "239",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 120,
+          "original_pixels": 432,
+          "decoded_pixels": 432,
+          "issues": [],
+          "short_side_ratio": 0.02832074999999995
+        },
+        {
+          "instance_id": "241",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 36,
+          "original_pixels": 135,
+          "decoded_pixels": 135,
+          "issues": [],
+          "short_side_ratio": 0.01269600000000004
+        },
+        {
+          "instance_id": "242",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 72,
+          "original_pixels": 380,
+          "decoded_pixels": 380,
+          "issues": [],
+          "short_side_ratio": 0.019530999999999965
+        },
+        {
+          "instance_id": "243",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 0.9996169756396507,
+          "lost_pixels": 4,
+          "added_pixels": 6,
+          "rings": 1,
+          "vertices": 364,
+          "original_pixels": 26102,
+          "decoded_pixels": 26104,
+          "issues": [],
+          "short_side_ratio": 0.139648
+        },
+        {
+          "instance_id": "244",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 124,
+          "original_pixels": 1393,
+          "decoded_pixels": 1393,
+          "issues": [],
+          "short_side_ratio": 0.03125
+        },
+        {
+          "instance_id": "245",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 58,
+          "original_pixels": 269,
+          "decoded_pixels": 269,
+          "issues": [],
+          "short_side_ratio": 0.015625
+        },
+        {
+          "instance_id": "246",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 338,
+          "original_pixels": 8308,
+          "decoded_pixels": 8308,
+          "issues": [],
+          "short_side_ratio": 0.09472699999999998
+        },
+        {
+          "instance_id": "196",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 78,
+          "original_pixels": 795,
+          "decoded_pixels": 795,
+          "issues": [],
+          "short_side_ratio": 0.03417899999999996
+        },
+        {
+          "instance_id": "197",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 130,
+          "original_pixels": 1192,
+          "decoded_pixels": 1192,
+          "issues": [],
+          "short_side_ratio": 0.0341800000000001
+        },
+        {
+          "instance_id": "198",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 100,
+          "original_pixels": 613,
+          "decoded_pixels": 613,
+          "issues": [],
+          "short_side_ratio": 0.019531000000000076
+        },
+        {
+          "instance_id": "199",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 118,
+          "original_pixels": 1454,
+          "decoded_pixels": 1454,
+          "issues": [],
+          "short_side_ratio": 0.042969000000000035
+        },
+        {
+          "instance_id": "200",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 132,
+          "original_pixels": 897,
+          "decoded_pixels": 897,
+          "issues": [],
+          "short_side_ratio": 0.03320299999999998
+        },
+        {
+          "instance_id": "201",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 114,
+          "original_pixels": 1393,
+          "decoded_pixels": 1393,
+          "issues": [],
+          "short_side_ratio": 0.042969000000000035
+        },
+        {
+          "instance_id": "204",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 52,
+          "original_pixels": 375,
+          "decoded_pixels": 375,
+          "issues": [],
+          "short_side_ratio": 0.01855399999999996
+        },
+        {
+          "instance_id": "226",
+          "class_id": 9,
+          "class_name": "Sign",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 106,
+          "original_pixels": 1381,
+          "decoded_pixels": 1381,
+          "issues": [],
+          "short_side_ratio": 0.03906199999999993
+        },
+        {
+          "instance_id": "227",
+          "class_id": 9,
+          "class_name": "Sign",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 30,
+          "original_pixels": 607,
+          "decoded_pixels": 607,
+          "issues": [],
+          "short_side_ratio": 0.024413999999999964
+        },
+        {
+          "instance_id": "228",
+          "class_id": 9,
+          "class_name": "Sign",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 26,
+          "original_pixels": 616,
+          "decoded_pixels": 616,
+          "issues": [],
+          "short_side_ratio": 0.024414000000000047
+        },
+        {
+          "instance_id": "233",
+          "class_id": 0,
+          "class_name": "Car",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 122,
+          "original_pixels": 3439,
+          "decoded_pixels": 3439,
+          "issues": [],
+          "short_side_ratio": 0.05664075000000007
+        }
+      ],
+      "v2_policy": 2,
+      "reviewer": null,
+      "provenance": {
+        "country": "VN",
+        "location_verified": true,
+        "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.79534884, lon 106.69044659, strict geoBoundaries VN ADM0 contains point",
+        "license_verified": false,
+        "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+        "capture_group": "mapillary_vistas:PnQCZsOv-TJZbyY-vwOdGw",
+        "source_url": "https://www.mapillary.com/dataset/vistas",
+        "license": "CC BY-NC-SA 4.0 (stated in the mirror's LICENSE.md, citing mapillary.com/dataset/vistas). Non-commercial, share-alike, attribution.",
+        "instance_decisions": {}
+      },
+      "coverage_reviewed": false,
+      "exclusions": [
+        {
+          "instance_id": "206",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "207",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "208",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "209",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "210",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "211",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "219",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "235",
+          "class_id": 5,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "236",
+          "class_id": 4,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "237",
+          "class_id": 4,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "240",
+          "class_id": 4,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "195",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "202",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "203",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "223",
+          "class_id": 9,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "224",
+          "class_id": 9,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "225",
+          "class_id": 9,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "229",
+          "class_id": 9,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "230",
+          "class_id": 9,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "232",
+          "class_id": 0,
+          "reason": "final_instance_short_side_below_0.0125"
+        }
+      ]
+    },
+    {
+      "file": "mapillary_vn_repair004_v2__Qhd_ZpAkyRpB-pLxJs2Zhg__3465c540.jpg",
+      "orig": "Qhd_ZpAkyRpB-pLxJs2Zhg.jpg",
+      "group": "mapillary_vistas:Qhd_ZpAkyRpB-pLxJs2Zhg",
+      "status": "review",
+      "flags": [
+        "coverage_review_required_all_11_classes",
+        "scorer_area_under_64:67",
+        "source_license_evidence_required"
+      ],
+      "w": 1024,
+      "h": 768,
+      "instances": {
+        "Motorcyclist": 3,
+        "Motorcycle": 2,
+        "Sign": 1
+      },
+      "geometry": [
+        {
+          "instance_id": "64",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 132,
+          "original_pixels": 1281,
+          "decoded_pixels": 1281,
+          "issues": [],
+          "short_side_ratio": 0.03125
+        },
+        {
+          "instance_id": "65",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 44,
+          "original_pixels": 236,
+          "decoded_pixels": 236,
+          "issues": [],
+          "short_side_ratio": 0.013671999999999997
+        },
+        {
+          "instance_id": "67",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 46,
+          "original_pixels": 140,
+          "decoded_pixels": 140,
+          "issues": [],
+          "short_side_ratio": 0.012695249999999936
+        },
+        {
+          "instance_id": "68",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 5,
+          "vertices": 178,
+          "original_pixels": 1182,
+          "decoded_pixels": 1182,
+          "issues": [],
+          "short_side_ratio": 0.032227000000000006
+        },
+        {
+          "instance_id": "69",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 138,
+          "original_pixels": 1744,
+          "decoded_pixels": 1744,
+          "issues": [],
+          "short_side_ratio": 0.03320299999999998
+        },
+        {
+          "instance_id": "62",
+          "class_id": 9,
+          "class_name": "Sign",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 30,
+          "original_pixels": 176,
+          "decoded_pixels": 176,
+          "issues": [],
+          "short_side_ratio": 0.013672000000000017
+        }
+      ],
+      "v2_policy": 2,
+      "reviewer": null,
+      "provenance": {
+        "country": "VN",
+        "location_verified": true,
+        "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.780699575, lon 106.679877045, strict geoBoundaries VN ADM0 contains point",
+        "license_verified": false,
+        "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+        "capture_group": "mapillary_vistas:Qhd_ZpAkyRpB-pLxJs2Zhg",
+        "source_url": "https://www.mapillary.com/dataset/vistas",
+        "license": "CC BY-NC-SA 4.0 (stated in the mirror's LICENSE.md, citing mapillary.com/dataset/vistas). Non-commercial, share-alike, attribution.",
+        "instance_decisions": {}
+      },
+      "coverage_reviewed": false,
+      "exclusions": [
+        {
+          "instance_id": "52",
+          "reason": "crowd_bound_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "66",
+          "class_id": 4,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "48",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "49",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "50",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "51",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "59",
+          "class_id": 9,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "60",
+          "class_id": 9,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "61",
+          "class_id": 9,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "63",
+          "class_id": 9,
+          "reason": "final_instance_short_side_below_0.0125"
+        }
+      ]
+    },
+    {
+      "file": "mapillary_vn_repair004_v2__UK7t19FMgwvNeluFwy3tOw__32f66cee.jpg",
+      "orig": "UK7t19FMgwvNeluFwy3tOw.jpg",
+      "group": "mapillary_vistas:UK7t19FMgwvNeluFwy3tOw",
+      "status": "review",
+      "flags": [
+        "coverage_review_required_all_11_classes",
+        "source_license_evidence_required",
+        "unresolved_crowd_or_group:47"
+      ],
+      "w": 1024,
+      "h": 768,
+      "instances": {
+        "Motorcyclist": 5,
+        "Motorcycle": 1,
+        "Sign": 1
+      },
+      "geometry": [
+        {
+          "instance_id": "37",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 50,
+          "original_pixels": 238,
+          "decoded_pixels": 238,
+          "issues": [],
+          "short_side_ratio": 0.018554999999999988
+        },
+        {
+          "instance_id": "41",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 0.9968594673458789,
+          "lost_pixels": 64,
+          "added_pixels": 63,
+          "rings": 4,
+          "vertices": 382,
+          "original_pixels": 40376,
+          "decoded_pixels": 40375,
+          "issues": [],
+          "short_side_ratio": 0.23046899999999998
+        },
+        {
+          "instance_id": "42",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 72,
+          "original_pixels": 487,
+          "decoded_pixels": 487,
+          "issues": [],
+          "short_side_ratio": 0.017578000000000038
+        },
+        {
+          "instance_id": "44",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 102,
+          "original_pixels": 866,
+          "decoded_pixels": 866,
+          "issues": [],
+          "short_side_ratio": 0.026366999999999974
+        },
+        {
+          "instance_id": "45",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 240,
+          "original_pixels": 5105,
+          "decoded_pixels": 5105,
+          "issues": [],
+          "short_side_ratio": 0.055663999999999936
+        },
+        {
+          "instance_id": "46",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 76,
+          "original_pixels": 285,
+          "decoded_pixels": 285,
+          "issues": [],
+          "short_side_ratio": 0.01757775000000006
+        },
+        {
+          "instance_id": "35",
+          "class_id": 9,
+          "class_name": "Sign",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 128,
+          "original_pixels": 1460,
+          "decoded_pixels": 1460,
+          "issues": [],
+          "short_side_ratio": 0.04882799999999998
+        }
+      ],
+      "v2_policy": 2,
+      "reviewer": null,
+      "provenance": {
+        "country": "VN",
+        "location_verified": true,
+        "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.75255528, lon 106.68010264, strict geoBoundaries VN ADM0 contains point",
+        "license_verified": false,
+        "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+        "capture_group": "mapillary_vistas:UK7t19FMgwvNeluFwy3tOw",
+        "source_url": "https://www.mapillary.com/dataset/vistas",
+        "license": "CC BY-NC-SA 4.0 (stated in the mirror's LICENSE.md, citing mapillary.com/dataset/vistas). Non-commercial, share-alike, attribution.",
+        "instance_decisions": {}
+      },
+      "coverage_reviewed": false,
+      "exclusions": [
+        {
+          "instance_id": "36",
+          "class_id": 5,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "38",
+          "class_id": 5,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "39",
+          "class_id": 5,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "40",
+          "class_id": 5,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "43",
+          "class_id": 5,
+          "reason": "final_instance_short_side_below_0.0125"
+        }
+      ]
+    },
+    {
+      "file": "mapillary_vn_repair004_v2__Ua_bgqpPpJRkHZqH-fU2tw__57ee8aa1.jpg",
+      "orig": "Ua_bgqpPpJRkHZqH-fU2tw.jpg",
+      "group": "mapillary_vistas:Ua_bgqpPpJRkHZqH-fU2tw",
+      "status": "review",
+      "flags": [
+        "coverage_review_required_all_11_classes",
+        "source_license_evidence_required"
+      ],
+      "w": 1024,
+      "h": 768,
+      "instances": {
+        "Motorcycle": 1,
+        "Motorcyclist": 4,
+        "Sign": 1,
+        "Car": 3
+      },
+      "geometry": [
+        {
+          "instance_id": "16",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 162,
+          "original_pixels": 1753,
+          "decoded_pixels": 1753,
+          "issues": [],
+          "short_side_ratio": 0.04882799999999998
+        },
+        {
+          "instance_id": "19",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 30,
+          "original_pixels": 238,
+          "decoded_pixels": 238,
+          "issues": [],
+          "short_side_ratio": 0.018555000000000044
+        },
+        {
+          "instance_id": "20",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 120,
+          "original_pixels": 1001,
+          "decoded_pixels": 1001,
+          "issues": [],
+          "short_side_ratio": 0.030272999999999994
+        },
+        {
+          "instance_id": "21",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 94,
+          "original_pixels": 856,
+          "decoded_pixels": 856,
+          "issues": [],
+          "short_side_ratio": 0.027343999999999924
+        },
+        {
+          "instance_id": "22",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 0.9960917641077783,
+          "lost_pixels": 69,
+          "added_pixels": 54,
+          "rings": 1,
+          "vertices": 282,
+          "original_pixels": 31418,
+          "decoded_pixels": 31403,
+          "issues": [],
+          "short_side_ratio": 0.14453099999999997
+        },
+        {
+          "instance_id": "12",
+          "class_id": 9,
+          "class_name": "Sign",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 134,
+          "original_pixels": 8052,
+          "decoded_pixels": 8052,
+          "issues": [],
+          "short_side_ratio": 0.09375000000000001
+        },
+        {
+          "instance_id": "13",
+          "class_id": 0,
+          "class_name": "Car",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 62,
+          "original_pixels": 592,
+          "decoded_pixels": 592,
+          "issues": [],
+          "short_side_ratio": 0.031250250000000035
+        },
+        {
+          "instance_id": "14",
+          "class_id": 0,
+          "class_name": "Car",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 222,
+          "original_pixels": 6187,
+          "decoded_pixels": 6187,
+          "issues": [],
+          "short_side_ratio": 0.06835874999999997
+        },
+        {
+          "instance_id": "15",
+          "class_id": 0,
+          "class_name": "Car",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 312,
+          "original_pixels": 14846,
+          "decoded_pixels": 14846,
+          "issues": [],
+          "short_side_ratio": 0.12402374999999999
+        }
+      ],
+      "v2_policy": 2,
+      "reviewer": null,
+      "provenance": {
+        "country": "VN",
+        "location_verified": true,
+        "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.74579826, lon 106.653119925, strict geoBoundaries VN ADM0 contains point",
+        "license_verified": false,
+        "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+        "capture_group": "mapillary_vistas:Ua_bgqpPpJRkHZqH-fU2tw",
+        "source_url": "https://www.mapillary.com/dataset/vistas",
+        "license": "CC BY-NC-SA 4.0 (stated in the mirror's LICENSE.md, citing mapillary.com/dataset/vistas). Non-commercial, share-alike, attribution.",
+        "instance_decisions": {}
+      },
+      "coverage_reviewed": false,
+      "exclusions": [
+        {
+          "instance_id": "17",
+          "class_id": 5,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "18",
+          "class_id": 5,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "1",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "23",
+          "class_id": 3,
+          "reason": "final_instance_short_side_below_0.0125"
+        }
+      ]
+    },
+    {
+      "file": "mapillary_vn_repair004_v2__bpqabUdDEwaw9gVaiRoQUw__eda320ae.jpg",
+      "orig": "bpqabUdDEwaw9gVaiRoQUw.jpg",
+      "group": "mapillary_vistas:bpqabUdDEwaw9gVaiRoQUw",
+      "status": "review",
+      "flags": [
+        "coverage_review_required_all_11_classes",
+        "source_license_evidence_required"
+      ],
+      "w": 1024,
+      "h": 768,
+      "instances": {
+        "Motorcycle": 1,
+        "Motorcyclist": 4,
+        "Sign": 2,
+        "Car": 1
+      },
+      "geometry": [
+        {
+          "instance_id": "183",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 3,
+          "vertices": 84,
+          "original_pixels": 334,
+          "decoded_pixels": 334,
+          "issues": [],
+          "short_side_ratio": 0.02246100000000001
+        },
+        {
+          "instance_id": "186",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 72,
+          "original_pixels": 615,
+          "decoded_pixels": 615,
+          "issues": [],
+          "short_side_ratio": 0.019531000000000076
+        },
+        {
+          "instance_id": "187",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 148,
+          "original_pixels": 1365,
+          "decoded_pixels": 1365,
+          "issues": [],
+          "short_side_ratio": 0.030273999999999912
+        },
+        {
+          "instance_id": "191",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 100,
+          "original_pixels": 507,
+          "decoded_pixels": 507,
+          "issues": [],
+          "short_side_ratio": 0.025390999999999997
+        },
+        {
+          "instance_id": "192",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 0.9981339562975414,
+          "lost_pixels": 55,
+          "added_pixels": 76,
+          "rings": 4,
+          "vertices": 378,
+          "original_pixels": 70126,
+          "decoded_pixels": 70147,
+          "issues": [],
+          "short_side_ratio": 0.225586
+        },
+        {
+          "instance_id": "177",
+          "class_id": 9,
+          "class_name": "Sign",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 46,
+          "original_pixels": 364,
+          "decoded_pixels": 364,
+          "issues": [],
+          "short_side_ratio": 0.02050799999999997
+        },
+        {
+          "instance_id": "178",
+          "class_id": 9,
+          "class_name": "Sign",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 8,
+          "original_pixels": 1209,
+          "decoded_pixels": 1209,
+          "issues": [],
+          "short_side_ratio": 0.033202500000000024
+        },
+        {
+          "instance_id": "182",
+          "class_id": 0,
+          "class_name": "Car",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 180,
+          "original_pixels": 5491,
+          "decoded_pixels": 5491,
+          "issues": [],
+          "short_side_ratio": 0.048828000000000094
+        }
+      ],
+      "v2_policy": 2,
+      "reviewer": null,
+      "provenance": {
+        "country": "VN",
+        "location_verified": true,
+        "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.754386825, lon 106.65846212, strict geoBoundaries VN ADM0 contains point",
+        "license_verified": false,
+        "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+        "capture_group": "mapillary_vistas:bpqabUdDEwaw9gVaiRoQUw",
+        "source_url": "https://www.mapillary.com/dataset/vistas",
+        "license": "CC BY-NC-SA 4.0 (stated in the mirror's LICENSE.md, citing mapillary.com/dataset/vistas). Non-commercial, share-alike, attribution.",
+        "instance_decisions": {
+          "175": {
+            "vehicle_id": "192",
+            "assessment": {
+              "method": "ai_visual",
+              "evidence": "runs/review/mapillary_repair002/targeted.jpg",
+              "reason": "Visible rider belongs to this motorcycle, including front child/rear passenger; same physical vehicle.",
+              "human_reviewed": false
+            }
+          }
+        }
+      },
+      "coverage_reviewed": false,
+      "exclusions": [
+        {
+          "instance_id": "194",
+          "reason": "crowd_bound_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "184",
+          "class_id": 5,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "185",
+          "class_id": 5,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "188",
+          "class_id": 4,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "189",
+          "class_id": 4,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "190",
+          "class_id": 4,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "193",
+          "class_id": 4,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "160",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "161",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "162",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "163",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "164",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "165",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "176",
+          "class_id": 10,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "179",
+          "class_id": 9,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "180",
+          "class_id": 9,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "181",
+          "class_id": 9,
+          "reason": "final_instance_short_side_below_0.0125"
+        }
+      ]
+    },
+    {
+      "file": "mapillary_vn_repair004_v2__j7__n4nGaeRrsRhqpqU71Q__4d43611f.jpg",
+      "orig": "j7__n4nGaeRrsRhqpqU71Q.jpg",
+      "group": "mapillary_vistas:j7__n4nGaeRrsRhqpqU71Q",
+      "status": "review",
+      "flags": [
+        "ambiguous_association:117",
+        "ambiguous_association:122",
+        "ambiguous_association:123",
+        "ambiguous_association:125",
+        "ambiguous_association:132",
+        "coverage_review_required_all_11_classes",
+        "rider_without_vehicle:121",
+        "source_license_evidence_required",
+        "unrepresentable_polygon_without_pixel_loss:110",
+        "unresolved_crowd_or_group:113",
+        "unresolved_crowd_or_group:159"
+      ],
+      "w": 1024,
+      "h": 576,
+      "instances": {
+        "Pedestrian": 5,
+        "Bicycle": 1,
+        "Motorcycle": 4,
+        "Motorcyclist": 12,
+        "Sign": 1
+      },
+      "geometry": [
+        {
+          "instance_id": "117",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 90,
+          "original_pixels": 307,
+          "decoded_pixels": 307,
+          "issues": [],
+          "short_side_ratio": 0.01953100000000002
+        },
+        {
+          "instance_id": "125",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 6,
+          "vertices": 242,
+          "original_pixels": 1623,
+          "decoded_pixels": 1623,
+          "issues": [],
+          "short_side_ratio": 0.051758000000000005
+        },
+        {
+          "instance_id": "140",
+          "class_id": 6,
+          "class_name": "Bicycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 34,
+          "original_pixels": 274,
+          "decoded_pixels": 274,
+          "issues": [],
+          "short_side_ratio": 0.016602000000000006
+        },
+        {
+          "instance_id": "141",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 5,
+          "vertices": 116,
+          "original_pixels": 379,
+          "decoded_pixels": 379,
+          "issues": [],
+          "short_side_ratio": 0.026367187499999972
+        },
+        {
+          "instance_id": "142",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 162,
+          "original_pixels": 1715,
+          "decoded_pixels": 1715,
+          "issues": [],
+          "short_side_ratio": 0.041016
+        },
+        {
+          "instance_id": "144",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 152,
+          "original_pixels": 1023,
+          "decoded_pixels": 1023,
+          "issues": [],
+          "short_side_ratio": 0.041015000000000024
+        },
+        {
+          "instance_id": "145",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 178,
+          "original_pixels": 2967,
+          "decoded_pixels": 2967,
+          "issues": [],
+          "short_side_ratio": 0.05175800000000008
+        },
+        {
+          "instance_id": "146",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 66,
+          "original_pixels": 379,
+          "decoded_pixels": 379,
+          "issues": [],
+          "short_side_ratio": 0.021483999999999948
+        },
+        {
+          "instance_id": "147",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 100,
+          "original_pixels": 990,
+          "decoded_pixels": 990,
+          "issues": [],
+          "short_side_ratio": 0.04199231249999999
+        },
+        {
+          "instance_id": "148",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 3,
+          "vertices": 54,
+          "original_pixels": 178,
+          "decoded_pixels": 178,
+          "issues": [],
+          "short_side_ratio": 0.017577999999999983
+        },
+        {
+          "instance_id": "149",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 134,
+          "original_pixels": 1151,
+          "decoded_pixels": 1151,
+          "issues": [],
+          "short_side_ratio": 0.04199174999999997
+        },
+        {
+          "instance_id": "150",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 3,
+          "vertices": 122,
+          "original_pixels": 1148,
+          "decoded_pixels": 1148,
+          "issues": [],
+          "short_side_ratio": 0.035156999999999994
+        },
+        {
+          "instance_id": "151",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 54,
+          "original_pixels": 342,
+          "decoded_pixels": 342,
+          "issues": [],
+          "short_side_ratio": 0.019530999999999965
+        },
+        {
+          "instance_id": "152",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 42,
+          "original_pixels": 332,
+          "decoded_pixels": 332,
+          "issues": [],
+          "short_side_ratio": 0.022460999999999953
+        },
+        {
+          "instance_id": "153",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 92,
+          "original_pixels": 918,
+          "decoded_pixels": 918,
+          "issues": [],
+          "short_side_ratio": 0.035156999999999994
+        },
+        {
+          "instance_id": "154",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 158,
+          "original_pixels": 2216,
+          "decoded_pixels": 2216,
+          "issues": [],
+          "short_side_ratio": 0.043945
+        },
+        {
+          "instance_id": "155",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 156,
+          "original_pixels": 6204,
+          "decoded_pixels": 6204,
+          "issues": [],
+          "short_side_ratio": 0.046875
+        },
+        {
+          "instance_id": "157",
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 60,
+          "original_pixels": 295,
+          "decoded_pixels": 295,
+          "issues": [],
+          "short_side_ratio": 0.01953100000000002
+        },
+        {
+          "instance_id": "158",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 2,
+          "vertices": 144,
+          "original_pixels": 1333,
+          "decoded_pixels": 1333,
+          "issues": [],
+          "short_side_ratio": 0.04394500000000001
+        },
+        {
+          "instance_id": "108",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 66,
+          "original_pixels": 270,
+          "decoded_pixels": 270,
+          "issues": [],
+          "short_side_ratio": 0.013672000000000017
+        },
+        {
+          "instance_id": "110",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "rings": 2,
+          "original_pixels": 177,
+          "issues": [
+            "unrepresentable_polygon_without_pixel_loss"
+          ]
+        },
+        {
+          "instance_id": "111",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 44,
+          "original_pixels": 376,
+          "decoded_pixels": 376,
+          "issues": [],
+          "short_side_ratio": 0.013670999999999989
+        },
+        {
+          "instance_id": "112",
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 40,
+          "original_pixels": 249,
+          "decoded_pixels": 249,
+          "issues": [],
+          "short_side_ratio": 0.013671999999999962
+        },
+        {
+          "instance_id": "139",
+          "class_id": 9,
+          "class_name": "Sign",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 12,
+          "original_pixels": 1215,
+          "decoded_pixels": 1215,
+          "issues": [],
+          "short_side_ratio": 0.028320000000000012
+        }
+      ],
+      "v2_policy": 2,
+      "reviewer": null,
+      "provenance": {
+        "country": "VN",
+        "location_verified": true,
+        "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.849170130009, lon 106.76796964001, strict geoBoundaries VN ADM0 contains point",
+        "license_verified": false,
+        "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+        "capture_group": "mapillary_vistas:j7__n4nGaeRrsRhqpqU71Q",
+        "source_url": "https://www.mapillary.com/dataset/vistas",
+        "license": "CC BY-NC-SA 4.0 (stated in the mirror's LICENSE.md, citing mapillary.com/dataset/vistas). Non-commercial, share-alike, attribution.",
+        "instance_decisions": {}
+      },
+      "coverage_reviewed": false,
+      "exclusions": [
+        {
+          "instance_id": "121",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "122",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "123",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "132",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "143",
+          "class_id": 4,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "156",
+          "class_id": 4,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "107",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "109",
+          "class_id": 8,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "134",
+          "class_id": 10,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "135",
+          "class_id": 10,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "136",
+          "class_id": 10,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "137",
+          "class_id": 10,
+          "reason": "final_instance_short_side_below_0.0125"
+        },
+        {
+          "instance_id": "138",
+          "class_id": 10,
+          "reason": "final_instance_short_side_below_0.0125"
+        }
+      ]
+    },
+    {
+      "file": "mapillary_vn_repair004_v2__lFr49FF9fjS6doEXbt1Zkw__e20f2441.jpg",
+      "orig": "lFr49FF9fjS6doEXbt1Zkw.jpg",
+      "group": "mapillary_vistas:lFr49FF9fjS6doEXbt1Zkw",
+      "status": "review",
+      "flags": [
+        "coverage_review_required_all_11_classes",
+        "source_license_evidence_required"
+      ],
+      "w": 1024,
+      "h": 768,
+      "instances": {
+        "Motorcyclist": 2,
+        "Sign": 2,
+        "Car": 1
+      },
+      "geometry": [
+        {
+          "instance_id": "255",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 98,
+          "original_pixels": 676,
+          "decoded_pixels": 676,
+          "issues": [],
+          "short_side_ratio": 0.02246100000000001
+        },
+        {
+          "instance_id": "257",
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 3,
+          "vertices": 88,
+          "original_pixels": 458,
+          "decoded_pixels": 458,
+          "issues": [],
+          "short_side_ratio": 0.016602000000000006
+        },
+        {
+          "instance_id": "252",
+          "class_id": 9,
+          "class_name": "Sign",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 94,
+          "original_pixels": 851,
+          "decoded_pixels": 851,
+          "issues": [],
+          "short_side_ratio": 0.03906200000000004
+        },
+        {
+          "instance_id": "253",
+          "class_id": 9,
+          "class_name": "Sign",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 88,
+          "original_pixels": 886,
+          "decoded_pixels": 886,
+          "issues": [],
+          "short_side_ratio": 0.04003875000000001
+        },
+        {
+          "instance_id": "254",
+          "class_id": 0,
+          "class_name": "Car",
+          "roundtrip_iou": 1.0,
+          "lost_pixels": 0,
+          "added_pixels": 0,
+          "rings": 1,
+          "vertices": 106,
+          "original_pixels": 2272,
+          "decoded_pixels": 2272,
+          "issues": [],
+          "short_side_ratio": 0.044921250000000024
+        }
+      ],
+      "v2_policy": 2,
+      "reviewer": null,
+      "provenance": {
+        "country": "VN",
+        "location_verified": true,
+        "location_evidence": "Zenodo DOI10.5281/zenodo.11459554 ID match, lat 10.79871009, lon 106.73003639, strict geoBoundaries VN ADM0 contains point",
+        "license_verified": false,
+        "license_evidence": "Native README Research Use License; metadata CC BY4 does not license Vistas pixels; rights conditions being recorded",
+        "capture_group": "mapillary_vistas:lFr49FF9fjS6doEXbt1Zkw",
+        "source_url": "https://www.mapillary.com/dataset/vistas",
+        "license": "CC BY-NC-SA 4.0 (stated in the mirror's LICENSE.md, citing mapillary.com/dataset/vistas). Non-commercial, share-alike, attribution.",
+        "instance_decisions": {}
+      },
+      "coverage_reviewed": false,
+      "exclusions": [
+        {
+          "instance_id": "256",
+          "class_id": 5,
+          "reason": "final_instance_short_side_below_0.0125"
+        }
+      ]
+    }
+  ]
+}

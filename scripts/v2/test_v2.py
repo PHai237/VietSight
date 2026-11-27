@@ -48,11 +48,67 @@ class V2Tests(unittest.TestCase):
         self.assertTrue(any('ambiguous_association' in v for v in flags))
         self.assertTrue(any('overlapping_instances' in v for v in flags))
 
+    def test_simplification_preserves_single_pixel_fragment(self):
+        import cv2
+        mask=np.zeros((500,500),np.uint8)
+        cv2.circle(mask,(220,220),200,1,-1);mask[480,480]=1
+        polygon,metrics,issues=encode_checked(mask.astype(bool),self.nb,max_points=100)
+        self.assertFalse(issues,metrics)
+        self.assertLessEqual(len(polygon),100)
+        self.assertTrue(decode_polygon(polygon,500,500)[480,480])
+
+    def test_ai_assessment_is_traced_without_human_approval(self):
+        args=self.fixture();decision={'instances':{'10':{'target':'Sign','assessment':{
+            'method':'ai_visual','evidence':'fixture://crop','reason':'synthetic fixture'}}}}
+        args.decisions=self.root/'decisions.json'
+        args.decisions.write_text(json.dumps({'scene.jpg':decision}),encoding='utf-8')
+        self.assertEqual(convert(args)['images_ok'],0)
+        record=json.loads((args.out/args.source/'meta.jsonl').read_text(encoding='utf-8'))
+        self.assertFalse(record['coverage_reviewed']);self.assertIsNone(record['reviewer'])
+        self.assertIn('10',record['provenance']['instance_decisions'])
+        args.source='unsupported_decision_v2';decision['instances']['10'].pop('assessment')
+        args.decisions.write_text(json.dumps({'scene.jpg':decision}),encoding='utf-8')
+        with self.assertRaisesRegex(ValueError,'assessment evidence'):convert(args)
+
+    def test_size_exclusion_is_after_rider_union_and_separate_from_area(self):
+        from convert import V2Writer
+        mask=np.zeros((200,200),bool);mask[30:100,70:71]=1
+        writer=V2Writer('sizes_v2',self.root,max_side=1024,clean=False)
+        try:
+            record=writer.add_v2(np.zeros((200,200,3),np.uint8),[
+                {'id':'thin','role':'direct','target':'Sign','mask':mask}], 'thin.jpg','fixture')
+            self.assertEqual(record['instances'],{})
+            self.assertEqual(record['exclusions'][0]['reason'],'final_instance_short_side_below_0.0125')
+            bike=np.zeros_like(mask);bike[70:150,40:70]=1
+            record=writer.add_v2(np.zeros((200,200,3),np.uint8),[
+                {'id':'tiny-rider','role':'rider','sub':'motorcycle','mask':mask,'vehicle_id':'bike'},
+                {'id':'bike','role':'vehicle2','sub':'motorcycle','mask':bike}], 'rider.jpg','fixture')
+            self.assertEqual(record['instances'],{'Motorcyclist':1})
+            self.assertFalse(record['exclusions'])
+        finally:writer.meta.close()
+
     def test_reviewed_walking_person_and_seat_override(self):
         m=np.ones((50,50),bool)
         rows,flags=resolve_v2([{'id':'bus12','role':'direct','target':'Bus','mask':m,
                                'seats':12,'semantic_reviewed':True}],50,50)
         self.assertEqual(rows[0][0],0);self.assertFalse(flags)
+
+    def test_source_rider_ignores_weak_neighbour_but_retains_real_ambiguity(self):
+        from unittest.mock import patch
+        mask=np.ones((50,50),bool)
+        raw=[{'id':'r','role':'rider','sub':'motorcycle','mask':mask},
+             {'id':'a','role':'vehicle2','sub':'motorcycle','mask':mask},
+             {'id':'b','role':'vehicle2','sub':'motorcycle','mask':mask}]
+        with patch('policy._ride_score',side_effect=[(.6,.6),(0,.1)]):
+            rows,flags=resolve_v2(raw,50,50)
+        self.assertEqual([r[0] for r in rows],[5,4])
+        self.assertFalse(any('association' in f for f in flags))
+        with patch('policy._ride_score',side_effect=[(.6,.6),(.2,.2)]):
+            rows,flags=resolve_v2(raw,50,50)
+        self.assertTrue(any('ambiguous_association:r'==f for f in flags))
+        with patch('policy._ride_score',side_effect=[(0,.6),(0,.1)]):
+            rows,flags=resolve_v2(raw,50,50)
+        self.assertTrue(any('ambiguous_association:r'==f for f in flags))
 
     def fixture(self):
         import yaml
@@ -70,6 +126,44 @@ class V2Tests(unittest.TestCase):
     def test_unreviewed_coverage_cannot_enter_training(self):
         args=self.fixture();result=convert(args)
         self.assertEqual(result['images_ok'],0);self.assertEqual(result['images_review'],1)
+
+    def test_trusted_native_qa_does_not_invent_a_human_reviewer(self):
+        args=self.fixture()
+        qa={'method':'trusted_native_auto_and_sample','source_trust_verified':True,
+            'all_11_classes_checked':True,'sample_passed':True,'unresolved_count':0,
+            'source_evidence':'fixture://native','automatic_evidence':'fixture://audit',
+            'sample_evidence':'fixture://sample'}
+        args.decisions=self.root/'decisions.json'
+        decision={**self.provenance(),'coverage_qa':qa}
+        args.decisions.write_text(json.dumps({'scene.jpg':decision}),encoding='utf-8')
+        self.assertEqual(convert(args)['images_ok'],1)
+        record=json.loads((args.out/args.source/'meta.jsonl').read_text(encoding='utf-8'))
+        self.assertIsNone(record['reviewer']);self.assertFalse(record['coverage_reviewed'])
+        from policy import coverage_approved
+        self.assertTrue(coverage_approved(record))
+        for index,change in enumerate([{'method':'pseudo_unreviewed'},
+                                       {'source_trust_verified':False},{'unresolved_count':1}]):
+            args.source=f'unapproved_native_{index}_v2'
+            decision['coverage_qa']={**qa,**change}
+            args.decisions.write_text(json.dumps({'scene.jpg':decision}),encoding='utf-8')
+            self.assertEqual(convert(args)['images_ok'],0)
+
+    def test_trusted_native_qa_cannot_override_overlap(self):
+        from convert import V2Writer
+        mask=np.ones((50,50),bool)
+        qa={'method':'trusted_native_auto_and_sample','source_trust_verified':True,
+            'all_11_classes_checked':True,'sample_passed':True,'unresolved_count':0,
+            'source_evidence':'fixture://native','automatic_evidence':'fixture://audit',
+            'sample_evidence':'fixture://sample'}
+        writer=V2Writer('native_overlap_v2',self.root,max_side=1024,clean=False)
+        try:
+            record=writer.add_v2(np.zeros((50,50,3),np.uint8),[
+                {'id':str(i),'role':'direct','target':'Sign','mask':mask} for i in range(2)],
+                'scene.jpg','fixture',provenance={**self.provenance(),'capture_group':'fixture',
+                                               'source_url':'fixture://source','license':'synthetic'},coverage_qa=qa)
+            self.assertEqual(record['status'],'review')
+            self.assertTrue(any('overlap' in f for f in record['flags']))
+        finally:writer.meta.close()
 
     def test_coverage_review_cannot_bypass_overlap(self):
         args=self.fixture();data=json.loads(args.ann.read_text())

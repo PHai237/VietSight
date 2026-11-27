@@ -23,7 +23,7 @@ from vslib.mapping import load_source_config,role_of
 from vslib.notebook_lib import load
 from vslib.writer import SourceWriter,read_image,safe_name
 from masks import encode_checked
-from policy import resolve_v2
+from policy import resolve_v2,coverage_approved
 
 
 class V2Writer(SourceWriter):
@@ -31,13 +31,24 @@ class V2Writer(SourceWriter):
         super().__init__(*args,**kwargs)
         self.nb=load()
 
-    def add_v2(self,image,raw,orig,group,coverage_reviewed=False,reviewer=None,initial_flags=(),provenance=None):
+    def add_v2(self,image,raw,orig,group,coverage_reviewed=False,reviewer=None,initial_flags=(),provenance=None,coverage_qa=None):
         self.n_in+=1;h,w=image.shape[:2]
+        exclusions=[]
+        def too_small(mask):
+            ys,xs=np.nonzero(mask)
+            return bool(len(xs)) and min(int(xs.max()-xs.min()+1),int(ys.max()-ys.min()+1))/max(h,w)<.0125
+        # A crowd smaller than the object threshold cannot contain an eligible
+        # member. Do not apply this to riders before their union with the bike.
+        for r in raw:
+            if r['role'] in ('drop','blackout') and too_small(r['mask']):
+                exclusions.append({'instance_id':str(r['id']),'reason':'crowd_bound_short_side_below_0.0125'})
+                r['role']='ignore'
         instances,flags=resolve_v2(raw,h,w)
         flags=list(initial_flags)+flags
         coverage_reviewed=coverage_reviewed is True
         reviewer=reviewer.strip() if isinstance(reviewer,str) else None
-        if not coverage_reviewed or not reviewer:flags.append('coverage_review_required_all_11_classes')
+        if not coverage_approved({'coverage_reviewed':coverage_reviewed,'reviewer':reviewer,'coverage_qa':coverage_qa}):
+            flags.append('coverage_review_required_all_11_classes')
         provenance=provenance or {}
         if not (provenance.get('country')=='VN' and provenance.get('location_verified') is True
                 and provenance.get('location_evidence')):
@@ -48,11 +59,15 @@ class V2Writer(SourceWriter):
         if not provenance.get('capture_group'):flags.append('canonical_capture_group_required')
         lines=[];counts=Counter();geometry=[];decoded=[]
         for cid,mask,iid in instances:
+            if too_small(mask):
+                exclusions.append({'instance_id':iid,'class_id':cid,'reason':'final_instance_short_side_below_0.0125'})
+                continue
             poly,metrics,issues=encode_checked(mask,self.nb)
             geometry.append(dict(instance_id=iid,class_id=cid,class_name=CLASSES[cid],**metrics,issues=issues))
             flags.extend(f'{issue}:{iid}' for issue in issues)
             if poly is None:continue
-            short=float(np.ptp(poly*[w,h],axis=0).min()/max(h,w))
+            ys,xs=np.nonzero(mask)
+            short=float(min(np.ptp(xs)+1,np.ptp(ys)+1)/max(h,w))
             geometry[-1]['short_side_ratio']=short
             if short<.0125:flags.append(f'short_side_guideline_review:{iid}')
             # Keep scorer filtering separate; never silently drop visible data.
@@ -63,6 +78,8 @@ class V2Writer(SourceWriter):
         for i,(aid,a) in enumerate(decoded):
             for bid,b in decoded[i+1:]:
                 if (a&b).any():flags.append(f'decoded_overlap:{aid}:{bid}')
+        excluded_ids={e['instance_id'] for e in exclusions}
+        flags=[f for f in flags if not (f.startswith('ontology_review_required:') and f.split(':')[1] in excluded_ids)]
         flags=sorted(set(flags));status='review' if flags else 'ok'
         sub='review/' if flags else '';name=safe_name(self.source,orig)
         if not cv2.imwrite(str(self.out/f'{sub}images'/f'{name}.jpg'),image,[cv2.IMWRITE_JPEG_QUALITY,self.q]):
@@ -72,7 +89,8 @@ class V2Writer(SourceWriter):
         else:self.n_ok+=1;self.counts.update(counts)
         record={'file':name+'.jpg','orig':orig,'group':group,'status':status,'flags':flags,'w':w,'h':h,
                 'instances':dict(counts),'geometry':geometry,'v2_policy':2,'reviewer':reviewer,'provenance':provenance,
-                'coverage_reviewed':bool(coverage_reviewed and reviewer)}
+                'coverage_reviewed':bool(coverage_reviewed and reviewer),'coverage_qa':coverage_qa,
+                'exclusions':exclusions}
         self.meta.write(json.dumps(record,ensure_ascii=False)+'\n')
         return record
 
@@ -155,7 +173,11 @@ def convert(args):
                         if role['role']!='ignore':flags.append(f'unsupported_geometry:{iid}')
                         continue
                 override=decision.get('instances',{}).get(iid,{})
-                if override and not reviewer:raise ValueError('instance decisions require named reviewer')
+                assessment=override.get('assessment',{})
+                if override and not reviewer and not (
+                        assessment.get('method') in ('automated_rule','ai_visual') and assessment.get('evidence')
+                        and assessment.get('reason')):
+                    raise ValueError('instance decisions require named reviewer or explicit non-human assessment evidence')
                 if override.get('target'):
                     if override['target']=='ignore':role={'role':'ignore'}
                     elif override['target'] in CLASSES:role={'role':'direct','target':override['target']}
@@ -174,7 +196,8 @@ def convert(args):
                               **{k:decision.get(k) for k in ['country','location_verified','location_evidence',
                                   'license_verified','license_evidence']},
                               'capture_group':decision.get('group'),'source_url':cfg.get('url'),
-                              'license':cfg.get('license')})
+                              'license':cfg.get('license'),
+                              'instance_decisions':decision.get('instances',{})},decision.get('coverage_qa'))
         return writer.close({'script':'v2/convert.py','config':str(args.config),'unmapped_labels':dict(unmapped),
                              'note':'V2 only; masks measured at source resolution; no V1 files rewritten'})
     finally:

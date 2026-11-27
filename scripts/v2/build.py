@@ -18,6 +18,7 @@ import build_version
 from compare_validation import scan,compare
 from vslib import ROOT,CLASSES
 from vslib.notebook_lib import load
+from policy import coverage_approved
 
 PRIORITIES=['Motorcycle','Other vehicle','Sign','Bicycle','Motorcyclist']
 
@@ -47,7 +48,7 @@ def build(args):
             r=json.loads(line)
             if r['status']!='ok':continue
             p=r.get('provenance',{})
-            if not (r.get('v2_policy')==2 and r.get('coverage_reviewed') is True and r.get('reviewer')) or r.get('flags'):
+            if not (r.get('v2_policy')==2 and coverage_approved(r)) or r.get('flags'):
                 raise ValueError('ok image lacks current V2 coverage approval; reconvert old records')
             if not (p.get('country')=='VN' and p.get('location_verified') is True and p.get('location_evidence')
                     and p.get('license_verified') is True and p.get('license_evidence')

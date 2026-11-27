@@ -60,9 +60,13 @@ def encode_checked(mask, nb, min_iou=.995, max_points=400):
     if len(parts)>80:
         return None,{'rings':len(parts),'original_pixels':int(mask.sum())},['too_many_components_for_400_point_gate']
     best=None
-    for epsilon in [0,.25,.5,1,1.5]:
-        simplified=[cv2.approxPolyDP(p.astype(np.float32),epsilon,True).reshape(-1,2).astype(float) if epsilon else p for p in parts]
-        if any(len(p)<3 for p in simplified):continue
+    for epsilon in [0,.125,.25,.375,.5,.625,.75,.875,1,1.125,1.25,1.375,1.5]:
+        simplified=[]
+        for p in parts:
+            candidate=cv2.approxPolyDP(p.astype(np.float32),epsilon,True).reshape(-1,2).astype(float) if epsilon else p
+            # A thin visible fragment must survive even when approximation
+            # collapses it to a line. Simplify the other rings independently.
+            simplified.append(candidate if len(candidate)>=3 else p)
         polygon=_bridge(simplified) if len(simplified)>1 else simplified[0]
         polygon=np.round(np.clip(polygon/[w,h],0,1),6)
         if len(polygon)>max_points:continue
