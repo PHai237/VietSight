@@ -97,3 +97,8 @@ Không nguồn nào hiện được cấp A độc lập cho train V2. Một lô
 | Số ảnh lỗi xác nhận / ảnh kiểm; số label sửa | chưa đo / chưa đo; chưa đo |
 | Người sửa / người kiểm chéo / quyết định lô | chưa ghi / chưa ghi / pending |
 | Công sức chuyển đổi, đầu việc còn lại | chưa ước lượng |
+# Cập nhật nguồn thay thế và lô CVAT — 27/11/2026
+
+Đã phát 5 gói QA, mỗi gói 20 ảnh, không trùng nhau; xem [hướng dẫn](../V2_CVAT_REVIEW.md). Nguồn review100 và SideWalk được kiểm lại bằng API, đều công bố CC BY 4.0; chưa đủ bằng chứng quyền footage gốc. Nhóm xác nhận chưa có quyền trích Camera Giao Thông/VOV. Không chuyển những ảnh này sang READY chỉ vì đã sửa nhãn.
+
+Nguồn thay thế ưu tiên **Sign — VR-TSD, loại C**: [repo tác giả](https://github.com/LinhNhat07/VR-TSD-Vietnamese-Traffic-Sign-Recognition) mô tả tự thu thập video/ảnh, camera Xiaomi 70mai A510/Teyes X5 và điện thoại, gán **bbox**, không phải mask. [Dataset gốc](https://universe.roboflow.com/vietnam-traffic-sign-recognition-benchmark/vr-tsd) API HTTP 200 xác nhận object-detection, public, **CC BY 4.0**, catalog 8.078 ảnh, bản v2 train/valid/test 5.668/1.259/1.151. Đây là số metadata, **chưa tải/kiểm đếm ảnh hoặc instance thực tế**. Nguồn gốc được tác giả mô tả rõ hơn các bộ tổng hợp, nhưng vẫn cần kiểm ảnh/quyền tương ứng trước admission. Chưa nhập vào 5 gói, chưa tải toàn bộ. Tiếp theo lấy mẫu theo chuỗi dashcam, tạo mask bằng SAM/AI + người kiểm, đồng thời gán mọi class BTC xuất hiện, không chỉ Sign. Không dựng mask hình chữ nhật từ bbox. Không coi license của bài báo/repo code là license ảnh.

@@ -1,5 +1,7 @@
 # V2 — Local Vision, chỉ ảnh giao thông Việt Nam
 
+**L? ?ang giao ng??i ki?m:** 5 ZIP round001, 20 ?nh/g?i, t?ng 70 dashcam + 30 val d? ki?n t? ba video. 862 polygon draft, g?m 237 ?? xu?t b?ng c?ng c? Claude; 0 human-reviewed/READY. H??ng d?n: [V2_CVAT_REVIEW.md](../V2_CVAT_REVIEW.md). D? li?u c?n thi?u quy?n g?c gi? ri?ng RIGHTS_PENDING; source thay th? Sign VR-TSD ?? x?c minh metadata CC BY 4.0 v? m? t? t?c gi? t? thu th?p, nh?ng ch? bbox n?n c?n mask th?t.
+
 Cập nhật 27/11/2026, Asia/Saigon. Bàn giao hiện tại ở **[docs/V2_DATA_HANDOFF.md](../V2_DATA_HANDOFF.md)**; đây là nguồn trạng thái/số liệu mới nhất. Làm trên branch `codex/data-qa`, không thao tác working directory của Claude hoặc luồng training V1.
 
 ## Kết quả DATA thực tế

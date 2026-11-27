@@ -1,5 +1,7 @@
 # VietSight V2 — Local Vision: bàn giao DATA lô 001
 
+**Cập nhật round001 CVAT:** đã tách 5 gói, mỗi gói 20 ảnh không trùng nhau (14 train dự kiến + 6 val dự kiến). Tổng 70 ảnh dashcam từ review100 sau chọn/near-dedup, 30 ảnh val từ ba video Đà Nẵng/Hội An/Hà Nội. Đường dẫn gốc: `C:\My Future\VietSight-data-qa\data\versions\v2_cvat_round001\RIGHTS_PENDING\VietSight_V2_CVAT_member_01_REVIEW_ONLY.zip` … `member_05_REVIEW_ONLY.zip`. Hướng dẫn và tiếp nhận từng phần tại [V2_CVAT_REVIEW.md](V2_CVAT_REVIEW.md), hash/số liệu tại [evidence](qa/evidence/V2_CVAT_ROUND001.json). Có 862 polygon draft, gồm 237 đề xuất AI mới bằng công cụ Claude chạy CPU. Không sửa snapshot intake001 bên dưới; chưa có nhãn người kiểm trả về hoặc ảnh đủ quyền gốc để phát hành READY. Người dùng xác nhận chưa có bằng chứng quyền trích Camera Giao Thông/VOV; tất cả gói giữ **REVIEW ONLY / RIGHTS PENDING**.
+
 **Trạng thái: BLOCKED cho training.** Đã có gói dữ liệu thật để kiểm/sửa nhãn, chưa có tập train V2 đạt yêu cầu 11 class BTC. Không đổi trạng thái thành READY chỉ vì polygon hợp lệ hoặc có pre-label. Human QA: **chưa thực hiện/chưa được xác nhận**. Không chạy training, không dùng GPU, không thay V1/validation V1.
 
 Mốc người dùng cung cấp: V1 e25 public **12,90**; e50 **12,37**; đã dùng **2/20** lượt nộp. Không có lần nộp mới trong công việc DATA này. Deadline **10:30 ngày 28/11/2026, Asia/Saigon**.
