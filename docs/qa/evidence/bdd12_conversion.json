@@ -1,0 +1,47 @@
+{
+ "source": "qa_bdd12",
+ "images_seen": 12,
+ "images_ok": 12,
+ "images_review": 0,
+ "images_skipped": 0,
+ "instances_ok": {
+  "Car": 100,
+  "Bus": 4,
+  "Truck": 5,
+  "Other vehicle": 1,
+  "Motorcycle": 0,
+  "Motorcyclist": 0,
+  "Bicycle": 0,
+  "Cyclist": 0,
+  "Pedestrian": 11,
+  "Sign": 0,
+  "Traffic light": 0
+ },
+ "instances_review": {
+  "Car": 0,
+  "Bus": 0,
+  "Truck": 0,
+  "Other vehicle": 0,
+  "Motorcycle": 0,
+  "Motorcyclist": 0,
+  "Bicycle": 0,
+  "Cyclist": 0,
+  "Pedestrian": 0,
+  "Sign": 0,
+  "Traffic light": 0
+ },
+ "dropped": {
+  "rectangle objects (duplicate boxes of the masks)": 174,
+  "smaller than 64 px at 640 (scorer ignores)": 53
+ },
+ "review_flags": {},
+ "max_side": 1024,
+ "min_area_640": 64,
+ "converter": {
+  "script": "convert_supervisely.py",
+  "config": "C:\\My Future\\VietSight-data-qa\\configs\\sources\\bdd100k_10k.yaml",
+  "root": "data\\raw\\qa_bdd_snapshot",
+  "unmapped_labels": {},
+  "skipped_unannotated": 0
+ }
+}

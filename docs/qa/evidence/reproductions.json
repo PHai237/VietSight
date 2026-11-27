@@ -1,0 +1,78 @@
+{
+  "ambiguous_pair": {
+    "classes": [
+      "Motorcyclist",
+      "Motorcycle"
+    ],
+    "flags": []
+  },
+  "weak_passenger": {
+    "classes": [
+      "Pedestrian",
+      "Motorcyclist"
+    ],
+    "flags": []
+  },
+  "person_beside_bike": {
+    "classes": [
+      "Cyclist"
+    ],
+    "flags": [],
+    "semantic_truth": "synthetic geometry only; not a real-image error count"
+  },
+  "hole": {
+    "status": "ok",
+    "original_pixels": 19200,
+    "decoded_pixels": 25281,
+    "roundtrip_iou": 0.7375390625,
+    "lost_pixels": 319,
+    "added_pixels": 6400,
+    "drops": {
+      "smaller than 64 px at 640 (scorer ignores)": 0
+    }
+  },
+  "small_component": {
+    "status": "ok",
+    "original_pixels": 10100,
+    "decoded_pixels": 9801,
+    "roundtrip_iou": 0.9703960396039604,
+    "lost_pixels": 299,
+    "added_pixels": 0,
+    "drops": {
+      "smaller than 64 px at 640 (scorer ignores)": 0
+    }
+  },
+  "overlapping_coco_parts": {
+    "lost_union_pixels": 1521
+  },
+  "accept_invalid_polygon": {
+    "status": "ok",
+    "parse_problems": [],
+    "polygon_problem": "các cạnh tự cắt nhau (đa giác bị xoắn)"
+  },
+  "fill_zero_predictions": {
+    "file": "scene.jpg",
+    "status": "ok",
+    "flags": []
+  },
+  "malformed_yolo_approved": {
+    "file": "bad__scene__71f68d36.jpg",
+    "orig": "images/scene.jpg",
+    "group": "bad:bad__scene__71f68d36",
+    "status": "ok",
+    "flags": [],
+    "w": 200,
+    "h": 200,
+    "instances": {}
+  },
+  "missing_frozen_key": {
+    "build_completed": true,
+    "requested_val": 2,
+    "actual_val": 1,
+    "warning_seen": true
+  },
+  "hardlink_label_mutation": {
+    "built_val_changed_without_rebuild": true,
+    "same_frozen_key": true
+  }
+}
