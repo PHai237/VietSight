@@ -30,7 +30,7 @@ quyền được xác nhận sau, tạo lại notebook với `rights_confirmed: 
 4. `python scripts/make_colab_v2_notebook.py --handoff configs/handoff/v2.json`, commit + push notebook.
 5. Mở link Colab ở ô đầu notebook → Runtime → T4 GPU → Run all. Secrets `KAGGLE_USERNAME`/`KAGGLE_KEY` chỉ cần cho
    Mapillary val (so sánh). Mất kết nối: Run all lại, tự resume cùng run.
-6. Kết quả trên Drive `MyDrive/VietSight/<run>/`: `runs/<run>/weights/` (best/last + `epoch3/6/9.pt`), `submission.zip`,
+6. Kết quả trên Drive `MyDrive/VietSight/<run>/`: `runs/<run>/weights/` (best/last + `epoch0/3/6/9.pt`; epochN = sau N+1 epoch), `submission.zip`,
    `run_report.json`, `eval_compare.json`.
 
 ## Run chính
@@ -48,6 +48,40 @@ python scripts/make_colab_v2_notebook.py --epochs 12 --lr0 0.0003 --close-mosaic
 | epochs / close_mosaic | 12 / 3 | |
 | batch / save_period | 16 / 3 | T4; checkpoint mỗi 3 epoch trên Drive |
 | imgsz / model | 640 / YOLO26n-seg | không đổi (luật cuộc thi) |
+
+## V3 Mixed (Mapillary V1 + Việt Nam V2) — từ pretrained, 50 epoch
+
+Chờ `configs/handoff/v3.json` của Codex (mẫu `configs/handoff/v3.example.json`). Khác V2: `val_subsets` chia `images/val`
+thành các phần (regex trên tên file, số ảnh, sha256 danh sách tên). Notebook kiểm từng phần, kiểm các phần phủ đủ val, rời
+nhau, không trùng tên với train; phần `mapillary_val` phải đúng `configs/val_frozen.txt` của V1. Mỗi phần được chấm riêng.
+
+Handoff thật của Codex dùng schema `validation_sets` (mỗi tập val một thư mục: `images/val` = VN, dùng khi train;
+`images/val_v1` = Mapillary V1 = đúng `configs/val_frozen.txt`, chỉ chấm riêng). Notebook nhận cả `validation_sets`
+lẫn `val_subsets`. Mỗi bản annotation = một handoff = một notebook + một thư mục run riêng (tên chứa version):
+
+```
+# final001 (đã có): notebooks/colab/VietSight_TEAM55_colab_v3_final001.ipynb
+python scripts/make_colab_v2_notebook.py --init pretrained --epochs 50 --save-period 5 --eval-ckpts epoch25.pt epoch35.pt \
+    --out-name VietSight_TEAM55_colab_v3_final001.ipynb --handoff configs/handoff/v3_final001.json
+# final002 (khi Codex bàn giao): copy handoff -> configs/handoff/v3_final002.json, cùng lệnh với _final002
+```
+
+Thứ tự ô: setup VietSight chạy TRƯỚC ô cài thư viện chính thức, nên không import ultralytics ở đó; tải `yolo26n-seg.pt`
+được gọi trong ô train (sau khi cài). V2 pretrained từng import ultralytics trong setup.
+
+**Export giữa chừng** (sắp hết giờ/GPU): trong ô setup đặt `EXPORT_ONLY_CKPT = "last.pt"` (hoặc `"epoch25.pt"`) rồi
+Run all, chạy được trên runtime CPU. Không train; export + self-check chính thức trên checkpoint đó, kết quả ở
+`<run>/export_<tên>/` (không ghi đè thư mục run). `last.pt` được Ultralytics ghi sau mỗi epoch.
+
+(`--eval-ckpts` chỉ nhận checkpoint được lưu: `epoch0/5/10/…/45.pt`; `epoch25.pt` = sau 26 epoch.)
+
+- Công thức chính thức (`dict()` = mặc định Ultralytics như V1 e25), batch 16, imgsz 640, T4, checkpoint mỗi 5 epoch trên Drive.
+- Ultralytics đếm epoch từ 0: `epochN.pt` = trọng số sau N+1 epoch (dòng N+1 của `results.csv`). Với save_period 5 có
+  `epoch0, 5, 10, …, 45.pt` + `best.pt`, `last.pt`.
+- Ô cuối: export từng checkpoint trong `--eval-ckpts` bằng `make_submission` chính thức (thư mục riêng, không đụng
+  `submission.zip` của run), chấm trên từng phần val → `ckpt_eval.json`, zip ở `ckpt_submissions/`. Đóng gói
+  `weights/` → `<run>_weights.zip` trên Drive; `DOWNLOAD_WEIGHTS = True` để tải về máy.
+- Run `<version>_pretrained_e50_EXPERIMENT` (thư mục mới; notebook từ chối thư mục e25/e50 và run cũ khác dataset).
 
 ## Khi không còn best.pt e25 (27/11/2026: không tìm thấy trên Drive lẫn trên máy)
 

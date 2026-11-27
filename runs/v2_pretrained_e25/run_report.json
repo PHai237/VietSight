@@ -1,0 +1,254 @@
+{
+ "classes": [
+  "Car",
+  "Bus",
+  "Truck",
+  "Other vehicle",
+  "Motorcycle",
+  "Motorcyclist",
+  "Bicycle",
+  "Cyclist",
+  "Pedestrian",
+  "Sign",
+  "Traffic light"
+ ],
+ "created_at": "2026-11-27T16:38:06+00:00",
+ "dataset": {
+  "counts": {
+   "train": {
+    "images": 1070,
+    "instances": 5818
+   },
+   "val": {
+    "images": 283,
+    "instances": 1658
+   }
+  },
+  "duplicates": {
+   "exact_groups": 0,
+   "leak_exact": 0,
+   "leak_near": 2,
+   "near_pairs": 34
+  },
+  "imbalance_ratio": 117.3529411764706,
+  "per_class": {
+   "Bicycle": {
+    "tiny": 0,
+    "train_images": 15,
+    "train_instances": 17,
+    "val_images": 2,
+    "val_instances": 2
+   },
+   "Bus": {
+    "tiny": 0,
+    "train_images": 155,
+    "train_instances": 176,
+    "val_images": 18,
+    "val_instances": 20
+   },
+   "Car": {
+    "tiny": 31,
+    "train_images": 706,
+    "train_instances": 1342,
+    "val_images": 212,
+    "val_instances": 386
+   },
+   "Cyclist": {
+    "tiny": 2,
+    "train_images": 65,
+    "train_instances": 78,
+    "val_images": 12,
+    "val_instances": 12
+   },
+   "Motorcycle": {
+    "tiny": 2,
+    "train_images": 231,
+    "train_instances": 375,
+    "val_images": 67,
+    "val_instances": 131
+   },
+   "Motorcyclist": {
+    "tiny": 27,
+    "train_images": 754,
+    "train_instances": 1995,
+    "val_images": 217,
+    "val_instances": 640
+   },
+   "Other vehicle": {
+    "tiny": 0,
+    "train_images": 31,
+    "train_instances": 31,
+    "val_images": 4,
+    "val_instances": 4
+   },
+   "Pedestrian": {
+    "tiny": 7,
+    "train_images": 378,
+    "train_instances": 602,
+    "val_images": 108,
+    "val_instances": 178
+   },
+   "Sign": {
+    "tiny": 53,
+    "train_images": 372,
+    "train_instances": 642,
+    "val_images": 114,
+    "val_instances": 202
+   },
+   "Traffic light": {
+    "tiny": 4,
+    "train_images": 83,
+    "train_instances": 170,
+    "val_images": 24,
+    "val_instances": 40
+   },
+   "Truck": {
+    "tiny": 1,
+    "train_images": 301,
+    "train_instances": 390,
+    "val_images": 40,
+    "val_instances": 43
+   }
+  },
+  "sha256": "8050ef6698fac7ae69f15519535c0b28e6343beeedf5af5b995fc75ca8da084f",
+  "split_mode": "có sẵn (thư mục train/val trong dữ liệu)",
+  "warnings": [
+   "RẤT ÍT ví dụ trong train (< 25 đối tượng): Bicycle (17)",
+   "Ít ví dụ trong train (< 100 đối tượng): Other vehicle (31), Cyclist (78)",
+   "Mất cân bằng lớp: Motorcyclist có 1995 đối tượng, Bicycle chỉ có 17 (tỉ lệ 117:1 > 30:1). Bổ sung ảnh cho lớp hiếm.",
+   "Tập val có < 10 đối tượng ở các lớp: Other vehicle (4), Bicycle (2). AP của các lớp này trên val rất nhiễu (một vài vật thể đổi điểm nhiều).",
+   "127 đối tượng có diện tích < 64 px ở thang 640: hệ thống chấm BỎ QUA vật thể nhỏ như vậy. Chúng không làm tăng điểm; nếu nhiều thì xem lại quy tắc nhãn (không gán vật quá nhỏ).",
+   "34 cặp ảnh GẦN GIỐNG nhau (perceptual hash, khoảng cách <= 2); có thể là các khung hình liền nhau của một video.",
+   "RÒ RỈ train/val: 0 nhóm trùng hệt và 2 cặp gần giống nằm ở CẢ HAI tập. Điểm trên val sẽ cao giả tạo, điểm trên bộ test ẩn thì không. Xóa bản thừa khỏi train (REMOVE_LEAKAGE_FROM_TRAIN = True) hoặc chia lại dữ liệu theo cảnh/video."
+  ]
+ },
+ "environment": {
+  "in_colab": true,
+  "packages": {
+   "numpy": "2.4.6",
+   "onnx": "1.23.2",
+   "onnxruntime": "1.32.0",
+   "onnxslim": "0.1.99",
+   "python": "3.13.16",
+   "torch": "2.14.1+cu130",
+   "torchvision": "0.29.1+cu130",
+   "ultralytics": "8.4.214"
+  },
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "python": "3.13.16"
+ },
+ "export_args": {
+  "batch": 1,
+  "dynamic": false,
+  "format": "onnx",
+  "imgsz": 640,
+  "opset": 17,
+  "simplify": true
+ },
+ "model": {
+  "architecture": "yolo26n-seg",
+  "content_fingerprint": "1d29a9d4df8821119b3dc3d4c56041f81c913545bd7622dcf646c8fde399a7cc",
+  "fingerprint": "e5f329187fbf55e04a4b7670f3d7012098ea1f749b89333e22d2bfd6729ba1d2",
+  "nc": 11,
+  "onnx_sha256": "6ebc192f94dff01f38ad83c88291474dcf1c083880b082ed08a528d93ea36fba"
+ },
+ "notebook": {
+  "detscore_version": "0.2.0",
+  "name": "train_and_export",
+  "version": "3.0.0+7880385f"
+ },
+ "params": {
+  "BATCH": 16,
+  "CACHE": false,
+  "CONF_SHOW": 0.25,
+  "DUP_HAMMING_MAX": 2,
+  "EPOCHS": 25,
+  "MAX_IMBALANCE_RATIO": 30,
+  "MIN_TRAIN_INSTANCES": 100,
+  "MODEL_SIZE": "n",
+  "MODEL_WEIGHTS": "yolo26n-seg.pt",
+  "PATIENCE": 20,
+  "REMOVE_LEAKAGE_FROM_TRAIN": false,
+  "SELFCHECK_MAX_IMAGES": 300,
+  "TEAM_ID": 55,
+  "TRAIN_IMGSZ": 640,
+  "VAL_RATIO": 0.2,
+  "WORKERS": 2
+ },
+ "seed": 55,
+ "submission": {
+  "entries": [
+   "model.onnx"
+  ],
+  "zip_bytes": 9671525,
+  "zip_sha256": "ed371061605faa046a4f8246d693e1814a75bf04a6d8b88b63ec7b35fe08acdd"
+ },
+ "team_id": 55,
+ "train": {
+  "best_sha256": "0801ab13114726fee00008287daf4cdd288f23a9e89af7c45563bb7b5862dc52",
+  "best_tensors_sha256": "20b71d218289ffdbb10620f1667842093552600d4a411e52e3f0f11c9013bafa",
+  "best_weights": "/content/drive/MyDrive/VietSight/vietsight_vn_dashcam_final001_v2_pretrained_e25_EXPERIMENT/runs/vietsight_vn_dashcam_final001_v2_pretrained_e25_EXPERIMENT/weights/best.pt",
+  "device": "0",
+  "gpu": "Tesla T4",
+  "init_weights": {
+   "path": "/content/init/yolo26n-seg.pt",
+   "sha256": "361fbfabab285c3237700b6bb91d7ecfa602cd945fffda8dbe1242829b71e73f"
+  },
+  "train_args": {
+   "batch": 16,
+   "cache": false,
+   "data": "/content/work/dataset/data.yaml",
+   "deterministic": true,
+   "device": "0",
+   "epochs": 25,
+   "exist_ok": true,
+   "imgsz": 640,
+   "name": "vietsight_vn_dashcam_final001_v2_pretrained_e25_EXPERIMENT",
+   "patience": 20,
+   "plots": true,
+   "save_period": 3,
+   "seed": 55,
+   "workers": 2
+  },
+  "v2_handoff": {
+   "delivery_status": "LOCAL_ZIP_READY_UPLOAD_PENDING",
+   "fingerprint_sha256": "7b11b51e9a1bc644b902524e88f1772d7683046a052c299e9637ca153e028641",
+   "images": {
+    "train": 1070,
+    "val": 283
+   },
+   "local_zip": "C:\\My Future\\VietSight-data-qa\\data\\versions\\vietsight_vn_dashcam_final001_v2.zip",
+   "rights_confirmed": false,
+   "rights_note": "Publisher declares CC BY 4.0. Separate rights to original third-party footage are not confirmed. Technical READY is not a rights clearance.",
+   "rights_status": "UNCONFIRMED_THIRD_PARTY_FOOTAGE",
+   "source": "drive:/content/drive/MyDrive/VietSight/datasets/vietsight_vn_dashcam_final001_v2.zip",
+   "status": "READY",
+   "status_scope": "technical_only",
+   "submission_eligible": false,
+   "technical_status": "READY",
+   "version": "vietsight_vn_dashcam_final001_v2",
+   "vn_val_sha256": "22e40f3164c7f2c52a5038214518acba11bfd6f32233f46a28035e598c8505ac"
+  }
+ },
+ "val_estimate": {
+  "latency_ms_p50": 262.25015900013204,
+  "map50": 0.24759781955500637,
+  "map50_95": 0.12482181392909783,
+  "n_images": 283,
+  "note": "tính trên val của đội bằng bộ chấm nhúng, không phải điểm trên bộ test ẩn",
+  "per_class_ap": {
+   "Bicycle": 0.0,
+   "Bus": 0.18478673190245373,
+   "Car": 0.2700252986451554,
+   "Cyclist": 0.058994204210286894,
+   "Motorcycle": 0.029920136057110924,
+   "Motorcyclist": 0.23091933540705883,
+   "Other vehicle": 0.0,
+   "Pedestrian": 0.0210239722170409,
+   "Sign": 0.1463242522870349,
+   "Traffic light": 0.0811143733702681,
+   "Truck": 0.34993164912366626
+  },
+  "score_x100": 12.482181392909784
+ }
+}
