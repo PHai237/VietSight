@@ -1,5 +1,22 @@
 # VietSight V2 — Local Vision: bàn giao DATA lô 001
 
+## Final technical handoff - 27/11/2026
+
+**TECHNICAL READY**, experimental V2: **1,070 train / 283 val**, **7,476 instances**, all 11 BTC classes present in each split. Removed all 52 known exception images and 2 additional images with confirmed missing large objects; no new model proposals, no full human QA claim. Kept native team labels with deterministic geometry/name mapping repairs and BTC short-edge filtering. Full automatic structure/geometry checks: 0 invalid polygons, 0 decoded-overlap images, 0 exact duplicates. Six images moved train to val to keep the confirmed boundary clip together. Two automatic cross-split near-hash candidates were visually checked as different camera/date/scene; original-video manifest remains incomplete. V1 and frozen V1 validation unchanged.
+
+**Rights status: UNCONFIRMED_THIRD_PARTY_FOOTAGE.** Publisher declares CC BY 4.0; original third-party footage rights have not been separately confirmed. Technical READY does not assert rights clearance. Team member supplied the relabelled 11-class annotations; AI assistance unspecified.
+
+- Local ZIP: `C:\My Future\VietSight-data-qa\data\versions\vietsight_vn_dashcam_final001_v2.zip`
+- [Claude handoff](../configs/handoff/v2.json): schema-compatible, `status: READY` scoped to technical readiness, separate rights/delivery fields. Drive URI is the intended destination; **upload pending**, no remote availability claimed.
+- Dataset fingerprint: `7b11b51e9a1bc644b902524e88f1772d7683046a052c299e9637ca153e028641`
+- Frozen Vietnam val filename SHA256: `22e40f3164c7f2c52a5038214518acba11bfd6f32233f46a28035e598c8505ac`
+- ZIP SHA256: `ff0438ca47acecbe215d7720eec335e2fb0269eeac354951bd2938cd1f8085ed`
+- [Counts, checks and limitations](qa/evidence/V2_FINAL_TECHNICAL.json). ZIP contains attribution, per-image manifest, exclusion list, split evidence, official audit and per-file checksums. Rare classes remain small: Bicycle train/val 17/2; Other vehicle 31/4. These are limitations for e12, not missing-class coverage.
+
+Everything below is historical intake/review status, superseded by this final technical handoff.
+
+---
+
 **Bàn giao mới nhất — ưu tiên dashcam1.407 ảnh:** chuyển đổi đủ sang YOLO segmentation, remap theo tên11 class. Sửa leakage thật ở ranh giới clip bằng cách chuyển6 ảnh train→val; bản riêng hiện **1120 train /287 val**, **7635 instance**, COCO8055 gốc giữ nguyên. Gói `C:\My Future\VietSight-data-qa\data\versions\team_dashcam_yolo_intake001_REVIEW.zip`; [handoff JSON đúng mẫu Claude](../configs/handoff/v2.json) đang **BLOCKED**, chưa được train e12. Drive URI trong JSON chỉ là vị trí upload dự kiến, chưa có upload.
 
 Fingerprint `3c13dcc7ca1510f725b3b3a0188c982fee717d03287a5ebfe8948d6b2e9273e6`; val-name SHA256 `5a8507f364678c9559ab21c7e9b6b0ec09b5362062ea09b052d09abbf6830a2a`. Thành viên nhóm xác nhận gán lại11 lớp từ nguồn Roboflow CC BY4.0; chưa có xác nhận riêng quyền footage. Còn ngoại lệ coverage và16 ảnh overlap; không đưa đề xuất model thành GT hoặc yêu cầu gán lại cả bộ. Xem [kiểm định và hạn chế](qa/TEAM_DASHCAM_AUDIT.md). **Các mục intake/Mapillary bên dưới là lịch sử**, không phải nguồn ưu tiên hiện tại. READY thực tế vẫn0/0; chỉ phát hành version mới sau khi qua gate.
