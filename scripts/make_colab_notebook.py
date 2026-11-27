@@ -99,8 +99,7 @@ elif LAST.is_file():
     print(f"Run {RUN_NAME} đã train xong {done_epochs} epoch: dùng lại best.pt trên Drive")
     model = YOLO(str(RUN_DIR / "weights" / "best.pt"))
 else:
-    model = YOLO(MODEL_WEIGHTS)  # .pt: pretrained (tự tải)
-    model.train(**TRAIN_ARGS)
+__FRESH_OR_CONTINUE__
 BEST_WEIGHTS = RUN_DIR / "weights" / "best.pt"
 trained_names = [model.names[i] for i in sorted(model.names)]
 if trained_names != list(CLASSES):
@@ -110,6 +109,31 @@ TRAIN_INFO = {"best_weights": str(BEST_WEIGHTS), "best_sha256": sha256_file(BEST
 print("Trọng số tốt nhất:", BEST_WEIGHTS, "| checkpoint định kỳ:", sorted(p.name for p in (RUN_DIR / "weights").glob("*.pt")))
 '''
 
+CONTINUE = r'''
+# [VietSight] CONTINUE the e25 run to EPOCHS total. The e25 folder on Drive is only READ, never written.
+# Periodic checkpoints (epochN.pt) keep the optimizer; last.pt/best.pt were stripped at the end of e25 -> resume from the
+# latest epochN.pt with train_args edited (epochs=EPOCHS, save_dir = new folder). Same data, val, seed, hyper-parameters.
+# Note: the LR schedule is recomputed for EPOCHS from that epoch on (not bit-identical to a fresh 50-epoch run).
+import shutil, torch
+SRC_RUN = Path("__SRC_RUN_DIR__")
+ckpts = sorted(SRC_RUN.glob("weights/epoch*.pt"), key=lambda q: int(q.stem[5:]))
+assert ckpts, f"không thấy checkpoint định kỳ trong {SRC_RUN}/weights"
+src = ckpts[-1]
+ck = torch.load(src, map_location="cpu", weights_only=False)
+assert ck.get("optimizer") is not None, f"{src} không có optimizer"
+done_src = int(ck["epoch"]) + 1
+(RUN_DIR / "weights").mkdir(parents=True, exist_ok=True)
+ck["train_args"].update(epochs=EPOCHS, project=str(RUN_DIR.parent), name=RUN_NAME, save_dir=str(RUN_DIR), save_period=SAVE_PERIOD,
+                        data=DATASET["data_yaml"])
+START = RUN_DIR / "weights" / f"start_from_e25_{src.stem}.pt"
+torch.save(ck, START)
+rows = (SRC_RUN / "results.csv").read_text().splitlines()
+(RUN_DIR / "results.csv").write_text("\n".join(rows[: done_src + 1]) + "\n")  # keep epochs 1..done_src for the curves
+print(f"Tiếp tục từ {src} ({done_src} epoch đã train) -> {EPOCHS} epoch, lưu ở {RUN_DIR}")
+model = YOLO(str(START))
+model.train(resume=True, data=DATASET["data_yaml"])
+'''
+
 
 def main():
     ap = argparse.ArgumentParser()
@@ -117,6 +141,7 @@ def main():
     ap.add_argument("--save-period", type=int, default=5)
     ap.add_argument("--version", default="vietsight_v1")
     ap.add_argument("--prep-kernel", default="mangashounen/vietsight-prep-vietsight-v1")
+    ap.add_argument("--continue-from", help="run name on Drive to continue, e.g. vietsight_v1_e25 (its folder is only read)")
     a = ap.parse_args()
     stats = json.loads((ROOT / "data" / "versions" / f"{a.version}_stats.json").read_text(encoding="utf-8"))
     frozen = [x.strip() for x in (ROOT / "configs" / "val_frozen.txt").read_text(encoding="utf-8").splitlines() if x.strip() and not x.startswith("#")]
@@ -133,7 +158,13 @@ def main():
         assert old in src, old
         src = src.replace(old, new)
     cells[ip]["source"] = src.splitlines(True)
-    cells[it]["source"] = TRAIN.replace("__SAVE_PERIOD__", str(a.save_period)).replace("__RUN_NAME__", run_name).splitlines(True)
+    if a.continue_from:
+        src_dir = f"/content/drive/MyDrive/VietSight/{a.continue_from}/runs/{a.continue_from}"
+        body = "\n".join("    " + x if x else x for x in CONTINUE.strip("\n").replace("__SRC_RUN_DIR__", src_dir).splitlines())
+    else:
+        body = "    model = YOLO(MODEL_WEIGHTS)  # .pt: pretrained (tự tải)\n    model.train(**TRAIN_ARGS)"
+    cells[it]["source"] = (TRAIN.replace("__SAVE_PERIOD__", str(a.save_period)).replace("__RUN_NAME__", run_name)
+                           .replace("__FRESH_OR_CONTINUE__", body)).splitlines(True)
     setup = (SETUP.replace("__PREP_KERNEL__", a.prep_kernel).replace("__VERSION__", a.version).replace("__FINGERPRINT__", stats["fingerprint_sha256"])
              .replace("__VAL_SHA__", val_sha).replace("__COUNTS__", repr(stats["images"])))
     cells.insert(ip + 1, code(setup))
@@ -153,7 +184,7 @@ def main():
     assert len(cells) == len(nb["cells"]) + added
     out["metadata"]["accelerator"] = "GPU"
     out["metadata"].setdefault("colab", {})["gpuType"] = "T4"
-    dst = ROOT / "notebooks" / "colab" / "VietSight_TEAM55_colab.ipynb"
+    dst = ROOT / "notebooks" / "colab" / ("VietSight_TEAM55_colab.ipynb" if not a.continue_from else f"VietSight_TEAM55_colab_e{a.epochs}.ipynb")
     dst.parent.mkdir(parents=True, exist_ok=True)
     dst.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(dst, f"val_sha {val_sha[:12]} fp {stats['fingerprint_sha256'][:12]}")
