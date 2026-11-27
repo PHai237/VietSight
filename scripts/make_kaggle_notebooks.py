@@ -2,9 +2,9 @@
 
   python scripts/make_kaggle_notebooks.py --version-config configs/versions/v1_first_gear.yaml --epochs 60
 
-1. notebooks/kaggle/VietSight_prep_kaggle.ipynb   (CPU, Internet ON) the repo code is EMBEDDED (zip, sha256 printed), it
+1. notebooks/kaggle/prep/VietSight_prep_kaggle.ipynb   (CPU, Internet ON) the repo code is EMBEDDED (zip, sha256 printed), it
    streams the public archives, converts them and builds data/versions/<name>; output = the dataset folder + reports.
-2. notebooks/kaggle/VietSight_TEAM55_kaggle.ipynb (GPU, Internet ON) = the OFFICIAL notebook, only the parameter cell
+2. notebooks/kaggle/train/VietSight_TEAM55_kaggle.ipynb (GPU, Internet ON) = the OFFICIAL notebook, only the parameter cell
    is changed (DATASET_PATH auto-detected under /kaggle/input, EPOCHS/BATCH) + one last cell that gathers the results.
    The validator / export / submission cells are byte-identical to notebooks/VietSight_TEAM55.ipynb (checked here).
 """
@@ -176,14 +176,25 @@ def main():
     ap.add_argument("--batch", type=int, default=16)
     ap.add_argument("--other-frac", type=float, default=0.3)
     ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--kaggle-user", default="YOUR_KAGGLE_USERNAME")
     args = ap.parse_args()
-    OUT.mkdir(parents=True, exist_ok=True)
     vname = yaml.safe_load((ROOT / args.version_config).read_text(encoding="utf-8"))["name"]
-    p1 = OUT / "VietSight_prep_kaggle.ipynb"
+    u = args.kaggle_user
+    prep_slug, train_slug = f"vietsight-prep-{vname.replace('_', '-')}", f"vietsight-train-{vname.replace('_', '-')}"
+    (OUT / "prep").mkdir(parents=True, exist_ok=True)
+    (OUT / "train").mkdir(parents=True, exist_ok=True)
+    p1 = OUT / "prep" / "VietSight_prep_kaggle.ipynb"
     p1.write_text(json.dumps(prep_notebook(args.version_config, args.other_frac, args.workers), ensure_ascii=False, indent=1), encoding="utf-8")
-    p2 = OUT / "VietSight_TEAM55_kaggle.ipynb"
+    p2 = OUT / "train" / "VietSight_TEAM55_kaggle.ipynb"
     p2.write_text(json.dumps(train_notebook(args.epochs, args.batch, vname), ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"{p1} ({p1.stat().st_size / 1024:.0f} KiB)\n{p2} ({p2.stat().st_size / 1024:.0f} KiB)")
+    # `kaggle kernels push -p notebooks/kaggle/prep`, then `-p notebooks/kaggle/train` once prep finished. Private, Internet on.
+    common = {"language": "python", "kernel_type": "notebook", "is_private": True, "enable_internet": True,
+              "dataset_sources": [], "competition_sources": []}
+    (OUT / "prep" / "kernel-metadata.json").write_text(json.dumps(dict(common, id=f"{u}/{prep_slug}", title=prep_slug, code_file=p1.name,
+                                                                          enable_gpu=False, kernel_sources=[]), indent=1), encoding="utf-8")
+    (OUT / "train" / "kernel-metadata.json").write_text(json.dumps(dict(common, id=f"{u}/{train_slug}", title=train_slug, code_file=p2.name,
+                                                                           enable_gpu=True, kernel_sources=[f"{u}/{prep_slug}"]), indent=1), encoding="utf-8")
+    print(f"{p1} ({p1.stat().st_size / 1024:.0f} KiB)\n{p2} ({p2.stat().st_size / 1024:.0f} KiB)\nkernels: {u}/{prep_slug} -> {u}/{train_slug}")
 
 
 if __name__ == "__main__":

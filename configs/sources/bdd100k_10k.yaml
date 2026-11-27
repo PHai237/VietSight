@@ -10,7 +10,9 @@ notes: >-
   that signs/lights are background. Use only after scripts/prelabel.py fill (+ human review), or for two-wheeler crops.
 max_side: 1024
 min_area_640: 64
-z_order: none               # TO VERIFY on real files (bitmaps from instance masks are expected to be disjoint)
+z_order: bottom             # mirror polygons OVERLAP (300 files: 997 car-car pairs) and file order is not the drawing order
+                            # (later object is the closer one in only 403/830 pairs) -> closer (lower) object on top. VERIFY visually.
+skip_geometries: [rectangle]   # the mirror stores a box next to every polygon (same instance) -> boxes dropped
 skip_unannotated: true
 group_regex: '^([0-9a-f]{8})-'   # same video prefix -> same group (train/val split by video)
 mapping:

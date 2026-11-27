@@ -2,7 +2,7 @@
 Used to smoke-test the full official flow (data report -> train -> ONNX export -> platform self-check -> zip -> val score)
 on CPU with a tiny dataset before spending Kaggle GPU time.
 
-  python scripts/run_notebook_local.py notebooks/kaggle/VietSight_TEAM55_kaggle.ipynb \
+  python scripts/run_notebook_local.py notebooks/kaggle/train/VietSight_TEAM55_kaggle.ipynb \
       --set DATASET_PATH=data/versions/vtest EPOCHS=1 BATCH=2 REQUIRE_GPU=False INSTALL_PACKAGES=False WORK_DIR=runs/smoke
 """
 import argparse

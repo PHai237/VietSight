@@ -1,0 +1,15 @@
+{
+ "language": "python",
+ "kernel_type": "notebook",
+ "is_private": true,
+ "enable_internet": true,
+ "dataset_sources": [],
+ "competition_sources": [],
+ "id": "YOUR_KAGGLE_USERNAME/vietsight-train-vietsight-v1",
+ "title": "vietsight-train-vietsight-v1",
+ "code_file": "VietSight_TEAM55_kaggle.ipynb",
+ "enable_gpu": true,
+ "kernel_sources": [
+  "YOUR_KAGGLE_USERNAME/vietsight-prep-vietsight-v1"
+ ]
+}

@@ -119,9 +119,23 @@ def main(argv=None):
         if (hi, wi) != (H, W):  # original, or pre-shrunk by fetch_sly_tar --max-side
             img = cv2.resize(img, (W, H), interpolation=cv2.INTER_AREA)
         raw = []
-        painter = cfg.get("z_order") == "painter"
+        skip_geo = set(cfg.get("skip_geometries", []))
+        if skip_geo:
+            n0 = len(objs)
+            objs = [o for o in objs if o.get("geometryType") not in skip_geo]
+            if n0 > len(objs):
+                w.drop(f"{'/'.join(sorted(skip_geo))} objects (duplicate boxes of the masks)", n0 - len(objs))
+        zmode = cfg.get("z_order", "none")
+        painter = zmode in ("painter", "bottom")
         occ = np.zeros((H, W), bool) if painter else None
-        # painter: objects are layered, later ones on top -> visible = own polygon minus everything drawn after it
+        # painter: objects are layered, later ones on top -> visible = own polygon minus everything drawn after it.
+        # bottom : file order is NOT the drawing order -> assume the object whose lowest point is lower in the image
+        #          (closer to the camera) is on top. Heuristic; verify visually per source.
+        if zmode == "bottom":
+            def _bottom(o):
+                pts = o.get("points", {}).get("exterior") or [[0, 0]]
+                return max(y for _, y in pts)
+            objs = sorted(objs, key=_bottom)
         seq = list(reversed(objs)) if painter else objs
         for o in seq:
             label = o["classTitle"]

@@ -24,11 +24,11 @@ Kaggle: VietSight_TEAM55_kaggle.ipynb  → best.pt, submission.zip, run_report.j
 ```
 
 ## Chạy trên Kaggle (đường chính — mạng local quá chậm cho 21 GB)
-1. `python scripts/make_kaggle_notebooks.py --version-config configs/versions/v1_first_gear.yaml --epochs 60` (đã sinh sẵn trong `notebooks/kaggle/`).
-2. Kaggle → New Notebook → Import `notebooks/kaggle/VietSight_prep_kaggle.ipynb`. Accelerator **None**, Internet **On** → *Save Version → Save & Run All*.
+1. `python scripts/make_kaggle_notebooks.py --version-config configs/versions/v1_first_gear.yaml --epochs 60` (đã sinh sẵn; thêm `--kaggle-user <tên>` để đẩy bằng `kaggle kernels push -p notebooks/kaggle/prep`).
+2. Kaggle → New Notebook → Import `notebooks/kaggle/prep/VietSight_prep_kaggle.ipynb`. Accelerator **None**, Internet **On** → *Save Version → Save & Run All*.
    Ra: `versions/vietsight_v1/` + `versions/vietsight_v1_report/` + `versions/val_frozen.txt`.
 3. Tải `val_frozen.txt` về `configs/val_frozen.txt` và commit (val cố định cho mọi phiên bản; lần build sau notebook dùng lại).
-4. Import `notebooks/kaggle/VietSight_TEAM55_kaggle.ipynb`. Accelerator **GPU (T4/P100)**, Internet **On**, *Add Input → Notebook Output → VietSight prep*. Run All.
+4. Import `notebooks/kaggle/train/VietSight_TEAM55_kaggle.ipynb`. Accelerator **GPU (T4/P100)**, Internet **On**, *Add Input → Notebook Output → VietSight prep*. Run All.
    DATASET_PATH được tự dò; ô cuối gom `best.pt, submission.zip, run_report.json`, biểu đồ, báo cáo val vào `/kaggle/working/vietsight_outputs/<version>/`.
 5. Tải thư mục đó về → `python scripts/collect_run.py <thư mục> --name v1_e60` → cập nhật `runs/RESULTS.md`. Nộp `submission.zip` trên website, ghi điểm public: `--public-lb`.
 
