@@ -45,6 +45,13 @@ MAPILLARY_VAL = {"source": "kaggle-kernel:__PREP_KERNEL__:versions/vietsight_v1/
                  "dir": "/content/vietsight_data/mapillary_val", "n": __V1_NVAL__, "val_sha256": "__V1_VAL_SHA__"}
 MAPILLARY_VAL.update(globals().get("MAPILLARY_VAL_OVERRIDE", {}))
 REQUIRE_CUDA = globals().get("REQUIRE_CUDA", True)
+# Emergency export (GPU quota / time running out): set to a checkpoint of THIS run on Drive, e.g. "last.pt" or
+# "epoch25.pt" (= after 26 epochs), then Run all (CPU runtime is fine). No training: the official export + self-check
+# run on that checkpoint, results go to DRIVE_OUTPUT_DIR/export_<name>/ (the run folder itself is not overwritten).
+EXPORT_ONLY_CKPT = ""  #@param {type:"string"}
+if EXPORT_ONLY_CKPT:
+    REQUIRE_GPU = False  # read by the official environment cell below
+    print("*** CHẾ ĐỘ CHỈ EXPORT:", EXPORT_ONLY_CKPT, "— không train ***")
 
 if Path(DRIVE_OUTPUT_DIR).name in ("vietsight_v1_e25", "vietsight_v1_e50"):
     raise NotebookError("DRIVE_OUTPUT_DIR trỏ vào run V1 đã nộp: đặt thư mục mới cho run V2.", "PARAMS")
@@ -211,35 +218,53 @@ if counts != HANDOFF["images"]:
 fp = dataset_fingerprint(target)  # official helper (Thư viện 2/4)
 if fp != HANDOFF["fingerprint_sha256"]:
     raise NotebookError(f"Fingerprint {fp} khác bản bàn giao {HANDOFF['fingerprint_sha256']}", "DATA")
-VAL_SUBSETS = {}  # mixed datasets: name -> image paths of that part of images/val, each scored separately
-if HANDOFF.get("val_subsets"):
+# Separately scored validation sets: name -> (image paths, labels dir). Two handoff schemas:
+#   validation_sets: {name: {path: "images/<split>", images, names_sha256}}  (V3: images/val + images/val_v1, own folders)
+#   val_subsets:     {name: {match: <regex on file name>, images, names_sha256}} (parts of one images/val folder)
+VAL_SETS = {}
+_imgs = lambda split: sorted((p for p in (target / "images" / split).iterdir() if p.suffix.lower() in IMG_EXTS), key=lambda p: p.name)  # str order on every OS
+_names_sha = lambda paths: hashlib.sha256("\n".join(p.name for p in paths).encode()).hexdigest()
+if HANDOFF.get("validation_sets"):
+    for name, spec in HANDOFF["validation_sets"].items():
+        split = Path(spec["path"]).name
+        if not spec["path"].startswith("images/") or split == "train":
+            raise NotebookError(f"validation_sets '{name}': path {spec['path']!r} phải là images/<split val>", "DATA")
+        n = check_split(target, split)  # every image has a label, YOLO-seg lines valid
+        sel = _imgs(split)
+        if n != spec["images"] or _names_sha(sel) != spec["names_sha256"]:
+            raise NotebookError(f"val '{name}' ({spec['path']}): {n} ảnh / sha {_names_sha(sel)[:16]} khác bàn giao "
+                                f"({spec['images']} / {spec['names_sha256'][:16]})", "DATA")
+        VAL_SETS[name] = (sel, target / "labels" / split)
+    if not any(Path(s["path"]).name == "val" for s in HANDOFF["validation_sets"].values()):
+        raise NotebookError("validation_sets phải có tập images/val (tập val dùng khi train)", "DATA")
+elif HANDOFF.get("val_subsets"):
     import re
-    val_imgs = sorted(p for p in (target / "images" / "val").iterdir() if p.suffix.lower() in IMG_EXTS)
+    val_imgs = _imgs("val")
     for name, spec in HANDOFF["val_subsets"].items():
         sel = [p for p in val_imgs if re.search(spec["match"], p.name)]
-        sha = hashlib.sha256("\n".join(p.name for p in sel).encode()).hexdigest()
-        if len(sel) != spec["images"] or sha != spec["names_sha256"]:
-            raise NotebookError(f"val '{name}': {len(sel)} ảnh / sha {sha[:16]} khác bàn giao ({spec['images']} / {spec['names_sha256'][:16]})", "DATA")
-        if name == "mapillary_val" and sha != MAPILLARY_VAL["val_sha256"]:
-            raise NotebookError("val 'mapillary_val' khác val_frozen V1 (configs/val_frozen.txt)", "DATA")
-        VAL_SUBSETS[name] = sel
-    used = [p for s in VAL_SUBSETS.values() for p in s]
+        if len(sel) != spec["images"] or _names_sha(sel) != spec["names_sha256"]:
+            raise NotebookError(f"val '{name}': {len(sel)} ảnh / sha {_names_sha(sel)[:16]} khác bàn giao ({spec['images']} / {spec['names_sha256'][:16]})", "DATA")
+        VAL_SETS[name] = (sel, target / "labels" / "val")
+    used = [p for s, _ in VAL_SETS.values() for p in s]
     if len(used) != len(set(used)) or set(used) != set(val_imgs):
         raise NotebookError("val_subsets phải chia images/val thành các phần rời nhau, phủ đủ mọi ảnh val", "DATA")
-    train_names = {p.name for p in (target / "images" / "train").iterdir()}
-    if train_names & {p.name for p in used}:
-        raise NotebookError(f"Ảnh val nằm cả trong train: {sorted(train_names & {p.name for p in used})[:3]}", "DATA")
-    print("val tách riêng:", {k: len(v) for k, v in VAL_SUBSETS.items()})
 elif names_sha(target / "images" / "val") != HANDOFF["vn_val_sha256"]:
     raise NotebookError("Tập val Việt Nam khác danh sách đã khóa (vn_val_sha256)", "DATA")
+if VAL_SETS:
+    train_names = {p.name for p in (target / "images" / "train").iterdir()}
+    leak = train_names & {p.name for s, _ in VAL_SETS.values() for p in s}
+    if leak:
+        raise NotebookError(f"Ảnh val nằm cả trong train: {sorted(leak)[:3]}", "DATA")
+    V1_VAL_SET = next((k for k, (s, _) in VAL_SETS.items() if _names_sha(s) == MAPILLARY_VAL["val_sha256"]), None)
+    print("val chấm riêng:", {k: len(s) for k, (s, _) in VAL_SETS.items()}, "| val_frozen V1 =", V1_VAL_SET or "không có")
 marker.write_text(fp)
 print("Dataset OK: fingerprint", fp[:16], "| val khóa OK")
 
 # ---- 2. Mapillary V1 val (separate comparison only, never trained on) ----
 MAPILLARY_OK = False
 try:
-    if "mapillary_val" in VAL_SUBSETS:
-        raise RuntimeError("Mapillary val V1 đã nằm trong val của dataset này (đánh giá riêng phần đó), không tải thêm")
+    if VAL_SETS and V1_VAL_SET:
+        raise RuntimeError(f"Mapillary val V1 đã có trong dataset ('{V1_VAL_SET}', đúng val_frozen), không tải thêm")
     mv = Path(MAPILLARY_VAL["dir"])
     if not (mv / "images" / "val").is_dir() or names_sha(mv / "images" / "val") != MAPILLARY_VAL["val_sha256"]:
         print("Tải Mapillary val (V1, chỉ để so sánh)")
@@ -267,25 +292,31 @@ if INIT_MODE == "e25":
     print("Khởi tạo từ e25 best.pt OK:", E25["best_sha256"][:16])
 else:
     # ---- 3. init weights = official COCO-pretrained yolo26n-seg.pt (Ultralytics release asset), sha256 pinned ----
+    # Defined here, CALLED in the training cell: ultralytics is only importable after the official install cell
+    # (this setup cell runs before it; importing ultralytics here was the V2 pretrained failure mode).
     PRETRAINED_SHA = "__PRETRAINED_SHA__"
     INIT_WEIGHTS = Path("/content/init/yolo26n-seg.pt") if IN_COLAB else Path(WORK_DIR) / "init" / "yolo26n-seg.pt"
-    INIT_WEIGHTS.parent.mkdir(parents=True, exist_ok=True)
-    drive_copy = Path("__DRIVE__/init/yolo26n-seg.pt")
-    if drive_copy.is_file():
-        shutil.copyfile(drive_copy, INIT_WEIGHTS)
-        INIT_SRC = drive_copy
-    else:
-        from ultralytics.utils.downloads import attempt_download_asset
-        INIT_SRC = Path(attempt_download_asset(str(INIT_WEIGHTS)))
-        if INIT_SRC.resolve() != INIT_WEIGHTS.resolve():
-            shutil.copyfile(INIT_SRC, INIT_WEIGHTS)
-    if _sha(INIT_WEIGHTS) != PRETRAINED_SHA:
-        raise NotebookError(f"yolo26n-seg.pt sha256 {_sha(INIT_WEIGHTS)[:16]} khác bản chính thức đã ghim {PRETRAINED_SHA[:16]}. "
-                            f"Upload yolo26n-seg.pt của repo lên {drive_copy} rồi chạy lại.", "MODEL")
-    print("Khởi tạo từ yolo26n-seg.pt pretrained chính thức OK:", PRETRAINED_SHA[:16], "| nguồn", INIT_SRC)
+    INIT_SRC = None
 
-import torch
-if REQUIRE_CUDA:
+    def init_pretrained():
+        INIT_WEIGHTS.parent.mkdir(parents=True, exist_ok=True)
+        drive_copy = Path("__DRIVE__/init/yolo26n-seg.pt")
+        if drive_copy.is_file():
+            shutil.copyfile(drive_copy, INIT_WEIGHTS)
+            src = drive_copy
+        else:
+            from ultralytics.utils.downloads import attempt_download_asset
+            src = Path(attempt_download_asset(str(INIT_WEIGHTS)))
+            if src.resolve() != INIT_WEIGHTS.resolve():
+                shutil.copyfile(src, INIT_WEIGHTS)
+        if _sha(INIT_WEIGHTS) != PRETRAINED_SHA:
+            raise NotebookError(f"yolo26n-seg.pt sha256 {_sha(INIT_WEIGHTS)[:16]} khác bản chính thức đã ghim {PRETRAINED_SHA[:16]}. "
+                                f"Upload yolo26n-seg.pt của repo lên {drive_copy} rồi chạy lại.", "MODEL")
+        print("Khởi tạo từ yolo26n-seg.pt pretrained chính thức OK:", PRETRAINED_SHA[:16], "| nguồn", src)
+        return src
+
+import torch  # preinstalled by Colab; not part of the pinned specs
+if REQUIRE_CUDA and not EXPORT_ONLY_CKPT:
     assert torch.cuda.is_available(), "Không có GPU: Runtime > Change runtime type > T4 GPU"
     print("CUDA", torch.version.cuda, "|", torch.cuda.get_device_name(0))
 '''
@@ -327,14 +358,25 @@ seed_everything(SEED)
 RUN_DIR = Path(TRAIN_ARGS["project"]) / RUN_NAME
 LAST = RUN_DIR / "weights" / "last.pt"
 STAMP = RUN_DIR / "vietsight_run.json"
+if INIT_MODE == "pretrained":
+    INIT_SRC = init_pretrained()  # after the official install cell: ultralytics is importable now
 INIT_SHA = sha256_file(INIT_WEIGHTS)
-if STAMP.is_file():
+EXPORT_CK = RUN_DIR / "weights" / EXPORT_ONLY_CKPT if EXPORT_ONLY_CKPT else None
+if EXPORT_CK is not None:
+    if not EXPORT_CK.is_file():
+        raise NotebookError(f"Không có checkpoint {EXPORT_CK} (có: {sorted(p.name for p in (RUN_DIR / 'weights').glob('*.pt'))})", "TRAIN")
+    DRIVE_OUTPUT_DIR = str(Path(DRIVE_OUTPUT_DIR) / f"export_{EXPORT_CK.stem}")  # never overwrite the run's own outputs
+    Path(DRIVE_OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
+if STAMP.is_file() and EXPORT_CK is None:
     stamp = json.loads(STAMP.read_text())
     if (stamp["dataset_sha256"], stamp["init_sha256"], stamp["epochs"]) != (DATASET["sha256"], INIT_SHA, EPOCHS):
         raise NotebookError(f"{RUN_DIR} đã bắt đầu với dataset/khởi tạo/EPOCHS khác. Đặt DRIVE_OUTPUT_DIR mới (run mới, "
                             "fine-tune mới); không resume sang dataset hay lịch học khác.", "TRAIN")
 done_epochs = len((RUN_DIR / "results.csv").read_text().splitlines()) - 1 if (RUN_DIR / "results.csv").is_file() else 0
-if LAST.is_file() and done_epochs < EPOCHS:
+if EXPORT_CK is not None:
+    print(f"CHỈ EXPORT {EXPORT_CK} ({done_epochs}/{EPOCHS} epoch đã xong trong results.csv) -> {DRIVE_OUTPUT_DIR}")
+    model = YOLO(str(EXPORT_CK))
+elif LAST.is_file() and done_epochs < EPOCHS:
     print(f"RESUME run {RUN_NAME} từ {LAST} (đã xong {done_epochs}/{EPOCHS} epoch, cùng dataset)")
     model = YOLO(str(LAST))
     try:
@@ -352,7 +394,9 @@ else:
     print(f"FINE-TUNE mới từ {INIT_SRC} -> {RUN_DIR} ({EPOCHS} epoch, {FT_ARGS})")
     model = YOLO(str(INIT_WEIGHTS))
     model.train(**TRAIN_ARGS)
-BEST_WEIGHTS = RUN_DIR / "weights" / "best.pt"
+BEST_WEIGHTS = EXPORT_CK if EXPORT_CK is not None else RUN_DIR / "weights" / "best.pt"
+if EXPORT_CK is not None and not HANDOFF.get("submission_eligible"):
+    (Path(DRIVE_OUTPUT_DIR) / "NOT_FOR_SUBMISSION.txt").write_text("Bản thử nghiệm: quyền nguồn chưa xác nhận.\n", encoding="utf-8")
 trained_names = [model.names[i] for i in sorted(model.names)]
 if trained_names != list(CLASSES):
     raise NotebookError(f"Tên lớp của mô hình {trained_names} khác danh sách lớp của cuộc thi {list(CLASSES)}. Hãy huấn luyện bằng data.yaml do Bước 1 tạo.", "TRAIN")
@@ -383,8 +427,8 @@ elif INIT_MODE == "e25":  # same official export of the same e25 best.pt, in a s
 else:  # pretrained init: no e25 weights here -> baseline only from the sha-checked e25 submission.zip
     print(f"Bỏ qua mốc e25: không có {E25['zip']} đúng sha256 (upload runs/v1_colab_e25/submission.zip của repo vào đó)")
     e25_zip = None
-if VAL_SUBSETS:  # mixed dataset: every part of the val, all its images
-    sets = {k: (v, Path(DATASET_PATH) / "labels" / "val") for k, v in VAL_SUBSETS.items()}
+if VAL_SETS:  # mixed dataset: every validation set of the handoff, all its images, scored separately
+    sets = dict(VAL_SETS)
 else:
     sets = {"vn_val": (sample_stems(WORK / "dataset" / "images" / "val", SELFCHECK_MAX_IMAGES, SEED), WORK / "dataset" / "labels" / "val")}
     if MAPILLARY_OK:

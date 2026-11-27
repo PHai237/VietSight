@@ -55,11 +55,23 @@ Chờ `configs/handoff/v3.json` của Codex (mẫu `configs/handoff/v3.example.j
 thành các phần (regex trên tên file, số ảnh, sha256 danh sách tên). Notebook kiểm từng phần, kiểm các phần phủ đủ val, rời
 nhau, không trùng tên với train; phần `mapillary_val` phải đúng `configs/val_frozen.txt` của V1. Mỗi phần được chấm riêng.
 
+Handoff thật của Codex dùng schema `validation_sets` (mỗi tập val một thư mục: `images/val` = VN, dùng khi train;
+`images/val_v1` = Mapillary V1 = đúng `configs/val_frozen.txt`, chỉ chấm riêng). Notebook nhận cả `validation_sets`
+lẫn `val_subsets`. Mỗi bản annotation = một handoff = một notebook + một thư mục run riêng (tên chứa version):
+
 ```
-python scripts/make_colab_v2_notebook.py --init pretrained --epochs 50 --save-period 5 \
-    --eval-ckpts epoch20.pt epoch25.pt epoch30.pt epoch40.pt --out-name VietSight_TEAM55_colab_v3.ipynb \
-    --handoff configs/handoff/v3.json
+# final001 (đã có): notebooks/colab/VietSight_TEAM55_colab_v3_final001.ipynb
+python scripts/make_colab_v2_notebook.py --init pretrained --epochs 50 --save-period 5 --eval-ckpts epoch25.pt epoch35.pt \
+    --out-name VietSight_TEAM55_colab_v3_final001.ipynb --handoff configs/handoff/v3_final001.json
+# final002 (khi Codex bàn giao): copy handoff -> configs/handoff/v3_final002.json, cùng lệnh với _final002
 ```
+
+Thứ tự ô: setup VietSight chạy TRƯỚC ô cài thư viện chính thức, nên không import ultralytics ở đó; tải `yolo26n-seg.pt`
+được gọi trong ô train (sau khi cài). V2 pretrained từng import ultralytics trong setup.
+
+**Export giữa chừng** (sắp hết giờ/GPU): trong ô setup đặt `EXPORT_ONLY_CKPT = "last.pt"` (hoặc `"epoch25.pt"`) rồi
+Run all, chạy được trên runtime CPU. Không train; export + self-check chính thức trên checkpoint đó, kết quả ở
+`<run>/export_<tên>/` (không ghi đè thư mục run). `last.pt` được Ultralytics ghi sau mỗi epoch.
 
 (`--eval-ckpts` chỉ nhận checkpoint được lưu: `epoch0/5/10/…/45.pt`; `epoch25.pt` = sau 26 epoch.)
 
