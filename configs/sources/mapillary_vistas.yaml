@@ -20,7 +20,7 @@ mapping:
   other vehicle: Other vehicle
   caravan: Other vehicle          # TO CONFIRM (website definition of Other vehicle)
   trailer: Other vehicle          # TO CONFIRM
-  wheeled slow: Other vehicle     # carts, cyclos, slow wheeled vehicles; TO CONFIRM
+  wheeled slow: ignore            # BTC: handcarts not labelled; Mapillary wheeled-slow mixes carts/wheelchairs/strollers (docs/qa CLASS_MAPPING_REVIEW)
   motorcycle: {role: vehicle2, sub: motorcycle}
   bicycle: {role: vehicle2, sub: bicycle}
   person: Pedestrian              # Mapillary separates riders: a 'person' is not riding

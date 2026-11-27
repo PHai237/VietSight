@@ -95,17 +95,17 @@ def sh(cmd, check=True):
 """),
         code("""
 sh(f'"{sys.executable}" -m pip install -q opencv-python-headless pycocotools pyyaml tqdm requests', check=False)  # offline: Kaggle image already has them
-sh(f'"{sys.executable}" -c "import cv2, yaml, tqdm, numpy, PIL; print('deps ok', cv2.__version__)"')
+import cv2, yaml, tqdm, numpy, PIL; print('deps ok', cv2.__version__)
 """),
         code("""
 import glob
 ATTACHED = sorted(glob.glob("/kaggle/input/*/Mapillary Vistas")) + sorted(glob.glob("/kaggle/input/*/*/Mapillary Vistas"))
 print("Mapillary attached:", ATTACHED)
 if FETCH and ATTACHED:  # official v2.0 attached via Add Input: no Internet needed
-    sh(f'"{sys.executable}" scripts/fetch_mapillary_kaggle.py "{ATTACHED[0]}" {RAW}/mapillary_vistas --splits training validation --prefer motorcycle motorcyclist bicycle bicyclist "other rider" "other vehicle" "wheeled slow" --other-frac {MAPILLARY_OTHER_FRAC} --max-keep {MAX_KEEP}')
+    sh(f'"{sys.executable}" scripts/fetch_mapillary_kaggle.py "{ATTACHED[0]}" {RAW}/mapillary_vistas --splits training validation --prefer motorcycle motorcyclist bicycle bicyclist "other rider" "other vehicle" --other-frac {MAPILLARY_OTHER_FRAC} --max-keep {MAX_KEEP}')
 elif FETCH:
     sh("df -h /tmp /kaggle/working", check=False)
-    sh(f'"{sys.executable}" scripts/fetch_sly_tar.py mapillary_vistas {RAW}/mapillary_vistas --splits training validation --prefer motorcycle motorcyclist bicycle bicyclist "other rider" "other vehicle" "wheeled slow" --other-frac {MAPILLARY_OTHER_FRAC} --max-ann {MAX_ANN} --max-keep {MAX_KEEP} --max-side 1024')
+    sh(f'"{sys.executable}" scripts/fetch_sly_tar.py mapillary_vistas {RAW}/mapillary_vistas --splits training validation --prefer motorcycle motorcyclist bicycle bicyclist "other rider" "other vehicle" --other-frac {MAPILLARY_OTHER_FRAC} --max-ann {MAX_ANN} --max-keep {MAX_KEEP} --max-side 1024')
 sh("df -h /tmp /kaggle/working; du -sh " + RAW, check=False)
 """),
         code("""
