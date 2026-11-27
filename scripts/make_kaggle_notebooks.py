@@ -110,7 +110,10 @@ try:
 except ImportError:  # plain python (local test)
     Image, display = (lambda filename: filename), print
 shutil.copyfile("configs/val_frozen.txt", f"{{OUT_ROOT}}/val_frozen.txt")
-for p in ("preview_train.png", "preview_val.png"):
+import subprocess, sys
+subprocess.run([sys.executable, "scripts/preview.py", f"{{OUT_ROOT}}/{name}", "--split", "train", "--cls", "Motorcyclist", "Cyclist", "Motorcycle", "Bicycle",
+                "--n", "12", "--cols", "3", "--side", "800", "--out", f"{{OUT_ROOT}}/{name}_report/preview_riders.png"], check=True)
+for p in ("preview_train.png", "preview_val.png", "preview_riders.png"):
     display(Image(filename=f"{{OUT_ROOT}}/{name}_report/" + p))
 print(open(f"{{OUT_ROOT}}/{name}_report/notebook_report.txt", encoding="utf-8").read())
 print("TẢI VỀ và commit: versions/val_frozen.txt -> configs/val_frozen.txt, versions/{name}_report/stats.json -> data/versions/")
