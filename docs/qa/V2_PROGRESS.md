@@ -1,5 +1,7 @@
 # V2 — Local Vision, chỉ ảnh giao thông Việt Nam
 
+**Ưu tiên hiện tại:** [Mapillary VN geographic audit](MAPILLARY_VN_GEO_AUDIT.md). Có 10 ID xác minh trong polygon Việt Nam và khớp GT Kaggle; sau loại 1 ảnh V1 frozen val còn 9 ảnh, chuyển từ instance PNG chính thức được 201 draft polygons. 8.700 ID không có tọa độ hợp lệ chưa xác định quốc gia. Không yêu cầu human QA lại mọi ảnh nhãn nguồn đủ tin cậy; các ca association/topology/crowd của lô này vẫn cần phân giải thực tế. Bốn nguồn Roboflow mới đã kiểm metadata, annotation export toàn bộ khi truy cập được và mẫu RGB; chưa nguồn nào được nhận nguyên trạng để phát hành READY.
+
 **Lô đang giao người kiểm:** 5 ZIP round001, 20 ảnh/gói, tổng 70 dashcam + 30 val dự kiến từ ba video. 862 polygon draft, gồm 237 đề xuất bằng công cụ Claude; 0 human-reviewed/READY. Hướng dẫn: [V2_CVAT_REVIEW.md](../V2_CVAT_REVIEW.md). Dữ liệu còn thiếu quyền gốc giữ riêng RIGHTS_PENDING; nguồn thay thế Sign VR-TSD có metadata CC BY 4.0 và mô tả tác giả tự thu thập, nhưng chỉ bbox nên cần mask thật.
 
 Cập nhật 27/11/2026, Asia/Saigon. Bàn giao hiện tại ở **[docs/V2_DATA_HANDOFF.md](../V2_DATA_HANDOFF.md)**; đây là nguồn trạng thái/số liệu mới nhất. Làm trên branch `codex/data-qa`, không thao tác working directory của Claude hoặc luồng training V1.
