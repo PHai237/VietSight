@@ -211,14 +211,35 @@ if counts != HANDOFF["images"]:
 fp = dataset_fingerprint(target)  # official helper (Thư viện 2/4)
 if fp != HANDOFF["fingerprint_sha256"]:
     raise NotebookError(f"Fingerprint {fp} khác bản bàn giao {HANDOFF['fingerprint_sha256']}", "DATA")
-if names_sha(target / "images" / "val") != HANDOFF["vn_val_sha256"]:
+VAL_SUBSETS = {}  # mixed datasets: name -> image paths of that part of images/val, each scored separately
+if HANDOFF.get("val_subsets"):
+    import re
+    val_imgs = sorted(p for p in (target / "images" / "val").iterdir() if p.suffix.lower() in IMG_EXTS)
+    for name, spec in HANDOFF["val_subsets"].items():
+        sel = [p for p in val_imgs if re.search(spec["match"], p.name)]
+        sha = hashlib.sha256("\n".join(p.name for p in sel).encode()).hexdigest()
+        if len(sel) != spec["images"] or sha != spec["names_sha256"]:
+            raise NotebookError(f"val '{name}': {len(sel)} ảnh / sha {sha[:16]} khác bàn giao ({spec['images']} / {spec['names_sha256'][:16]})", "DATA")
+        if name == "mapillary_val" and sha != MAPILLARY_VAL["val_sha256"]:
+            raise NotebookError("val 'mapillary_val' khác val_frozen V1 (configs/val_frozen.txt)", "DATA")
+        VAL_SUBSETS[name] = sel
+    used = [p for s in VAL_SUBSETS.values() for p in s]
+    if len(used) != len(set(used)) or set(used) != set(val_imgs):
+        raise NotebookError("val_subsets phải chia images/val thành các phần rời nhau, phủ đủ mọi ảnh val", "DATA")
+    train_names = {p.name for p in (target / "images" / "train").iterdir()}
+    if train_names & {p.name for p in used}:
+        raise NotebookError(f"Ảnh val nằm cả trong train: {sorted(train_names & {p.name for p in used})[:3]}", "DATA")
+    print("val tách riêng:", {k: len(v) for k, v in VAL_SUBSETS.items()})
+elif names_sha(target / "images" / "val") != HANDOFF["vn_val_sha256"]:
     raise NotebookError("Tập val Việt Nam khác danh sách đã khóa (vn_val_sha256)", "DATA")
 marker.write_text(fp)
-print("V2 OK: fingerprint", fp[:16], "| VN val khóa OK")
+print("Dataset OK: fingerprint", fp[:16], "| val khóa OK")
 
 # ---- 2. Mapillary V1 val (separate comparison only, never trained on) ----
 MAPILLARY_OK = False
 try:
+    if "mapillary_val" in VAL_SUBSETS:
+        raise RuntimeError("Mapillary val V1 đã nằm trong val của dataset này (đánh giá riêng phần đó), không tải thêm")
     mv = Path(MAPILLARY_VAL["dir"])
     if not (mv / "images" / "val").is_dir() or names_sha(mv / "images" / "val") != MAPILLARY_VAL["val_sha256"]:
         print("Tải Mapillary val (V1, chỉ để so sánh)")
@@ -344,8 +365,7 @@ print("Trọng số tốt nhất:", BEST_WEIGHTS, "| checkpoint:", sorted(p.name
 XEVAL = r'''
 # [VietSight V2] separate evaluation, same platform inference + scorer as above: e25 (baseline) vs this run,
 # on the Vietnam val of V2 and on the Mapillary val of V1. -> DRIVE_OUTPUT_DIR/eval_compare.json
-def _xscore(zip_path, img_dir, lab_dir, tag):
-    imgs = sample_stems(img_dir, SELFCHECK_MAX_IMAGES, SEED)
+def _xscore(zip_path, imgs, lab_dir, tag):
     w = WORK / "xeval" / tag
     w.mkdir(parents=True, exist_ok=True)
     pred, _ = run_platform_inference(zip_path, imgs, w, SELFCHECK)
@@ -363,13 +383,17 @@ elif INIT_MODE == "e25":  # same official export of the same e25 best.pt, in a s
 else:  # pretrained init: no e25 weights here -> baseline only from the sha-checked e25 submission.zip
     print(f"Bỏ qua mốc e25: không có {E25['zip']} đúng sha256 (upload runs/v1_colab_e25/submission.zip của repo vào đó)")
     e25_zip = None
-sets = {"vn_val": (WORK / "dataset" / "images" / "val", WORK / "dataset" / "labels" / "val")}
-if MAPILLARY_OK:
-    sets["mapillary_val"] = (Path(MAPILLARY_VAL["dir"]) / "images" / "val", Path(MAPILLARY_VAL["dir"]) / "labels" / "val")
+if VAL_SUBSETS:  # mixed dataset: every part of the val, all its images
+    sets = {k: (v, Path(DATASET_PATH) / "labels" / "val") for k, v in VAL_SUBSETS.items()}
+else:
+    sets = {"vn_val": (sample_stems(WORK / "dataset" / "images" / "val", SELFCHECK_MAX_IMAGES, SEED), WORK / "dataset" / "labels" / "val")}
+    if MAPILLARY_OK:
+        sets["mapillary_val"] = (sample_stems(Path(MAPILLARY_VAL["dir"]) / "images" / "val", SELFCHECK_MAX_IMAGES, SEED),
+                                 Path(MAPILLARY_VAL["dir"]) / "labels" / "val")
 EVAL_COMPARE = {"run": RUN_NAME, "dataset_sha256": DATASET["sha256"], "handoff": HANDOFF, "results": {}}
 for model_tag, zp in [*([("e25", e25_zip)] if e25_zip else []), (RUN_NAME, SUBMISSION["zip"])]:
-    for set_tag, (img_dir, lab_dir) in sets.items():
-        EVAL_COMPARE["results"].setdefault(model_tag, {})[set_tag] = _xscore(zp, img_dir, lab_dir, f"{model_tag}_{set_tag}")
+    for set_tag, (imgs, lab_dir) in sets.items():
+        EVAL_COMPARE["results"].setdefault(model_tag, {})[set_tag] = _xscore(zp, imgs, lab_dir, f"{model_tag}_{set_tag}")
 print(f"{'model':<28}" + "".join(f"{s:>16}" for s in sets))
 for model_tag, res in EVAL_COMPARE["results"].items():
     print(f"{model_tag:<28}" + "".join(f"{res[s]['score_x100']:>16.2f}" for s in sets))
@@ -385,6 +409,40 @@ if not HANDOFF.get("submission_eligible"):
     print("\n*** BẢN THỬ NGHIỆM: quyền nguồn V2 chưa xác nhận -> KHÔNG nộp", SUBMISSION["zip"].name, "của run này lên cuộc thi ***")
 '''
 
+CKPT = r'''
+# [VietSight] intermediate checkpoints: official export (make_submission, separate folders; the run's submission.zip is
+# untouched) + the same scorer on every val above -> DRIVE_OUTPUT_DIR/ckpt_eval.json, ckpt_submissions/*.zip.
+# Ultralytics counts epochs from 0: epochN.pt = weights after N+1 epochs (results.csv row N+1).
+EVAL_CKPT_FILES = __EVAL_CKPTS__   # e.g. ["epoch20.pt", "epoch30.pt"]; [] = skip (~3 phút / checkpoint)
+DOWNLOAD_WEIGHTS = False         # True: also download the weights zip to this computer (Colab browser download)
+wdir = RUN_DIR / "weights"
+ckpt_json = Path(DRIVE_OUTPUT_DIR) / "ckpt_eval.json"
+CKPT_EVAL = json.loads(ckpt_json.read_text(encoding="utf-8")) if ckpt_json.is_file() else {}
+(Path(DRIVE_OUTPUT_DIR) / "ckpt_submissions").mkdir(exist_ok=True)
+for name in EVAL_CKPT_FILES:
+    ck, tag = wdir / name, Path(name).stem
+    if not ck.is_file():
+        print("Không có", ck)
+        continue
+    if tag in CKPT_EVAL and CKPT_EVAL[tag].get("sha256") == _sha(ck):
+        print(tag, "đã chấm (ckpt_eval.json)")
+        continue
+    sub = make_submission(ck, WORK / "ckpt_eval" / tag, YOLO, SELFCHECK)
+    dz = Path(DRIVE_OUTPUT_DIR) / "ckpt_submissions" / f"{tag}_submission.zip"
+    shutil.copyfile(sub["zip"], dz)
+    CKPT_EVAL[tag] = {"sha256": _sha(ck), "zip": str(dz), "zip_sha256": _sha(dz),
+                      "results": {s: _xscore(sub["zip"], imgs, lab, f"{tag}_{s}") for s, (imgs, lab) in sets.items()}}
+    print(tag, {s: round(r["score_x100"], 2) for s, r in CKPT_EVAL[tag]["results"].items()})
+    ckpt_json.write_text(json.dumps(CKPT_EVAL, indent=1, ensure_ascii=False), encoding="utf-8")
+if not HANDOFF.get("submission_eligible") and EVAL_CKPT_FILES:
+    (Path(DRIVE_OUTPUT_DIR) / "ckpt_submissions" / "NOT_FOR_SUBMISSION.txt").write_text("Bản thử nghiệm: quyền nguồn chưa xác nhận.\n", encoding="utf-8")
+arch = shutil.make_archive(str(Path(DRIVE_OUTPUT_DIR) / f"{RUN_NAME}_weights"), "zip", wdir)
+print("Checkpoint:", sorted(p.name for p in wdir.glob("*.pt")), "| zip:", arch, f"{Path(arch).stat().st_size / 1e6:.0f} MB")
+if IN_COLAB and DOWNLOAD_WEIGHTS:
+    from google.colab import files
+    files.download(arch)
+'''
+
 
 def main():
     ap = argparse.ArgumentParser()
@@ -397,6 +455,8 @@ def main():
     ap.add_argument("--prep-kernel", default="mangashounen/vietsight-prep-vietsight-v1")
     ap.add_argument("--init", choices=["e25", "pretrained"], default="e25",
                     help="pretrained = official COCO yolo26n-seg.pt (sha pinned), official default train args like V1 e25")
+    ap.add_argument("--eval-ckpts", nargs="*", default=[], help="periodic checkpoints to export+score, e.g. epoch20.pt epoch30.pt")
+    ap.add_argument("--out-name", help="notebook file name in notebooks/colab/ (default by --init)")
     a = ap.parse_args()
     handoff = {"status": "PENDING", "version": None, "source": None, "images": None, "fingerprint_sha256": None, "vn_val_sha256": None, "rights_confirmed": False}
     if a.handoff:
@@ -439,9 +499,12 @@ def main():
     init_vi = "e25 best.pt" if a.init == "e25" else "yolo26n-seg.pt pretrained chính thức"
     cells.insert(ip + 1, md(f"## [VietSight V2] Bàn giao dataset (chỉ READY) → tải + kiểm tra → Mapillary val → khởi tạo {init_vi} → GPU"))
     cells.append(code(XEVAL))
-    dst = ROOT / "notebooks" / "colab" / ("VietSight_TEAM55_colab_v2.ipynb" if a.init == "e25" else "VietSight_TEAM55_colab_v2_pretrained.ipynb")
+    cells.append(code(CKPT.replace("__EVAL_CKPTS__", repr(list(a.eval_ckpts)))))
+    dst = ROOT / "notebooks" / "colab" / (a.out_name or ("VietSight_TEAM55_colab_v2.ipynb" if a.init == "e25" else "VietSight_TEAM55_colab_v2_pretrained.ipynb"))
+    data_vi = ("dữ liệu trộn, val chấm riêng: " + ", ".join(handoff["val_subsets"])) if handoff.get("val_subsets") else "chỉ dữ liệu Việt Nam"
     cells.insert(0, md(f"[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PHai237/VietSight/blob/main/notebooks/colab/{dst.name})\n\n"
-                       f"VietSight TEAM 55 — V2 `{run_name}` từ {init_vi}, chỉ dữ liệu Việt Nam: Runtime → T4 GPU → Run all. "
+                       f"VietSight TEAM 55 — `{run_name}` từ {init_vi}, {data_vi}, {a.epochs} epoch, checkpoint mỗi {a.save_period} epoch: "
+                       "Runtime → T4 GPU → Run all. "
                        f"Kết quả: Drive `MyDrive/VietSight/{run_name}/`. Mất kết nối: Run all lại (tự resume)."
                        + ("" if handoff["submission_eligible"] else "\n\n**BẢN THỬ NGHIỆM — quyền nguồn chưa xác nhận: KHÔNG nộp submission.zip của run này.**")))
     for c in cells:
@@ -451,7 +514,7 @@ def main():
         if i in (ip, it):
             continue
         assert "".join(oc["source"]) == "".join(cells[i + 1 + (2 if i > ip else 0)]["source"]), f"official cell {i} changed"
-    assert len(cells) == len(nb["cells"]) + 4
+    assert len(cells) == len(nb["cells"]) + 5
     out["metadata"]["accelerator"] = "GPU"
     out["metadata"].setdefault("colab", {})["gpuType"] = "T4"
     dst.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")

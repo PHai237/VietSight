@@ -4,14 +4,60 @@ Dataset V1 `vietsight_v1` (fingerprint `5612ab42…`, train 1 469 / val 262 ản
 YOLO26n-seg imgsz 640, notebook chính thức (validator/export/self-check không đổi). Điểm = 100 × mask mAP@[.5:.95].
 Val = bộ chấm nhúng của notebook trên val của đội; Public = leaderboard.
 
+## Leaderboard hiện tại (cập nhật 27/11 tối, 4 lượt nộp)
+
+Public score là con số tổng hợp do leaderboard hiển thị; công thức chưa rõ, không phải mask mAP50-95 ×100 như cột
+"Public score" cũ bên dưới. Cột "Val Mapillary" và "Val VN" là bộ chấm nhúng của notebook (×100 mask mAP50-95).
+
+| Lượt | Run | Public score | Public mask mAP50 | Public mask mAP50-95 | Val Mapillary | Val VN (283 ảnh) | zip sha256 | Xác định run |
+|---|---|---|---|---|---|---|---|---|
+| 1 | **v1_e25** | **50.18** | **25.18** | **13.49** | **22.97** | 6.94 | `f0b87463…` | người dùng xác nhận |
+| 2 | v1_e50 | 49.54 | 24.54 | 12.96 | 23.38 | 7.19 | `84bd3dbf…` | suy ra: thứ tự nộp + chênh lệch với e25 giữ nguyên (xem dưới) |
+| 3 | **chưa xác định** | 46.75 | 21.86 | 10.84 | | | | một trong hai lượt 3–4 là v2_pretrained_e25 |
+| 4 | **chưa xác định** | 40.08 | 16.06 | 8.72 | | | | lượt còn lại không có run nào trong repo/máy này |
+
+| Run | Nền tảng | Epoch | Khởi tạo / dữ liệu | Ghi chú |
+|---|---|---|---|---|
+| v2_pretrained_e25 (`vietsight_vn_dashcam_final001_v2_pretrained_e25_EXPERIMENT`) | Colab T4 | 25 | `yolo26n-seg.pt` COCO (sha `361fbfab…`), chỉ dashcam VN 1070/283 | **EXPERIMENT, rights_confirmed=false: không đủ điều kiện nộp.** zip `ed371061…`, best.pt `0801ab13…`, val VN 12.48. Checkpoint trên Drive (save_period 3) |
+| v3_mixed_pretrained_e50 | Colab T4 | 50 | `yolo26n-seg.pt` COCO, Mapillary V1 + VN V2 | chờ handoff V3 của Codex; notebook `VietSight_TEAM55_colab_v3.ipynb` (EXPERIMENT nếu quyền chưa rõ), chấm riêng mapillary_val / vn_val + checkpoint trung gian |
+| v2_ft_e12 | — | — | từ e25 best.pt | không chạy: best.pt e25/e50 không còn trên Drive lẫn máy (đã băm mọi `.pt`) |
+
+**So với số cũ của cùng run:** e25 12.90 → 13.49 mAP50-95 (+0.59), mAP50 23.68 → 25.18 (+1.50); e50 12.37 → 12.96 (+0.59),
+23.10 → 24.54 (+1.44). Hai run dịch cùng một lượng, chênh e25 − e50 giữ nguyên 0.53 → leaderboard đã chấm lại (tập test hoặc
+cách tính đổi, chưa rõ). Số cũ giữ trong bảng lịch sử bên dưới, không so trực tiếp số cũ với số mới.
+
+### Val VN không dự báo được public (đo 27/11, `runs/vn_val_compare_local.json`)
+
+Chấm lại 3 submission.zip trên cùng val VN (283 ảnh) bằng bộ chấm của notebook (CPU; trên Windows thay symlink bằng copy và
+`resource` chỉ dùng để báo RAM → không đổi điểm; v2 cho 12.48 = đúng `val_estimate` của run_report).
+
+| Lớp (AP ×100, val VN) | e25 | e50 | v2_pretrained_e25 |
+|---|--:|--:|--:|
+| Car | 14.3 | 14.3 | 27.0 |
+| Bus | 6.4 | 12.1 | 18.5 |
+| Truck | 28.5 | 22.9 | 35.0 |
+| Other vehicle | 0.4 | 2.2 | 0.0 |
+| Motorcycle | 0.7 | 0.7 | 3.0 |
+| Motorcyclist | 9.7 | 9.9 | 23.1 |
+| Bicycle | 0.0 | 0.0 | 0.0 |
+| Cyclist | 2.0 | 3.5 | 5.9 |
+| Pedestrian | 1.4 | 1.3 | 2.1 |
+| Sign | 7.5 | 6.4 | 14.6 |
+| Traffic light | 5.5 | 5.8 | 8.1 |
+| **Tổng** | **6.94** | **7.19** | **12.48** |
+
+v2 gần gấp đôi e25 trên val VN, nhưng public của v2 (10.84 hoặc 8.72) thấp hơn e25 (13.49). Tập dashcam này khác miền với test
+ẩn (và val VN có 2 cặp gần trùng với train, chia theo thời gian cùng nguồn video), nên val VN cũng không dùng để chọn model nộp.
+
+## Lịch sử (số public cũ, trước khi leaderboard chấm lại)
+
 | Run | Nền tảng | Epoch | Val score | Public score | Public mAP50 | Nộp | Ghi chú |
 |---|---|---|---|---|---|---|---|
 | v1_e3_cpu | Kaggle CPU | 3 | 17.55 | — | — | không | ~24 phút/epoch; artefact mất (WORK_DIR=/content/work), chỉ còn log |
-| **v1_e25** | Colab T4 | 25 | **22.9707** | **12.90** | **23.68** | lượt 1/20 | checkpoint: Drive `MyDrive/VietSight/vietsight_v1_e25/` |
-| v1_e50 | Colab T4 | 50 (tiếp từ e25 `epoch20.pt`) | 23.3754 | 12.37 | 23.10 | lượt 2/20 | Drive `MyDrive/VietSight/vietsight_v1_e50/`; val ↑ nhưng public ↓ |
-| v2_ft_e12 | Colab T4 | 12 (fine-tune từ e25 best.pt, chỉ ảnh VN) | | | | | `notebooks/colab/VietSight_TEAM55_colab_v2.ipynb`; chờ Codex bàn giao READY |
+| **v1_e25** | Colab T4 | 25 | **22.9707** | **12.90** | **23.68** | lượt 1/20 | best.pt không còn trên Drive (27/11 tối); còn submission.zip trong repo local |
+| v1_e50 | Colab T4 | 50 (tiếp từ e25 `epoch20.pt`) | 23.3754 | 12.37 | 23.10 | lượt 2/20 | best.pt không còn trên Drive; val ↑ nhưng public ↓ |
 
-## AP từng lớp — e25 vs e50 (public = leaderboard; val = bộ chấm nhúng trên val Mapillary, ×100)
+## AP từng lớp — e25 vs e50 (public = leaderboard TRƯỚC khi chấm lại; val = bộ chấm nhúng trên val Mapillary, ×100)
 
 | ID | Lớp | Public e25 | Public e50 | Δ public | Val e25 | Val e50 | Δ val |
 |---|---|---|---|---|---|---|---|

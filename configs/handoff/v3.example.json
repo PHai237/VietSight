@@ -1,0 +1,15 @@
+{
+  "status": "READY",
+  "version": "vietsight_v3_mixed",
+  "source": "drive:/content/drive/MyDrive/VietSight/datasets/vietsight_v3_mixed.zip",
+  "images": {"train": 0, "val": 0},
+  "fingerprint_sha256": "<official dataset_fingerprint(version folder)>",
+  "vn_val_sha256": "<same as val_subsets.vn_val.names_sha256>",
+  "val_subsets": {
+    "mapillary_val": {"match": "^mapillary_vistas__", "images": 262,
+                      "names_sha256": "<sha256 of '\\n'.join(sorted matching file names in images/val) = V1 val_frozen>"},
+    "vn_val": {"match": "^(?!mapillary_vistas__)", "images": 283,
+               "names_sha256": "<sha256 of '\\n'.join(sorted matching file names in images/val)>"}
+  },
+  "rights_confirmed": false
+}
