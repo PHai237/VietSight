@@ -30,7 +30,7 @@ Căn cứ: [quy ước BTC do người dùng cung cấp](BTC_GUIDELINE_EXCERPT.m
 - [ ] Xe đạp áp dụng tương tự Cyclist/Bicycle; xe điện không bàn đạp dạng xe máy là Motorcycle/Motorcyclist.
 - [ ] Người dắt: Pedestrian + xe riêng, không gộp rider. Không ghép người đứng sát/đi sau vào xe.
 - [ ] Cảnh nhiều xe: kiểm xe thực sự của mỗi rider, người ngồi sau, người bị cột che; không tin association hình học khi nhiều ứng viên gần điểm.
-- [ ] Xe nhỏ dưới khoảng 9 chỗ/kiểu bus/truck theo cây quyết định; pickup ghi decision cụ thể, không tin `truck` nguồn luôn đúng BTC.
+- [ ] **Xe 9–15 chỗ thuộc Car** theo cập nhật người dùng; xe kiểu bus/truck theo guideline đã duyệt. Pickup ghi decision cụ thể, không tin `truck` nguồn luôn đúng BTC; không tự map mọi `bus` nguồn thành Bus nếu đó là xe 9–15 chỗ.
 - [ ] Đầu kéo Truck; rơ-moóc/sơ-mi rơ-moóc kể cả container Other vehicle; **hai instance riêng**. Ba gác, xích lô, xe công trình Other vehicle; xe đẩy tay không gán.
 - [ ] Mỗi tấm biển một Sign, chỉ mặt biển, không cột. Mỗi hộp đèn một Traffic light, phủ hộp; không gồm cột/đèn xe/đèn trang trí.
 - [ ] Không gán quảng cáo/poster, vật sau kính cửa hàng, người trong ô tô thấy qua kính, động vật, reflection/bóng/ánh đèn pha.
@@ -100,7 +100,7 @@ Giới hạn: mặc định đọc toàn lô; có thể dùng `--limit N` (N ả
 
 `compare_validation.py` trả exit 1 khi lệch val/thiếu label/exact leak hoặc có near candidate; exit 0 chỉ pass phạm vi kiểm tra, không chứng minh không sequence leakage. Near check có chi phí O(N²), chỉ bật khi cần. Không dùng thư mục val reference có hardlink tới source còn sửa.
 
-## Bàn giao hiện tại
+## Bàn giao vòng QA đầu (trước yêu cầu commit/PR)
 
 - [x] Báo cáo code review, dataset audit, checklist, experiment log đã chuẩn bị trong worktree.
 - [x] Lỗi có kịch bản tái hiện và số đo fixture tách biệt dataset thật.
@@ -108,3 +108,5 @@ Giới hạn: mặc định đọc toàn lô; có thể dùng `--limit N` (N ả
 - [ ] Bản export label thật sau sửa và ảnh before/after thật: chưa được bàn giao.
 - [ ] Val V1 bất biến + run_report V1 thật + AP: chưa có trong snapshot local được review.
 - [ ] Merge tài liệu/công cụ vào main: chưa thực hiện; chủ pipeline quyết định tích hợp khi phù hợp. Không commit/push tự động.
+
+Trong yêu cầu tiếp theo, người dùng đã cho phép commit/push/PR và merge phần guideline/tài liệu QA/công cụ độc lập đã test nếu không conflict. Xem [đối chiếu cập nhật](CLASS_MAPPING_REVIEW.md); không thay pipeline chính hoặc notebook của V1 để thực hiện việc tích hợp này.

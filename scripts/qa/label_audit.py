@@ -75,7 +75,11 @@ def read_labels(path, width, height, nb):
         x1, y1 = px.max(axis=0)
         extent = pixels / max(1, int((x1-x0+1)*(y1-y0+1)))
         reasons = []
-        short_side_640 = min(x1-x0+1, y1-y0+1) * 640 / max(width, height)
+        # Annotation guideline: continuous bbox short side / image long side.
+        # Keep this independent of shoelace area and raster boundary rounding.
+        bbox_sides = np.ptp(pts * [width, height], axis=0)
+        short_side_ratio = float(min(bbox_sides) / max(width, height))
+        short_side_640 = short_side_ratio * 640
         if short_side_640 < 8:
             reasons.append('short_side_under_about_1.25_percent_image_long_side')
         if area < 64:
@@ -100,6 +104,7 @@ def read_labels(path, width, height, nb):
         rows.append((cid, pts))
         instances.append({'line': line_no, 'class_id': cid, 'class_name': CLASSES[cid],
                           'area_at_640': area, 'short_side_at_640': short_side_640,
+                          'short_side_ratio': short_side_ratio,
                           'raster_pixels': pixels, 'extent': extent})
     if not rows:
         issues.append({'line': None, 'reason': 'empty_or_unreadable_labels: confirm all 11 classes absent'})

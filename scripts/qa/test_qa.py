@@ -47,6 +47,23 @@ class Checks(unittest.TestCase):
         self.assertTrue(any('overlap_with_L1' in x['reason'] for x in issues))
         self.assertTrue(any('short_side_under' in x['reason'] for x in issues))
 
+    def test_short_side_and_area_thresholds_are_independent(self):
+        from vslib.geometry import yolo_line
+        import numpy as np
+        p=self.root/'labels.txt'
+        thin=np.array([[10,10],[110,10],[110,14],[10,14]],float)/640
+        sparse=np.array([[20,20],[40,20],[40,21],[21,21],[21,40],[20,40]],float)/640
+        p.write_text(yolo_line(9,thin)+'\n'+yolo_line(0,sparse)+'\n',encoding='utf-8')
+        _,issues,instances=read_labels(p,640,640,self.nb)
+        one=[v['reason'] for v in issues if v['line']==1]
+        two=[v['reason'] for v in issues if v['line']==2]
+        self.assertTrue(any('short_side_under' in v for v in one))
+        self.assertFalse(any('tiny_at_640' in v for v in one))
+        self.assertTrue(any('tiny_at_640' in v for v in two))
+        self.assertFalse(any('short_side_under' in v for v in two))
+        self.assertGreater(instances[0]['area_at_640'],64)
+        self.assertLess(instances[1]['area_at_640'],64)
+
     def test_output_cannot_modify_inputs_or_ancestors(self):
         source=self.root/'source'
         source.mkdir()

@@ -2,6 +2,8 @@
 
 Ngày kiểm tra: 27/11/2026, GMT+7. Deadline: **10:30 ngày 28/11/2026, GMT+7**.
 
+**Đối chiếu tiếp theo:** [CLASS_MAPPING_REVIEW.md](CLASS_MAPPING_REVIEW.md) kiểm tra lại toàn bộ mapping trên source `origin/main=bfd434f`, đã chạy lại converter/build fixture và bổ sung quy tắc **xe 9–15 chỗ là Car**. Các số liệu baseline bên dưới được giữ theo đúng phiên đo, không chuyển thành kết quả mới.
+
 ## Phạm vi và kết luận
 
 Review độc lập tại `C:\My Future\VietSight-data-qa`, branch `codex/data-qa`, từ commit **565d05b55ab7a0c507934811b4808b5952e9a595**. Đây là snapshot đã commit, không phải xác nhận V1 production đã ổn định. Git ban đầu sạch; không sửa source của Claude, notebook, validator, cấu hình train hoặc dependencies; không chạy model/training/GPU, không tải dataset. Có sao chép 12 cặp ảnh/annotation BDD đang có local để kiểm tra riêng.

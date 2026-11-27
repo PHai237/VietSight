@@ -2,6 +2,8 @@
 
 Ngày xác minh: **27/11/2026, GMT+7**. Nguồn được tổng hợp từ manifest/config hiện có; chưa nhận thêm danh sách/link dataset khác từ thành viên. Bảng này là quy trình đánh giá và kết quả quan sát có phạm vi, không phê duyệt tự động cho train.
 
+Cập nhật mapping tiếp theo: [CLASS_MAPPING_REVIEW.md](CLASS_MAPPING_REVIEW.md), gồm quy tắc người dùng xác nhận **xe 9–15 chỗ là Car**. Các số kiểm đếm bên dưới giữ nguyên snapshot đã đo; không phải số liệu dataset V1 đang chạy trên Kaggle.
+
 ## Quy ước phân loại
 
 - **A**: có thể dùng sau kiểm tra và chuẩn hóa; cần qua label QA, coverage, provenance và split gate.
