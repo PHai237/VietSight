@@ -49,6 +49,18 @@ python scripts/make_colab_v2_notebook.py --epochs 12 --lr0 0.0003 --close-mosaic
 | batch / save_period | 16 / 3 | T4; checkpoint mỗi 3 epoch trên Drive |
 | imgsz / model | 640 / YOLO26n-seg | không đổi (luật cuộc thi) |
 
+## Khi không còn best.pt e25 (27/11/2026: không tìm thấy trên Drive lẫn trên máy)
+
+```
+python scripts/make_colab_v2_notebook.py --init pretrained --epochs 25 --handoff configs/handoff/v2.json
+```
+
+Notebook riêng `notebooks/colab/VietSight_TEAM55_colab_v2_pretrained.ipynb`: khởi tạo từ `yolo26n-seg.pt` COCO chính thức
+(Ultralytics release v8.4.0, sha256 ghim `361fbfab…`, sai sha thì dừng; có thể đặt sẵn bản của repo ở
+`MyDrive/VietSight/init/yolo26n-seg.pt`), 25 epoch, tham số mặc định chính thức (cùng công thức V1 e25), chỉ dữ liệu VN.
+Mốc e25 trong `eval_compare.json` chỉ có khi `MyDrive/VietSight/vietsight_v1_e25/submission.zip` đúng sha (bản ở
+`runs/v1_colab_e25/submission.zip` khớp).
+
 ## Thử nghiệm dự phòng (nếu run chính làm giảm Mapillary val hoặc không tăng VN val)
 
 ```
