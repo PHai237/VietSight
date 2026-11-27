@@ -178,6 +178,11 @@ def train_notebook(epochs, batch, version_name, allow_cpu=False):
     assert "TEAM_ID = 55  #@param" in src, "TEAM_ID must already be 55 in the official notebook"
     assert PARAM_ANCHOR in src and 'EPOCHS = 60  #@param {type:"integer"}' in src and 'BATCH = 16  #@param {type:"integer"}' in src
     src = src.replace(PARAM_ANCHOR, PARAM_ANCHOR + AUTODETECT)
+    # Kaggle images set Colab env vars -> the official IN_COLAB is True there and WORK_DIR would be /content/work, which is
+    # NOT saved as kernel output (measured: e3 run lost its submission.zip). Keep results under /kaggle/working.
+    wd_old = 'WORK_DIR = "/content/work" if IN_COLAB else "work"'
+    assert wd_old in src
+    src = src.replace(wd_old, 'WORK_DIR = "/kaggle/working/work" if _os.path.isdir("/kaggle/working") else ("/content/work" if IN_COLAB else "work")  # [VietSight]')
     src = src.replace('EPOCHS = 60  #@param {type:"integer"}', f'EPOCHS = {epochs}  #@param {{type:"integer"}}')
     src = src.replace('BATCH = 16  #@param {type:"integer"}', f'BATCH = {batch}  #@param {{type:"integer"}}')
     if allow_cpu:

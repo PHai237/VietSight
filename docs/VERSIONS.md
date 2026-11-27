@@ -13,3 +13,6 @@ Val cố định: `configs/val_frozen.txt` (tạo ở lần build V1 đầu tiê
 ## Nhật ký
 - 2026-11-27: dựng pipeline; smoke test CPU toàn notebook chính thức (5 ảnh, 1 epoch) → self-check máy chấm **ĐẠT**, zip 9.2 MiB. Chưa có số liệu train thật.
 - Khi thay đổi val (chỉ khi bắt buộc, ví dụ thêm ảnh VN vào val): ghi lý do ở đây và chấm lại các checkpoint cũ trên val mới.
+- 2026-11-27 13:47: V1 e3 trên Kaggle **CPU** (4 vCPU, chưa có GPU): ~24 phút/epoch, self-check BTC ĐẠT (zip 9.2 MiB),
+  val mask mAP50-95 = **0.1755** (AP50 0.308). AP thấp: Other vehicle 0.005, Bicycle 0.036, Motorcycle 0.057. Artefact bị mất do
+  WORK_DIR=/content/work (Kaggle bị nhận là Colab) → đã sửa, chạy lại e3 và e20 (version 3).
