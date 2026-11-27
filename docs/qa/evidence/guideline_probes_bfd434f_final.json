@@ -1,0 +1,680 @@
+{
+  "pipeline_commit": "bfd434f352c93684fc33da4888310bbd2f5d20b3",
+  "guideline": "User supplied BTC excerpt + follow-up: 9-15 seats = Car",
+  "configs": {
+    "bdd100k_10k": {
+      "sha256": "5e6f20f1ac8043b14ad1ebf6e46db0c8b4413afe1941488dcac0cb9b47cfc3e5",
+      "mapping": [
+        {
+          "source_label": "car",
+          "role": {
+            "role": "direct",
+            "target": "Car"
+          },
+          "potential_btc_ids": [
+            0
+          ]
+        },
+        {
+          "source_label": "bus",
+          "role": {
+            "role": "direct",
+            "target": "Bus"
+          },
+          "potential_btc_ids": [
+            1
+          ]
+        },
+        {
+          "source_label": "truck",
+          "role": {
+            "role": "direct",
+            "target": "Truck"
+          },
+          "potential_btc_ids": [
+            2
+          ]
+        },
+        {
+          "source_label": "caravan",
+          "role": {
+            "role": "direct",
+            "target": "Other vehicle"
+          },
+          "potential_btc_ids": [
+            3
+          ]
+        },
+        {
+          "source_label": "trailer",
+          "role": {
+            "role": "direct",
+            "target": "Other vehicle"
+          },
+          "potential_btc_ids": [
+            3
+          ]
+        },
+        {
+          "source_label": "train",
+          "role": {
+            "role": "ignore"
+          },
+          "potential_btc_ids": []
+        },
+        {
+          "source_label": "pedestrian",
+          "role": {
+            "role": "direct",
+            "target": "Pedestrian"
+          },
+          "potential_btc_ids": [
+            8
+          ]
+        },
+        {
+          "source_label": "rider",
+          "role": {
+            "role": "rider"
+          },
+          "potential_btc_ids": [
+            5,
+            7
+          ]
+        },
+        {
+          "source_label": "motorcycle",
+          "role": {
+            "role": "vehicle2",
+            "sub": "motorcycle"
+          },
+          "potential_btc_ids": [
+            4,
+            5
+          ]
+        },
+        {
+          "source_label": "bicycle",
+          "role": {
+            "role": "vehicle2",
+            "sub": "bicycle"
+          },
+          "potential_btc_ids": [
+            6,
+            7
+          ]
+        }
+      ],
+      "unmapped": "ignore",
+      "missing_classes": [
+        "Sign",
+        "Traffic light"
+      ],
+      "incomplete_classes": []
+    },
+    "coco2017": {
+      "sha256": "0fc6fb4339804b485db3e6350188beca937f258c7a26e853a5303026db2eeee6",
+      "mapping": [
+        {
+          "source_label": "car",
+          "role": {
+            "role": "direct",
+            "target": "Car"
+          },
+          "potential_btc_ids": [
+            0
+          ]
+        },
+        {
+          "source_label": "bus",
+          "role": {
+            "role": "direct",
+            "target": "Bus"
+          },
+          "potential_btc_ids": [
+            1
+          ]
+        },
+        {
+          "source_label": "truck",
+          "role": {
+            "role": "direct",
+            "target": "Truck"
+          },
+          "potential_btc_ids": [
+            2
+          ]
+        },
+        {
+          "source_label": "motorcycle",
+          "role": {
+            "role": "vehicle2",
+            "sub": "motorcycle"
+          },
+          "potential_btc_ids": [
+            4,
+            5
+          ]
+        },
+        {
+          "source_label": "bicycle",
+          "role": {
+            "role": "vehicle2",
+            "sub": "bicycle"
+          },
+          "potential_btc_ids": [
+            6,
+            7
+          ]
+        },
+        {
+          "source_label": "person",
+          "role": {
+            "role": "person"
+          },
+          "potential_btc_ids": [
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "source_label": "traffic light",
+          "role": {
+            "role": "direct",
+            "target": "Traffic light"
+          },
+          "potential_btc_ids": [
+            10
+          ]
+        },
+        {
+          "source_label": "stop sign",
+          "role": {
+            "role": "direct",
+            "target": "Sign"
+          },
+          "potential_btc_ids": [
+            9
+          ]
+        },
+        {
+          "source_label": "train",
+          "role": {
+            "role": "ignore"
+          },
+          "potential_btc_ids": []
+        }
+      ],
+      "unmapped": "ignore",
+      "missing_classes": [
+        "Other vehicle"
+      ],
+      "incomplete_classes": [
+        "Sign"
+      ]
+    },
+    "mapillary_vistas": {
+      "sha256": "de47ab935afa5961a2ff554fe2eef3eb7073a94183dc3c29f6b59700bfc94311",
+      "mapping": [
+        {
+          "source_label": "car",
+          "role": {
+            "role": "direct",
+            "target": "Car"
+          },
+          "potential_btc_ids": [
+            0
+          ]
+        },
+        {
+          "source_label": "bus",
+          "role": {
+            "role": "direct",
+            "target": "Bus"
+          },
+          "potential_btc_ids": [
+            1
+          ]
+        },
+        {
+          "source_label": "truck",
+          "role": {
+            "role": "direct",
+            "target": "Truck"
+          },
+          "potential_btc_ids": [
+            2
+          ]
+        },
+        {
+          "source_label": "other vehicle",
+          "role": {
+            "role": "direct",
+            "target": "Other vehicle"
+          },
+          "potential_btc_ids": [
+            3
+          ]
+        },
+        {
+          "source_label": "caravan",
+          "role": {
+            "role": "direct",
+            "target": "Other vehicle"
+          },
+          "potential_btc_ids": [
+            3
+          ]
+        },
+        {
+          "source_label": "trailer",
+          "role": {
+            "role": "direct",
+            "target": "Other vehicle"
+          },
+          "potential_btc_ids": [
+            3
+          ]
+        },
+        {
+          "source_label": "wheeled slow",
+          "role": {
+            "role": "direct",
+            "target": "Other vehicle"
+          },
+          "potential_btc_ids": [
+            3
+          ]
+        },
+        {
+          "source_label": "motorcycle",
+          "role": {
+            "role": "vehicle2",
+            "sub": "motorcycle"
+          },
+          "potential_btc_ids": [
+            4,
+            5
+          ]
+        },
+        {
+          "source_label": "bicycle",
+          "role": {
+            "role": "vehicle2",
+            "sub": "bicycle"
+          },
+          "potential_btc_ids": [
+            6,
+            7
+          ]
+        },
+        {
+          "source_label": "person",
+          "role": {
+            "role": "direct",
+            "target": "Pedestrian"
+          },
+          "potential_btc_ids": [
+            8
+          ]
+        },
+        {
+          "source_label": "motorcyclist",
+          "role": {
+            "role": "rider",
+            "sub": "motorcycle"
+          },
+          "potential_btc_ids": [
+            5
+          ]
+        },
+        {
+          "source_label": "bicyclist",
+          "role": {
+            "role": "rider",
+            "sub": "bicycle"
+          },
+          "potential_btc_ids": [
+            7
+          ]
+        },
+        {
+          "source_label": "other rider",
+          "role": {
+            "role": "rider"
+          },
+          "potential_btc_ids": [
+            5,
+            7
+          ]
+        },
+        {
+          "source_label": "person group",
+          "role": {
+            "role": "blackout"
+          },
+          "potential_btc_ids": []
+        },
+        {
+          "source_label": "vehicle group",
+          "role": {
+            "role": "blackout"
+          },
+          "potential_btc_ids": []
+        },
+        {
+          "source_label": "traffic sign (front)",
+          "role": {
+            "role": "direct",
+            "target": "Sign"
+          },
+          "potential_btc_ids": [
+            9
+          ]
+        },
+        {
+          "source_label": "traffic sign - direction (front)",
+          "role": {
+            "role": "direct",
+            "target": "Sign"
+          },
+          "potential_btc_ids": [
+            9
+          ]
+        },
+        {
+          "source_label": "traffic sign - temporary (front)",
+          "role": {
+            "role": "direct",
+            "target": "Sign"
+          },
+          "potential_btc_ids": [
+            9
+          ]
+        },
+        {
+          "source_label": "traffic sign - parking",
+          "role": {
+            "role": "direct",
+            "target": "Sign"
+          },
+          "potential_btc_ids": [
+            9
+          ]
+        },
+        {
+          "source_label": "traffic sign (back)",
+          "role": {
+            "role": "ignore"
+          },
+          "potential_btc_ids": []
+        },
+        {
+          "source_label": "traffic sign - direction (back)",
+          "role": {
+            "role": "ignore"
+          },
+          "potential_btc_ids": []
+        },
+        {
+          "source_label": "traffic sign - temporary (back)",
+          "role": {
+            "role": "ignore"
+          },
+          "potential_btc_ids": []
+        },
+        {
+          "source_label": "traffic sign - ambiguous",
+          "role": {
+            "role": "ignore"
+          },
+          "potential_btc_ids": []
+        },
+        {
+          "source_label": "traffic light - general (upright)",
+          "role": {
+            "role": "direct",
+            "target": "Traffic light"
+          },
+          "potential_btc_ids": [
+            10
+          ]
+        },
+        {
+          "source_label": "traffic light - general (horizontal)",
+          "role": {
+            "role": "direct",
+            "target": "Traffic light"
+          },
+          "potential_btc_ids": [
+            10
+          ]
+        },
+        {
+          "source_label": "traffic light - general (single)",
+          "role": {
+            "role": "direct",
+            "target": "Traffic light"
+          },
+          "potential_btc_ids": [
+            10
+          ]
+        },
+        {
+          "source_label": "traffic light - pedestrians",
+          "role": {
+            "role": "direct",
+            "target": "Traffic light"
+          },
+          "potential_btc_ids": [
+            10
+          ]
+        },
+        {
+          "source_label": "traffic light - cyclists",
+          "role": {
+            "role": "direct",
+            "target": "Traffic light"
+          },
+          "potential_btc_ids": [
+            10
+          ]
+        },
+        {
+          "source_label": "traffic light - other",
+          "role": {
+            "role": "direct",
+            "target": "Traffic light"
+          },
+          "potential_btc_ids": [
+            10
+          ]
+        },
+        {
+          "source_label": "on rails",
+          "role": {
+            "role": "ignore"
+          },
+          "potential_btc_ids": []
+        },
+        {
+          "source_label": "boat",
+          "role": {
+            "role": "ignore"
+          },
+          "potential_btc_ids": []
+        },
+        {
+          "source_label": "ego vehicle",
+          "role": {
+            "role": "ignore"
+          },
+          "potential_btc_ids": []
+        }
+      ],
+      "unmapped": "ignore",
+      "missing_classes": [],
+      "incomplete_classes": []
+    }
+  },
+  "probes": {
+    "bdd100k_10k:truck:{'vehicle_type': 'pickup'}": {
+      "classes": [
+        "Truck"
+      ],
+      "flags": [],
+      "semantic_tags": {
+        "vehicle_type": "pickup"
+      },
+      "note": "Synthetic tagged source instance; no claim of dataset-wide prevalence"
+    },
+    "bdd100k_10k:bus:{'seat_count': 9}": {
+      "classes": [
+        "Bus"
+      ],
+      "flags": [],
+      "semantic_tags": {
+        "seat_count": 9
+      },
+      "note": "Synthetic tagged source instance; no claim of dataset-wide prevalence"
+    },
+    "bdd100k_10k:bus:{'seat_count': 12}": {
+      "classes": [
+        "Bus"
+      ],
+      "flags": [],
+      "semantic_tags": {
+        "seat_count": 12
+      },
+      "note": "Synthetic tagged source instance; no claim of dataset-wide prevalence"
+    },
+    "bdd100k_10k:bus:{'seat_count': 15}": {
+      "classes": [
+        "Bus"
+      ],
+      "flags": [],
+      "semantic_tags": {
+        "seat_count": 15
+      },
+      "note": "Synthetic tagged source instance; no claim of dataset-wide prevalence"
+    },
+    "coco2017:truck:{'vehicle_type': 'pickup'}": {
+      "classes": [
+        "Truck"
+      ],
+      "flags": [],
+      "semantic_tags": {
+        "vehicle_type": "pickup"
+      },
+      "note": "Synthetic tagged source instance; no claim of dataset-wide prevalence"
+    },
+    "coco2017:bus:{'seat_count': 9}": {
+      "classes": [
+        "Bus"
+      ],
+      "flags": [],
+      "semantic_tags": {
+        "seat_count": 9
+      },
+      "note": "Synthetic tagged source instance; no claim of dataset-wide prevalence"
+    },
+    "coco2017:bus:{'seat_count': 12}": {
+      "classes": [
+        "Bus"
+      ],
+      "flags": [],
+      "semantic_tags": {
+        "seat_count": 12
+      },
+      "note": "Synthetic tagged source instance; no claim of dataset-wide prevalence"
+    },
+    "coco2017:bus:{'seat_count': 15}": {
+      "classes": [
+        "Bus"
+      ],
+      "flags": [],
+      "semantic_tags": {
+        "seat_count": 15
+      },
+      "note": "Synthetic tagged source instance; no claim of dataset-wide prevalence"
+    },
+    "mapillary_vistas:truck:{'vehicle_type': 'pickup'}": {
+      "classes": [
+        "Truck"
+      ],
+      "flags": [],
+      "semantic_tags": {
+        "vehicle_type": "pickup"
+      },
+      "note": "Synthetic tagged source instance; no claim of dataset-wide prevalence"
+    },
+    "mapillary_vistas:bus:{'seat_count': 9}": {
+      "classes": [
+        "Bus"
+      ],
+      "flags": [],
+      "semantic_tags": {
+        "seat_count": 9
+      },
+      "note": "Synthetic tagged source instance; no claim of dataset-wide prevalence"
+    },
+    "mapillary_vistas:bus:{'seat_count': 12}": {
+      "classes": [
+        "Bus"
+      ],
+      "flags": [],
+      "semantic_tags": {
+        "seat_count": 12
+      },
+      "note": "Synthetic tagged source instance; no claim of dataset-wide prevalence"
+    },
+    "mapillary_vistas:bus:{'seat_count': 15}": {
+      "classes": [
+        "Bus"
+      ],
+      "flags": [],
+      "semantic_tags": {
+        "seat_count": 15
+      },
+      "note": "Synthetic tagged source instance; no claim of dataset-wide prevalence"
+    },
+    "combined_tractor_trailer": {
+      "classes": [
+        "Truck"
+      ],
+      "instances": 1,
+      "flags": []
+    },
+    "direct_instance_overlap": {
+      "overlap_pixels": 3600,
+      "flags": []
+    },
+    "known_passenger_union": {
+      "classes": [
+        "Motorcyclist"
+      ],
+      "flags": [],
+      "all_visible_parts_preserved": true
+    },
+    "two_large_components_bridge": {
+      "polygon_problem": null,
+      "retains_pixels_in_both_parts": true,
+      "iou": 0.96775
+    },
+    "thin_100x4": {
+      "short_side_ratio": 0.006249999999999999,
+      "below_guideline_short_side": true,
+      "notebook_shoelace_area_640": 399.9999999999999,
+      "scorer_decoder_pixel_area_640": 400,
+      "below_scorer_area_64": false
+    },
+    "sparse_L_20x20": {
+      "short_side_ratio": 0.03125,
+      "below_guideline_short_side": false,
+      "notebook_shoelace_area_640": 39.00000000000006,
+      "scorer_decoder_pixel_area_640": 39,
+      "below_scorer_area_64": true
+    }
+  }
+}

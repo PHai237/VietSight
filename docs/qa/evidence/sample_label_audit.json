@@ -1,0 +1,1263 @@
+{
+  "scope": "BTC synthetic sample_data; pipeline tests only",
+  "split": null,
+  "seed": 55,
+  "images_audited": 10,
+  "limit": 0,
+  "total_images_discovered": 10,
+  "images_flagged": 10,
+  "instances_by_class": {
+    "Car": 18,
+    "Bus": 7,
+    "Truck": 8,
+    "Other vehicle": 4,
+    "Motorcycle": 13,
+    "Motorcyclist": 22,
+    "Bicycle": 6,
+    "Cyclist": 5,
+    "Pedestrian": 7,
+    "Sign": 8,
+    "Traffic light": 7
+  },
+  "images_by_class": {
+    "Car": 8,
+    "Bus": 5,
+    "Truck": 6,
+    "Other vehicle": 4,
+    "Motorcycle": 8,
+    "Motorcyclist": 9,
+    "Bicycle": 4,
+    "Cyclist": 3,
+    "Pedestrian": 5,
+    "Sign": 7,
+    "Traffic light": 5
+  },
+  "class_order": {
+    "file": "C:\\My Future\\VietSight\\data\\raw\\sample_data\\data.yaml",
+    "sha256": "ee2e56fa343e312336ad2e4a01b9fd1181ca8dcfd41da9bf4a0400a3bf047564",
+    "matches": true
+  },
+  "samples_by_class": {
+    "Car": [
+      "sample_02.jpg"
+    ],
+    "Bus": [
+      "sample_09.jpg"
+    ],
+    "Truck": [
+      "sample_01.jpg"
+    ],
+    "Other vehicle": [
+      "sample_06.jpg"
+    ],
+    "Motorcycle": [
+      "sample_06.jpg"
+    ],
+    "Motorcyclist": [
+      "sample_06.jpg"
+    ],
+    "Bicycle": [
+      "sample_10.jpg"
+    ],
+    "Cyclist": [
+      "sample_07.jpg"
+    ],
+    "Pedestrian": [
+      "sample_08.jpg"
+    ],
+    "Sign": [
+      "sample_06.jpg"
+    ],
+    "Traffic light": [
+      "sample_07.jpg"
+    ]
+  },
+  "records": [
+    {
+      "image": "sample_01.jpg",
+      "image_sha256": "d0afe3b2dcd54ebe6aa3a9a49fbee2204f8d1c75cf0399cad00c177c59ae8211",
+      "label_sha256": "f83c4bb6e3116a8fbbd4df451e35039b5af240dcae36418260b6efc24f4cc408",
+      "width": 960,
+      "height": 540,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 345.7789289856123,
+          "short_side_at_640": 25.333333333333332,
+          "raster_pixels": 849,
+          "extent": 0.4856979405034325
+        },
+        {
+          "line": 2,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 1232.9030043648258,
+          "short_side_at_640": 27.333333333333332,
+          "raster_pixels": 2906,
+          "extent": 0.621737270004279
+        },
+        {
+          "line": 3,
+          "class_id": 1,
+          "class_name": "Bus",
+          "area_at_640": 7708.451302195066,
+          "short_side_at_640": 62.666666666666664,
+          "raster_pixels": 17799,
+          "extent": 0.5686218133026644
+        },
+        {
+          "line": 4,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 3749.7731154048092,
+          "short_side_at_640": 50.0,
+          "raster_pixels": 8660,
+          "extent": 0.648689138576779
+        },
+        {
+          "line": 5,
+          "class_id": 2,
+          "class_name": "Truck",
+          "area_at_640": 16858.677840077144,
+          "short_side_at_640": 101.33333333333333,
+          "raster_pixels": 38342,
+          "extent": 0.7982594936708861
+        },
+        {
+          "line": 6,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 3260.4453555840505,
+          "short_side_at_640": 70.0,
+          "raster_pixels": 7570,
+          "extent": 0.6109765940274415
+        },
+        {
+          "line": 7,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 3370.663519948357,
+          "short_side_at_640": 78.66666666666667,
+          "raster_pixels": 7811,
+          "extent": 0.5014766307139189
+        },
+        {
+          "line": 8,
+          "class_id": 9,
+          "class_name": "Sign",
+          "area_at_640": 831.5558577792008,
+          "short_side_at_640": 36.666666666666664,
+          "raster_pixels": 1958,
+          "extent": 0.5933333333333334
+        }
+      ],
+      "issues": [
+        {
+          "line": 2,
+          "reason": "overlap_with_L1:17_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 4,
+          "reason": "overlap_with_L2:48_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 5,
+          "reason": "overlap_with_L3:305_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/5a386a464a225115.png"
+    },
+    {
+      "image": "sample_02.jpg",
+      "image_sha256": "7e54b57d6cab3d78cd0eb02871c15703620468b77257e22e975a83fc895a42b9",
+      "label_sha256": "0867b7a2caa4abd7b4f267e5c879da8b7b85c64115eda60f11bf2ee31b928c55",
+      "width": 960,
+      "height": 540,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 865.9946800512444,
+          "short_side_at_640": 25.333333333333332,
+          "raster_pixels": 2049,
+          "extent": 0.7002734107997266
+        },
+        {
+          "line": 2,
+          "class_id": 1,
+          "class_name": "Bus",
+          "area_at_640": 1440.0179999999941,
+          "short_side_at_640": 9.333333333333334,
+          "raster_pixels": 3523,
+          "extent": 0.9285714285714286
+        },
+        {
+          "line": 3,
+          "class_id": 1,
+          "class_name": "Bus",
+          "area_at_640": 15300.178124313788,
+          "short_side_at_640": 70.66666666666667,
+          "raster_pixels": 34922,
+          "extent": 0.873880186176868
+        },
+        {
+          "line": 4,
+          "class_id": 1,
+          "class_name": "Bus",
+          "area_at_640": 15455.319080025578,
+          "short_side_at_640": 75.33333333333333,
+          "raster_pixels": 35229,
+          "extent": 0.8882081536948794
+        },
+        {
+          "line": 5,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 1762.8921111165255,
+          "short_side_at_640": 48.666666666666664,
+          "raster_pixels": 4086,
+          "extent": 0.6289056487609666
+        },
+        {
+          "line": 6,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 3432.0119202431215,
+          "short_side_at_640": 78.66666666666667,
+          "raster_pixels": 7954,
+          "extent": 0.5068178921880974
+        },
+        {
+          "line": 7,
+          "class_id": 10,
+          "class_name": "Traffic light",
+          "area_at_640": 1047.0914221824073,
+          "short_side_at_640": 21.333333333333332,
+          "raster_pixels": 2464,
+          "extent": 1.0
+        },
+        {
+          "line": 8,
+          "class_id": 10,
+          "class_name": "Traffic light",
+          "area_at_640": 1151.9884800000198,
+          "short_side_at_640": 22.0,
+          "raster_pixels": 2706,
+          "extent": 1.0
+        }
+      ],
+      "issues": [
+        {
+          "line": 3,
+          "reason": "overlap_with_L1:23_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 4,
+          "reason": "overlap_with_L2:265_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/5efc24654da91451.png"
+    },
+    {
+      "image": "sample_03.jpg",
+      "image_sha256": "b3f92547cedd9843291ecb98d8f0ef7f9e1a771ea120dde998d39230a4a35ac2",
+      "label_sha256": "2f33614fa3b48664e9300c25ff07f4aae9a98fefa878e28897c086d832cfc3c9",
+      "width": 960,
+      "height": 540,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 3,
+          "class_name": "Other vehicle",
+          "area_at_640": 695.101462272072,
+          "short_side_at_640": 26.0,
+          "raster_pixels": 1655,
+          "extent": 0.744489428699955
+        },
+        {
+          "line": 2,
+          "class_id": 1,
+          "class_name": "Bus",
+          "area_at_640": 8575.58061768973,
+          "short_side_at_640": 54.0,
+          "raster_pixels": 19572,
+          "extent": 0.8916222495558289
+        },
+        {
+          "line": 3,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 763.3334665727944,
+          "short_side_at_640": 37.333333333333336,
+          "raster_pixels": 1822,
+          "extent": 0.5164399092970522
+        },
+        {
+          "line": 4,
+          "class_id": 2,
+          "class_name": "Truck",
+          "area_at_640": 8233.370266636983,
+          "short_side_at_640": 63.333333333333336,
+          "raster_pixels": 18909,
+          "extent": 0.8293421052631579
+        },
+        {
+          "line": 5,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 1837.1133154944048,
+          "short_side_at_640": 40.0,
+          "raster_pixels": 4318,
+          "extent": 0.6853968253968254
+        },
+        {
+          "line": 6,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 3250.8882042624236,
+          "short_side_at_640": 76.0,
+          "raster_pixels": 7540,
+          "extent": 0.5087719298245614
+        },
+        {
+          "line": 7,
+          "class_id": 9,
+          "class_name": "Sign",
+          "area_at_640": 694.4485689215973,
+          "short_side_at_640": 23.333333333333332,
+          "raster_pixels": 1638,
+          "extent": 0.850909090909091
+        },
+        {
+          "line": 8,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 1636.236551116781,
+          "short_side_at_640": 35.333333333333336,
+          "raster_pixels": 3951,
+          "extent": 0.5734397677793904
+        },
+        {
+          "line": 9,
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "area_at_640": 3152.8791911808185,
+          "short_side_at_640": 58.666666666666664,
+          "raster_pixels": 7351,
+          "extent": 0.5760971786833856
+        },
+        {
+          "line": 10,
+          "class_id": 10,
+          "class_name": "Traffic light",
+          "area_at_640": 1109.3188267007993,
+          "short_side_at_640": 22.0,
+          "raster_pixels": 2607,
+          "extent": 1.0
+        },
+        {
+          "line": 11,
+          "class_id": 10,
+          "class_name": "Traffic light",
+          "area_at_640": 1123.5420444672052,
+          "short_side_at_640": 22.0,
+          "raster_pixels": 2640,
+          "extent": 1.0
+        },
+        {
+          "line": 12,
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "area_at_640": 2191.553951154765,
+          "short_side_at_640": 60.666666666666664,
+          "raster_pixels": 5182,
+          "extent": 0.45923431407302373
+        },
+        {
+          "line": 13,
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "area_at_640": 3536.2225510270946,
+          "short_side_at_640": 62.666666666666664,
+          "raster_pixels": 8233,
+          "extent": 0.5687344570323294
+        },
+        {
+          "line": 14,
+          "class_id": 6,
+          "class_name": "Bicycle",
+          "area_at_640": 2346.880537613015,
+          "short_side_at_640": 56.0,
+          "raster_pixels": 5549,
+          "extent": 0.47869220151828845
+        }
+      ],
+      "issues": [
+        {
+          "line": 13,
+          "reason": "overlap_with_L12:53_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 14,
+          "reason": "overlap_with_L12:57_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/e99f279c3cb87e49.png"
+    },
+    {
+      "image": "sample_04.jpg",
+      "image_sha256": "57d0b2d2076254e3632631aeba18693116ac83f07eaf00cfec73783b5c34ff2b",
+      "label_sha256": "d5b73a7f66da85eb0898a8c937a2dba56179cf387c466e25b59eb683fcd2a61b",
+      "width": 960,
+      "height": 540,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 2,
+          "class_name": "Truck",
+          "area_at_640": 2643.349733338073,
+          "short_side_at_640": 37.333333333333336,
+          "raster_pixels": 6109,
+          "extent": 0.8264339826839827
+        },
+        {
+          "line": 2,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 399.1097022337499,
+          "short_side_at_640": 27.333333333333332,
+          "raster_pixels": 977,
+          "extent": 0.5180275715800636
+        },
+        {
+          "line": 3,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 1923.9934533120277,
+          "short_side_at_640": 32.666666666666664,
+          "raster_pixels": 4490,
+          "extent": 0.6787603930461074
+        },
+        {
+          "line": 4,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 1080.6690798720979,
+          "short_side_at_640": 40.0,
+          "raster_pixels": 2538,
+          "extent": 0.5875
+        },
+        {
+          "line": 5,
+          "class_id": 2,
+          "class_name": "Truck",
+          "area_at_640": 17787.122262374392,
+          "short_side_at_640": 92.66666666666667,
+          "raster_pixels": 40591,
+          "extent": 0.8249197252367597
+        },
+        {
+          "line": 6,
+          "class_id": 7,
+          "class_name": "Cyclist",
+          "area_at_640": 1829.5572045312267,
+          "short_side_at_640": 60.0,
+          "raster_pixels": 4300,
+          "extent": 0.4594017094017094
+        },
+        {
+          "line": 7,
+          "class_id": 7,
+          "class_name": "Cyclist",
+          "area_at_640": 2043.3278666877413,
+          "short_side_at_640": 62.666666666666664,
+          "raster_pixels": 4789,
+          "extent": 0.46315280464216635
+        },
+        {
+          "line": 8,
+          "class_id": 10,
+          "class_name": "Traffic light",
+          "area_at_640": 1047.0914221824073,
+          "short_side_at_640": 21.333333333333332,
+          "raster_pixels": 2464,
+          "extent": 1.0
+        },
+        {
+          "line": 9,
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "area_at_640": 1784.447422156768,
+          "short_side_at_640": 56.0,
+          "raster_pixels": 4198,
+          "extent": 0.5552910052910053
+        }
+      ],
+      "issues": [
+        {
+          "line": 5,
+          "reason": "overlap_with_L4:43_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/aab415076b1b519a.png"
+    },
+    {
+      "image": "sample_05.jpg",
+      "image_sha256": "b5b83a72fa80fa1d92901e200dc45317f194fabd9478f09bf9f527cd4755fc06",
+      "label_sha256": "64f675e595ecaf9a52fa8d8aec07a0ecc5d7ab57be9c17593f4b0ba1120d0639",
+      "width": 960,
+      "height": 540,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 436.22973780479697,
+          "short_side_at_640": 24.666666666666668,
+          "raster_pixels": 1053,
+          "extent": 0.5580286168521462
+        },
+        {
+          "line": 2,
+          "class_id": 7,
+          "class_name": "Cyclist",
+          "area_at_640": 385.9974933120384,
+          "short_side_at_640": 32.0,
+          "raster_pixels": 963,
+          "extent": 0.36477272727272725
+        },
+        {
+          "line": 3,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 3101.121288806507,
+          "short_side_at_640": 49.333333333333336,
+          "raster_pixels": 7185,
+          "extent": 0.548557031607879
+        },
+        {
+          "line": 4,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 4946.226764428815,
+          "short_side_at_640": 52.0,
+          "raster_pixels": 11382,
+          "extent": 0.6755698005698005
+        },
+        {
+          "line": 5,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 6209.978159923275,
+          "short_side_at_640": 58.666666666666664,
+          "raster_pixels": 14256,
+          "extent": 0.6694214876033058
+        },
+        {
+          "line": 6,
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "area_at_640": 2869.3301333761156,
+          "short_side_at_640": 58.0,
+          "raster_pixels": 6710,
+          "extent": 0.5629666918365634
+        },
+        {
+          "line": 7,
+          "class_id": 6,
+          "class_name": "Bicycle",
+          "area_at_640": 2168.2112711042464,
+          "short_side_at_640": 53.333333333333336,
+          "raster_pixels": 5138,
+          "extent": 0.4865530303030303
+        },
+        {
+          "line": 8,
+          "class_id": 6,
+          "class_name": "Bicycle",
+          "area_at_640": 2235.9942533375943,
+          "short_side_at_640": 54.0,
+          "raster_pixels": 5294,
+          "extent": 0.4841335162322817
+        },
+        {
+          "line": 9,
+          "class_id": 9,
+          "class_name": "Sign",
+          "area_at_640": 450.21849776638874,
+          "short_side_at_640": 16.0,
+          "raster_pixels": 1019,
+          "extent": 0.7320402298850575
+        },
+        {
+          "line": 10,
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "area_at_640": 3576.229031115963,
+          "short_side_at_640": 62.0,
+          "raster_pixels": 8312,
+          "extent": 0.5803658706884514
+        }
+      ],
+      "issues": [
+        {
+          "line": 3,
+          "reason": "overlap_with_L2:45_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 5,
+          "reason": "overlap_with_L3:100_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 9,
+          "reason": "overlap_with_L1:32_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/cf355c9f33fd49c9.png"
+    },
+    {
+      "image": "sample_06.jpg",
+      "image_sha256": "d0cd992360976b226423c1bf9e905528e4009312b66fe569ecba14fb54fca969",
+      "label_sha256": "8e5d75c3428d87db0c85eded592d4fa48c54fcc9e9eb52ae755165f0713c7396",
+      "width": 960,
+      "height": 540,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 1078.2145244160572,
+          "short_side_at_640": 31.333333333333332,
+          "raster_pixels": 2533,
+          "extent": 0.7382687263188574
+        },
+        {
+          "line": 2,
+          "class_id": 2,
+          "class_name": "Truck",
+          "area_at_640": 8608.47096890884,
+          "short_side_at_640": 67.33333333333333,
+          "raster_pixels": 19806,
+          "extent": 0.7600736817867834
+        },
+        {
+          "line": 3,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 1111.9935999742438,
+          "short_side_at_640": 45.333333333333336,
+          "raster_pixels": 2629,
+          "extent": 0.44955540355677154
+        },
+        {
+          "line": 4,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 1689.771275596604,
+          "short_side_at_640": 48.666666666666664,
+          "raster_pixels": 3936,
+          "extent": 0.5558536929812173
+        },
+        {
+          "line": 5,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 1306.4328355967973,
+          "short_side_at_640": 42.0,
+          "raster_pixels": 3052,
+          "extent": 0.6636225266362252
+        },
+        {
+          "line": 6,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 5862.198604492687,
+          "short_side_at_640": 62.0,
+          "raster_pixels": 13465,
+          "extent": 0.6521844425070231
+        },
+        {
+          "line": 7,
+          "class_id": 3,
+          "class_name": "Other vehicle",
+          "area_at_640": 30016.47034218249,
+          "short_side_at_640": 132.0,
+          "raster_pixels": 68385,
+          "extent": 0.76411236256369
+        },
+        {
+          "line": 8,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 3851.326773273922,
+          "short_side_at_640": 76.0,
+          "raster_pixels": 8924,
+          "extent": 0.6068271453828369
+        },
+        {
+          "line": 9,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 1770.641933530078,
+          "short_side_at_640": 39.333333333333336,
+          "raster_pixels": 4242,
+          "extent": 0.5446841294298922
+        },
+        {
+          "line": 10,
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "area_at_640": 2551.552177766396,
+          "short_side_at_640": 60.0,
+          "raster_pixels": 5977,
+          "extent": 0.567616334283001
+        },
+        {
+          "line": 11,
+          "class_id": 9,
+          "class_name": "Sign",
+          "area_at_640": 1653.3487466496124,
+          "short_side_at_640": 40.666666666666664,
+          "raster_pixels": 3843,
+          "extent": 1.0
+        }
+      ],
+      "issues": [
+        {
+          "line": 3,
+          "reason": "overlap_with_L2:117_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 6,
+          "reason": "overlap_with_L3:36_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 7,
+          "reason": "overlap_with_L5:59_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 8,
+          "reason": "overlap_with_L7:310_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 9,
+          "reason": "overlap_with_L7:93_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 11,
+          "reason": "overlap_with_L1:36_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/eb1cc07b0911fd7a.png"
+    },
+    {
+      "image": "sample_07.jpg",
+      "image_sha256": "af31cc04ac7e3bb63717752e97ca376d347066c31a946bea54f185481d60761f",
+      "label_sha256": "6a630117778b32eb7eaa3e1f8c01ed9d64d72cfd8f402a80a918cb163536a391",
+      "width": 960,
+      "height": 540,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 45.33573335040444,
+          "short_side_at_640": 6.666666666666667,
+          "raster_pixels": 129,
+          "extent": 0.5608695652173913
+        },
+        {
+          "line": 2,
+          "class_id": 7,
+          "class_name": "Cyclist",
+          "area_at_640": 313.3347865344831,
+          "short_side_at_640": 24.666666666666668,
+          "raster_pixels": 778,
+          "extent": 0.48900062853551224
+        },
+        {
+          "line": 3,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 797.5644177023867,
+          "short_side_at_640": 34.666666666666664,
+          "raster_pixels": 1905,
+          "extent": 0.6105769230769231
+        },
+        {
+          "line": 4,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 810.8887909247925,
+          "short_side_at_640": 38.666666666666664,
+          "raster_pixels": 1937,
+          "extent": 0.5137931034482759
+        },
+        {
+          "line": 5,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 749.9982667392032,
+          "short_side_at_640": 32.666666666666664,
+          "raster_pixels": 1771,
+          "extent": 0.695054945054945
+        },
+        {
+          "line": 6,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 959.9927863681158,
+          "short_side_at_640": 45.333333333333336,
+          "raster_pixels": 2312,
+          "extent": 0.4473684210526316
+        },
+        {
+          "line": 7,
+          "class_id": 7,
+          "class_name": "Cyclist",
+          "area_at_640": 2101.1178889729763,
+          "short_side_at_640": 64.0,
+          "raster_pixels": 4947,
+          "extent": 0.4560287610619469
+        },
+        {
+          "line": 8,
+          "class_id": 1,
+          "class_name": "Bus",
+          "area_at_640": 23504.676546700943,
+          "short_side_at_640": 114.0,
+          "raster_pixels": 53317,
+          "extent": 0.8472698957538775
+        },
+        {
+          "line": 9,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 106.44772884480003,
+          "short_side_at_640": 5.333333333333333,
+          "raster_pixels": 288,
+          "extent": 0.75
+        },
+        {
+          "line": 10,
+          "class_id": 9,
+          "class_name": "Sign",
+          "area_at_640": 943.1124221951791,
+          "short_side_at_640": 40.0,
+          "raster_pixels": 2221,
+          "extent": 0.5213615023474178
+        },
+        {
+          "line": 11,
+          "class_id": 10,
+          "class_name": "Traffic light",
+          "area_at_640": 1123.5757510656008,
+          "short_side_at_640": 22.0,
+          "raster_pixels": 2640,
+          "extent": 1.0
+        },
+        {
+          "line": 12,
+          "class_id": 9,
+          "class_name": "Sign",
+          "area_at_640": 1023.5626978176242,
+          "short_side_at_640": 42.0,
+          "raster_pixels": 2404,
+          "extent": 0.5156585156585156
+        },
+        {
+          "line": 13,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 1826.6540399999485,
+          "short_side_at_640": 37.333333333333336,
+          "raster_pixels": 4390,
+          "extent": 0.568064182194617
+        },
+        {
+          "line": 14,
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "area_at_640": 3563.55973774082,
+          "short_side_at_640": 62.666666666666664,
+          "raster_pixels": 8291,
+          "extent": 0.5690459849004804
+        }
+      ],
+      "issues": [
+        {
+          "line": 1,
+          "reason": "short_side_under_about_1.25_percent_image_long_side: heuristic, human review required"
+        },
+        {
+          "line": 1,
+          "reason": "tiny_at_640: heuristic, human review required"
+        },
+        {
+          "line": 7,
+          "reason": "overlap_with_L6:69_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 8,
+          "reason": "overlap_with_L5:39_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 9,
+          "reason": "short_side_under_about_1.25_percent_image_long_side: heuristic, human review required"
+        },
+        {
+          "line": 10,
+          "reason": "overlap_with_L1:17_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 12,
+          "reason": "overlap_with_L8:160_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 13,
+          "reason": "overlap_with_L8:49_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/4488868cfc263fe1.png"
+    },
+    {
+      "image": "sample_08.jpg",
+      "image_sha256": "0577723bf06bf59316860ce534b17f7293a38806d30e52d0be9bc7d2135c3a22",
+      "label_sha256": "66d9ed609b48f0bbe1befadd52ad87076642fcfd64c3cf06e113df9ab24b2d16",
+      "width": 960,
+      "height": 540,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 1476.6647601022612,
+          "short_side_at_640": 28.666666666666668,
+          "raster_pixels": 3464,
+          "extent": 0.6769591557553254
+        },
+        {
+          "line": 2,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 185.55509779200025,
+          "short_side_at_640": 8.666666666666666,
+          "raster_pixels": 474,
+          "extent": 0.7441130298273155
+        },
+        {
+          "line": 3,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 3317.79003563513,
+          "short_side_at_640": 52.0,
+          "raster_pixels": 7656,
+          "extent": 0.6173197871311079
+        },
+        {
+          "line": 4,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 841.3413731712353,
+          "short_side_at_640": 32.0,
+          "raster_pixels": 2031,
+          "extent": 0.6132246376811594
+        },
+        {
+          "line": 5,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 6601.970280038381,
+          "short_side_at_640": 67.33333333333333,
+          "raster_pixels": 15166,
+          "extent": 0.6230639661476521
+        },
+        {
+          "line": 6,
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "area_at_640": 3046.219937740989,
+          "short_side_at_640": 58.0,
+          "raster_pixels": 7109,
+          "extent": 0.571417088658468
+        },
+        {
+          "line": 7,
+          "class_id": 6,
+          "class_name": "Bicycle",
+          "area_at_640": 2042.4422088576077,
+          "short_side_at_640": 52.0,
+          "raster_pixels": 4845,
+          "extent": 0.4852764423076923
+        },
+        {
+          "line": 8,
+          "class_id": 9,
+          "class_name": "Sign",
+          "area_at_640": 963.1108355328478,
+          "short_side_at_640": 40.666666666666664,
+          "raster_pixels": 2269,
+          "extent": 0.5166211293260473
+        },
+        {
+          "line": 9,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 1773.105982155812,
+          "short_side_at_640": 38.666666666666664,
+          "raster_pixels": 4268,
+          "extent": 0.5450830140485313
+        },
+        {
+          "line": 10,
+          "class_id": 10,
+          "class_name": "Traffic light",
+          "area_at_640": 1137.799395532798,
+          "short_side_at_640": 22.0,
+          "raster_pixels": 2673,
+          "extent": 1.0
+        }
+      ],
+      "issues": [
+        {
+          "line": 5,
+          "reason": "overlap_with_L4:52_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/e4fbc3de3f3cd319.png"
+    },
+    {
+      "image": "sample_09.jpg",
+      "image_sha256": "22e3b8f5ad56797873b3dcb6fb149f33e56b4be5a33d2b74b1cc36a178abb424",
+      "label_sha256": "a61f546fafab23a163a4c7d043c14a9633218f8cd72a0bd8fdf730b6ecb0691a",
+      "width": 960,
+      "height": 540,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 2,
+          "class_name": "Truck",
+          "area_at_640": 1270.0037599488069,
+          "short_side_at_640": 16.0,
+          "raster_pixels": 3008,
+          "extent": 0.9791666666666666
+        },
+        {
+          "line": 2,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 757.7807554944002,
+          "short_side_at_640": 21.333333333333332,
+          "raster_pixels": 1804,
+          "extent": 0.6959876543209876
+        },
+        {
+          "line": 3,
+          "class_id": 3,
+          "class_name": "Other vehicle",
+          "area_at_640": 592.8797644415944,
+          "short_side_at_640": 23.333333333333332,
+          "raster_pixels": 1402,
+          "extent": 0.8011428571428572
+        },
+        {
+          "line": 4,
+          "class_id": 2,
+          "class_name": "Truck",
+          "area_at_640": 4881.118622169379,
+          "short_side_at_640": 53.333333333333336,
+          "raster_pixels": 11373,
+          "extent": 0.6934756097560976
+        },
+        {
+          "line": 5,
+          "class_id": 1,
+          "class_name": "Bus",
+          "area_at_640": 20248.393568832045,
+          "short_side_at_640": 80.66666666666667,
+          "raster_pixels": 46101,
+          "extent": 0.8839907192575406
+        },
+        {
+          "line": 6,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 3157.5629511933585,
+          "short_side_at_640": 42.0,
+          "raster_pixels": 7308,
+          "extent": 0.6744186046511628
+        },
+        {
+          "line": 7,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 2042.224444454132,
+          "short_side_at_640": 49.333333333333336,
+          "raster_pixels": 4690,
+          "extent": 0.5511163337250293
+        },
+        {
+          "line": 8,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 3010.44987544318,
+          "short_side_at_640": 74.0,
+          "raster_pixels": 6995,
+          "extent": 0.5082098227259517
+        },
+        {
+          "line": 9,
+          "class_id": 9,
+          "class_name": "Sign",
+          "area_at_640": 1066.221484415928,
+          "short_side_at_640": 37.333333333333336,
+          "raster_pixels": 2472,
+          "extent": 0.7882653061224489
+        },
+        {
+          "line": 10,
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "area_at_640": 2707.9953333118965,
+          "short_side_at_640": 57.333333333333336,
+          "raster_pixels": 6335,
+          "extent": 0.5538555691554468
+        },
+        {
+          "line": 11,
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "area_at_640": 1678.6626532992213,
+          "short_side_at_640": 55.333333333333336,
+          "raster_pixels": 3955,
+          "extent": 0.5414841182913472
+        },
+        {
+          "line": 12,
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "area_at_640": 3423.3173200510237,
+          "short_side_at_640": 60.666666666666664,
+          "raster_pixels": 7973,
+          "extent": 0.5802343352012226
+        }
+      ],
+      "issues": [
+        {
+          "line": 4,
+          "reason": "overlap_with_L2:22_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 5,
+          "reason": "overlap_with_L1:192_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 9,
+          "reason": "overlap_with_L4:138_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/ef377359124168b0.png"
+    },
+    {
+      "image": "sample_10.jpg",
+      "image_sha256": "e7e4f4eb585b39461227fc7b77932f72f9d62ee2405d0cc6dd553636e72f19ae",
+      "label_sha256": "0a32cb275c016c23a865efde7a3925c246b0af438c2d76a0a35492e12acbea9d",
+      "width": 960,
+      "height": 540,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 557.5537244158113,
+          "short_side_at_640": 32.0,
+          "raster_pixels": 1348,
+          "extent": 0.5200617283950617
+        },
+        {
+          "line": 2,
+          "class_id": 3,
+          "class_name": "Other vehicle",
+          "area_at_640": 7786.907724441593,
+          "short_side_at_640": 74.66666666666667,
+          "raster_pixels": 17873,
+          "extent": 0.6513483965014577
+        },
+        {
+          "line": 3,
+          "class_id": 5,
+          "class_name": "Motorcyclist",
+          "area_at_640": 1008.4437956737246,
+          "short_side_at_640": 42.666666666666664,
+          "raster_pixels": 2395,
+          "extent": 0.5197482638888888
+        },
+        {
+          "line": 4,
+          "class_id": 2,
+          "class_name": "Truck",
+          "area_at_640": 20127.567471091104,
+          "short_side_at_640": 98.66666666666667,
+          "raster_pixels": 45898,
+          "extent": 0.822603770879633
+        },
+        {
+          "line": 5,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 1689.1221155322,
+          "short_side_at_640": 36.666666666666664,
+          "raster_pixels": 4056,
+          "extent": 0.5716701902748414
+        },
+        {
+          "line": 6,
+          "class_id": 6,
+          "class_name": "Bicycle",
+          "area_at_640": 2083.336800076995,
+          "short_side_at_640": 52.0,
+          "raster_pixels": 4935,
+          "extent": 0.48668639053254437
+        },
+        {
+          "line": 7,
+          "class_id": 4,
+          "class_name": "Motorcycle",
+          "area_at_640": 2679.3128268287546,
+          "short_side_at_640": 60.666666666666664,
+          "raster_pixels": 6272,
+          "extent": 0.47863247863247865
+        },
+        {
+          "line": 8,
+          "class_id": 6,
+          "class_name": "Bicycle",
+          "area_at_640": 2339.108062271225,
+          "short_side_at_640": 55.333333333333336,
+          "raster_pixels": 5534,
+          "extent": 0.48314999126942554
+        },
+        {
+          "line": 9,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 2015.7885821952732,
+          "short_side_at_640": 40.666666666666664,
+          "raster_pixels": 4815,
+          "extent": 0.5598186257411929
+        }
+      ],
+      "issues": [
+        {
+          "line": 8,
+          "reason": "overlap_with_L7:56_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/9e09a50514f3eb2e.png"
+    }
+  ],
+  "note": "Flags are review candidates, not confirmed semantic errors. No label edits or approvals performed."
+}
