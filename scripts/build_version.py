@@ -121,27 +121,33 @@ def main(argv=None):
     else:
         vc = cfg.get("val", {})
         pool_src = set(vc.get("from_sources") or [s["name"] for s in cfg["sources"]])
-        groups = defaultdict(list)
-        for it in items:
-            if it["source"] in pool_src:
-                groups[it["group"]].append(it["key"])
-        order = sorted(groups)
-        random.Random(55).shuffle(order)
-        target = round(vc.get("ratio", 0.12) * sum(len(v) for v in groups.values()))
-        per_src_cap = vc.get("max_per_source")
-        val_keys, per_src = set(), Counter()
-        for g in order:
-            src = g.split(":", 1)[0]
-            if per_src_cap and per_src[src] >= per_src_cap.get(src, 1 << 30):
-                continue
-            val_keys.update(groups[g])
-            per_src[src] += len(groups[g])
-            if len(val_keys) >= target:
-                break
+        per_src = Counter()
+        if vc.get("orig_prefix"):  # e.g. a source's official validation split: val = all of it
+            val_keys = {it["key"] for it in items if it["source"] in pool_src and str(it["orig"]).startswith(vc["orig_prefix"])}
+            how = f"orig prefix {vc['orig_prefix']!r} of {sorted(pool_src)}"
+        else:
+            groups = defaultdict(list)
+            for it in items:
+                if it["source"] in pool_src:
+                    groups[it["group"]].append(it["key"])
+            order = sorted(groups)
+            random.Random(55).shuffle(order)
+            target = round(vc.get("ratio", 0.12) * sum(len(v) for v in groups.values()))
+            per_src_cap = vc.get("max_per_source")
+            val_keys = set()
+            for g in order:
+                src = g.split(":", 1)[0]
+                if per_src_cap and per_src[src] >= per_src_cap.get(src, 1 << 30):
+                    continue
+                val_keys.update(groups[g])
+                per_src[src] += len(groups[g])
+                if len(val_keys) >= target:
+                    break
+            how = "seed 55, group-wise"
         val_list.parent.mkdir(parents=True, exist_ok=True)
-        val_list.write_text(f"# frozen val list created by build_version.py for {cfg['name']} (seed 55, group-wise). DO NOT EDIT casually.\n"
+        val_list.write_text(f"# frozen val list created by build_version.py for {cfg['name']} ({how}). DO NOT EDIT casually.\n"
                             + "\n".join(sorted(val_keys)) + "\n", encoding="utf-8")
-        print(f"val: NEW frozen list {val_list}: {len(val_keys)} images {dict(per_src)}")
+        print(f"val: NEW frozen list {val_list}: {len(val_keys)} images ({how})")
     val_groups = {by_key[k]["group"] for k in val_keys}
     leak_group = [it["key"] for it in items if it["key"] not in val_keys and it["group"] in val_groups]
     train_items = [it for it in items if it["key"] not in val_keys and it["group"] not in val_groups]

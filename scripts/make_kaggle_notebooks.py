@@ -47,14 +47,14 @@ def code(text):
     return {"cell_type": "code", "metadata": {}, "execution_count": None, "outputs": [], "source": text.strip("\n").splitlines(True)}
 
 
-def prep_notebook(vcfg_path, other_frac, workers):
+def prep_notebook(vcfg_path, other_frac, workers, max_train=1700, max_val=300):
     b64, sha, n = code_bundle()
     vcfg = yaml.safe_load((ROOT / vcfg_path).read_text(encoding="utf-8"))
     name = vcfg["name"]
     cells = [
         md(f"""
 # VietSight — chuẩn bị dữ liệu trên Kaggle ({name})
-Kaggle: **Accelerator: None (CPU)**, **Internet: On**. Run all. Thời gian: tải ~21 GB stream Mapillary + chuyển đổi (~30–60 phút).
+Kaggle: **Accelerator: None (CPU)**, **Internet: On**. Run all. Tải stream Mapillary, dừng khi đủ số ảnh (MAX_KEEP), chuyển đổi, build. Lỗi mạng: tự nối lại; chạy lại với FETCH=False để dùng dữ liệu đã tải.
 Kết quả (Output của notebook): `versions/{name}/` (images/labels train+val, `data.yaml`) + `versions/{name}_report/` + `val_frozen.txt`.
 Sau đó ở notebook huấn luyện: *Add Input → Notebook Output → notebook này*.
 Code repo được nhúng (sha256 `{sha[:16]}…`, {n} tệp) — sinh bởi `scripts/make_kaggle_notebooks.py`, không sửa tay.
@@ -68,6 +68,7 @@ PROCESSED = "/tmp/processed"
 OUT_ROOT = "/kaggle/working/versions"
 FETCH = True                # False = dùng dữ liệu đã có trong RAW (chạy lại nhanh)
 MAX_ANN = 0                 # >0: chỉ đọc N annotation đầu (thử nhanh)
+MAX_KEEP = "training={max_train} validation={max_val}"   # số ảnh giữ mỗi split; tải DỪNG khi đủ (không đọc hết 21 GB)
 """),
         code(f"""
 import base64, hashlib, io, os, sys, zipfile, subprocess
@@ -80,15 +81,29 @@ os.chdir(REPO)
 print("code bundle {sha[:16]} ->", REPO)
 """),
         code("""
-!"{sys.executable}" -m pip install -q opencv-python-headless pycocotools pyyaml tqdm requests 2>&1 | tail -2
+import subprocess, sys
+
+
+def sh(cmd, check=True):
+    # run a shell command, stream its output into the notebook, STOP the notebook when it fails
+    print("$", cmd, flush=True)
+    p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace", bufsize=1)
+    for line in p.stdout:
+        print(line, end="", flush=True)
+    if p.wait() != 0 and check:
+        raise RuntimeError(f"FAILED ({p.returncode}): {cmd}")
+"""),
+        code("""
+sh(f'"{sys.executable}" -m pip install -q opencv-python-headless pycocotools pyyaml tqdm requests')
 """),
         code("""
 if FETCH:
-    !"{sys.executable}" scripts/fetch_sly_tar.py mapillary_vistas {RAW}/mapillary_vistas --splits training validation --prefer motorcycle motorcyclist bicycle bicyclist "other rider" "other vehicle" "wheeled slow" --other-frac {MAPILLARY_OTHER_FRAC} --max-ann {MAX_ANN} --max-side 1024
-!df -h /tmp /kaggle/working || true
+    sh("df -h /tmp /kaggle/working", check=False)
+    sh(f'"{sys.executable}" scripts/fetch_sly_tar.py mapillary_vistas {RAW}/mapillary_vistas --splits training validation --prefer motorcycle motorcyclist bicycle bicyclist "other rider" "other vehicle" "wheeled slow" --other-frac {MAPILLARY_OTHER_FRAC} --max-ann {MAX_ANN} --max-keep {MAX_KEEP} --max-side 1024')
+sh("df -h /tmp /kaggle/working; du -sh " + RAW, check=False)
 """),
         code("""
-!"{sys.executable}" scripts/convert_supervisely.py --config mapillary_vistas --root {RAW}/mapillary_vistas --workers {WORKERS} --out {PROCESSED}
+sh(f'"{sys.executable}" scripts/convert_supervisely.py --config mapillary_vistas --root {RAW}/mapillary_vistas --workers {WORKERS} --out {PROCESSED}')
 """),
         code("""
 # Nguồn đã xử lý sẵn được attach (vd. dữ liệu VN của nhóm, đóng gói bằng scripts/package_kaggle.py source <tên>)
@@ -101,7 +116,7 @@ for meta in glob.glob("/kaggle/input/**/processed/*/meta.jsonl", recursive=True)
         print("nguồn đã xử lý:", src, "->", dst)
 """),
         code("""
-!"{sys.executable}" scripts/build_version.py {VERSION_CONFIG} --processed {PROCESSED} --out-root {OUT_ROOT}
+sh(f'"{sys.executable}" scripts/build_version.py {VERSION_CONFIG} --processed {PROCESSED} --out-root {OUT_ROOT}')
 """),
         code(f"""
 import shutil
@@ -175,11 +190,13 @@ print("Đã gom vào", _dst, sorted(p.name for p in _dst.iterdir()))
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--version-config", default="configs/versions/v1_first_gear.yaml")
-    ap.add_argument("--epochs", type=int, default=60)
+    ap.add_argument("--epochs", type=int, default=25)
     ap.add_argument("--batch", type=int, default=16)
-    ap.add_argument("--other-frac", type=float, default=0.3)
+    ap.add_argument("--other-frac", type=float, default=0.15)
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--kaggle-user", default="YOUR_KAGGLE_USERNAME")
+    ap.add_argument("--max-train", type=int, default=1700)
+    ap.add_argument("--max-val", type=int, default=300)
     args = ap.parse_args()
     vname = yaml.safe_load((ROOT / args.version_config).read_text(encoding="utf-8"))["name"]
     u = args.kaggle_user
@@ -187,7 +204,7 @@ def main():
     (OUT / "prep").mkdir(parents=True, exist_ok=True)
     (OUT / "train").mkdir(parents=True, exist_ok=True)
     p1 = OUT / "prep" / "VietSight_prep_kaggle.ipynb"
-    p1.write_text(json.dumps(prep_notebook(args.version_config, args.other_frac, args.workers), ensure_ascii=False, indent=1), encoding="utf-8")
+    p1.write_text(json.dumps(prep_notebook(args.version_config, args.other_frac, args.workers, args.max_train, args.max_val), ensure_ascii=False, indent=1), encoding="utf-8")
     p2 = OUT / "train" / "VietSight_TEAM55_kaggle.ipynb"
     p2.write_text(json.dumps(train_notebook(args.epochs, args.batch, vname), ensure_ascii=False, indent=1), encoding="utf-8")
     # `kaggle kernels push -p notebooks/kaggle/prep`, then `-p notebooks/kaggle/train` once prep finished. Private, Internet on.
