@@ -8,6 +8,8 @@ Mục tiêu người dùng: có bản READY đầu tiên trong tối **27/11/202
 
 **Phân công inference:** Codex DATA nhận riêng batch `vr_tsd_e25_coco_review001`, 20 ảnh chụp thật mới, input tại `data/versions/vr_tsd_e25_coco_review001_input/manifest.json`; output riêng `data/versions/vr_tsd_e25_coco_review001_proposals/`. Không chạy lại batch này bên Claude. Không chạy lại 100 ảnh round001 đang sửa; đề xuất e3 trước đây vẫn được ghi đúng là e3. Input mới chỉ có bbox Sign làm hint, không có GT segmentation; ba ảnh minh họa biển trên nền trắng đã thấy trong mẫu bị loại khỏi batch này.
 
+**Batch đã hoàn thành inference:** CPU/2 threads, e25 + COCO, 20 ảnh, 8 ảnh có đề xuất, tổng 7 Sign + 1 Car. Không có mask nguồn hoặc nhãn human-reviewed; output vẫn pseudo_unreviewed. Kết quả và gói sửa nhãn tại [VR_TSD_INTAKE.md](qa/VR_TSD_INTAKE.md). Không cần chạy lại batch này trừ khi thay model/tham số và ghi revision mới rõ ràng.
+
 - Checkpoint **e25 `best.pt` hoặc `submission.zip`**, kèm run/epoch/hash để phân biệt với e3/e50. Nơi nhận riêng: `C:\My Future\VietSight-data-qa\data\raw\prelabel_models\`. Yêu cầu nhận file đã được đáp ứng qua người dùng, hash xác minh ở trên.
 - Nếu Claude chạy ở Colab: nhận tập ảnh và nhãn nguồn ở worktree này, xuất proposals vào thư mục **mới**, giữ filename, `proposals.jsonl`, class names và checksum. Gửi lại đường dẫn thật, không sửa nhãn CVAT của nhóm hoặc ZIP đã phát.
 

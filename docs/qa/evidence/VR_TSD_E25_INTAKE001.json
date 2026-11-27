@@ -1,0 +1,389 @@
+{
+  "sample": {
+    "source": "vietnam-traffic-sign-recognition-benchmark/vr-tsd/2",
+    "declared_license": "CC BY 4.0",
+    "archive_bytes_not_downloaded_full": 460610938,
+    "network_bytes_read": 3749552,
+    "annotation_entry": "test/_annotations.coco.json",
+    "annotation_image_records": 1151,
+    "annotation_instances": 1922,
+    "sample_images_downloaded": 40,
+    "sample_instances": 45,
+    "sample_nonempty_segmentations": 0,
+    "categories": [
+      {
+        "id": 0,
+        "name": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is",
+        "supercategory": "none"
+      },
+      {
+        "id": 1,
+        "name": "102-cam-di-nguoc-chieu",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 2,
+        "name": "103a-cam-oto",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 3,
+        "name": "103b-cam-oto-re-phai",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 4,
+        "name": "103c-cam-oto-re-trai",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 5,
+        "name": "106-cam-oto-tai",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 6,
+        "name": "107-cam-oto-khach-va-oto-tai",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 7,
+        "name": "123a-cam-re-trai",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 8,
+        "name": "123b-cam-re-phai",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 9,
+        "name": "124a-cam-quay-dau-xe",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 10,
+        "name": "124b-cam-oto-quay-dau-xe",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 11,
+        "name": "124c-cam-re-trai-va-cam-quay-dau-xe",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 12,
+        "name": "125-cam-vuot",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 13,
+        "name": "127-toc-do-toi-da-100",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 14,
+        "name": "127-toc-do-toi-da-20",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 15,
+        "name": "127-toc-do-toi-da-30",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 16,
+        "name": "127-toc-do-toi-da-40",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 17,
+        "name": "127-toc-do-toi-da-50",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 18,
+        "name": "127-toc-do-toi-da-60",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 19,
+        "name": "127-toc-do-toi-da-70",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 20,
+        "name": "127-toc-do-toi-da-80",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 21,
+        "name": "127-toc-do-toi-da-90",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 22,
+        "name": "128-cam-su-dung-coi",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 23,
+        "name": "130-cam-dung-va-do-xe",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 24,
+        "name": "131a-cam-do-xe",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 25,
+        "name": "131b-cam-do-xe-ngay-le",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 26,
+        "name": "131c-cam-do-xe-ngay-chan",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 27,
+        "name": "133-het-cam-vuot",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 28,
+        "name": "134-het-han-che-toc-do-toi-da",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 29,
+        "name": "135-het-tat-ca-cac-lenh-cam",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 30,
+        "name": "136-cam-di-thang",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 31,
+        "name": "137-cam-re-trai-va-re-phai",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 32,
+        "name": "201-cho-ngoat-nguy-hiem",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 33,
+        "name": "203-duong-bi-hep",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 34,
+        "name": "205-duong-giao-nhau",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 35,
+        "name": "207-giao-nhau-voi-duong-khong-uu-tien",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 36,
+        "name": "208-giao-nhau-voi-duong-uu-tien",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 37,
+        "name": "209-giao-nhau-co-tin-hieu-den",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 38,
+        "name": "221-duong-go-ghe",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 39,
+        "name": "224-duong-nguoi-di-bo-cat-ngang",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 40,
+        "name": "225-chu-y-tre-em",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 41,
+        "name": "227-cong-truong",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 42,
+        "name": "245-di-cham",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 43,
+        "name": "301a-cac-xe-chi-duoc-di-thang",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 44,
+        "name": "301b-cac-xe-chi-duoc-re-phai",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 45,
+        "name": "301c-cac-xe-chi-duoc-re-trai",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 46,
+        "name": "301d-cac-xe-chi-duoc-re-phai-2",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 47,
+        "name": "301e-cac-xe-chi-duoc-re-trai-2",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 48,
+        "name": "301h-cac-xe-chi-duoc-di-thang-va-re-trai",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 49,
+        "name": "302a-huong-phai-di-vong-chuong-ngai-vat-1",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 50,
+        "name": "303-noi-giao-nhau-chay-theo-vong-xuyen",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 51,
+        "name": "306-toc-do-toi-thieu-60",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 52,
+        "name": "407a-duong-mot-chieu",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 53,
+        "name": "420-bat-dau-khu-dong-dan-cu",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 54,
+        "name": "421-ket-thuc-khu-dong-dan-cu",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 55,
+        "name": "423a-duong-nguoi-di-bo-sang-ngang-1",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 56,
+        "name": "437-bat-dau-duong-cao-toc",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 57,
+        "name": "438-ket-thuc-duong-cao-toc",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      },
+      {
+        "id": 58,
+        "name": "442-cho",
+        "supercategory": "objects-G3Zw-orpg-traffic-sign-1TU9-U4is"
+      }
+    ],
+    "human_reviewed": false,
+    "status": "images_and_bbox_only_needs_real_masks_and_coverage",
+    "split": "unassigned_pending_capture_group_verification",
+    "selection": "up to three objects; largest max bbox fraction first; max 3 per filename-derived prefix, not independently verified scene IDs"
+  },
+  "e25_identity": {
+    "zip_sha256": "f0b874634ed90bcacd23238c3eb517fa3169bcbefd149a34f6f103a62c56e0de",
+    "onnx_sha256": "87c81673e92feeea0e194d15bb7d69b81c783328b8ca7133b1a2ea5159b607eb",
+    "zip_expected": "f0b874634ed90bcacd23238c3eb517fa3169bcbefd149a34f6f103a62c56e0de",
+    "onnx_expected": "87c81673e92feeea0e194d15bb7d69b81c783328b8ca7133b1a2ea5159b607eb",
+    "zip_match": true,
+    "onnx_match": true
+  },
+  "proposal_batch": {
+    "images": 20,
+    "images_with_proposals": 8,
+    "masks": 8,
+    "instances_by_class": {
+      "Sign": 7,
+      "Car": 1
+    },
+    "status": "pseudo_unreviewed",
+    "device": "cpu",
+    "threads": 2,
+    "source_masks": 0,
+    "human_reviewed": 0,
+    "ready": 0,
+    "split": "unassigned",
+    "owner": "Codex DATA; no round001 rerun"
+  },
+  "package": {
+    "path": "C:\\My Future\\VietSight-data-qa\\data\\versions\\vr_tsd_e25_coco_review001_QA_ONLY.zip",
+    "bytes": 1186852,
+    "sha256": "bef33054650de5bbe12a1ef489ca5cb505b9af7b60624f21fc77ebe8c1767f28",
+    "zip_crc": "pass"
+  },
+  "rights_followup": [
+    {
+      "id": "khaipixel/sidewalk-srgyh",
+      "name": "SideWalk",
+      "license": "CC BY 4.0",
+      "type": "instance-segmentation",
+      "public": true,
+      "images": 279,
+      "url": "https://universe.roboflow.com/khaipixel/sidewalk-srgyh",
+      "checked_date": "2026-11-27"
+    },
+    {
+      "id": "phan-ky-dat/vietnam-traffic-vehicle-detectio",
+      "name": "Vietnam Traffic Vehicle Detectio",
+      "license": "CC BY 4.0",
+      "type": "object-detection",
+      "public": true,
+      "images": 859,
+      "url": "https://universe.roboflow.com/phan-ky-dat/vietnam-traffic-vehicle-detectio",
+      "checked_date": "2026-11-27"
+    },
+    {
+      "id": "vietnam-traffic-sign-recognition-benchmark/vr-tsd",
+      "name": "VR-TSD",
+      "license": "CC BY 4.0",
+      "type": "object-detection",
+      "public": true,
+      "images": 8078,
+      "url": "https://universe.roboflow.com/vietnam-traffic-sign-recognition-benchmark/vr-tsd",
+      "checked_date": "2026-11-27"
+    }
+  ],
+  "returns_received": 0,
+  "training_started": false,
+  "gpu_used": false,
+  "verification": {
+    "nested_zip_crc": true,
+    "all_file_checksums": true,
+    "bbox_not_copied_as_masks": true,
+    "old_five_packages_unchanged": true,
+    "v1_frozen_list_unchanged": true,
+    "human_reviews_received": 0
+  }
+}
