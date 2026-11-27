@@ -1,0 +1,53 @@
+# Machine-readable provenance of every data source (human version: docs/DATA_SOURCES.md).
+# Numbers marked null are NOT known yet: fill them from data/processed/<name>/summary.json and
+# data/versions/<version>_report/stats.json after each build. Never type a number that was not measured.
+# status: candidate | in_use | rejected | test_only
+sources:
+  - name: mapillary_vistas
+    status: in_use            # V1
+    title: Mapillary Vistas Dataset v2.0
+    url: https://www.mapillary.com/dataset/vistas
+    mirror: https://datasetninja.com/mapillary-vistas-dataset
+    license: CC BY-NC-SA 4.0 (per mirror LICENSE.md citing mapillary.com; re-check on the official page)
+    images_original: 25000      # per mirror: 18000 training, 2000 validation, 5000 testing (unlabeled)
+    images_used: null           # -> data/versions/vietsight_v1_report/stats.json images_by_source
+    instances_by_class: null    # -> same file, instances_by_source
+    config: configs/sources/mapillary_vistas.yaml
+    converter: scripts/fetch_sly_tar.py + scripts/convert_supervisely.py (z_order painter, rider+vehicle union)
+    dropped_labels: see config mapping (ignore) + processed summary.json 'dropped' and 'unmapped_labels'
+    review: automatic rules + rendered previews checked by QA (scripts/preview.py); ambiguous riders -> review queue
+  - name: bdd100k_10k
+    status: candidate           # no Sign / Traffic light labels -> needs prelabel fill + review before use
+    title: BDD100K 10K images (instance segmentation)
+    url: https://www.bdd100k.com/
+    mirror: https://datasetninja.com/bdd100k-10k
+    license: BDD100K license (UC Regents) - educational, research, not-for-profit use without fee (mirror LICENSE.md, source doc.bdd100k.com/license.html)
+    images_original: 10000      # per mirror: 7000 train, 1000 val, 2000 test (unlabeled)
+    images_used: 0
+    config: configs/sources/bdd100k_10k.yaml
+    converter: scripts/fetch_sly_tar.py + scripts/convert_supervisely.py
+  - name: coco2017
+    status: candidate           # generic photos, only stop signs labelled; two-wheeler images only
+    title: COCO 2017 instances
+    url: https://cocodataset.org/#download
+    license: annotations CC BY 4.0; images under individual Flickr licenses (verify cocodataset.org/#termsofuse)
+    images_original: 123287     # train2017 + val2017
+    images_used: 0
+    config: configs/sources/coco2017.yaml
+    converter: scripts/download_sources.py coco2017 + scripts/convert_coco.py
+  - name: idd
+    status: candidate           # registration needed at idd.insaan.iiit.ac.in; license unknown per mirror
+    title: India Driving Dataset (IDD Segmentation)
+    url: http://idd.insaan.iiit.ac.in/
+    license: unknown (mirror says "License is unknown") -> must be confirmed before use
+    images_used: 0
+  - name: vn_team
+    status: candidate           # V2: team-collected Vietnamese street images, AI pre-label + CVAT correction
+    title: VietSight team photos (Vietnam)
+    license: own data (team members' photos); faces/plates policy: see docs/LABEL_GUIDELINE.md
+    converter: scripts/prelabel.py new -> review_queue.py export/accept (CVAT) -> processed/vn_team
+  - name: sample_data
+    status: test_only           # official synthetic sample: pipeline tests only, NEVER trained on
+    title: Organisers' sample_data.zip (10 synthetic images)
+  - name: data_vf
+    status: rejected_for_now    # ~/Downloads/Data-VF.zip: camera+LiDAR sequences, no 2D masks, unknown license/origin

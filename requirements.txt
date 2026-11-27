@@ -1,0 +1,13 @@
+# Data pipeline (local / Kaggle CPU). Python 3.12 (same as the official notebook).
+numpy
+pillow
+pyyaml
+tqdm
+requests
+opencv-python-headless
+pycocotools
+# Training / export / pre-label: exact versions pinned by the official notebook (PINNED_PACKAGES)
+ultralytics==8.4.214
+onnx==1.23.2
+onnxslim==0.1.99
+onnxruntime==1.32.0

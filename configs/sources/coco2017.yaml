@@ -1,0 +1,29 @@
+name: coco2017
+format: coco
+url: https://cocodataset.org/#download
+download: scripts/download_sources.py coco2017   # annotations zip + only the selected images (by URL)
+license: >-
+  Annotations: CC BY 4.0 (COCO Consortium). Images: individual Flickr licenses (per-image license id kept in meta.jsonl;
+  see the 'licenses' list of the COCO json). Verify on https://cocodataset.org/#termsofuse before redistribution.
+notes: >-
+  Generic photos, not driving scenes. Only images with a two-wheeler are taken (to raise Motorcycle/Motorcyclist/Bicycle/Cyclist).
+  COCO labels only STOP signs: other traffic signs in these images are UNLABELED (missing Sign) -> fill with prelabel + review
+  before relying on it for Sign. COCO 'truck' includes pickups (competition: pickup = Car or Truck? -> see LABEL_GUIDELINE).
+max_side: 1024
+min_area_640: 64
+crowd_policy: blackout      # iscrowd=1 region of a mapped class -> painted grey 114 (can not be split into instances)
+filter:
+  require_any: [motorcycle, bicycle]
+mapping:
+  car: Car
+  bus: Bus
+  truck: Truck
+  motorcycle: {role: vehicle2, sub: motorcycle}
+  bicycle: {role: vehicle2, sub: bicycle}
+  person: {role: person}
+  traffic light: Traffic light
+  stop sign: Sign
+  train: ignore             # rail vehicle: not confirmed as 'Other vehicle'
+unmapped: ignore
+missing_classes: [Other vehicle]        # never labelled in this source
+incomplete_classes: [Sign]              # only stop signs labelled

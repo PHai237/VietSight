@@ -1,0 +1,16 @@
+# VietSight V2 — Local Vision: + Vietnamese traffic (team photos, CVAT-reviewed), crowded scenes, missing classes.
+# Each processed source must exist in data/processed/<name>/ (converters / review_queue.py accept).
+name: vietsight_v2
+description: V1 + Vietnamese street images (team-collected, AI pre-label + human review) + extra two-wheeler data.
+sources:
+  - name: mapillary_vistas
+    max_images: 6500
+    prefer_any: [Motorcycle, Motorcyclist, Bicycle, Cyclist, Other vehicle, Bus, Truck]
+  - name: vn_team               # scripts/convert_yolo.py --root <CVAT export> --source vn_team --group-from-parent
+  # - name: bdd100k_10k         # only after Sign/Traffic light were filled (scripts/prelabel.py --fill-missing) and reviewed
+  #   max_images: 2000
+  #   prefer_any: [Motorcyclist, Motorcycle, Cyclist, Bicycle]
+val:
+  frozen_list: configs/val_frozen.txt
+dedup:
+  hamming: 2

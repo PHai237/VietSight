@@ -1,0 +1,28 @@
+name: bdd100k_10k
+format: supervisely
+url: https://www.bdd100k.com/
+mirror: https://datasetninja.com/bdd100k-10k
+download_url: https://assets.supervisely.com/remote/eyJsaW5rIjogInMzOi8vc3VwZXJ2aXNlbHktZGF0YXNldHMvMzA3N19CREQxMDBLOiBJbWFnZXMgMTBLL2JkZDEwMGs6LWltYWdlcy0xMGstRGF0YXNldE5pbmphLnRhciIsICJzaWciOiAiaEtkMzdMVmNCOVIrdVRTRXRSRWp3S1YvYVNEbGQ1aXdPVjYvZ01xVk5oWT0ifQ==?response-content-disposition=attachment%3B%20filename%3D%22bdd100k%3A-images-10k-DatasetNinja.tar%22
+license: BDD100K license (UC Regents) - educational, research and not-for-profit use (mirror LICENSE.md -> doc.bdd100k.com/license.html)
+notes: >-
+  US dashcam frames 1280x720. Instance classes: car, pedestrian, truck, bus, bicycle, rider, motorcycle, caravan,
+  trailer, train. NO Sign / Traffic light labels although both appear in most frames -> using it as is teaches the model
+  that signs/lights are background. Use only after scripts/prelabel.py fill (+ human review), or for two-wheeler crops.
+max_side: 1024
+min_area_640: 64
+z_order: none               # TO VERIFY on real files (bitmaps from instance masks are expected to be disjoint)
+skip_unannotated: true
+group_regex: '^([0-9a-f]{8})-'   # same video prefix -> same group (train/val split by video)
+mapping:
+  car: Car
+  bus: Bus
+  truck: Truck
+  caravan: Other vehicle    # TO CONFIRM
+  trailer: Other vehicle    # TO CONFIRM
+  train: ignore
+  pedestrian: Pedestrian
+  rider: {role: rider}
+  motorcycle: {role: vehicle2, sub: motorcycle}
+  bicycle: {role: vehicle2, sub: bicycle}
+unmapped: ignore
+missing_classes: [Sign, Traffic light]

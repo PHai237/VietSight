@@ -1,0 +1,49 @@
+name: mapillary_vistas
+format: supervisely
+url: https://www.mapillary.com/dataset/vistas
+mirror: https://datasetninja.com/mapillary-vistas-dataset   # Supervisely-format mirror of v2.0 (polygons), no sign-up
+download_url: https://assets.supervisely.com/remote/eyJsaW5rIjogInMzOi8vc3VwZXJ2aXNlbHktZGF0YXNldHMvMjU3N19NYXBpbGxhcnkgVmlzdGFzL21hcGlsbGFyeS12aXN0YXMtRGF0YXNldE5pbmphLnRhciIsICJzaWciOiAiUTNadGllNFdHRkZtbTN5WFJYNnpvSmtua1QzNlpsMVdxdjJ6d0Z3RjN0MD0ifQ==?response-content-disposition=attachment%3B%20filename%3D%22mapillary-vistas-DatasetNinja.tar%22
+license: CC BY-NC-SA 4.0 (stated in the mirror's LICENSE.md, citing mapillary.com/dataset/vistas). Non-commercial, share-alike, attribution.
+notes: >-
+  Street-level images from all continents (25k: 18k training, 2k validation, 5k unlabeled testing). Mirror polygons are
+  LAYERED (painter's order, later object on top; measured: overlapping car-car polygons median 33%) -> z_order: painter
+  computes the VISIBLE mask of each instance. Riders (motorcyclist/bicyclist) and vehicles are separate objects -> merged.
+max_side: 1024
+min_area_640: 64
+z_order: painter
+skip_unannotated: true
+drop_region_min_area_640: 256   # smaller group regions are left as is (scorer ignores tiny objects)
+mapping:
+  car: Car
+  bus: Bus
+  truck: Truck
+  other vehicle: Other vehicle
+  caravan: Other vehicle          # TO CONFIRM (website definition of Other vehicle)
+  trailer: Other vehicle          # TO CONFIRM
+  wheeled slow: Other vehicle     # carts, cyclos, slow wheeled vehicles; TO CONFIRM
+  motorcycle: {role: vehicle2, sub: motorcycle}
+  bicycle: {role: vehicle2, sub: bicycle}
+  person: Pedestrian              # Mapillary separates riders: a 'person' is not riding
+  motorcyclist: {role: rider, sub: motorcycle}
+  bicyclist: {role: rider, sub: bicycle}
+  other rider: {role: rider}
+  person group: blackout
+  vehicle group: blackout
+  traffic sign (front): Sign
+  traffic sign - direction (front): Sign
+  traffic sign - temporary (front): Sign
+  traffic sign - parking: Sign
+  traffic sign (back): ignore     # TO CONFIRM: back side of a sign
+  traffic sign - direction (back): ignore
+  traffic sign - temporary (back): ignore
+  traffic sign - ambiguous: ignore
+  traffic light - general (upright): Traffic light
+  traffic light - general (horizontal): Traffic light
+  traffic light - general (single): Traffic light
+  traffic light - pedestrians: Traffic light
+  traffic light - cyclists: Traffic light
+  traffic light - other: Traffic light
+  on rails: ignore
+  boat: ignore
+  ego vehicle: ignore
+unmapped: ignore                  # stuff classes (road, sky, pole, signage - store ...) are only used as occluders

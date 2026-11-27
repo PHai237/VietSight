@@ -1,0 +1,41 @@
+# --- data (shared via Kaggle private datasets / team drive, never git) ---
+data/raw/
+data/processed/
+data/versions/*
+!data/versions/README.md
+!data/versions/*_stats.json
+dist/
+*.zip
+*.tar
+*.tar.gz
+
+# --- models / runs ---
+*.pt
+*.onnx
+*.engine
+runs/**/weights/
+runs/**/*.jpg
+runs/**/*.png
+runs/review/
+submission/*
+!submission/README.md
+work/
+
+# --- secrets ---
+.env
+*.env
+kaggle.json
+.kaggle/
+*token*
+*secret*
+credentials*
+
+# --- python / tools ---
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.cache
+.DS_Store
+Thumbs.db
+.claude/settings.local.json

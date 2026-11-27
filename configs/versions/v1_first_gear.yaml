@@ -1,0 +1,14 @@
+# VietSight V1 — First Gear: baseline from normalised public data. Goal: a VALID checkpoint early.
+# Built on Kaggle by notebooks/kaggle/VietSight_prep_kaggle.ipynb (or locally: python scripts/build_version.py <this file>).
+name: vietsight_v1
+description: Mapillary Vistas v2 (all 11 classes labelled, layered polygons -> visible masks), two-wheeler/rider images preferred.
+sources:
+  - name: mapillary_vistas
+    max_images: 6500
+    prefer_any: [Motorcycle, Motorcyclist, Bicycle, Cyclist, Other vehicle, Bus, Truck]
+val:
+  frozen_list: configs/val_frozen.txt   # created by the first build, then FIXED for every version
+  ratio: 0.10
+  from_sources: [mapillary_vistas]
+dedup:
+  hamming: 2
