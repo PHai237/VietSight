@@ -3,7 +3,9 @@
  "kernel_type": "notebook",
  "is_private": true,
  "enable_internet": true,
- "dataset_sources": [],
+ "dataset_sources": [
+  "mangashounen/vietsight-offline-wheels"
+ ],
  "competition_sources": [],
  "id": "mangashounen/vietsight-train-vietsight-v1",
  "title": "vietsight-train-vietsight-v1",

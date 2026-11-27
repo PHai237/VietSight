@@ -152,10 +152,22 @@ if not DATASET_PATH and _os.path.isdir("/kaggle/input"):
                 if _os.path.isdir(_os.path.join(_os.path.dirname(p), "images", "train")))
     print("Ứng viên DATASET_PATH:", _c)
     DATASET_PATH = _c[0] if _c else ""
+# [VietSight] Kaggle without Internet: pinned wheels + yolo26n-seg.pt + Arial.ttf from the attached dataset
+# mangashounen/vietsight-offline-wheels. pip reads PIP_NO_INDEX/PIP_FIND_LINKS, so the official install step is unchanged.
+_wh = [d for d in sorted(_glob.glob("/kaggle/input/*")) if _glob.glob(d + "/ultralytics-*.whl")]
+if _wh:
+    import shutil as _sh
+    _os.environ["PIP_NO_INDEX"], _os.environ["PIP_FIND_LINKS"] = "1", _wh[0]
+    if not _os.path.exists("yolo26n-seg.pt"):
+        _sh.copyfile(_wh[0] + "/yolo26n-seg.pt", "yolo26n-seg.pt")
+    for _d in (_os.path.expanduser("~/.config/Ultralytics"), "/tmp/Ultralytics"):
+        _os.makedirs(_d, exist_ok=True)
+        _sh.copyfile(_wh[0] + "/Arial.ttf", _d + "/Arial.ttf")
+    print("Cài offline từ", _wh[0])
 '''
 
 
-def train_notebook(epochs, batch, version_name):
+def train_notebook(epochs, batch, version_name, allow_cpu=False):
     nb = json.loads(NOTEBOOK.read_text(encoding="utf-8"))
     out = copy.deepcopy(nb)
     idx = [i for i, c in enumerate(out["cells"]) if c["cell_type"] == "code" and "".join(c["source"]).startswith("#@title Tham số của đội")]
@@ -168,6 +180,9 @@ def train_notebook(epochs, batch, version_name):
     src = src.replace(PARAM_ANCHOR, PARAM_ANCHOR + AUTODETECT)
     src = src.replace('EPOCHS = 60  #@param {type:"integer"}', f'EPOCHS = {epochs}  #@param {{type:"integer"}}')
     src = src.replace('BATCH = 16  #@param {type:"integer"}', f'BATCH = {batch}  #@param {{type:"integer"}}')
+    if allow_cpu:
+        assert "REQUIRE_GPU = True" in src
+        src = src.replace("REQUIRE_GPU = True", "REQUIRE_GPU = False  # [VietSight] tài khoản chưa có GPU: cho phép CPU (GPU vẫn được dùng nếu có)")
     cell["source"] = src.splitlines(True)
     cell["outputs"], cell["execution_count"] = [], None
     out["cells"].append(md("## [VietSight] Gom kết quả để tải về (best.pt, submission.zip, run_report.json, biểu đồ, báo cáo val)"))
@@ -202,25 +217,32 @@ def main():
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--kaggle-user", default="YOUR_KAGGLE_USERNAME")
     ap.add_argument("--max-train", type=int, default=1700)
+    ap.add_argument("--allow-cpu", action="store_true", help="REQUIRE_GPU=False (account without GPU)")
+    ap.add_argument("--train-suffix", default="", help="extra slug suffix for parallel training kernels, e.g. e5")
+    ap.add_argument("--only-train", action="store_true", help="write only the train notebook (to notebooks/kaggle/train<suffix>/)")
     ap.add_argument("--max-val", type=int, default=300)
     args = ap.parse_args()
     vname = yaml.safe_load((ROOT / args.version_config).read_text(encoding="utf-8"))["name"]
     u = args.kaggle_user
-    prep_slug, train_slug = f"vietsight-prep-{vname.replace('_', '-')}", f"vietsight-train-{vname.replace('_', '-')}"
+    prep_slug, train_slug = f"vietsight-prep-{vname.replace('_', '-')}", f"vietsight-train-{vname.replace('_', '-')}" + (f"-{args.train_suffix}" if args.train_suffix else "")
     (OUT / "prep").mkdir(parents=True, exist_ok=True)
-    (OUT / "train").mkdir(parents=True, exist_ok=True)
+    tdir = OUT / (f"train_{args.train_suffix}" if args.train_suffix else "train")
+    tdir.mkdir(parents=True, exist_ok=True)
     p1 = OUT / "prep" / "VietSight_prep_kaggle.ipynb"
-    p1.write_text(json.dumps(prep_notebook(args.version_config, args.other_frac, args.workers, args.max_train, args.max_val), ensure_ascii=False, indent=1), encoding="utf-8")
-    p2 = OUT / "train" / "VietSight_TEAM55_kaggle.ipynb"
-    p2.write_text(json.dumps(train_notebook(args.epochs, args.batch, vname), ensure_ascii=False, indent=1), encoding="utf-8")
+    if not args.only_train:
+        p1.write_text(json.dumps(prep_notebook(args.version_config, args.other_frac, args.workers, args.max_train, args.max_val), ensure_ascii=False, indent=1), encoding="utf-8")
+    p2 = tdir / "VietSight_TEAM55_kaggle.ipynb"
+    p2.write_text(json.dumps(train_notebook(args.epochs, args.batch, vname, args.allow_cpu), ensure_ascii=False, indent=1), encoding="utf-8")
     # `kaggle kernels push -p notebooks/kaggle/prep`, then `-p notebooks/kaggle/train` once prep finished. Private, Internet on.
     common = {"language": "python", "kernel_type": "notebook", "is_private": True, "enable_internet": True,
               "dataset_sources": [], "competition_sources": []}
     mapillary_ds = ["kaggleprollc/mapillary-vistas-image-data-collection"]  # official v2.0 layout, attached read-only
-    (OUT / "prep" / "kernel-metadata.json").write_text(json.dumps(dict(common, id=f"{u}/{prep_slug}", title=prep_slug, code_file=p1.name,
+    if not args.only_train:
+      (OUT / "prep" / "kernel-metadata.json").write_text(json.dumps(dict(common, id=f"{u}/{prep_slug}", title=prep_slug, code_file=p1.name,
                                                                           enable_gpu=False, kernel_sources=[], dataset_sources=mapillary_ds), indent=1), encoding="utf-8")
-    (OUT / "train" / "kernel-metadata.json").write_text(json.dumps(dict(common, id=f"{u}/{train_slug}", title=train_slug, code_file=p2.name,
-                                                                           enable_gpu=True, kernel_sources=[f"{u}/{prep_slug}"]), indent=1), encoding="utf-8")
+    (tdir / "kernel-metadata.json").write_text(json.dumps(dict(common, id=f"{u}/{train_slug}", title=train_slug, code_file=p2.name,
+                                                               enable_gpu=True, kernel_sources=[f"{u}/{prep_slug}"],
+                                                               dataset_sources=[f"{u}/vietsight-offline-wheels"]), indent=1), encoding="utf-8")
     print(f"{p1} ({p1.stat().st_size / 1024:.0f} KiB)\n{p2} ({p2.stat().st_size / 1024:.0f} KiB)\nkernels: {u}/{prep_slug} -> {u}/{train_slug}")
 
 
