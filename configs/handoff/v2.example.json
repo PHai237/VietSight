@@ -4,5 +4,6 @@
   "source": "drive:/content/drive/MyDrive/VietSight/datasets/vietsight_vietnam_v2.zip",
   "images": {"train": 0, "val": 0},
   "fingerprint_sha256": "<stats.json fingerprint_sha256 = official dataset_fingerprint(version folder)>",
-  "vn_val_sha256": "<sha256 of '\n'.join(sorted(image file names in images/val))>"
+  "vn_val_sha256": "<sha256 of '\n'.join(sorted(image file names in images/val))>",
+  "rights_confirmed": false
 }
