@@ -234,14 +234,34 @@ try:
 except Exception as e:  # comparison only: never blocks training
     print("CẢNH BÁO: bỏ qua đánh giá Mapillary val:", e)
 
-# ---- 3. init weights = V1 e25 best.pt (Drive copy is only read) ----
-INIT_SRC = Path(E25["best"])
-INIT_WEIGHTS = Path("/content/init/e25_best.pt") if IN_COLAB else Path(WORK_DIR) / "init" / "e25_best.pt"
-INIT_WEIGHTS.parent.mkdir(parents=True, exist_ok=True)
-shutil.copyfile(INIT_SRC, INIT_WEIGHTS)
-if _sha(INIT_WEIGHTS) != E25["best_sha256"]:
-    raise NotebookError(f"{INIT_SRC} không phải best.pt e25 đã nộp (sha256 khác run_report)", "MODEL")
-print("Khởi tạo từ e25 best.pt OK:", E25["best_sha256"][:16])
+INIT_MODE = "__INIT_MODE__"
+if INIT_MODE == "e25":
+    # ---- 3. init weights = V1 e25 best.pt (Drive copy is only read) ----
+    INIT_SRC = Path(E25["best"])
+    INIT_WEIGHTS = Path("/content/init/e25_best.pt") if IN_COLAB else Path(WORK_DIR) / "init" / "e25_best.pt"
+    INIT_WEIGHTS.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(INIT_SRC, INIT_WEIGHTS)
+    if _sha(INIT_WEIGHTS) != E25["best_sha256"]:
+        raise NotebookError(f"{INIT_SRC} không phải best.pt e25 đã nộp (sha256 khác run_report)", "MODEL")
+    print("Khởi tạo từ e25 best.pt OK:", E25["best_sha256"][:16])
+else:
+    # ---- 3. init weights = official COCO-pretrained yolo26n-seg.pt (Ultralytics release asset), sha256 pinned ----
+    PRETRAINED_SHA = "__PRETRAINED_SHA__"
+    INIT_WEIGHTS = Path("/content/init/yolo26n-seg.pt") if IN_COLAB else Path(WORK_DIR) / "init" / "yolo26n-seg.pt"
+    INIT_WEIGHTS.parent.mkdir(parents=True, exist_ok=True)
+    drive_copy = Path("__DRIVE__/init/yolo26n-seg.pt")
+    if drive_copy.is_file():
+        shutil.copyfile(drive_copy, INIT_WEIGHTS)
+        INIT_SRC = drive_copy
+    else:
+        from ultralytics.utils.downloads import attempt_download_asset
+        INIT_SRC = Path(attempt_download_asset(str(INIT_WEIGHTS)))
+        if INIT_SRC.resolve() != INIT_WEIGHTS.resolve():
+            shutil.copyfile(INIT_SRC, INIT_WEIGHTS)
+    if _sha(INIT_WEIGHTS) != PRETRAINED_SHA:
+        raise NotebookError(f"yolo26n-seg.pt sha256 {_sha(INIT_WEIGHTS)[:16]} khác bản chính thức đã ghim {PRETRAINED_SHA[:16]}. "
+                            f"Upload yolo26n-seg.pt của repo lên {drive_copy} rồi chạy lại.", "MODEL")
+    print("Khởi tạo từ yolo26n-seg.pt pretrained chính thức OK:", PRETRAINED_SHA[:16], "| nguồn", INIT_SRC)
 
 import torch
 if REQUIRE_CUDA:
@@ -258,8 +278,7 @@ SAVE_PERIOD = __SAVE_PERIOD__
 RUN_NAME = Path(DRIVE_OUTPUT_DIR).name
 # warmup_bias_lr = lr0: the Ultralytics default (0.1) would start the bias LR ~300x above lr0 and erode e25.
 # freeze = first N layers kept at e25 (10 = backbone up to SPPF; None = train all) -> less forgetting on a small set.
-FT_ARGS = dict(optimizer="AdamW", lr0=__LR0__, lrf=0.1, cos_lr=True, warmup_epochs=1, warmup_bias_lr=__LR0__,
-               freeze=__FREEZE__, close_mosaic=__CLOSE_MOSAIC__)
+FT_ARGS = __FT_ARGS__
 TRAIN_ARGS = dict(
     data=DATASET["data_yaml"],
     imgsz=TRAIN_IMGSZ,      # giữ 640 (xem ô tham số)
@@ -338,14 +357,17 @@ e25_zip = WORK / "xeval" / "e25_submission.zip"
 e25_zip.parent.mkdir(parents=True, exist_ok=True)
 if Path(E25["zip"]).is_file() and _sha(E25["zip"]) == E25["zip_sha256"]:
     shutil.copyfile(E25["zip"], e25_zip)
-else:  # same official export of the same e25 best.pt, in a separate folder (V2 submission untouched)
+elif INIT_MODE == "e25":  # same official export of the same e25 best.pt, in a separate folder (V2 submission untouched)
     print("Không thấy submission.zip e25 trên Drive: xuất lại từ best.pt e25")
     shutil.copyfile(make_submission(INIT_WEIGHTS, WORK / "xeval" / "e25_export", YOLO, SELFCHECK)["zip"], e25_zip)
+else:  # pretrained init: no e25 weights here -> baseline only from the sha-checked e25 submission.zip
+    print(f"Bỏ qua mốc e25: không có {E25['zip']} đúng sha256 (upload runs/v1_colab_e25/submission.zip của repo vào đó)")
+    e25_zip = None
 sets = {"vn_val": (WORK / "dataset" / "images" / "val", WORK / "dataset" / "labels" / "val")}
 if MAPILLARY_OK:
     sets["mapillary_val"] = (Path(MAPILLARY_VAL["dir"]) / "images" / "val", Path(MAPILLARY_VAL["dir"]) / "labels" / "val")
 EVAL_COMPARE = {"run": RUN_NAME, "dataset_sha256": DATASET["sha256"], "handoff": HANDOFF, "results": {}}
-for model_tag, zp in (("e25", e25_zip), (RUN_NAME, SUBMISSION["zip"])):
+for model_tag, zp in [*([("e25", e25_zip)] if e25_zip else []), (RUN_NAME, SUBMISSION["zip"])]:
     for set_tag, (img_dir, lab_dir) in sets.items():
         EVAL_COMPARE["results"].setdefault(model_tag, {})[set_tag] = _xscore(zp, img_dir, lab_dir, f"{model_tag}_{set_tag}")
 print(f"{'model':<28}" + "".join(f"{s:>16}" for s in sets))
@@ -373,13 +395,16 @@ def main():
     ap.add_argument("--freeze", type=int, default=None, help="freeze first N layers (small READY set: 10 = backbone w/o C2PSA)")
     ap.add_argument("--handoff", type=Path, help="JSON: status, version, source, images{train,val}, fingerprint_sha256, vn_val_sha256")
     ap.add_argument("--prep-kernel", default="mangashounen/vietsight-prep-vietsight-v1")
+    ap.add_argument("--init", choices=["e25", "pretrained"], default="e25",
+                    help="pretrained = official COCO yolo26n-seg.pt (sha pinned), official default train args like V1 e25")
     a = ap.parse_args()
     handoff = {"status": "PENDING", "version": None, "source": None, "images": None, "fingerprint_sha256": None, "vn_val_sha256": None, "rights_confirmed": False}
     if a.handoff:
         handoff.update(json.loads(a.handoff.read_text(encoding="utf-8")))
     # rights_confirmed != true -> EXPERIMENT run: own Drive folder, NOT_FOR_SUBMISSION.txt, never a competition submission
     handoff["submission_eligible"] = handoff.get("rights_confirmed") is True
-    run_name = f"{handoff['version'] or 'vietsight_v2'}_ft_e{a.epochs}" + ("" if handoff["submission_eligible"] else "_EXPERIMENT")
+    kind = "ft" if a.init == "e25" else "pretrained"
+    run_name = f"{handoff['version'] or 'vietsight_v2'}_{kind}_e{a.epochs}" + ("" if handoff["submission_eligible"] else "_EXPERIMENT")
     if a.freeze:
         run_name += f"_frz{a.freeze}_lr{a.lr0:g}"
     e25 = json.loads((ROOT / "runs" / "v1_colab_e25" / "run_report.json").read_text(encoding="utf-8"))
@@ -398,17 +423,25 @@ def main():
         assert src.count(old) == 1, old
         src = src.replace(old, new)
     cells[ip]["source"] = src.splitlines(True)
-    cells[it]["source"] = (TRAIN.replace("__SAVE_PERIOD__", str(a.save_period)).replace("__LR0__", repr(a.lr0))
+    if a.init == "e25":
+        ft_args = ('dict(optimizer="AdamW", lr0=__LR0__, lrf=0.1, cos_lr=True, warmup_epochs=1, warmup_bias_lr=__LR0__,\n'
+                   '               freeze=__FREEZE__, close_mosaic=__CLOSE_MOSAIC__)')
+    else:  # from COCO pretrained: the official defaults, i.e. the same recipe as V1 e25 (optimizer=auto, warmup 3, ...)
+        ft_args = "dict()  # pretrained COCO init: official default args (same recipe as V1 e25)"
+    cells[it]["source"] = (TRAIN.replace("__FT_ARGS__", ft_args).replace("__SAVE_PERIOD__", str(a.save_period)).replace("__LR0__", repr(a.lr0))
                            .replace("__CLOSE_MOSAIC__", str(a.close_mosaic)).replace("__FREEZE__", repr(a.freeze))).splitlines(True)
-    setup = (SETUP.replace("__HANDOFF__", repr(handoff)).replace("__DRIVE__", DRIVE)
+    pretrained_sha = hashlib.sha256((ROOT / "yolo26n-seg.pt").read_bytes()).hexdigest()
+    setup = (SETUP.replace("__HANDOFF__", repr(handoff)).replace("__INIT_MODE__", a.init).replace("__PRETRAINED_SHA__", pretrained_sha)
+             .replace("__DRIVE__", DRIVE)
              .replace("__E25_BEST_SHA__", e25["train"]["best_sha256"]).replace("__E25_ZIP_SHA__", e25["submission"]["zip_sha256"])
              .replace("__PREP_KERNEL__", a.prep_kernel).replace("__V1_NVAL__", str(len(frozen))).replace("__V1_VAL_SHA__", v1_val_sha))
     cells.insert(ip + 1, code(setup))
-    cells.insert(ip + 1, md("## [VietSight V2] Bàn giao dataset (chỉ READY) → tải + kiểm tra → Mapillary val → khởi tạo e25 best.pt → GPU"))
+    init_vi = "e25 best.pt" if a.init == "e25" else "yolo26n-seg.pt pretrained chính thức"
+    cells.insert(ip + 1, md(f"## [VietSight V2] Bàn giao dataset (chỉ READY) → tải + kiểm tra → Mapillary val → khởi tạo {init_vi} → GPU"))
     cells.append(code(XEVAL))
-    dst = ROOT / "notebooks" / "colab" / "VietSight_TEAM55_colab_v2.ipynb"
+    dst = ROOT / "notebooks" / "colab" / ("VietSight_TEAM55_colab_v2.ipynb" if a.init == "e25" else "VietSight_TEAM55_colab_v2_pretrained.ipynb")
     cells.insert(0, md(f"[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PHai237/VietSight/blob/main/notebooks/colab/{dst.name})\n\n"
-                       f"VietSight TEAM 55 — V2 fine-tune `{run_name}` từ V1 e25 best.pt: Runtime → T4 GPU → Run all. "
+                       f"VietSight TEAM 55 — V2 `{run_name}` từ {init_vi}, chỉ dữ liệu Việt Nam: Runtime → T4 GPU → Run all. "
                        f"Kết quả: Drive `MyDrive/VietSight/{run_name}/`. Mất kết nối: Run all lại (tự resume)."
                        + ("" if handoff["submission_eligible"] else "\n\n**BẢN THỬ NGHIỆM — quyền nguồn chưa xác nhận: KHÔNG nộp submission.zip của run này.**")))
     for c in cells:
