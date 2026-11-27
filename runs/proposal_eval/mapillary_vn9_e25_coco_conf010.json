@@ -1,0 +1,251 @@
+{
+ "images": 9,
+ "conf": 0.1,
+ "reference": "C:\\My Future\\VietSight-data-qa\\data\\versions\\mapillary_vn_native_pixels_intake001_REVIEW\\converted_queue\\review\\labels",
+ "reference_counts": {
+  "Car": 10,
+  "Bus": 0,
+  "Truck": 1,
+  "Other vehicle": 3,
+  "Motorcycle": 21,
+  "Motorcyclist": 36,
+  "Bicycle": 2,
+  "Cyclist": 1,
+  "Pedestrian": 38,
+  "Sign": 15,
+  "Traffic light": 2
+ },
+ "seconds_per_image": {
+  "vietsight:runs/v1_colab_e25/submission.zip": 0.47,
+  "coco:yolo26n-seg.pt": 0.41
+ },
+ "systems": {
+  "vietsight:runs/v1_colab_e25/submission.zip": {
+   "per_class": {
+    "Sign": {
+     "ref": 15,
+     "pred": 21,
+     "TP": 12,
+     "FP": 9,
+     "FN": 3,
+     "recall": 0.8,
+     "precision": 0.571,
+     "recall@0.3": 0.867,
+     "mIoU_TP": 0.851
+    },
+    "Other vehicle": {
+     "ref": 3,
+     "pred": 0,
+     "TP": 0,
+     "FP": 0,
+     "FN": 3,
+     "recall": 0.0,
+     "precision": null,
+     "recall@0.3": 0.0,
+     "mIoU_TP": null
+    },
+    "Motorcycle": {
+     "ref": 21,
+     "pred": 21,
+     "TP": 4,
+     "FP": 17,
+     "FN": 17,
+     "recall": 0.19,
+     "precision": 0.19,
+     "recall@0.3": 0.286,
+     "mIoU_TP": 0.687
+    },
+    "Motorcyclist": {
+     "ref": 36,
+     "pred": 30,
+     "TP": 18,
+     "FP": 12,
+     "FN": 18,
+     "recall": 0.5,
+     "precision": 0.6,
+     "recall@0.3": 0.5,
+     "mIoU_TP": 0.802
+    },
+    "Traffic light": {
+     "ref": 2,
+     "pred": 2,
+     "TP": 0,
+     "FP": 2,
+     "FN": 2,
+     "recall": 0.0,
+     "precision": 0.0,
+     "recall@0.3": 0.0,
+     "mIoU_TP": null
+    },
+    "Two-wheeler (Motorcycle+Motorcyclist)": {
+     "ref": 57,
+     "pred": 51,
+     "TP": 25,
+     "FP": 26,
+     "FN": 32,
+     "recall": 0.439,
+     "precision": 0.49,
+     "recall@0.3": 0.561,
+     "mIoU_TP": 0.773
+    }
+   },
+   "wrong_class": {
+    "Motorcycle -> ref Motorcyclist": 4,
+    "Motorcyclist -> ref Pedestrian": 2,
+    "Motorcyclist -> ref Motorcycle": 2,
+    "Motorcycle -> ref Pedestrian": 1
+   }
+  },
+  "coco:yolo26n-seg.pt": {
+   "per_class": {
+    "Sign": {
+     "ref": 15,
+     "pred": 1,
+     "TP": 1,
+     "FP": 0,
+     "FN": 14,
+     "recall": 0.067,
+     "precision": 1.0,
+     "recall@0.3": 0.067,
+     "mIoU_TP": 0.884
+    },
+    "Other vehicle": {
+     "ref": 3,
+     "pred": 0,
+     "TP": 0,
+     "FP": 0,
+     "FN": 3,
+     "recall": 0.0,
+     "precision": null,
+     "recall@0.3": 0.0,
+     "mIoU_TP": null
+    },
+    "Motorcycle": {
+     "ref": 21,
+     "pred": 14,
+     "TP": 2,
+     "FP": 12,
+     "FN": 19,
+     "recall": 0.095,
+     "precision": 0.143,
+     "recall@0.3": 0.238,
+     "mIoU_TP": 0.752
+    },
+    "Motorcyclist": {
+     "ref": 36,
+     "pred": 22,
+     "TP": 15,
+     "FP": 7,
+     "FN": 21,
+     "recall": 0.417,
+     "precision": 0.682,
+     "recall@0.3": 0.444,
+     "mIoU_TP": 0.788
+    },
+    "Traffic light": {
+     "ref": 2,
+     "pred": 0,
+     "TP": 0,
+     "FP": 0,
+     "FN": 2,
+     "recall": 0.0,
+     "precision": null,
+     "recall@0.3": 0.0,
+     "mIoU_TP": null
+    },
+    "Two-wheeler (Motorcycle+Motorcyclist)": {
+     "ref": 57,
+     "pred": 36,
+     "TP": 22,
+     "FP": 14,
+     "FN": 35,
+     "recall": 0.386,
+     "precision": 0.611,
+     "recall@0.3": 0.509,
+     "mIoU_TP": 0.756
+    }
+   },
+   "wrong_class": {
+    "Motorcyclist -> ref Motorcycle": 3,
+    "Motorcycle -> ref Motorcyclist": 2,
+    "Motorcyclist -> ref Pedestrian": 1
+   }
+  },
+  "union(vietsight + coco)": {
+   "per_class": {
+    "Sign": {
+     "ref": 15,
+     "pred": 21,
+     "TP": 12,
+     "FP": 9,
+     "FN": 3,
+     "recall": 0.8,
+     "precision": 0.571,
+     "recall@0.3": 0.867,
+     "mIoU_TP": 0.851
+    },
+    "Other vehicle": {
+     "ref": 3,
+     "pred": 0,
+     "TP": 0,
+     "FP": 0,
+     "FN": 3,
+     "recall": 0.0,
+     "precision": null,
+     "recall@0.3": 0.0,
+     "mIoU_TP": null
+    },
+    "Motorcycle": {
+     "ref": 21,
+     "pred": 17,
+     "TP": 3,
+     "FP": 14,
+     "FN": 18,
+     "recall": 0.143,
+     "precision": 0.176,
+     "recall@0.3": 0.19,
+     "mIoU_TP": 0.713
+    },
+    "Motorcyclist": {
+     "ref": 36,
+     "pred": 27,
+     "TP": 15,
+     "FP": 12,
+     "FN": 21,
+     "recall": 0.417,
+     "precision": 0.556,
+     "recall@0.3": 0.417,
+     "mIoU_TP": 0.819
+    },
+    "Traffic light": {
+     "ref": 2,
+     "pred": 2,
+     "TP": 0,
+     "FP": 2,
+     "FN": 2,
+     "recall": 0.0,
+     "precision": 0.0,
+     "recall@0.3": 0.0,
+     "mIoU_TP": null
+    },
+    "Two-wheeler (Motorcycle+Motorcyclist)": {
+     "ref": 57,
+     "pred": 44,
+     "TP": 22,
+     "FP": 22,
+     "FN": 35,
+     "recall": 0.386,
+     "precision": 0.5,
+     "recall@0.3": 0.526,
+     "mIoU_TP": 0.777
+    }
+   },
+   "wrong_class": {
+    "Motorcycle -> ref Motorcyclist": 2,
+    "Motorcyclist -> ref Motorcycle": 2,
+    "Motorcyclist -> ref Pedestrian": 2,
+    "Motorcycle -> ref Pedestrian": 1
+   }
+  }
+ }
+}

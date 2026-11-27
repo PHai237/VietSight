@@ -11,6 +11,8 @@ Changes vs the OFFICIAL notebook (asserted below, every other cell byte-identica
 
   python scripts/make_colab_v2_notebook.py --epochs 12                       # handoff pending: stops before training
   python scripts/make_colab_v2_notebook.py --epochs 12 --handoff configs/handoff/v2.json
+  # fallback experiment: low LR, frozen backbone (docs/V2_SMALL_FINETUNE.md)
+  python scripts/make_colab_v2_notebook.py --epochs 12 --lr0 0.0001 --freeze 10 --handoff configs/handoff/v2.json
 """
 import argparse
 import copy
@@ -249,7 +251,10 @@ TRAIN = r'''from ultralytics import YOLO
 # THIS run after a Colab disconnect, and only if its dataset, init weights and EPOCHS are the ones it started with.
 SAVE_PERIOD = __SAVE_PERIOD__
 RUN_NAME = Path(DRIVE_OUTPUT_DIR).name
-FT_ARGS = dict(optimizer="AdamW", lr0=__LR0__, lrf=0.1, cos_lr=True, warmup_epochs=1, close_mosaic=__CLOSE_MOSAIC__)
+# warmup_bias_lr = lr0: the Ultralytics default (0.1) would start the bias LR ~300x above lr0 and erode e25.
+# freeze = first N layers kept at e25 (10 = backbone up to SPPF; None = train all) -> less forgetting on a small set.
+FT_ARGS = dict(optimizer="AdamW", lr0=__LR0__, lrf=0.1, cos_lr=True, warmup_epochs=1, warmup_bias_lr=__LR0__,
+               freeze=__FREEZE__, close_mosaic=__CLOSE_MOSAIC__)
 TRAIN_ARGS = dict(
     data=DATASET["data_yaml"],
     imgsz=TRAIN_IMGSZ,      # giữ 640 (xem ô tham số)
@@ -358,6 +363,7 @@ def main():
     ap.add_argument("--save-period", type=int, default=3)
     ap.add_argument("--lr0", type=float, default=0.0003)
     ap.add_argument("--close-mosaic", type=int, default=3)
+    ap.add_argument("--freeze", type=int, default=None, help="freeze first N layers (small READY set: 10 = backbone w/o C2PSA)")
     ap.add_argument("--handoff", type=Path, help="JSON: status, version, source, images{train,val}, fingerprint_sha256, vn_val_sha256")
     ap.add_argument("--prep-kernel", default="mangashounen/vietsight-prep-vietsight-v1")
     a = ap.parse_args()
@@ -382,7 +388,7 @@ def main():
         src = src.replace(old, new)
     cells[ip]["source"] = src.splitlines(True)
     cells[it]["source"] = (TRAIN.replace("__SAVE_PERIOD__", str(a.save_period)).replace("__LR0__", repr(a.lr0))
-                           .replace("__CLOSE_MOSAIC__", str(a.close_mosaic))).splitlines(True)
+                           .replace("__CLOSE_MOSAIC__", str(a.close_mosaic)).replace("__FREEZE__", repr(a.freeze))).splitlines(True)
     setup = (SETUP.replace("__HANDOFF__", repr(handoff)).replace("__DRIVE__", DRIVE)
              .replace("__E25_BEST_SHA__", e25["train"]["best_sha256"]).replace("__E25_ZIP_SHA__", e25["submission"]["zip_sha256"])
              .replace("__PREP_KERNEL__", a.prep_kernel).replace("__V1_NVAL__", str(len(frozen))).replace("__V1_VAL_SHA__", v1_val_sha))
