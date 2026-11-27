@@ -3,7 +3,9 @@
  "kernel_type": "notebook",
  "is_private": true,
  "enable_internet": true,
- "dataset_sources": [],
+ "dataset_sources": [
+  "kaggleprollc/mapillary-vistas-image-data-collection"
+ ],
  "competition_sources": [],
  "id": "mangashounen/vietsight-prep-vietsight-v1",
  "title": "vietsight-prep-vietsight-v1",

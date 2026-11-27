@@ -94,10 +94,16 @@ def sh(cmd, check=True):
         raise RuntimeError(f"FAILED ({p.returncode}): {cmd}")
 """),
         code("""
-sh(f'"{sys.executable}" -m pip install -q opencv-python-headless pycocotools pyyaml tqdm requests')
+sh(f'"{sys.executable}" -m pip install -q opencv-python-headless pycocotools pyyaml tqdm requests', check=False)  # offline: Kaggle image already has them
+sh(f'"{sys.executable}" -c "import cv2, yaml, tqdm, numpy, PIL; print('deps ok', cv2.__version__)"')
 """),
         code("""
-if FETCH:
+import glob
+ATTACHED = sorted(glob.glob("/kaggle/input/*/Mapillary Vistas")) + sorted(glob.glob("/kaggle/input/*/*/Mapillary Vistas"))
+print("Mapillary attached:", ATTACHED)
+if FETCH and ATTACHED:  # official v2.0 attached via Add Input: no Internet needed
+    sh(f'"{sys.executable}" scripts/fetch_mapillary_kaggle.py "{ATTACHED[0]}" {RAW}/mapillary_vistas --splits training validation --prefer motorcycle motorcyclist bicycle bicyclist "other rider" "other vehicle" "wheeled slow" --other-frac {MAPILLARY_OTHER_FRAC} --max-keep {MAX_KEEP}')
+elif FETCH:
     sh("df -h /tmp /kaggle/working", check=False)
     sh(f'"{sys.executable}" scripts/fetch_sly_tar.py mapillary_vistas {RAW}/mapillary_vistas --splits training validation --prefer motorcycle motorcyclist bicycle bicyclist "other rider" "other vehicle" "wheeled slow" --other-frac {MAPILLARY_OTHER_FRAC} --max-ann {MAX_ANN} --max-keep {MAX_KEEP} --max-side 1024')
 sh("df -h /tmp /kaggle/working; du -sh " + RAW, check=False)
@@ -210,8 +216,9 @@ def main():
     # `kaggle kernels push -p notebooks/kaggle/prep`, then `-p notebooks/kaggle/train` once prep finished. Private, Internet on.
     common = {"language": "python", "kernel_type": "notebook", "is_private": True, "enable_internet": True,
               "dataset_sources": [], "competition_sources": []}
+    mapillary_ds = ["kaggleprollc/mapillary-vistas-image-data-collection"]  # official v2.0 layout, attached read-only
     (OUT / "prep" / "kernel-metadata.json").write_text(json.dumps(dict(common, id=f"{u}/{prep_slug}", title=prep_slug, code_file=p1.name,
-                                                                          enable_gpu=False, kernel_sources=[]), indent=1), encoding="utf-8")
+                                                                          enable_gpu=False, kernel_sources=[], dataset_sources=mapillary_ds), indent=1), encoding="utf-8")
     (OUT / "train" / "kernel-metadata.json").write_text(json.dumps(dict(common, id=f"{u}/{train_slug}", title=train_slug, code_file=p2.name,
                                                                            enable_gpu=True, kernel_sources=[f"{u}/{prep_slug}"]), indent=1), encoding="utf-8")
     print(f"{p1} ({p1.stat().st_size / 1024:.0f} KiB)\n{p2} ({p2.stat().st_size / 1024:.0f} KiB)\nkernels: {u}/{prep_slug} -> {u}/{train_slug}")
