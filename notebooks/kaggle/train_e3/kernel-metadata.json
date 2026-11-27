@@ -1,0 +1,17 @@
+{
+ "language": "python",
+ "kernel_type": "notebook",
+ "is_private": true,
+ "enable_internet": true,
+ "dataset_sources": [
+  "mangashounen/vietsight-offline-wheels"
+ ],
+ "competition_sources": [],
+ "id": "mangashounen/vietsight-train-vietsight-v1-e3",
+ "title": "vietsight-train-vietsight-v1-e3",
+ "code_file": "VietSight_TEAM55_kaggle.ipynb",
+ "enable_gpu": true,
+ "kernel_sources": [
+  "mangashounen/vietsight-prep-vietsight-v1"
+ ]
+}

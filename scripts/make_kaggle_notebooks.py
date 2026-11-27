@@ -154,7 +154,7 @@ if not DATASET_PATH and _os.path.isdir("/kaggle/input"):
     DATASET_PATH = _c[0] if _c else ""
 # [VietSight] Kaggle without Internet: pinned wheels + yolo26n-seg.pt + Arial.ttf from the attached dataset
 # mangashounen/vietsight-offline-wheels. pip reads PIP_NO_INDEX/PIP_FIND_LINKS, so the official install step is unchanged.
-_wh = [d for d in sorted(_glob.glob("/kaggle/input/*")) if _glob.glob(d + "/ultralytics-*.whl")]
+_wh = sorted({_os.path.dirname(p) for p in _glob.glob("/kaggle/input/**/ultralytics-*.whl", recursive=True)})
 if _wh:
     import shutil as _sh
     _os.environ["PIP_NO_INDEX"], _os.environ["PIP_FIND_LINKS"] = "1", _wh[0]
