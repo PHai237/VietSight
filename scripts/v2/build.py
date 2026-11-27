@@ -19,7 +19,7 @@ from compare_validation import scan,compare
 from vslib import ROOT,CLASSES
 from vslib.notebook_lib import load
 
-PRIORITIES=['Motorcycle','Other vehicle','Sign','Bicycle']
+PRIORITIES=['Motorcycle','Other vehicle','Sign','Bicycle','Motorcyclist']
 
 
 def build(args):

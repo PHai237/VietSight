@@ -1,5 +1,7 @@
 # VietSight — Dataset audit và intake V2
 
+**Cập nhật lô thực tế:** [V2_DATA_HANDOFF.md](../V2_DATA_HANDOFF.md) ghi snapshot **377 ảnh ứng viên (309/68), 4.279 polygon draft, BLOCKED**, cùng nguồn đã tải/kiểm và gói CVAT. API Roboflow đã hoạt động; nguồn SideWalk có 279 ảnh/4.715 native masks và bốn video Việt Nam xác định được. Nguồn Jose được lấy mẫu ZIP thực tế và có ảnh quốc tế; nguồn Sign xuất segmentation nhưng spot-check phủ cả cột/nhiều biển. Không dùng kết luận catalog cũ thay kết quả kiểm dữ liệu mới.
+
 **Yêu cầu V2 mới nhất: chỉ ảnh xác minh chụp tại Việt Nam.** Xem [V2_PROGRESS.md](V2_PROGRESS.md) và [VIETNAM_ONLY_INTAKE.json](evidence/VIETNAM_ONLY_INTAKE.json). Các nguồn quốc tế bên dưới là lịch sử audit/V1, không phải nguồn được phép train V2. Nguồn mang tên “Vietnam-Traffic-5Classes” vừa kiểm preview có 3/4 cảnh thể thao; chưa được xác nhận thuần Việt Nam và không được nhập mặc định.
 
 Ngày xác minh: **27/11/2026, GMT+7**. Nguồn được tổng hợp từ manifest/config hiện có; chưa nhận thêm danh sách/link dataset khác từ thành viên. Bảng này là quy trình đánh giá và kết quả quan sát có phạm vi, không phê duyệt tự động cho train.

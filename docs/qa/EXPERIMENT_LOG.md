@@ -1,5 +1,9 @@
 # VietSight — Experiment log và mẫu báo cáo cuộc thi
 
+## Lô DATA V2 Local Vision 001 — chưa train
+
+Người dùng cập nhật **e50 public 12,37**, sau e25 12,90; đã dùng **2/20** lượt nộp. Chưa có artifact/AP từng class e50 mới để điền. Không thay số liệu e25 bằng e50. DATA đã có snapshot **377 ảnh ứng viên, 309 train/68 val dự kiến, 4.279 polygon draft**, trạng thái **BLOCKED** do coverage/mapping/mask và quyền nguồn còn cần giải quyết; human QA chưa xác nhận, số nhãn được sửa/duyệt tay vẫn **0**. Có 317 AI mask Sign/TL bổ sung và 157 gợi ý rider riêng, không ghi chúng là nhãn sửa đúng. Chi tiết/hash/cách chuyển: [bàn giao DATA](../V2_DATA_HANDOFF.md).
+
 ## Cập nhật V2 chỉ Việt Nam — 27/11/2026
 
 Yêu cầu mới thay cách ghép V1+additions: train V2 chỉ nhận ảnh có bằng chứng chụp tại Việt Nam. Validation Việt Nam khóa riêng; V1 val giữ nguyên để đối chiếu. Chưa có train V2 hoặc AP V2. 12 ảnh TP.HCM (170 bbox, **0 mask**) là ứng viên validation dự phòng, converter đưa cả 12 vào review; không tính là nhãn đã sửa hoặc tập validation hoàn chỉnh. [Trạng thái hiện tại](V2_PROGRESS.md), [evidence nguồn](evidence/VIETNAM_ONLY_INTAKE.json), [kiểm thử](evidence/VIETNAM_ONLY_CHECKS.json). Các kết quả snapshot cũ bên dưới là lịch sử, không cấp phép nhập ảnh quốc tế vào V2.
