@@ -6,7 +6,7 @@ Nguyên tắc: chỉ điền metric từ artifact thật; `chưa đo` không ph�
 
 ## Cập nhật public V1 và audit trực tiếp
 
-Người dùng đã cung cấp public chính thức V1: **12,90** tổng điểm; Car 29,67; Bus 12,60; Truck 20,41; Other vehicle 2,57; Motorcycle 1,95; Motorcyclist 15,02; Bicycle 6,53; Cyclist 17,05; Pedestrian 12,54; Sign 6,05; Traffic light 17,56. Giữ thang **0..100** như public, không điền vào bảng local-val AP 0..1 bên dưới. Submission ID/checkpoint SHA chưa được cung cấp nên chưa gắn public với e3/e20 cụ thể.
+Người dùng đã cung cấp public chính thức V1: **12,90** tổng điểm; Car 29,67; Bus 12,60; Truck 20,41; Other vehicle 2,57; Motorcycle 1,95; Motorcyclist 15,02; Bicycle 6,53; Cyclist 17,05; Pedestrian 12,54; Sign 6,05; Traffic light 17,56. Giữ thang **0..100** như public, không điền vào bảng local-val AP 0..1 bên dưới. Sau đó fetch được `runs/RESULTS.md` và `runs/v1_colab_e25/run_report.json` mới: public gắn với **v1_e25**, val mask mAP50-95 **0,2297068910** trên 262 ảnh. Sign local **0,2912839787**, khác public 6,05. ONNX SHA lưu ở public JSON; submission ID và SHA file `.pt` chưa được cung cấp.
 
 Stats V1 đã commit xác nhận **1.469 train / 262 val**, dataset fingerprint `5612ab422858c4289690d68d0ac69092bd4f05400133f3af459acdcd271fb529`. Đã tải độc lập toàn bộ 1.469 nhãn train và 80 ảnh mẫu từ output Kaggle, đối soát counts class khớp stats; không tải full dataset/val hoặc đo lại fingerprint toàn dataset. Các ô `chưa nhận` ở mẫu ban đầu bên dưới là trạng thái lịch sử; snapshot cập nhật ở [V2_PROGRESS.md](V2_PROGRESS.md).
 

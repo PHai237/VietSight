@@ -21,7 +21,16 @@ Các giá trị dưới giữ nguyên thang public **0..100**, không phải loc
 | Traffic light | 17,56 | 2.463 | giữ coverage, mỗi hộp một instance |
 | **Tổng public** | **12,90** | — | không tính lại từ AP làm tròn |
 
-[Public JSON](evidence/V1_PUBLIC_OFFICIAL.json); chưa có submission ID/checkpoint SHA trong thông tin người dùng đưa. Counts lấy từ stats V1 và đã đối soát với 1.469 nhãn train tải trực tiếp Kaggle.
+[Public JSON](evidence/V1_PUBLIC_OFFICIAL.json). Counts lấy từ stats V1 và đã đối soát với 1.469 nhãn train tải trực tiếp Kaggle. Lần fetch cuối nhận `run_report.json` và RESULTS mới của Claude, gắn public này với **v1_e25** (25 epoch). ONNX SHA đã có trong JSON; submission ID và SHA file `.pt` chưa có.
+
+| Class ưu tiên | Local val e25 ×100 | Public V1 | Cách đọc |
+|---|---:|---:|---|
+| Motorcycle | 8,48 | 1,95 | Yếu trên cả hai, ưu tiên xe không người/association/domain |
+| Other vehicle | 7,50 | 2,57 | Ít ví dụ, ontology rộng; ưu tiên mask đúng các loại xe BTC |
+| Sign | 29,13 | 6,05 | Gap khoảng 23,08 điểm giữa hai tập; kiểm domain/scale/fidelity, không tăng ảnh đại trà |
+| Bicycle | 6,08 | 6,53 | Yếu trên cả hai; không chỉ giải thích bằng domain shift |
+
+Local lấy từ `runs/v1_colab_e25/run_report.json`, chấm 262 ảnh val, không đo lại. Dataset fingerprint ở report đã qua bước prepare notebook là `fb6eaedd…`; fingerprint built dataset là `5612ab42…`. Hai fingerprint có phạm vi/path khác nhau, không tự kết luận dữ liệu đổi chỉ vì hai chuỗi khác nhau.
 
 Không chọn thêm ảnh chỉ vì có nhiều xe máy: Motorcycle là **không người**. Không lấy mọi bicycle nguồn làm Bicycle nếu xe đang có người. Không đổi mọi truck thành Car hoặc mọi Other vehicle nguồn thành ba gác. Xem [phân tích Sign](SIGN_FORENSICS.md) và [mapping review](CLASS_MAPPING_REVIEW.md).
 

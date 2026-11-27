@@ -1,6 +1,8 @@
 # Sign V1 — kiểm tra trực tiếp và sửa chuyển đổi V2
 
-Ngày: 27/11/2026, GMT+7. Public AP Sign **6,05**, tổng V1 **12,90**, do người dùng cung cấp là kết quả public chính thức. Chưa có submission ID/checkpoint SHA để gắn với một run cụ thể; không tự quy về e3/e20.
+Ngày: 27/11/2026, GMT+7. Public AP Sign **6,05**, tổng V1 **12,90**, do người dùng cung cấp là kết quả public chính thức. Trong lần fetch cuối, `runs/RESULTS.md` và `runs/v1_colab_e25/run_report.json` mới của Claude đã gắn public này với **v1_e25, Colab T4, 25 epoch**, ONNX SHA `87c81673e92feeea0e194d15bb7d69b81c783328b8ca7133b1a2ea5159b607eb`. Chưa có submission ID hoặc SHA file `.pt`; không gắn với e3/e20.
+
+Artifact e25 ghi local val đầy đủ **262 ảnh**, mask mAP50-95 **0,2297068910** (score 22,970689), Sign AP **0,2912839787** (29,13 trên thang 100). Sign giảm khoảng **23,08 điểm** từ val sang public; đây là khác biệt hai tập đánh giá, **không phải delta của một thí nghiệm có kiểm soát**. Nó phù hợp với giả thuyết domain/scale/coverage cần ưu tiên hơn tăng ảnh ngẫu nhiên; chưa xác định nguyên nhân causal. Không chạy lại model trong phiên QA.
 
 ## Dữ liệu thực sự đã lấy
 
@@ -64,7 +66,7 @@ V1 lấy contour theo tâm pixel rồi normalize +0,5; decoder theo polygon-edge
 
 Số liệu: [SIGN_REFERENCE12_COMPARISON.json](evidence/SIGN_REFERENCE12_COMPARISON.json). Crop 4 panel (gốc/source visible/V1/V2) ở `runs/review/sign_reference12_zoom/crops/`, local và gitignored.
 
-**Không được kết luận sửa biên sẽ đưa AP từ 6,05 lên một giá trị dự đoán.** Chưa chạy V2 hoặc public evaluation. Chưa đo lỗi chính xác trên test BTC, ảnh hưởng số epoch/checkpoint, lỗi dự đoán bỏ sót/nhầm lớp, hay tỷ trọng từng nguyên nhân. Đã kiểm toàn bộ nhãn train: **24 polygon tự cắt**, khớp phần train của báo cáo 29 lỗi cả train+val; **0 Sign tự cắt**. Vì vậy self-intersection không giải thích riêng AP Sign trong snapshot này.
+**Không được kết luận sửa biên sẽ đưa AP từ 6,05 lên một giá trị dự đoán.** Chưa chạy V2 hoặc public evaluation. Chưa đo lỗi chính xác trên test BTC, ảnh hưởng thay số epoch/checkpoint, lỗi dự đoán bỏ sót/nhầm lớp, hay tỷ trọng từng nguyên nhân. Đã kiểm toàn bộ nhãn train: **24 polygon tự cắt**, khớp phần train của báo cáo 29 lỗi cả train+val; **0 Sign tự cắt**. Vì vậy self-intersection không giải thích riêng AP Sign trong snapshot này.
 
 ## Completeness và topology
 
