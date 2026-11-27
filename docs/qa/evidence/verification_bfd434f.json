@@ -1,0 +1,172 @@
+{
+  "pipeline_commit": "bfd434f352c93684fc33da4888310bbd2f5d20b3",
+  "tests": {
+    "command": "PYTHONIOENCODING=utf-8 python -m unittest discover -s scripts/qa -p test_qa.py -v",
+    "returncode": 0,
+    "output": "Notebook 3.0.0+7880385f | 11 lớp | ultralytics==8.4.214 | imgsz=640\ntest_evidence_sampling_and_readonly_input (test_qa.Checks.test_evidence_sampling_and_readonly_input) ... ok\ntest_frozen_labels_and_cross_split_duplicates (test_qa.Checks.test_frozen_labels_and_cross_split_duplicates) ... ok\ntest_invalid_geometry_and_bbox_are_review_candidates (test_qa.Checks.test_invalid_geometry_and_bbox_are_review_candidates) ... ok\ntest_nan_id_is_flagged_without_crash (test_qa.Checks.test_nan_id_is_flagged_without_crash) ... ok\ntest_output_cannot_modify_inputs_or_ancestors (test_qa.Checks.test_output_cannot_modify_inputs_or_ancestors) ... ok\ntest_overlap_and_short_side_candidates (test_qa.Checks.test_overlap_and_short_side_candidates) ... ok\ntest_short_side_and_area_thresholds_are_independent (test_qa.Checks.test_short_side_and_area_thresholds_are_independent) ... ok\ntest_wrong_class_order_refused (test_qa.Checks.test_wrong_class_order_refused) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.174s\n\nOK\n"
+  },
+  "conversion": {
+    "source": "qa_bdd12_origin_main",
+    "images_seen": 12,
+    "images_ok": 12,
+    "images_review": 0,
+    "images_skipped": 0,
+    "instances_ok": {
+      "Car": 100,
+      "Bus": 4,
+      "Truck": 5,
+      "Other vehicle": 1,
+      "Motorcycle": 0,
+      "Motorcyclist": 0,
+      "Bicycle": 0,
+      "Cyclist": 0,
+      "Pedestrian": 11,
+      "Sign": 0,
+      "Traffic light": 0
+    },
+    "instances_review": {
+      "Car": 0,
+      "Bus": 0,
+      "Truck": 0,
+      "Other vehicle": 0,
+      "Motorcycle": 0,
+      "Motorcyclist": 0,
+      "Bicycle": 0,
+      "Cyclist": 0,
+      "Pedestrian": 0,
+      "Sign": 0,
+      "Traffic light": 0
+    },
+    "dropped": {
+      "rectangle objects (duplicate boxes of the masks)": 174,
+      "smaller than 64 px at 640 (scorer ignores)": 53
+    },
+    "review_flags": {},
+    "max_side": 1024,
+    "min_area_640": 64,
+    "converter": {
+      "script": "convert_supervisely.py",
+      "config": "C:\\My Future\\VietSight-data-qa\\configs\\sources\\bdd100k_10k.yaml",
+      "root": "data\\raw\\qa_bdd_snapshot",
+      "unmapped_labels": {},
+      "skipped_unannotated": 0
+    }
+  },
+  "reproductions": {
+    "ambiguous_pair": {
+      "classes": [
+        "Motorcyclist",
+        "Motorcycle"
+      ],
+      "flags": []
+    },
+    "weak_passenger": {
+      "classes": [
+        "Pedestrian",
+        "Motorcyclist"
+      ],
+      "flags": []
+    },
+    "person_beside_bike": {
+      "classes": [
+        "Cyclist"
+      ],
+      "flags": [],
+      "semantic_truth": "synthetic geometry only; not a real-image error count"
+    },
+    "hole": {
+      "status": "ok",
+      "original_pixels": 19200,
+      "decoded_pixels": 25281,
+      "roundtrip_iou": 0.7375390625,
+      "lost_pixels": 319,
+      "added_pixels": 6400,
+      "drops": {
+        "smaller than 64 px at 640 (scorer ignores)": 0
+      }
+    },
+    "small_component": {
+      "status": "ok",
+      "original_pixels": 10100,
+      "decoded_pixels": 9801,
+      "roundtrip_iou": 0.9703960396039604,
+      "lost_pixels": 299,
+      "added_pixels": 0,
+      "drops": {
+        "smaller than 64 px at 640 (scorer ignores)": 0
+      }
+    },
+    "overlapping_coco_parts": {
+      "lost_union_pixels": 1521
+    },
+    "accept_invalid_polygon": {
+      "status": "ok",
+      "parse_problems": [],
+      "polygon_problem": "các cạnh tự cắt nhau (đa giác bị xoắn)"
+    },
+    "fill_zero_predictions": {
+      "file": "scene.jpg",
+      "status": "ok",
+      "flags": []
+    },
+    "malformed_yolo_approved": {
+      "file": "bad__scene__71f68d36.jpg",
+      "orig": "images/scene.jpg",
+      "group": "bad:bad__scene__71f68d36",
+      "status": "ok",
+      "flags": [],
+      "w": 200,
+      "h": 200,
+      "instances": {}
+    },
+    "missing_frozen_key": {
+      "build_completed": true,
+      "requested_val": 2,
+      "actual_val": 1,
+      "warning_seen": true
+    },
+    "hardlink_label_mutation": {
+      "built_val_changed_without_rebuild": true,
+      "same_frozen_key": true
+    }
+  },
+  "built_fixture_images": {
+    "train": 5,
+    "val": 1
+  },
+  "source_file_sha256": {
+    "scripts/vslib/__init__.py": "4ae57e90d6a0a53de8eeae768809c4a617b852c457f9ad2a595e0fdc352ae4fe",
+    "scripts/vslib/geometry.py": "cc66f987d23d6f4234cb51099db86ff7f3d2e3d1816ce903670324402a9be571",
+    "scripts/vslib/instances.py": "0d3bbe061c11f13bca8fa5de4b6779fda77b8ca5049e15b422b714ed717d0d34",
+    "scripts/vslib/mapping.py": "d74dd87405a6f712d349b3dc07f0749dbc8e61320f2b7b64e19d8599592cf87b",
+    "scripts/vslib/notebook_lib.py": "9218af650afef9916a8c2a36448b4f6c7fb644603a854820395f314d3b162d6a",
+    "scripts/vslib/writer.py": "8e8f22e08f2d4fe172d018d07f39ffc94cd79f16276260346d12281debed0f75"
+  },
+  "qa_source_sha256": {
+    "scripts/qa/compare_validation.py": "093c7a4427cdc0f6f468b387493d2db3c3216fab4604db97bc7be64d110cad38",
+    "scripts/qa/guideline_probes.py": "3678fa3f6dab30aceb9c656389bf9cf5541ef6687c865b633a37e50319cce772",
+    "scripts/qa/label_audit.py": "2391a54750b3031e75faf293ea6957d80ead99c01a7da5fadd45c5f02493bac8",
+    "scripts/qa/reproduce_risks.py": "6333abbc5e9ff1904cbc57c9e3f2ad8d19ccf9667b374f3fcc380a794154fc83",
+    "scripts/qa/source_inventory.py": "51c3ba5d91ed93d5d94de65b8e80926db053d21d0728d41f6859cf952810777f",
+    "scripts/qa/test_qa.py": "011ad21644ce5c137fc187f0ff605af6708c7c29e87e1309c3eb105d31754ed4"
+  },
+  "limits": "CPU fixtures and copied local BDD images only. No model/training/export/Kaggle calls, no production fixes applied.",
+  "harness_note": "An earlier captured child process used Windows cp1252 and failed printing the official notebook banner. Re-run uses the documented UTF-8 environment; no notebook/validator changes.",
+  "bdd_audit": {
+    "images_audited": 12,
+    "images_flagged": 9,
+    "instances_by_class": {
+      "Car": 100,
+      "Bus": 4,
+      "Truck": 5,
+      "Other vehicle": 1,
+      "Motorcycle": 0,
+      "Motorcyclist": 0,
+      "Bicycle": 0,
+      "Cyclist": 0,
+      "Pedestrian": 11,
+      "Sign": 0,
+      "Traffic light": 0
+    }
+  }
+}

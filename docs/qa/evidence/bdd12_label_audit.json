@@ -1,0 +1,1494 @@
+{
+  "scope": "QA snapshot; see bdd_snapshot.json",
+  "split": null,
+  "seed": 55,
+  "images_audited": 12,
+  "limit": 0,
+  "total_images_discovered": 12,
+  "images_flagged": 9,
+  "instances_by_class": {
+    "Car": 100,
+    "Bus": 4,
+    "Truck": 5,
+    "Other vehicle": 1,
+    "Motorcycle": 0,
+    "Motorcyclist": 0,
+    "Bicycle": 0,
+    "Cyclist": 0,
+    "Pedestrian": 11,
+    "Sign": 0,
+    "Traffic light": 0
+  },
+  "images_by_class": {
+    "Car": 12,
+    "Bus": 2,
+    "Truck": 4,
+    "Other vehicle": 1,
+    "Motorcycle": 0,
+    "Motorcyclist": 0,
+    "Bicycle": 0,
+    "Cyclist": 0,
+    "Pedestrian": 5,
+    "Sign": 0,
+    "Traffic light": 0
+  },
+  "class_order": {
+    "file": "C:\\My Future\\VietSight-data-qa\\configs\\classes.yaml",
+    "sha256": "86abef2014cba4e362dcca30488edd1fb0303c0ca561a8a78e0d014a0f7ea13d",
+    "matches": true
+  },
+  "samples_by_class": {
+    "Car": [
+      "qa_bdd12__00e9be89-00001885__cc7e097b.jpg",
+      "qa_bdd12__092b387a-67a64a9b__1b8765f1.jpg"
+    ],
+    "Bus": [
+      "qa_bdd12__00e9be89-00001885__cc7e097b.jpg",
+      "qa_bdd12__18ca58e1-0353ed4b__db2eb032.jpg"
+    ],
+    "Truck": [
+      "qa_bdd12__00de5508-00000000__b854e69d.jpg",
+      "qa_bdd12__00e9be89-00001885__cc7e097b.jpg"
+    ],
+    "Other vehicle": [
+      "qa_bdd12__1f38d887-27fa3ef2__564572c8.jpg"
+    ],
+    "Motorcycle": [],
+    "Motorcyclist": [],
+    "Bicycle": [],
+    "Cyclist": [],
+    "Pedestrian": [
+      "qa_bdd12__0fbf178c-8d2aa7d8__3af9887c.jpg",
+      "qa_bdd12__1bdba2c3-292b3682__8a3f6357.jpg"
+    ],
+    "Sign": [],
+    "Traffic light": []
+  },
+  "records": [
+    {
+      "image": "qa_bdd12__00de5508-00000000__b854e69d.jpg",
+      "image_sha256": "5ac9c0bb2304a1050f67a9a65aaa3bbf3481489403b2d8268a6ebcc2e2400a8b",
+      "label_sha256": "33cddeeb3adaeddcc4b8792d84daec29644f0bcd33d450c42d0afd6f54bdca60",
+      "width": 1024,
+      "height": 576,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 273.63439998716785,
+          "short_side_at_640": 17.5,
+          "raster_pixels": 806,
+          "extent": 0.44285714285714284
+        },
+        {
+          "line": 2,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 665.6184999936386,
+          "short_side_at_640": 21.875,
+          "raster_pixels": 1756,
+          "extent": 0.8092165898617512
+        },
+        {
+          "line": 3,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 1317.5791250688007,
+          "short_side_at_640": 30.0,
+          "raster_pixels": 3530,
+          "extent": 0.7823581560283688
+        },
+        {
+          "line": 4,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 365.4284500224776,
+          "short_side_at_640": 20.0,
+          "raster_pixels": 985,
+          "extent": 0.8550347222222222
+        },
+        {
+          "line": 5,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 300.38829995519336,
+          "short_side_at_640": 17.5,
+          "raster_pixels": 803,
+          "extent": 0.8690476190476191
+        },
+        {
+          "line": 6,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 195.11537506561183,
+          "short_side_at_640": 12.5,
+          "raster_pixels": 532,
+          "extent": 0.806060606060606
+        },
+        {
+          "line": 7,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 67.96818754559268,
+          "short_side_at_640": 10.0,
+          "raster_pixels": 218,
+          "extent": 0.5240384615384616
+        },
+        {
+          "line": 8,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 162.30562502402108,
+          "short_side_at_640": 10.625,
+          "raster_pixels": 455,
+          "extent": 0.8633776091081594
+        },
+        {
+          "line": 9,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 99.60971258875588,
+          "short_side_at_640": 12.5,
+          "raster_pixels": 285,
+          "extent": 0.6477272727272727
+        },
+        {
+          "line": 10,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 97.26368751358336,
+          "short_side_at_640": 11.875,
+          "raster_pixels": 285,
+          "extent": 0.7142857142857143
+        },
+        {
+          "line": 11,
+          "class_id": 2,
+          "class_name": "Truck",
+          "area_at_640": 182.6149624703703,
+          "short_side_at_640": 15.625,
+          "raster_pixels": 516,
+          "extent": 0.5733333333333334
+        },
+        {
+          "line": 12,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 85.74139998720511,
+          "short_side_at_640": 8.125,
+          "raster_pixels": 248,
+          "extent": 0.5020242914979757
+        }
+      ],
+      "issues": [],
+      "evidence": "evidence/8289d7dac9cc7466.png"
+    },
+    {
+      "image": "qa_bdd12__00e9be89-00001885__cc7e097b.jpg",
+      "image_sha256": "0a26ae3a442c231e47e0d3c145737b0419c42901506c6c67b044a2acdc34383c",
+      "label_sha256": "d6e129542a2fa37376f4272f3bd9504c33ae7e791ee75d7b18e0bdbdce249fc9",
+      "width": 1024,
+      "height": 576,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 13066.211562394255,
+          "short_side_at_640": 123.125,
+          "raster_pixels": 33875,
+          "extent": 0.699001279352895
+        },
+        {
+          "line": 2,
+          "class_id": 2,
+          "class_name": "Truck",
+          "area_at_640": 14319.548975116959,
+          "short_side_at_640": 106.875,
+          "raster_pixels": 37185,
+          "extent": 0.8698245614035087
+        },
+        {
+          "line": 3,
+          "class_id": 1,
+          "class_name": "Bus",
+          "area_at_640": 17756.069762418792,
+          "short_side_at_640": 142.5,
+          "raster_pixels": 45955,
+          "extent": 0.7782124229492651
+        },
+        {
+          "line": 4,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 479.4912374398791,
+          "short_side_at_640": 20.0,
+          "raster_pixels": 1299,
+          "extent": 0.7248883928571429
+        },
+        {
+          "line": 5,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 1193.161412506015,
+          "short_side_at_640": 39.375,
+          "raster_pixels": 3143,
+          "extent": 0.7230273752012882
+        },
+        {
+          "line": 6,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 704.8768375294912,
+          "short_side_at_640": 27.5,
+          "raster_pixels": 1838,
+          "extent": 0.7735690235690236
+        },
+        {
+          "line": 7,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 304.4943000576495,
+          "short_side_at_640": 19.375,
+          "raster_pixels": 853,
+          "extent": 0.5395319418089817
+        },
+        {
+          "line": 8,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 315.8201249279898,
+          "short_side_at_640": 16.875,
+          "raster_pixels": 869,
+          "extent": 0.7663139329805997
+        },
+        {
+          "line": 9,
+          "class_id": 2,
+          "class_name": "Truck",
+          "area_at_640": 297.65922497283555,
+          "short_side_at_640": 23.75,
+          "raster_pixels": 858,
+          "extent": 0.4342105263157895
+        },
+        {
+          "line": 10,
+          "class_id": 1,
+          "class_name": "Bus",
+          "area_at_640": 206.83572503075993,
+          "short_side_at_640": 11.25,
+          "raster_pixels": 596,
+          "extent": 0.6757369614512472
+        },
+        {
+          "line": 11,
+          "class_id": 1,
+          "class_name": "Bus",
+          "area_at_640": 213.66958740500195,
+          "short_side_at_640": 13.125,
+          "raster_pixels": 583,
+          "extent": 0.7711640211640212
+        }
+      ],
+      "issues": [
+        {
+          "line": 4,
+          "reason": "overlap_with_L3:40_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 7,
+          "reason": "overlap_with_L2:13_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 7,
+          "reason": "overlap_with_L3:14_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 7,
+          "reason": "overlap_with_L4:11_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 9,
+          "reason": "overlap_with_L7:14_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/84a007a7687271f4.png"
+    },
+    {
+      "image": "qa_bdd12__0540f550-72c78702__383534ac.jpg",
+      "image_sha256": "d39c3f5b7c335b3049d9c3589ced2b179b66d0bcd46fd04e96a29c17c9ec7161",
+      "label_sha256": "5d4902a357428b435f21102b96b19b121179c247a2fd52a3f77d60b9aec5796f",
+      "width": 1024,
+      "height": 576,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 56286.35651266486,
+          "short_side_at_640": 178.125,
+          "raster_pixels": 145652,
+          "extent": 0.4985947796320068
+        },
+        {
+          "line": 2,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 16884.576749837743,
+          "short_side_at_640": 138.75,
+          "raster_pixels": 43657,
+          "extent": 0.6852026242270145
+        },
+        {
+          "line": 3,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 592.3865750400043,
+          "short_side_at_640": 19.375,
+          "raster_pixels": 1613,
+          "extent": 0.693763440860215
+        },
+        {
+          "line": 4,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 517.379649984008,
+          "short_side_at_640": 28.125,
+          "raster_pixels": 1396,
+          "extent": 0.553968253968254
+        },
+        {
+          "line": 5,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 1515.0474124416178,
+          "short_side_at_640": 39.375,
+          "raster_pixels": 4108,
+          "extent": 0.749498266739646
+        },
+        {
+          "line": 6,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 242.1899248896068,
+          "short_side_at_640": 18.125,
+          "raster_pixels": 681,
+          "extent": 0.5727502102607233
+        },
+        {
+          "line": 7,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 1833.97265015019,
+          "short_side_at_640": 34.375,
+          "raster_pixels": 4774,
+          "extent": 0.775
+        },
+        {
+          "line": 8,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 165.2363000063943,
+          "short_side_at_640": 15.0,
+          "raster_pixels": 469,
+          "extent": 0.7237654320987654
+        },
+        {
+          "line": 9,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 171.09582497283782,
+          "short_side_at_640": 29.375,
+          "raster_pixels": 529,
+          "extent": 0.20098784194528876
+        },
+        {
+          "line": 10,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 106.25039999997057,
+          "short_side_at_640": 6.875,
+          "raster_pixels": 326,
+          "extent": 0.8980716253443526
+        },
+        {
+          "line": 11,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 160.15867488000595,
+          "short_side_at_640": 13.75,
+          "raster_pixels": 455,
+          "extent": 0.7386363636363636
+        },
+        {
+          "line": 12,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 245.89803743993457,
+          "short_side_at_640": 20.0,
+          "raster_pixels": 661,
+          "extent": 0.51640625
+        },
+        {
+          "line": 13,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 94.53076243205487,
+          "short_side_at_640": 11.875,
+          "raster_pixels": 288,
+          "extent": 0.7578947368421053
+        }
+      ],
+      "issues": [
+        {
+          "line": 5,
+          "reason": "overlap_with_L1:77_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 6,
+          "reason": "overlap_with_L1:8_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 6,
+          "reason": "overlap_with_L4:12_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 8,
+          "reason": "overlap_with_L6:18_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 9,
+          "reason": "overlap_with_L5:46_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 10,
+          "reason": "short_side_under_about_1.25_percent_image_long_side: heuristic, human review required"
+        }
+      ],
+      "evidence": "evidence/c31f684e11e9d3f5.png"
+    },
+    {
+      "image": "qa_bdd12__092b387a-67a64a9b__1b8765f1.jpg",
+      "image_sha256": "c64bcb59a4b18de184e43ef350da15d26e87f4c588f47c11f7436c0f7f763c54",
+      "label_sha256": "64292e54785597457542b14ad2f1685c5ec7edb83a0413b6c10d8d12a70e1c30",
+      "width": 1024,
+      "height": 576,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 1511.9108999423702,
+          "short_side_at_640": 38.75,
+          "raster_pixels": 3973,
+          "extent": 0.7120071684587813
+        },
+        {
+          "line": 2,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 161.52173740800606,
+          "short_side_at_640": 9.375,
+          "raster_pixels": 443,
+          "extent": 0.7572649572649572
+        },
+        {
+          "line": 3,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 146.67907495680765,
+          "short_side_at_640": 11.875,
+          "raster_pixels": 430,
+          "extent": 0.5955678670360111
+        },
+        {
+          "line": 4,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 377.54367505922346,
+          "short_side_at_640": 11.875,
+          "raster_pixels": 1051,
+          "extent": 0.6078658183921342
+        },
+        {
+          "line": 5,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 465.62847482879874,
+          "short_side_at_640": 20.625,
+          "raster_pixels": 1282,
+          "extent": 0.79282622139765
+        },
+        {
+          "line": 6,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 436.1366499839278,
+          "short_side_at_640": 21.875,
+          "raster_pixels": 1205,
+          "extent": 0.8197278911564626
+        },
+        {
+          "line": 7,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 202.73525003520376,
+          "short_side_at_640": 17.5,
+          "raster_pixels": 582,
+          "extent": 0.5617760617760618
+        },
+        {
+          "line": 8,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 82.42490004476792,
+          "short_side_at_640": 10.625,
+          "raster_pixels": 247,
+          "extent": 0.7264705882352941
+        },
+        {
+          "line": 9,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 96.29147508480003,
+          "short_side_at_640": 13.75,
+          "raster_pixels": 305,
+          "extent": 0.6027667984189723
+        }
+      ],
+      "issues": [
+        {
+          "line": 7,
+          "reason": "overlap_with_L5:16_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 8,
+          "reason": "overlap_with_L7:17_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 9,
+          "reason": "overlap_with_L8:6_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/c46a346c7cd7b6ba.png"
+    },
+    {
+      "image": "qa_bdd12__0c1eebb0-dbb11761__8754e92f.jpg",
+      "image_sha256": "4b6581f2dddbf3809846c03ffe00b86fd758f3bd1a60b7b9ebd673acd6773c2f",
+      "label_sha256": "4cf6f91d514de56ba4bff161ebe4cc1bddfba5bb7ff4bb9d9691a05479cb7b79",
+      "width": 1024,
+      "height": 576,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 20647.29473752377,
+          "short_side_at_640": 155.625,
+          "raster_pixels": 53213,
+          "extent": 0.7632386689615606
+        },
+        {
+          "line": 2,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 3751.760199859473,
+          "short_side_at_640": 65.0,
+          "raster_pixels": 9848,
+          "extent": 0.7119722382880278
+        },
+        {
+          "line": 3,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 361.52939992316533,
+          "short_side_at_640": 28.125,
+          "raster_pixels": 1055,
+          "extent": 0.45085470085470086
+        },
+        {
+          "line": 4,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 699.408199871732,
+          "short_side_at_640": 23.75,
+          "raster_pixels": 1837,
+          "extent": 0.7006102212051869
+        },
+        {
+          "line": 5,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 736.7151999742646,
+          "short_side_at_640": 32.5,
+          "raster_pixels": 1974,
+          "extent": 0.48668639053254437
+        },
+        {
+          "line": 6,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 169.92159989762285,
+          "short_side_at_640": 18.125,
+          "raster_pixels": 476,
+          "extent": 0.49738766980146293
+        },
+        {
+          "line": 7,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 2638.8635374079513,
+          "short_side_at_640": 51.875,
+          "raster_pixels": 6903,
+          "extent": 0.8574090175133524
+        },
+        {
+          "line": 8,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 160.34588743693803,
+          "short_side_at_640": 18.125,
+          "raster_pixels": 430,
+          "extent": 0.39019963702359345
+        },
+        {
+          "line": 9,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 103.90614992631981,
+          "short_side_at_640": 8.125,
+          "raster_pixels": 302,
+          "extent": 0.6637362637362637
+        },
+        {
+          "line": 10,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 188.6684500224419,
+          "short_side_at_640": 11.875,
+          "raster_pixels": 520,
+          "extent": 0.7819548872180451
+        },
+        {
+          "line": 11,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 123.63309999361718,
+          "short_side_at_640": 15.0,
+          "raster_pixels": 365,
+          "extent": 0.43452380952380953
+        },
+        {
+          "line": 12,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 97.2616999679417,
+          "short_side_at_640": 13.75,
+          "raster_pixels": 280,
+          "extent": 0.3977272727272727
+        },
+        {
+          "line": 13,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 114.25483745279621,
+          "short_side_at_640": 10.0,
+          "raster_pixels": 306,
+          "extent": 0.7355769230769231
+        },
+        {
+          "line": 14,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 104.49162501120668,
+          "short_side_at_640": 15.0,
+          "raster_pixels": 314,
+          "extent": 0.4511494252873563
+        },
+        {
+          "line": 15,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 75.19631247358802,
+          "short_side_at_640": 10.0,
+          "raster_pixels": 235,
+          "extent": 0.6385869565217391
+        }
+      ],
+      "issues": [
+        {
+          "line": 3,
+          "reason": "overlap_with_L2:30_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 6,
+          "reason": "overlap_with_L2:17_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 8,
+          "reason": "overlap_with_L5:5_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 9,
+          "reason": "overlap_with_L8:7_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 10,
+          "reason": "overlap_with_L7:8_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 12,
+          "reason": "overlap_with_L11:11_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 14,
+          "reason": "overlap_with_L12:7_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 15,
+          "reason": "overlap_with_L14:10_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/50ae20eaf8903e12.png"
+    },
+    {
+      "image": "qa_bdd12__0fbf178c-8d2aa7d8__3af9887c.jpg",
+      "image_sha256": "72753eac48da703327c5a436511747d8d596aa080e5612b8231552333b1e438c",
+      "label_sha256": "7dfba6795a6c24f522abf5d348e772b62a22fc80baa2f80113f2488e59a2abfa",
+      "width": 1024,
+      "height": 576,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 2,
+          "class_name": "Truck",
+          "area_at_640": 22865.834762381928,
+          "short_side_at_640": 146.25,
+          "raster_pixels": 58979,
+          "extent": 0.5820947079607588
+        },
+        {
+          "line": 2,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 40422.47051243385,
+          "short_side_at_640": 220.0,
+          "raster_pixels": 104166,
+          "extent": 0.6336748102005061
+        },
+        {
+          "line": 3,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 1033.0110248831488,
+          "short_side_at_640": 34.375,
+          "raster_pixels": 2841,
+          "extent": 0.37981283422459894
+        },
+        {
+          "line": 4,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 737.8918124544668,
+          "short_side_at_640": 20.0,
+          "raster_pixels": 2020,
+          "extent": 0.6376262626262627
+        },
+        {
+          "line": 5,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 3609.763837286482,
+          "short_side_at_640": 43.75,
+          "raster_pixels": 9465,
+          "extent": 0.734860248447205
+        },
+        {
+          "line": 6,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 961.7176001660027,
+          "short_side_at_640": 30.625,
+          "raster_pixels": 2548,
+          "extent": 0.6753246753246753
+        },
+        {
+          "line": 7,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 196.0895624831437,
+          "short_side_at_640": 10.625,
+          "raster_pixels": 561,
+          "extent": 0.6111111111111112
+        },
+        {
+          "line": 8,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 242.96858749436296,
+          "short_side_at_640": 11.25,
+          "raster_pixels": 699,
+          "extent": 0.6812865497076024
+        },
+        {
+          "line": 9,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 111.91431248638253,
+          "short_side_at_640": 16.25,
+          "raster_pixels": 332,
+          "extent": 0.4256410256410256
+        },
+        {
+          "line": 10,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 134.574350054379,
+          "short_side_at_640": 9.375,
+          "raster_pixels": 405,
+          "extent": 0.675
+        },
+        {
+          "line": 11,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 155.27612494081495,
+          "short_side_at_640": 14.375,
+          "raster_pixels": 458,
+          "extent": 0.663768115942029
+        },
+        {
+          "line": 12,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 157.03310004479363,
+          "short_side_at_640": 13.125,
+          "raster_pixels": 448,
+          "extent": 0.7619047619047619
+        },
+        {
+          "line": 13,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 132.8110750079702,
+          "short_side_at_640": 16.25,
+          "raster_pixels": 396,
+          "extent": 0.46153846153846156
+        },
+        {
+          "line": 14,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 80.85575001601342,
+          "short_side_at_640": 13.75,
+          "raster_pixels": 233,
+          "extent": 0.3782467532467532
+        }
+      ],
+      "issues": [
+        {
+          "line": 4,
+          "reason": "overlap_with_L3:25_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 7,
+          "reason": "overlap_with_L6:11_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 8,
+          "reason": "overlap_with_L2:10_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 9,
+          "reason": "overlap_with_L3:19_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 10,
+          "reason": "overlap_with_L2:17_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 10,
+          "reason": "overlap_with_L8:32_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 11,
+          "reason": "overlap_with_L5:10_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 12,
+          "reason": "overlap_with_L4:18_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 13,
+          "reason": "overlap_with_L2:17_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 13,
+          "reason": "overlap_with_L12:10_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 14,
+          "reason": "overlap_with_L2:14_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/9284cdb6a0635f7b.png"
+    },
+    {
+      "image": "qa_bdd12__13dcc2ca-b289b76f__03cbca58.jpg",
+      "image_sha256": "7a108059d381c5cdd556b8e84b88aa21e3646a3b558f8f84099aeb1d14cb76b2",
+      "label_sha256": "5e8194f917eb8d3ad0b964772d4dd3e60ec3b6e1e5c1a8b226bd5f1a840d9722",
+      "width": 1024,
+      "height": 576,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 143.7509249279799,
+          "short_side_at_640": 15.625,
+          "raster_pixels": 427,
+          "extent": 0.5889655172413794
+        },
+        {
+          "line": 2,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 161.13443765754027,
+          "short_side_at_640": 15.0,
+          "raster_pixels": 486,
+          "extent": 0.375
+        },
+        {
+          "line": 3,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 392.18875004162896,
+          "short_side_at_640": 16.25,
+          "raster_pixels": 1063,
+          "extent": 0.7300824175824175
+        },
+        {
+          "line": 4,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 348.82751255042876,
+          "short_side_at_640": 16.25,
+          "raster_pixels": 979,
+          "extent": 0.5303358613217768
+        },
+        {
+          "line": 5,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 1000.5816874750735,
+          "short_side_at_640": 20.625,
+          "raster_pixels": 2645,
+          "extent": 0.6909613375130617
+        },
+        {
+          "line": 6,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 245.90477491198044,
+          "short_side_at_640": 9.375,
+          "raster_pixels": 748,
+          "extent": 0.7227053140096619
+        },
+        {
+          "line": 7,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 253.31728746236877,
+          "short_side_at_640": 10.0,
+          "raster_pixels": 685,
+          "extent": 0.7381465517241379
+        },
+        {
+          "line": 8,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 70.3149000191786,
+          "short_side_at_640": 9.375,
+          "raster_pixels": 208,
+          "extent": 0.8666666666666667
+        },
+        {
+          "line": 9,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 158.59235001604475,
+          "short_side_at_640": 12.5,
+          "raster_pixels": 441,
+          "extent": 0.5802631578947368
+        },
+        {
+          "line": 10,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 212.69495001604355,
+          "short_side_at_640": 12.5,
+          "raster_pixels": 616,
+          "extent": 0.8105263157894737
+        },
+        {
+          "line": 11,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 108.0066875904663,
+          "short_side_at_640": 11.25,
+          "raster_pixels": 311,
+          "extent": 0.6645299145299145
+        },
+        {
+          "line": 12,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 134.9614374912221,
+          "short_side_at_640": 8.125,
+          "raster_pixels": 405,
+          "extent": 0.841995841995842
+        }
+      ],
+      "issues": [
+        {
+          "line": 3,
+          "reason": "overlap_with_L1:8_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 4,
+          "reason": "overlap_with_L1:14_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 5,
+          "reason": "overlap_with_L2:8_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 9,
+          "reason": "overlap_with_L7:9_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/a179988a18a2bbb4.png"
+    },
+    {
+      "image": "qa_bdd12__18ca58e1-0353ed4b__db2eb032.jpg",
+      "image_sha256": "2566387bfade3591cfcc4d814174a120bc769cd6efc99fb8ca076af30ba8e380",
+      "label_sha256": "855288b9d02a794fc3affb358b1123598c52b5da2f9860b8f42c5f709281dfba",
+      "width": 1024,
+      "height": 576,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 3552.3686749824265,
+          "short_side_at_640": 46.25,
+          "raster_pixels": 9237,
+          "extent": 0.7386054693747002
+        },
+        {
+          "line": 2,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 34840.44362488385,
+          "short_side_at_640": 185.0,
+          "raster_pixels": 89998,
+          "extent": 0.7796084546084546
+        },
+        {
+          "line": 3,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 18562.33637498881,
+          "short_side_at_640": 148.125,
+          "raster_pixels": 48173,
+          "extent": 0.7584388185654009
+        },
+        {
+          "line": 4,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 6941.998675123796,
+          "short_side_at_640": 83.125,
+          "raster_pixels": 18056,
+          "extent": 0.6926499923277581
+        },
+        {
+          "line": 5,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 2933.2168998914312,
+          "short_side_at_640": 51.25,
+          "raster_pixels": 7798,
+          "extent": 0.7487996927213366
+        },
+        {
+          "line": 6,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 1976.1748000127,
+          "short_side_at_640": 53.125,
+          "raster_pixels": 5194,
+          "extent": 0.7105335157318742
+        },
+        {
+          "line": 7,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 465.62167491842956,
+          "short_side_at_640": 30.625,
+          "raster_pixels": 1294,
+          "extent": 0.3827270038450163
+        },
+        {
+          "line": 8,
+          "class_id": 1,
+          "class_name": "Bus",
+          "area_at_640": 2729.692874995044,
+          "short_side_at_640": 95.0,
+          "raster_pixels": 7345,
+          "extent": 0.26697441116603665
+        },
+        {
+          "line": 9,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 247.46307505920413,
+          "short_side_at_640": 21.25,
+          "raster_pixels": 704,
+          "extent": 0.5176470588235295
+        }
+      ],
+      "issues": [
+        {
+          "line": 7,
+          "reason": "overlap_with_L5:18_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 7,
+          "reason": "overlap_with_L6:27_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 8,
+          "reason": "overlap_with_L2:115_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 9,
+          "reason": "overlap_with_L2:10_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/c1d0707d080ddb66.png"
+    },
+    {
+      "image": "qa_bdd12__1bdba2c3-292b3682__8a3f6357.jpg",
+      "image_sha256": "f34a7911fb9d8461b19531c870e37df7c37dc25a8bb3475d50f2e3f7f843d63e",
+      "label_sha256": "f1c22e48508d839068c82663b5b11887c539cbdcb62e7bd001b42921096e34c8",
+      "width": 1024,
+      "height": 576,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 23211.34808739762,
+          "short_side_at_640": 136.25,
+          "raster_pixels": 59990,
+          "extent": 0.8214432425030809
+        },
+        {
+          "line": 2,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 10158.779800166349,
+          "short_side_at_640": 110.0,
+          "raster_pixels": 26266,
+          "extent": 0.7896224146224147
+        },
+        {
+          "line": 3,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 287.3073999744065,
+          "short_side_at_640": 18.125,
+          "raster_pixels": 778,
+          "extent": 0.812957157784744
+        },
+        {
+          "line": 4,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 728.5119998975688,
+          "short_side_at_640": 23.75,
+          "raster_pixels": 1925,
+          "extent": 0.804093567251462
+        },
+        {
+          "line": 5,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 256.05246239992994,
+          "short_side_at_640": 18.75,
+          "raster_pixels": 698,
+          "extent": 0.5965811965811966
+        },
+        {
+          "line": 6,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 315.23413743368565,
+          "short_side_at_640": 19.375,
+          "raster_pixels": 870,
+          "extent": 0.6682027649769585
+        },
+        {
+          "line": 7,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 159.1807500287132,
+          "short_side_at_640": 16.25,
+          "raster_pixels": 462,
+          "extent": 0.5923076923076923
+        },
+        {
+          "line": 8,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 125.39091248645491,
+          "short_side_at_640": 16.25,
+          "raster_pixels": 374,
+          "extent": 0.5137362637362637
+        },
+        {
+          "line": 9,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 65.82317506562276,
+          "short_side_at_640": 10.625,
+          "raster_pixels": 222,
+          "extent": 0.5935828877005348
+        },
+        {
+          "line": 10,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 203.51535010555608,
+          "short_side_at_640": 15.0,
+          "raster_pixels": 552,
+          "extent": 0.7419354838709677
+        },
+        {
+          "line": 11,
+          "class_id": 8,
+          "class_name": "Pedestrian",
+          "area_at_640": 488.281124966403,
+          "short_side_at_640": 26.25,
+          "raster_pixels": 1309,
+          "extent": 0.5880503144654088
+        },
+        {
+          "line": 12,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 512.5009124735897,
+          "short_side_at_640": 20.625,
+          "raster_pixels": 1390,
+          "extent": 0.6685906685906686
+        }
+      ],
+      "issues": [
+        {
+          "line": 5,
+          "reason": "overlap_with_L4:8_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 6,
+          "reason": "overlap_with_L5:11_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 8,
+          "reason": "overlap_with_L7:6_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 9,
+          "reason": "overlap_with_L8:14_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 10,
+          "reason": "overlap_with_L2:6_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 10,
+          "reason": "overlap_with_L9:6_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/b06a3d6ba3d1a0d9.png"
+    },
+    {
+      "image": "qa_bdd12__1f38d887-27fa3ef2__564572c8.jpg",
+      "image_sha256": "f1f72a86e5415db023fac46b66931f76611060d65bb5a5e313008c353de47864",
+      "label_sha256": "8ba47423b409fac269a043483901bc1d4ab89632ca068a280a6ed73189265c37",
+      "width": 1024,
+      "height": 576,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 2,
+          "class_name": "Truck",
+          "area_at_640": 11480.282612352903,
+          "short_side_at_640": 102.5,
+          "raster_pixels": 29860,
+          "extent": 0.6718567185671857
+        },
+        {
+          "line": 2,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 1090.826075059158,
+          "short_side_at_640": 40.0,
+          "raster_pixels": 2983,
+          "extent": 0.43971108490566035
+        },
+        {
+          "line": 3,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 2170.6996000890285,
+          "short_side_at_640": 45.625,
+          "raster_pixels": 5715,
+          "extent": 0.7600744779890943
+        },
+        {
+          "line": 4,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 453.3185376000574,
+          "short_side_at_640": 33.75,
+          "raster_pixels": 1238,
+          "extent": 0.4093915343915344
+        },
+        {
+          "line": 5,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 345.3159249791497,
+          "short_side_at_640": 23.75,
+          "raster_pixels": 952,
+          "extent": 0.6423751686909581
+        },
+        {
+          "line": 6,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 352.1499374592395,
+          "short_side_at_640": 20.625,
+          "raster_pixels": 979,
+          "extent": 0.8018018018018018
+        },
+        {
+          "line": 7,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 156.05518751997352,
+          "short_side_at_640": 13.125,
+          "raster_pixels": 442,
+          "extent": 0.8095238095238095
+        },
+        {
+          "line": 8,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 172.06987507196345,
+          "short_side_at_640": 13.125,
+          "raster_pixels": 486,
+          "extent": 0.826530612244898
+        },
+        {
+          "line": 9,
+          "class_id": 3,
+          "class_name": "Other vehicle",
+          "area_at_640": 198.82808743677742,
+          "short_side_at_640": 16.25,
+          "raster_pixels": 564,
+          "extent": 0.7747252747252747
+        }
+      ],
+      "issues": [
+        {
+          "line": 2,
+          "reason": "overlap_with_L1:37_pixels: inspect visible-mask ownership; raster heuristic"
+        },
+        {
+          "line": 5,
+          "reason": "overlap_with_L4:15_pixels: inspect visible-mask ownership; raster heuristic"
+        }
+      ],
+      "evidence": "evidence/dac75b8c53e7125d.png"
+    },
+    {
+      "image": "qa_bdd12__22fe903b-00000000__c60dd7b8.jpg",
+      "image_sha256": "cc8ada79e3434fb0af17e5b53aa11a16c80b9b797a14d20335b863787efc79ac",
+      "label_sha256": "76807647e2db2b02598deb0e29d4329293bdca064d0991f39b704cc8630bce41",
+      "width": 1024,
+      "height": 576,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 3446.0966001025554,
+          "short_side_at_640": 41.25,
+          "raster_pixels": 9069,
+          "extent": 0.7119642016015073
+        },
+        {
+          "line": 2,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 1167.7801749121045,
+          "short_side_at_640": 31.25,
+          "raster_pixels": 3126,
+          "extent": 0.7269767441860465
+        }
+      ],
+      "issues": []
+    },
+    {
+      "image": "qa_bdd12__27f635b5-0893ff34__59c02804.jpg",
+      "image_sha256": "416b20b5355562419bab5b851606754486f2c276188697097d0506ee730dc40f",
+      "label_sha256": "0358dcd58d473a5a55f9bff2b7f952bae3903185185781de1cc67977a2d062ca",
+      "width": 1024,
+      "height": 576,
+      "instances": [
+        {
+          "line": 1,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 267.18773748488616,
+          "short_side_at_640": 13.75,
+          "raster_pixels": 746,
+          "extent": 0.8073593073593074
+        },
+        {
+          "line": 2,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 454.4944750078457,
+          "short_side_at_640": 18.75,
+          "raster_pixels": 1249,
+          "extent": 0.717816091954023
+        },
+        {
+          "line": 3,
+          "class_id": 0,
+          "class_name": "Car",
+          "area_at_640": 117.77128750075576,
+          "short_side_at_640": 11.875,
+          "raster_pixels": 324,
+          "extent": 0.8120300751879699
+        }
+      ],
+      "issues": []
+    }
+  ],
+  "note": "Flags are review candidates, not confirmed semantic errors. No label edits or approvals performed."
+}

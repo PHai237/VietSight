@@ -1,0 +1,13 @@
+{
+  "root": "C:\\My Future\\VietSight-data-qa\\work\\qa-repro-02\\versions\\fixture",
+  "val": {
+    "img0.png": {
+      "image_sha256": "7a539e3ee03b0687558b0eb6e8bb87d8f01c5f9e1478290bc2cccd88b58a3899",
+      "label_sha256": "f79ae3525e32865fcfdf78657b410d4691253514fd189a9abe4591a086ac4ca4"
+    }
+  },
+  "train_images": 5,
+  "problems": [],
+  "ok": true,
+  "limits": "Exact hashes do not detect video/sequence leakage. Use canonical cross-source groups. No semantic label approval."
+}
