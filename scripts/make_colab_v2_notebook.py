@@ -60,6 +60,11 @@ if IN_COLAB:
         except Exception:
             print(f"Secret {k} chưa có (chỉ cần khi tải từ Kaggle)")
 Path(DRIVE_OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
+if not HANDOFF.get("submission_eligible"):
+    (Path(DRIVE_OUTPUT_DIR) / "NOT_FOR_SUBMISSION.txt").write_text(
+        "BẢN TRAIN THỬ NGHIỆM: quyền sử dụng nguồn dữ liệu V2 chưa được xác nhận (rights_confirmed != true).\n"
+        "Không nộp submission.zip trong thư mục này lên cuộc thi.\n", encoding="utf-8")
+    print("*** BẢN THỬ NGHIỆM — quyền nguồn chưa xác nhận: KHÔNG nộp submission.zip của run này ***")
 
 
 def _sha(p):
@@ -354,6 +359,8 @@ xp = SUBMISSION["zip"].parent / "eval_compare.json"
 xp.write_text(json.dumps(EVAL_COMPARE, indent=1, ensure_ascii=False), encoding="utf-8")
 shutil.copyfile(xp, Path(DRIVE_OUTPUT_DIR) / xp.name)
 print("Đã lưu", Path(DRIVE_OUTPUT_DIR) / xp.name)
+if not HANDOFF.get("submission_eligible"):
+    print("\n*** BẢN THỬ NGHIỆM: quyền nguồn V2 chưa xác nhận -> KHÔNG nộp", SUBMISSION["zip"].name, "của run này lên cuộc thi ***")
 '''
 
 
@@ -367,10 +374,14 @@ def main():
     ap.add_argument("--handoff", type=Path, help="JSON: status, version, source, images{train,val}, fingerprint_sha256, vn_val_sha256")
     ap.add_argument("--prep-kernel", default="mangashounen/vietsight-prep-vietsight-v1")
     a = ap.parse_args()
-    handoff = {"status": "PENDING", "version": None, "source": None, "images": None, "fingerprint_sha256": None, "vn_val_sha256": None}
+    handoff = {"status": "PENDING", "version": None, "source": None, "images": None, "fingerprint_sha256": None, "vn_val_sha256": None, "rights_confirmed": False}
     if a.handoff:
         handoff.update(json.loads(a.handoff.read_text(encoding="utf-8")))
-    run_name = f"{handoff['version'] or 'vietsight_v2'}_ft_e{a.epochs}"
+    # rights_confirmed != true -> EXPERIMENT run: own Drive folder, NOT_FOR_SUBMISSION.txt, never a competition submission
+    handoff["submission_eligible"] = handoff.get("rights_confirmed") is True
+    run_name = f"{handoff['version'] or 'vietsight_v2'}_ft_e{a.epochs}" + ("" if handoff["submission_eligible"] else "_EXPERIMENT")
+    if a.freeze:
+        run_name += f"_frz{a.freeze}_lr{a.lr0:g}"
     e25 = json.loads((ROOT / "runs" / "v1_colab_e25" / "run_report.json").read_text(encoding="utf-8"))
     frozen = [x.strip() for x in (ROOT / "configs" / "val_frozen.txt").read_text(encoding="utf-8").splitlines() if x.strip() and not x.startswith("#")]
     v1_val_sha = hashlib.sha256("\n".join(sorted(k.split("/", 1)[1] for k in frozen)).encode()).hexdigest()
@@ -398,7 +409,8 @@ def main():
     dst = ROOT / "notebooks" / "colab" / "VietSight_TEAM55_colab_v2.ipynb"
     cells.insert(0, md(f"[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PHai237/VietSight/blob/main/notebooks/colab/{dst.name})\n\n"
                        f"VietSight TEAM 55 — V2 fine-tune `{run_name}` từ V1 e25 best.pt: Runtime → T4 GPU → Run all. "
-                       f"Kết quả: Drive `MyDrive/VietSight/{run_name}/`. Mất kết nối: Run all lại (tự resume)."))
+                       f"Kết quả: Drive `MyDrive/VietSight/{run_name}/`. Mất kết nối: Run all lại (tự resume)."
+                       + ("" if handoff["submission_eligible"] else "\n\n**BẢN THỬ NGHIỆM — quyền nguồn chưa xác nhận: KHÔNG nộp submission.zip của run này.**")))
     for c in cells:
         if c["cell_type"] == "code":
             c["outputs"], c["execution_count"] = [], None
