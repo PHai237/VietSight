@@ -1,0 +1,11 @@
+{
+  "status": "BLOCKED",
+  "version": "team_dashcam_yolo_intake001_REVIEW",
+  "source": "drive:/content/drive/MyDrive/VietSight/datasets/team_dashcam_yolo_intake001_REVIEW.zip",
+  "images": {
+    "train": 1120,
+    "val": 287
+  },
+  "fingerprint_sha256": "3c13dcc7ca1510f725b3b3a0188c982fee717d03287a5ebfe8948d6b2e9273e6",
+  "vn_val_sha256": "5a8507f364678c9559ab21c7e9b6b0ec09b5362062ea09b052d09abbf6830a2a"
+}
