@@ -17,6 +17,7 @@ runs/**/weights/
 runs/**/*.jpg
 runs/**/*.png
 runs/review/
+runs/proposals/
 submission/*
 !submission/README.md
 work/
