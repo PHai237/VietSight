@@ -2,7 +2,9 @@ name: btc_reviewed_masks_v2
 format: coco
 notes: >-
   Only for human-corrected COCO exports already using the 11 BTC classes.
-  Coverage/reviewer records are still required. This file grants no approval.
+  Coverage/reviewer, verified Vietnam location/license and capture groups are required.
+  Copy this template into a source-specific config with its actual url and license.
+  This file grants no approval and intentionally has no assumed source/license.
 mapping:
   Car: Car
   Bus: Bus

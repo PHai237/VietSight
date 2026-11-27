@@ -1,5 +1,7 @@
 # VietSight — Dataset audit và intake V2
 
+**Yêu cầu V2 mới nhất: chỉ ảnh xác minh chụp tại Việt Nam.** Xem [V2_PROGRESS.md](V2_PROGRESS.md) và [VIETNAM_ONLY_INTAKE.json](evidence/VIETNAM_ONLY_INTAKE.json). Các nguồn quốc tế bên dưới là lịch sử audit/V1, không phải nguồn được phép train V2. Nguồn mang tên “Vietnam-Traffic-5Classes” vừa kiểm preview có 3/4 cảnh thể thao; chưa được xác nhận thuần Việt Nam và không được nhập mặc định.
+
 Ngày xác minh: **27/11/2026, GMT+7**. Nguồn được tổng hợp từ manifest/config hiện có; chưa nhận thêm danh sách/link dataset khác từ thành viên. Bảng này là quy trình đánh giá và kết quả quan sát có phạm vi, không phê duyệt tự động cho train.
 
 Cập nhật mapping tiếp theo: [CLASS_MAPPING_REVIEW.md](CLASS_MAPPING_REVIEW.md), gồm quy tắc người dùng xác nhận **xe 9–15 chỗ là Car**. Các số kiểm đếm bên dưới giữ nguyên snapshot đã đo; không phải số liệu dataset V1 đang chạy trên Kaggle.

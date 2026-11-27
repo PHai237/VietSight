@@ -1,5 +1,15 @@
 # VietSight — Label QA và release checklist
 
+## Yêu cầu bổ sung: V2 chỉ Việt Nam
+
+- [ ] Mỗi ảnh có bằng chứng chụp tại Việt Nam, nguồn và giấy phép đã đối chiếu; tên dataset hoặc tên người đăng không đủ.
+- [ ] Có mask instance thật, reviewer và coverage đủ 11 class BTC; bbox không được đổi thành mask hình chữ nhật.
+- [ ] Mapillary chỉ được dùng với bằng chứng địa điểm Việt Nam của chính ảnh; không nhập train V1 làm nền.
+- [ ] Khóa validation Việt Nam riêng theo camera/video/chuyến chụp; canonical group dùng chung giữa các export/source.
+- [ ] Không chia các bản augmentation/frame cùng camera vào hai split; kiểm hash/near duplicate và đối chiếu V1 val.
+- [ ] Tái sử dụng VN holdout phải có cả frozen list và dataset reference để khóa bytes ảnh/nhãn.
+- [ ] Giữ V1 val riêng để đối chiếu, không đưa vào train hay VN holdout; không tác động e50.
+
 Deadline: **10:30 ngày 28/11/2026, GMT+7**. Review baseline `565d05b`; static delta `bfd434f`. Trạng thái hiện tại: **chưa duyệt release V2**. Checklist không thay validator BTC hoặc việc người duyệt xem ảnh.
 
 ## Quy tắc chạy song song

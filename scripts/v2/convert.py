@@ -31,13 +31,21 @@ class V2Writer(SourceWriter):
         super().__init__(*args,**kwargs)
         self.nb=load()
 
-    def add_v2(self,image,raw,orig,group,coverage_reviewed=False,reviewer=None,initial_flags=()):
+    def add_v2(self,image,raw,orig,group,coverage_reviewed=False,reviewer=None,initial_flags=(),provenance=None):
         self.n_in+=1;h,w=image.shape[:2]
         instances,flags=resolve_v2(raw,h,w)
         flags=list(initial_flags)+flags
         coverage_reviewed=coverage_reviewed is True
         reviewer=reviewer.strip() if isinstance(reviewer,str) else None
         if not coverage_reviewed or not reviewer:flags.append('coverage_review_required_all_11_classes')
+        provenance=provenance or {}
+        if not (provenance.get('country')=='VN' and provenance.get('location_verified') is True
+                and provenance.get('location_evidence')):
+            flags.append('vietnam_location_evidence_required')
+        if not (provenance.get('license_verified') is True and provenance.get('license_evidence')
+                and provenance.get('source_url') and provenance.get('license')):
+            flags.append('source_license_evidence_required')
+        if not provenance.get('capture_group'):flags.append('canonical_capture_group_required')
         lines=[];counts=Counter();geometry=[];decoded=[]
         for cid,mask,iid in instances:
             poly,metrics,issues=encode_checked(mask,self.nb)
@@ -63,7 +71,7 @@ class V2Writer(SourceWriter):
         if flags:self.n_review+=1;self.review_counts.update(counts);self.flags.update(flags)
         else:self.n_ok+=1;self.counts.update(counts)
         record={'file':name+'.jpg','orig':orig,'group':group,'status':status,'flags':flags,'w':w,'h':h,
-                'instances':dict(counts),'geometry':geometry,'v2_policy':1,'reviewer':reviewer,
+                'instances':dict(counts),'geometry':geometry,'v2_policy':2,'reviewer':reviewer,'provenance':provenance,
                 'coverage_reviewed':bool(coverage_reviewed and reviewer)}
         self.meta.write(json.dumps(record,ensure_ascii=False)+'\n')
         return record
@@ -162,7 +170,11 @@ def convert(args):
             if sum(unmapped.values())>unmapped_before and not (decision.get('coverage_reviewed') is True and reviewer):
                 flags.append('unmapped_source_labels_require_review')
             writer.add_v2(image,raw,orig,decision.get('group') or orig,
-                          decision.get('coverage_reviewed',False),reviewer,flags)
+                          decision.get('coverage_reviewed',False),reviewer,flags,{
+                              **{k:decision.get(k) for k in ['country','location_verified','location_evidence',
+                                  'license_verified','license_evidence']},
+                              'capture_group':decision.get('group'),'source_url':cfg.get('url'),
+                              'license':cfg.get('license')})
         return writer.close({'script':'v2/convert.py','config':str(args.config),'unmapped_labels':dict(unmapped),
                              'note':'V2 only; masks measured at source resolution; no V1 files rewritten'})
     finally:

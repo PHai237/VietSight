@@ -1,103 +1,68 @@
-# V2 — bản sửa tách biệt và ưu tiên theo public V1
+# V2 — chỉ ảnh giao thông đã xác minh chụp tại Việt Nam
 
-Ngày 27/11/2026, GMT+7. Source baseline khi bắt đầu: `origin/main=ec0f821`. Làm tại worktree `VietSight-data-qa`, branch `codex/data-qa`. Không thay notebook/dataset V1, frozen validation, validator, dependencies; không gọi training/inference/GPU. Code V2 là các CLI mới dưới `scripts/v2/`, chưa tích hợp notebook V1.
+Cập nhật 27/11/2026, GMT+7, theo yêu cầu mới. Làm trên `codex/data-qa`, worktree `VietSight-data-qa`. **Không nhập train V1 vào V2.** Mapillary chỉ được nhận từng ảnh có bằng chứng địa điểm Việt Nam; 80 ảnh Mapillary QA cũ chỉ là reference chuyển đổi, không phải train V2. V1 e50/notebook/Kaggle/validator/dependencies không thay đổi.
 
-## Public V1 đã xác nhận bởi người dùng
+## Trạng thái dữ liệu thật
 
-Các giá trị dưới giữ nguyên thang public **0..100**, không phải local val AP.
+- **0 ảnh train V2 mới đã duyệt; 0 ảnh validation Việt Nam có mask hoàn chỉnh. Chưa có dataset V2 có thể train/chấm.** Không tạo nhãn giả hoặc duyệt hàng loạt để đổi trạng thái này.
+- Đã tải **12 ảnh camera TP.HCM + nhãn bbox**, 1.197.068 byte, làm **ứng viên validation dự phòng**. Đã xem contact sheet đủ 12 ảnh; caption thấy các địa điểm Phạm Văn Đồng, Nam Kỳ Khởi Nghĩa–Lý Chính Thắng, Võ Văn Ngân–Đặng Văn Bi, Đinh Bộ Lĩnh… phù hợp mô tả TP.HCM của publisher. Chưa phải kiểm chéo độc lập hoặc đo đầy đủ nhãn.
+- 12 ảnh có **170 bbox, 0 mask**. Converter V2 đã chạy thật: **0 accepted / 12 review**. Queue local: `data/processed/vn_hcm_validation_candidates_v2/review/`; ảnh/annotation không commit. Toàn nguồn này được dự kiến dành riêng validation, tránh cùng camera xuất hiện trong train; split chính thức chưa khóa vì chưa có mask/quyền đã xác nhận.
+- Chưa lấy được annotation các nguồn Roboflow instance segmentation: API trả **401 yêu cầu API key**, môi trường hiện chưa có key Roboflow. Có thể nhận export COCO masks của nhóm thay cho API; không cần đổi dependencies.
+- Reference V1 public **12,90**, e25 local val **22,97**, Sign local **29,13** / public **6,05**. Chi tiết/giới hạn tại [SIGN_FORENSICS.md](SIGN_FORENSICS.md); [public JSON](evidence/V1_PUBLIC_OFFICIAL.json). Chưa có kết quả V2.
 
-| Class | Public V1 | Instance train V1 | Ưu tiên dữ liệu V2 |
-|---|---:|---:|---|
-| Car | 29,67 | 7.427 | giữ coverage, rà pickup/9–15 chỗ |
-| Bus | 12,60 | 342 | giữ coverage, không lẫn xe 9–15 chỗ |
-| Truck | 20,41 | 463 | giữ coverage, tách đầu kéo/rơ-moóc |
-| Other vehicle | **2,57** | **223** | **2 — ba gác/xích lô/xe công trình/rơ-moóc có mask đúng** |
-| Motorcycle | **1,95** | **358** | **1 — xe máy không người, gồm xe đang được dắt nhưng tách Pedestrian** |
-| Motorcyclist | 15,02 | 263 | giữ đủ passenger, không gán xe có người thành Motorcycle |
-| Bicycle | **6,53** | **419** | **4 — xe đạp không người, kiểm người dắt và xe bị che** |
-| Cyclist | 17,05 | 381 | giữ đủ rider(s) + xe một instance |
-| Pedestrian | 12,54 | 2.795 | giữ coverage các ảnh thêm |
-| Sign | **6,05** | **3.502** | **3 — sửa fidelity/scale/domain trước khi tăng số ảnh** |
-| Traffic light | 17,56 | 2.463 | giữ coverage, mỗi hộp một instance |
-| **Tổng public** | **12,90** | — | không tính lại từ AP làm tròn |
+## Nguồn ưu tiên và kết quả kiểm tra trực tiếp
 
-[Public JSON](evidence/V1_PUBLIC_OFFICIAL.json). Counts lấy từ stats V1 và đã đối soát với 1.469 nhãn train tải trực tiếp Kaggle. Lần fetch cuối nhận `run_report.json` và RESULTS mới của Claude, gắn public này với **v1_e25** (25 epoch). ONNX SHA đã có trong JSON; submission ID và SHA file `.pt` chưa có.
+Số catalog/API listing khác số đã tải và kiểm. Không nguồn nào dưới đây đã được cấp A.
 
-| Class ưu tiên | Local val e25 ×100 | Public V1 | Cách đọc |
-|---|---:|---:|---|
-| Motorcycle | 8,48 | 1,95 | Yếu trên cả hai, ưu tiên xe không người/association/domain |
-| Other vehicle | 7,50 | 2,57 | Ít ví dụ, ontology rộng; ưu tiên mask đúng các loại xe BTC |
-| Sign | 29,13 | 6,05 | Gap khoảng 23,08 điểm giữa hai tập; kiểm domain/scale/fidelity, không tăng ảnh đại trà |
-| Bicycle | 6,08 | 6,53 | Yếu trên cả hai; không chỉ giải thích bằng domain shift |
+| Nguồn chính thức | Quyền/địa điểm/khả năng tải | Mask, mapping và quyết định |
+|---|---|---|
+| [SideWalk — Khaipixel](https://universe.roboflow.com/khaipixel/sidewalk-srgyh) | Publisher: instance segmentation, CC BY 4.0, 279 ảnh catalog; một preview đã xem là phố/xe máy nhưng chưa chứng minh nơi chụp. Export cần key | **B kỹ thuật / chưa nhận vì chưa xác minh Việt Nam.** Ưu tiên lô nhỏ Motorcycle/Bicycle nếu có chứng cứ. Car→Car; bicycle/motorbike cần xác định có rider; person cần kiểm người dắt/ngồi sau. `object` không tự map Other vehicle. Thiếu Bus/Truck/Other vehicle/Sign/TL và coverage cần bổ sung. Chưa đo mask/instance |
+| [Traffic sign — hoangthanh](https://universe.roboflow.com/hoangthanh/traffic-sign-hemee) | Instance segmentation, CC BY 4.0, 150 ảnh catalog; không mô tả nguồn/nơi chụp. Export chưa lấy được | **B kỹ thuật / chưa nhận vì chưa xác minh Việt Nam.** 7 class biển→Sign nếu mặt biển thật; kiểm loại quảng cáo/cột và đủ 10 lớp còn lại. Chưa đo mask/instance |
+| [Vietnam-Traffic-5Classes — Jose](https://universe.roboflow.com/jose-89vn1/vietnam-traffic-5classes-xthnt) | Publisher: instance segmentation, CC BY 4.0, 13.792 ảnh catalog, không mô tả nguồn. **3/4 model preview xem được là thể thao**, ảnh còn lại là đường phố chưa rõ nước | **D đối với intake VN-only hiện tại**: không dùng tên dự án làm chứng cứ Việt Nam. Model preview chưa chứng minh tỷ lệ nhiễm trong archive; cần xem ảnh/annotation thật trước khi khẳng định. Config prototype đã đánh dấu blocked. Không bulk download |
+| [Transportation in Ho Chi Minh City — khoakait](https://www.kaggle.com/datasets/khoakait/transportation-in-ho-chi-minh-city) | Publisher xác nhận camera TP.HCM; API listing thực tế 1.646 ảnh + 1.646 txt + 3 metadata. Kaggle license `other`, export `data.yaml` dẫn publisher Roboflow CC BY 4.0 nhưng trang gốc không truy cập được để đối chiếu | **C về nhãn / D về quyền chưa đối chiếu xong.** 12 ảnh đã tải có 170 bbox, tất cả hàng 5 tokens, không có mask. bus→Bus (kiểm 9–15 chỗ→Car), car→Car, truck cần kiểm pickup/đầu kéo/rơ-moóc, motorbike/person cần gộp/tách đúng rider. Thiếu Bicycle/Cyclist/Other vehicle/Sign/TL. Dự phòng validation, cần gán mask đủ 11 lớp |
+| [Street Traffic Signs in Vietnam COCO — lvnduy](https://www.kaggle.com/datasets/lvnduy/street-traffic-signs-in-vietnam-coco) | Listing thực tế **10.933 ảnh** / 10.940 files; không tải ảnh. Kaggle license `unknown`; COCO metadata ghi Public Domain — chưa xác nhận quyền ảnh gốc | **C về nhãn / D về quyền.** Đã tải annotation test: **613 ảnh metadata, 967 bbox, 0 segmentation không rỗng**. Không được gọi là instance masks chỉ vì định dạng COCO. Tên clip/README cho thấy nhiều frame và 5 augmentation/source: phải group theo video gốc, không giữ split ngẫu nhiên. Chỉ Sign, thiếu 10 lớp còn lại |
+| Lô mask nhóm tự thu tại VN | Chưa nhận file/manifest/quyền | Ưu tiên nếu có sẵn mask: **Motorcycle, Other vehicle, Sign, Bicycle**, kiểm đủ mọi lớp cùng ảnh. Có thể đi thẳng converter hiện tại; không cần thêm UI |
 
-Local lấy từ `runs/v1_colab_e25/run_report.json`, chấm 262 ảnh val, không đo lại. Dataset fingerprint ở report đã qua bước prepare notebook là `fb6eaedd…`; fingerprint built dataset là `5612ab42…`. Hai fingerprint có phạm vi/path khác nhau, không tự kết luận dữ liệu đổi chỉ vì hai chuỗi khác nhau.
+Các nguồn quốc tế BDD/COCO/IDD hoặc Mapillary chưa xác minh Việt Nam **không phải ứng viên train V2**, dù audit kỹ thuật trước đây có thể đạt B. [Evidence nguồn](evidence/VIETNAM_ONLY_INTAKE.json) giữ hash file probe và URL preview, không chứa key hoặc signed URL.
 
-Không chọn thêm ảnh chỉ vì có nhiều xe máy: Motorcycle là **không người**. Không lấy mọi bicycle nguồn làm Bicycle nếu xe đang có người. Không đổi mọi truck thành Car hoặc mọi Other vehicle nguồn thành ba gác. Xem [phân tích Sign](SIGN_FORENSICS.md) và [mapping review](CLASS_MAPPING_REVIEW.md).
+## Quy trình dùng lại công cụ hiện tại
 
-## Bản sửa đã triển khai
+1. Nhận **một lô nhỏ có mask sẵn**, ưu tiên 4 lớp yếu; kiểm provenance/quyền và nơi chụp từng ảnh. Không tăng số ảnh đại trà. Lô đầu có thể 60–100 ảnh, đây là mục tiêu, không phải số đã có.
+2. Converter `scripts/v2/convert.py` giữ pixel-edge topology/round-trip, rider/occlusion/overlap gates đã phát triển. Nay yêu cầu `country=VN`, xác minh nơi chụp/quyền và canonical camera/video group; named reviewer + coverage đủ 11 class vẫn bắt buộc. Record cũ `v2_policy=1` phải review/reconvert, không tự nâng cấp.
+3. Dùng `scripts/qa/label_audit.py`, overlay/review queue sẵn có để sửa mask/coverage. Không đổi bbox thành polygon chữ nhật. Không tạo reviewer giả để bypass. Ngưỡng cạnh ngắn 1,25% và area 64 px² giữ riêng.
+4. Builder `scripts/v2/build.py` **không lấy train V1**. Chọn holdout VN khoảng 20% theo canonical camera/video/chuyến chụp (seed 55), dùng group chung giữa các export; train lấy có giới hạn và ưu tiên 4 lớp. Camera mới phát hiện thuộc holdout không được vào train. Dedup exact/near giữa split; lưu `frozen_vn.txt` riêng.
+5. Khi dùng lại VN val: truyền frozen list **và dataset reference**, kiểm bytes ảnh+nhãn. V1 val giữ riêng để so sánh model; `--baseline` nay chỉ là reference val V1 để kiểm overlap, không được nhập vào V2. Thiếu reference này thì release bị blocked, không tuyên bố đã kiểm trùng với V1.
+6. Khi đã qua gate dữ liệu, bàn giao dataset cho Lead chạy cùng model/evaluator. Không chạy training hoặc thay e50 trong phiên QA.
 
-- `scripts/v2/masks.py`: truy vết cạnh pixel, giữ lỗ/mảnh nhỏ, kiểm serialized polygon bằng helper BTC và pycocotools, gate IoU≥0,995; không largest-part fallback. Mask không đạt được biểu diễn giữ pending review, không nhận `ok`.
-- `scripts/v2/policy.py`: known rider đơn ứng viên được union; person có thể là người dắt không được tự ghép bằng score mạnh. Tie/missing vehicle cần review; cho reviewer gán `vehicle_id` hoặc `walking_bike`. Metadata seats 9–15 ở Car/Bus đưa về Car. Bus/Truck/Other vehicle chưa được duyệt ngữ nghĩa cần review; tổ hợp đầu kéo/rơ-moóc phải tách bằng mask thật.
-- `scripts/v2/convert.py`: đọc mask COCO bằng union của pycocotools, đọc Supervisely/Mapillary gốc; giữ named reviewer + xác nhận đủ 11 class, kể cả ảnh không có nhãn thêm. Kiểm raw/decoded overlap; ngưỡng cạnh và area báo riêng. Không ghi đè output; tên source mới kết thúc `_v2`.
-- `scripts/v2/build.py`: chỉ lấy additions `status=ok`, có V2 policy/reviewer/coverage, chứa 4 class ưu tiên; round-robin và cap 200 ảnh/lô mặc định. Dùng builder có sẵn trên **bản sao riêng**, kiểm lại exact val image+label identity với V1 và frozen list. Không hardlink output tới input đang sửa. Polygon train lỗi làm release gate blocked; cảnh báo val cũ giữ nguyên và ghi riêng. Không tự train.
-- `scripts/v2/audit_sample.py`, `compare_sign_reference.py`: đo và xuất evidence thay vì suy từ số lượng. `scripts/qa/fetch_v1_sample.py`: lấy mẫu output Kaggle có giới hạn, resume/retry, không lưu signed URLs.
+Ví dụ decisions (chỉ điền sau kiểm tra thật; các đường dẫn là ví dụ):
 
-## Dữ liệu Việt Nam có mask sẵn: shortlist có điều kiện
+```json
+{
+  "frame001.jpg": {
+    "country": "VN",
+    "location_verified": true,
+    "location_evidence": "manifest:vn_trip_01/frame001:GPS_and_capture_log",
+    "license_verified": true,
+    "license_evidence": "manifest:vn_trip_01/consent_and_license",
+    "group": "vn_trip_01_camera_front",
+    "reviewer": "TenNguoiDuyet",
+    "coverage_reviewed": true,
+    "instances": {"20": {"vehicle_id": "21"}}
+  }
+}
+```
 
-Ưu tiên mask có sẵn; không bulk download và không phê duyệt nguồn chỉ từ tên dataset. Số ảnh website công bố không phải số đã kiểm đếm local.
-
-| Nguồn publisher | Điều đã kiểm chứng từ trang nguồn | Phù hợp ưu tiên | Điều kiện còn thiếu / phân loại |
-|---|---|---|---|
-| [Vietnam-Traffic-5Classes — Jose](https://universe.roboflow.com/jose-89vn1/vietnam-traffic-5classes-xthnt/dataset/1) | Publisher ghi Instance Segmentation, CC BY 4.0; class Car/Bus/Bicycle/Motorbike/Person; catalog 13.792 ảnh | Ứng viên trước cho Motorcycle/Bicycle, góc nhìn Việt Nam cần xem mẫu | **B**, chưa tải archive/mask để kiểm. Phải xác nhận provenance, loại mask Motorbike có rider hay không, bổ sung coverage Sign/TL/Truck/Other vehicle. Mapping prototype ở `configs/v2/vn_traffic_masks.yaml` không cấp quyền train |
-| [Traffic sign — hoangthanh](https://universe.roboflow.com/hoangthanh/traffic-sign-hemee) | Publisher ghi Instance Segmentation, CC BY 4.0, 150 ảnh, 7 class biển | Có thể dùng để kiểm Sign sau khi xem ảnh | **B về mask / chưa xác nhận domain VN**: trang không có mô tả nguồn; không coi đây là nguồn VN đã duyệt. Chưa tải/gán số instance |
-| Nhóm tự gán CVAT tại VN, xuất COCO masks | Chưa nhận lô cụ thể trong phiên này | Tốt nhất nếu có đủ xe máy/xe đạp không người, ba gác và Sign lớn | B khi có mask, C nếu chỉ ảnh/bbox; cần manifest/quyền/coverage và người kiểm chéo trước A |
-
-Một candidate Roboflow được search gợi ý có ba gác/biển VN trả **404** khi mở URL dự án; giữ chưa xác minh, không cấu hình/tải hay đưa vào V2. Các bộ VN chỉ bbox không được coi là mask sẵn hoặc thay mask bằng hình chữ nhật. Không nhận toàn bộ 13.792 ảnh để bù số lượng; bắt đầu một lô nhỏ đã audit đủ class.
-
-## Cách chạy tách biệt
-
-Chạy trong worktree, dùng Python có sẵn và UTF-8. Output phải mới. Các đường dẫn `D:\...` là ví dụ input đã bàn giao, không phải dữ liệu đã tồn tại.
+Source config phải có URL và giấy phép thực tế của lô; `btc_reviewed_coco.yaml` là template mapping, không tự cấp quyền hoặc giả định nguồn.
 
 ```powershell
 $v2Python = 'C:\My Future\VietSight\.venv\Scripts\python.exe'
 $env:PYTHONIOENCODING = 'utf-8'
 $env:PYTHONDONTWRITEBYTECODE = '1'
-
-# Dữ liệu có mask sẵn, remap theo config riêng, toàn bộ chưa duyệt sẽ vào review.
-& $v2Python scripts\v2\convert.py --format coco --config configs\v2\vn_traffic_masks.yaml --ann 'D:\VN\instances.json' --images 'D:\VN\images' --source vn_batch01_v2 --out data\processed --decisions 'D:\VN\review_decisions.json'
-
-# Export đã sửa tay theo 11 class BTC (mỗi rider đã gộp xe+người vào một mask).
-& $v2Python scripts\v2\convert.py --format coco --config configs\v2\btc_reviewed_coco.yaml --ann 'D:\VN\reviewed.json' --images 'D:\VN\images' --source vn_corrected_v2 --out data\processed --decisions 'D:\VN\review_decisions.json'
-
-# Build chỉ khi có full V1 immutable để giữ 262 ảnh val; sample 80 không thay full V1.
-& $v2Python scripts\v2\build.py --baseline 'D:\QA\vietsight_v1_immutable' --frozen configs\val_frozen.txt --sources data\processed\vn_corrected_v2 --out work\v2_batch01 --max-additions 200
-
-& $v2Python -m unittest discover -s scripts\v2 -p test_v2.py -v
+& $v2Python scripts\v2\convert.py --format coco --config 'D:\VN\source_verified.yaml' --ann 'D:\VN\instances.json' --images 'D:\VN\images' --source vn_batch01_v2 --out data\processed --decisions 'D:\VN\review_decisions.json'
+# --baseline: chỉ đọc val V1, không cần và không nhập train V1.
+& $v2Python scripts\v2\build.py --baseline 'D:\QA\vietsight_v1_reference' --sources data\processed\vn_batch01_v2 --out work\vn_v2_batch01 --max-additions 200
+# Phiên tiếp theo giữ nguyên cả bytes ảnh/nhãn validation VN:
+& $v2Python scripts\v2\build.py --baseline 'D:\QA\vietsight_v1_reference' --sources data\processed\vn_batch01_v2 --vn-val-list work\vn_v2_batch01\frozen_vn.txt --vn-val-reference work\vn_v2_batch01\versions\vietsight_vietnam_v2 --out work\vn_v2_batch02
 ```
 
-Ví dụ reviewer record (key filename theo source; instance ID là COCO ID/Mapillary ID):
-
-```json
-{
-  "frame001.jpg": {
-    "coverage_reviewed": true,
-    "reviewer": "TenNguoiDuyet",
-    "group": "vn_trip_01",
-    "instances": {
-      "10": {"walking_bike": true},
-      "20": {"vehicle_id": "21"},
-      "30": {"target": "Car", "seats": 12, "semantic_reviewed": true}
-    }
-  }
-}
-```
-
-Record là sự xác nhận thật của người duyệt, không được điền sẵn để bypass queue. Trường `target` không tự sửa segmentation hoặc tách đầu kéo/rơ-moóc; muốn tách/sửa mask phải cung cấp annotation đã sửa. Những object nhỏ/crowd/overlap chưa được xử lý vẫn làm ảnh pending dù có `coverage_reviewed=true`.
-
-## Trạng thái thực tế và điều chưa xong
-
-- Đã tải và kiểm 80 ảnh/1.469 nhãn train V1; 12 ảnh/42 Sign có đối chiếu source mask. Cả 42 V2 round-trip đạt IoU 1,0 trên reference tái dựng; chưa đo public V2.
-- Đã chạy converter V2 trên 12 ảnh Mapillary reference thật; **0 accepted / 12 review**, vì chưa có named coverage review và còn object nhỏ/crowd/ontology cần xử lý. Đây là kết quả mong đợi của gate, không phải 12 ảnh đã sẵn sàng train.
-- Test builder chạy fixture nhỏ, giữ val bytes và frozen text; chưa build dataset V2 thật. Local chỉ lấy 80 ảnh train theo phạm vi cho phép, không có full V1/val images; không tự mở rộng tải dataset.
-- Chưa có lô mask Việt Nam mới đã được human QA để thêm train. Việc chọn nguồn, người duyệt và correction batch còn cần phối hợp nhóm; không bịa số ảnh mới/số nhãn sửa thật.
-- PR có pipeline V2 nên **không tự merge**, theo quy tắc bàn giao trước. V1/Kaggle không bị cập nhật hoặc khởi động lại bởi phiên này.
+Cấu hình cũ `configs/versions/v2_local_vision.yaml` vẫn có Mapillary/V1 và val V1: **không dùng cho yêu cầu VN-only mới**. Giữ file Claude đang quản lý, không sửa vào luồng đang chạy. PR pipeline V2 tiếp tục **chưa merge**. Việc còn cần để có dataset train sớm là export mask VN có provenance (hoặc quyền tải nguồn nhỏ phù hợp), bổ sung coverage, duyệt và khóa VN val; không cần phát triển thêm UI.

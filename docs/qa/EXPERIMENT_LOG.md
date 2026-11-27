@@ -1,5 +1,9 @@
 # VietSight — Experiment log và mẫu báo cáo cuộc thi
 
+## Cập nhật V2 chỉ Việt Nam — 27/11/2026
+
+Yêu cầu mới thay cách ghép V1+additions: train V2 chỉ nhận ảnh có bằng chứng chụp tại Việt Nam. Validation Việt Nam khóa riêng; V1 val giữ nguyên để đối chiếu. Chưa có train V2 hoặc AP V2. 12 ảnh TP.HCM (170 bbox, **0 mask**) là ứng viên validation dự phòng, converter đưa cả 12 vào review; không tính là nhãn đã sửa hoặc tập validation hoàn chỉnh. [Trạng thái hiện tại](V2_PROGRESS.md), [evidence nguồn](evidence/VIETNAM_ONLY_INTAKE.json), [kiểm thử](evidence/VIETNAM_ONLY_CHECKS.json). Các kết quả snapshot cũ bên dưới là lịch sử, không cấp phép nhập ảnh quốc tế vào V2.
+
 Team seed/ID: **55**. Deadline: **10:30 ngày 28/11/2026, GMT+7**. Model/validator/export do Claude/Lead phụ trách, không thay trong nhánh QA.
 
 Nguyên tắc: chỉ điền metric từ artifact thật; `chưa đo` không phải 0. Phân biệt kết quả GPU training, chấm ONNX theo notebook, public leaderboard và kiểm thử pipeline synthetic. Mọi so sánh cần cùng val revision, không chỉ cùng seed/tên file.

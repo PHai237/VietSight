@@ -1,5 +1,7 @@
 # Sign V1 — kiểm tra trực tiếp và sửa chuyển đổi V2
 
+**Cập nhật phạm vi:** V2 nay chỉ dùng ảnh xác minh chụp tại Việt Nam; xem [V2_PROGRESS.md](V2_PROGRESS.md). Các ảnh Mapillary trong báo cáo này chỉ là reference đo chuyển đổi, không được nhập train V2 mặc định. V1 val giữ riêng, validation Việt Nam có split/reference riêng.
+
 Ngày: 27/11/2026, GMT+7. Public AP Sign **6,05**, tổng V1 **12,90**, do người dùng cung cấp là kết quả public chính thức. Trong lần fetch cuối, `runs/RESULTS.md` và `runs/v1_colab_e25/run_report.json` mới của Claude đã gắn public này với **v1_e25, Colab T4, 25 epoch**, ONNX SHA `87c81673e92feeea0e194d15bb7d69b81c783328b8ca7133b1a2ea5159b607eb`. Chưa có submission ID hoặc SHA file `.pt`; không gắn với e3/e20.
 
 Artifact e25 ghi local val đầy đủ **262 ảnh**, mask mAP50-95 **0,2297068910** (score 22,970689), Sign AP **0,2912839787** (29,13 trên thang 100). Sign giảm khoảng **23,08 điểm** từ val sang public; đây là khác biệt hai tập đánh giá, **không phải delta của một thí nghiệm có kiểm soát**. Nó phù hợp với giả thuyết domain/scale/coverage cần ưu tiên hơn tăng ảnh ngẫu nhiên; chưa xác định nguyên nhân causal. Không chạy lại model trong phiên QA.
