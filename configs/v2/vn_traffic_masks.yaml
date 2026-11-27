@@ -1,0 +1,17 @@
+name: vn_traffic_masks_v2
+format: coco
+url: https://universe.roboflow.com/jose-89vn1/vietnam-traffic-5classes-xthnt
+license: CC BY 4.0 as declared by publisher; verify origin/attribution before intake
+status: candidate_not_downloaded
+mapping:
+  Car: Car
+  Bus: Bus
+  Bicycle: {role: vehicle2, sub: bicycle}
+  Motorbike: {role: vehicle2, sub: motorcycle}
+  Person: {role: person}
+unmapped: ignore
+missing_classes: [Truck, Other vehicle, Sign, Traffic light]
+notes: >-
+  Candidate declares instance segmentation. No archive/image/instance counts measured.
+  Motorcycle/Bicycle labels may contain ridden vehicles; all 11-class coverage and
+  rider/passenger associations require human review. Not automatically admitted to train.

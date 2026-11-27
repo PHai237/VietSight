@@ -1,0 +1,22 @@
+{
+  "source": "Official V1 public results supplied by the user in chat, 2026-11-27 Asia/Saigon",
+  "scale": "public values as supplied, 0..100; not local validation AP",
+  "checkpoint_sha256": null,
+  "submission_id": null,
+  "per_class": {
+    "Car": 29.67,
+    "Bus": 12.60,
+    "Truck": 20.41,
+    "Other vehicle": 2.57,
+    "Motorcycle": 1.95,
+    "Motorcyclist": 15.02,
+    "Bicycle": 6.53,
+    "Cyclist": 17.05,
+    "Pedestrian": 12.54,
+    "Sign": 6.05,
+    "Traffic light": 17.56
+  },
+  "total_score": 12.90,
+  "v2_data_priority": ["Motorcycle", "Other vehicle", "Sign", "Bicycle"],
+  "notes": "Preserve total as reported by server; do not recompute it from rounded per-class values. No V2 metrics yet."
+}

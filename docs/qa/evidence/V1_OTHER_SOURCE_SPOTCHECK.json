@@ -1,0 +1,29 @@
+[
+  {
+    "id": "6EmgKA4In5Y-MQBscivM7A",
+    "labels": [
+      "object--vehicle--other-vehicle"
+    ]
+  },
+  {
+    "id": "7jnm8yJvsndKX03z6h5YpQ",
+    "labels": [
+      "object--vehicle--boat",
+      "object--vehicle--other-vehicle",
+      "object--vehicle--boat",
+      "object--vehicle--boat"
+    ]
+  },
+  {
+    "id": "9nIYf897ZJdpJs60fhLW3w",
+    "labels": [
+      "object--vehicle--other-vehicle"
+    ]
+  },
+  {
+    "id": "81G_W5q9AtNIpyyUdaePuA",
+    "labels": [
+      "object--vehicle--other-vehicle"
+    ]
+  }
+]

@@ -4,6 +4,8 @@ Ngày xác minh: **27/11/2026, GMT+7**. Nguồn được tổng hợp từ manif
 
 Cập nhật mapping tiếp theo: [CLASS_MAPPING_REVIEW.md](CLASS_MAPPING_REVIEW.md), gồm quy tắc người dùng xác nhận **xe 9–15 chỗ là Car**. Các số kiểm đếm bên dưới giữ nguyên snapshot đã đo; không phải số liệu dataset V1 đang chạy trên Kaggle.
 
+Cập nhật sau public V1: đã lấy mẫu train V1 trực tiếp qua Kaggle API (1.469 nhãn, 80 ảnh; không lấy full Mapillary). [V2_PROGRESS.md](V2_PROGRESS.md) bổ sung shortlist nguồn Việt Nam có instance mask và ưu tiên Motorcycle/Other vehicle/Sign/Bicycle; nguồn mới chưa được cấp A hoặc tải hàng loạt. [SIGN_FORENSICS.md](SIGN_FORENSICS.md) ghi số đo mask Sign và giới hạn của kết luận.
+
 ## Quy ước phân loại
 
 - **A**: có thể dùng sau kiểm tra và chuẩn hóa; cần qua label QA, coverage, provenance và split gate.
