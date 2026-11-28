@@ -1,8 +1,14 @@
 # VietSight — Dataset audit và intake V2
 
+**Cập nhật lô thực tế:** [V2_DATA_HANDOFF.md](../V2_DATA_HANDOFF.md) ghi snapshot **377 ảnh ứng viên (309/68), 4.279 polygon draft, BLOCKED**, cùng nguồn đã tải/kiểm và gói CVAT. API Roboflow đã hoạt động; nguồn SideWalk có 279 ảnh/4.715 native masks và bốn video Việt Nam xác định được. Nguồn Jose được lấy mẫu ZIP thực tế và có ảnh quốc tế; nguồn Sign xuất segmentation nhưng spot-check phủ cả cột/nhiều biển. Không dùng kết luận catalog cũ thay kết quả kiểm dữ liệu mới.
+
+**Yêu cầu V2 mới nhất: chỉ ảnh xác minh chụp tại Việt Nam.** Xem [V2_PROGRESS.md](V2_PROGRESS.md) và [VIETNAM_ONLY_INTAKE.json](evidence/VIETNAM_ONLY_INTAKE.json). Các nguồn quốc tế bên dưới là lịch sử audit/V1, không phải nguồn được phép train V2. Nguồn mang tên “Vietnam-Traffic-5Classes” vừa kiểm preview có 3/4 cảnh thể thao; chưa được xác nhận thuần Việt Nam và không được nhập mặc định.
+
 Ngày xác minh: **27/11/2026, GMT+7**. Nguồn được tổng hợp từ manifest/config hiện có; chưa nhận thêm danh sách/link dataset khác từ thành viên. Bảng này là quy trình đánh giá và kết quả quan sát có phạm vi, không phê duyệt tự động cho train.
 
 Cập nhật mapping tiếp theo: [CLASS_MAPPING_REVIEW.md](CLASS_MAPPING_REVIEW.md), gồm quy tắc người dùng xác nhận **xe 9–15 chỗ là Car**. Các số kiểm đếm bên dưới giữ nguyên snapshot đã đo; không phải số liệu dataset V1 đang chạy trên Kaggle.
+
+Cập nhật sau public V1: đã lấy mẫu train V1 trực tiếp qua Kaggle API (1.469 nhãn, 80 ảnh; không lấy full Mapillary). [V2_PROGRESS.md](V2_PROGRESS.md) bổ sung shortlist nguồn Việt Nam có instance mask và ưu tiên Motorcycle/Other vehicle/Sign/Bicycle; nguồn mới chưa được cấp A hoặc tải hàng loạt. [SIGN_FORENSICS.md](SIGN_FORENSICS.md) ghi số đo mask Sign và giới hạn của kết luận.
 
 ## Quy ước phân loại
 
@@ -91,3 +97,8 @@ Không nguồn nào hiện được cấp A độc lập cho train V2. Một lô
 | Số ảnh lỗi xác nhận / ảnh kiểm; số label sửa | chưa đo / chưa đo; chưa đo |
 | Người sửa / người kiểm chéo / quyết định lô | chưa ghi / chưa ghi / pending |
 | Công sức chuyển đổi, đầu việc còn lại | chưa ước lượng |
+# Cập nhật nguồn thay thế và lô CVAT — 27/11/2026
+
+Đã phát 5 gói QA, mỗi gói 20 ảnh, không trùng nhau; xem [hướng dẫn](../V2_CVAT_REVIEW.md). Nguồn review100 và SideWalk được kiểm lại bằng API, đều công bố CC BY 4.0; chưa đủ bằng chứng quyền footage gốc. Nhóm xác nhận chưa có quyền trích Camera Giao Thông/VOV. Không chuyển những ảnh này sang READY chỉ vì đã sửa nhãn.
+
+Nguồn thay thế ưu tiên **Sign — VR-TSD, loại C**: [repo tác giả](https://github.com/LinhNhat07/VR-TSD-Vietnamese-Traffic-Sign-Recognition) mô tả tự thu thập video/ảnh, camera Xiaomi 70mai A510/Teyes X5 và điện thoại, gán **bbox**, không phải mask. [Dataset gốc](https://universe.roboflow.com/vietnam-traffic-sign-recognition-benchmark/vr-tsd) API HTTP 200 xác nhận object-detection, public, **CC BY 4.0**, catalog 8.078 ảnh, bản v2 train/valid/test 5.668/1.259/1.151. Đây là số metadata, **chưa tải/kiểm đếm ảnh hoặc instance thực tế**. Nguồn gốc được tác giả mô tả rõ hơn các bộ tổng hợp, nhưng vẫn cần kiểm ảnh/quyền tương ứng trước admission. Chưa nhập vào 5 gói, chưa tải toàn bộ. Tiếp theo lấy mẫu theo chuỗi dashcam, tạo mask bằng SAM/AI + người kiểm, đồng thời gán mọi class BTC xuất hiện, không chỉ Sign. Không dựng mask hình chữ nhật từ bbox. Không coi license của bài báo/repo code là license ảnh.

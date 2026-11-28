@@ -1,0 +1,127 @@
+{
+  "roboflow": {
+    "archive_bytes": 17970890,
+    "network_bytes": 1209482,
+    "splits": [
+      {
+        "split": "test",
+        "images": 80,
+        "instances": 2125,
+        "classes": {
+          "car": 321,
+          "motorcycle": 1804
+        }
+      },
+      {
+        "split": "train",
+        "images": 455,
+        "instances": 12020,
+        "classes": {
+          "motorcycle": 10324,
+          "car": 1696
+        }
+      },
+      {
+        "split": "valid",
+        "images": 99,
+        "instances": 2521,
+        "classes": {
+          "car": 341,
+          "motorcycle": 2180
+        }
+      }
+    ],
+    "samples": [
+      "test/Video-Project_mp4-0000_jpg.rf.60c3c347f8fde902dfe6da2b6470e4a3.jpg",
+      "test/Video-Project_mp4-0026_jpg.rf.e129d934daf8076c2858f5dbceb98ad9.jpg",
+      "train/Video-Project_mp4-0002_jpg.rf.ebea079fb544c6bbf1be7117ea0621af.jpg",
+      "train/Video-Project_mp4-0003_jpg.rf.4c5f37a67d27fb8f414b6d9b5d02940d.jpg",
+      "valid/Video-Project_mp4-0024_jpg.rf.79ef84e634b6d20581a25d51876eea0b.jpg",
+      "valid/Video-Project_mp4-0029_jpg.rf.794e1962fcad0759947234389da23b78.jpg"
+    ],
+    "human_reviewed": false
+  },
+  "automatic_qa": {
+    "annotations": 16666,
+    "formats": {
+      "dict": 16660,
+      "list": 6
+    },
+    "issues": {
+      "empty_mask": 139
+    },
+    "rectangular_masks": 160,
+    "clip_splits": {
+      "Video-Project": [
+        "test",
+        "train",
+        "valid"
+      ],
+      "vd1": [
+        "test",
+        "train",
+        "valid"
+      ]
+    },
+    "sample_images": 6
+  },
+  "ai_visual_sample": {
+    "images": 6,
+    "human_qa": false,
+    "findings": [
+      "All six samples are the same fixed CCTV junction, not dashcam.",
+      "Vietnamese scene cues present; camera ownership and source provenance not independently established.",
+      "Many motorcycle masks cover the bike but omit the seated person; BTC requires a combined Motorcyclist instance.",
+      "Pedestrians and signs visible but not covered by the two-class ontology."
+    ],
+    "sample_evidence": "data/raw/bounded_sources_round003/dovai_sample/sample_overlay.jpg"
+  },
+  "decision": "B for masks; no READY admission, native ontology incomplete and source identity unresolved",
+  "mdpi": {
+    "url": "https://www.mdpi.com/1424-8220/25/22/7083",
+    "repository": "https://github.com/NgocHaiNguyen14/Auto_driving_car",
+    "tree_paths": 189,
+    "dataset_license_found": false,
+    "readme_direct_dataset_download": false,
+    "generator_is_model_predictions_not_human_gt": true,
+    "decision": "D for immediately usable original BTC instance masks; article CC BY 4.0 is not a dataset license"
+  },
+  "mapillary_api": {
+    "endpoint": "https://graph.mapillary.com/{image_id}",
+    "requests": [
+      {
+        "legacy_id": "Ua_bgqpPpJRkHZqH-fU2tw",
+        "authenticated": false,
+        "http": 500,
+        "error_type": "MLYApiException",
+        "error_code": 190
+      },
+      {
+        "legacy_id": "Ua_bgqpPpJRkHZqH-fU2tw",
+        "authenticated": true,
+        "token_source": "official public demo",
+        "http": 400,
+        "error_type": "MLYApiException",
+        "error_code": 100,
+        "coordinates_returned": false
+      },
+      {
+        "legacy_id": "KqKC0RWMHoXXhlfazAg1DA",
+        "metadata_coordinates_missing": true,
+        "authenticated": true,
+        "token_source": "official public demo",
+        "http": 400,
+        "error_type": "MLYApiException",
+        "error_code": 100,
+        "coordinates_returned": false
+      }
+    ],
+    "configured_token_found": false,
+    "coordinates_recovered": 0,
+    "images_downloaded": 0,
+    "bulk_8700": false,
+    "legacy_to_graph_crosswalk_verified": false,
+    "official_demo_token_found": true
+  },
+  "search_stopped_after_requested_sources": true
+}

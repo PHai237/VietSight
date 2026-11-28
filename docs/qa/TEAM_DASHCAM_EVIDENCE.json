@@ -1,0 +1,2588 @@
+{
+  "status": "BLOCKED",
+  "zip_sha256": "8a3ff16fb78b22d8d0f00d73996c994efd17bdc2b96fa423eee617cb4df3a2a0",
+  "annotation_sha256": "81a17b3e0f4e5d2f0446ba8a399672c961f1e171d108c579fcda31a6f60c2379",
+  "source_project": {
+    "id": "d22cqcn01ns-workspace/dashcam_vietnam",
+    "name": "dashcam_Vietnam",
+    "type": "object-detection",
+    "license": "CC BY 4.0",
+    "images": 1412,
+    "classes": {
+      "bus": 535,
+      "truck": 821,
+      "car": 4546,
+      "person": 9431,
+      "motobike": 7579
+    },
+    "splits": {
+      "train": 986,
+      "valid": 284,
+      "test": 142
+    },
+    "annotation": "objects",
+    "created": 1774080847.421,
+    "updated": 1774601544.983,
+    "versions": []
+  },
+  "source_thumbnail_matches": [
+    {
+      "public_thumbnail_url": "https://source.roboflow.com/GgKlSKWPm3h6XrlicwIiaJqXl6g1/024F5bdWUpECwRSMcP76/thumb.jpg",
+      "thumbnail_dimensions": [
+        200,
+        113
+      ],
+      "best_local_image": "images\\train\\frame_001625_jpg.rf.fkDERAj7l5LsGgz7LTCf.jpg",
+      "grayscale_64x36_mse": 0.8116319179534912,
+      "runner_up_mse": 3383.727783203125
+    },
+    {
+      "public_thumbnail_url": "https://source.roboflow.com/GgKlSKWPm3h6XrlicwIiaJqXl6g1/02LBp4GAKi6oB9umM1Vq/thumb.jpg",
+      "thumbnail_dimensions": [
+        200,
+        113
+      ],
+      "best_local_image": "images\\train\\frame_001178_jpg.rf.xe8w2ytvZHBg2kgKe5k4.jpg",
+      "grayscale_64x36_mse": 0.7230902910232544,
+      "runner_up_mse": 1957.6796875
+    },
+    {
+      "public_thumbnail_url": "https://source.roboflow.com/GgKlSKWPm3h6XrlicwIiaJqXl6g1/02nsbLireAzYnk0PoFmL/thumb.jpg",
+      "thumbnail_dimensions": [
+        200,
+        113
+      ],
+      "best_local_image": "images\\train\\frame_002523_jpg.rf.pXAXwksy1blKSvQIXBoA.jpg",
+      "grayscale_64x36_mse": 0.7782118320465088,
+      "runner_up_mse": 2291.614990234375
+    }
+  ],
+  "source_audit": {
+    "images": 1407,
+    "annotations": 8055,
+    "splits": {
+      "train": 1126,
+      "val": 281
+    },
+    "classes": {
+      "Car": 1829,
+      "Truck": 443,
+      "Motorcyclist": 2840,
+      "Pedestrian": 922,
+      "Traffic light": 253,
+      "Motorcycle": 518,
+      "Bicycle": 19,
+      "Sign": 902,
+      "Bus": 203,
+      "Cyclist": 91,
+      "Other vehicle": 35
+    },
+    "shapely_invalid": [
+      {
+        "annotation_id": 53,
+        "image_id": 12,
+        "reason": "Self-intersection[190.686884455254 225.953488117455]"
+      },
+      {
+        "annotation_id": 72,
+        "image_id": 15,
+        "reason": "Self-intersection[145.573426462646 244.245224122412]"
+      },
+      {
+        "annotation_id": 151,
+        "image_id": 29,
+        "reason": "Self-intersection[255.463738444486 243.692676943662]"
+      },
+      {
+        "annotation_id": 152,
+        "image_id": 29,
+        "reason": "Self-intersection[172.666223453134 255.158080776811]"
+      },
+      {
+        "annotation_id": 185,
+        "image_id": 36,
+        "reason": "Self-intersection[474.503566663002 177.428524054777]"
+      },
+      {
+        "annotation_id": 573,
+        "image_id": 112,
+        "reason": "Self-intersection[367.007497643973 210.002615160142]"
+      },
+      {
+        "annotation_id": 791,
+        "image_id": 156,
+        "reason": "Self-intersection[384.544671216361 192.549040340189]"
+      },
+      {
+        "annotation_id": 814,
+        "image_id": 159,
+        "reason": "Self-intersection[301.829728482879 208.091457833413]"
+      },
+      {
+        "annotation_id": 853,
+        "image_id": 166,
+        "reason": "Self-intersection[631.86204330111 179.576230802032]"
+      },
+      {
+        "annotation_id": 894,
+        "image_id": 173,
+        "reason": "Self-intersection[299.389981008299 192.210570360265]"
+      },
+      {
+        "annotation_id": 919,
+        "image_id": 177,
+        "reason": "Self-intersection[359.774380117563 199.956111305354]"
+      },
+      {
+        "annotation_id": 945,
+        "image_id": 182,
+        "reason": "Self-intersection[289.276924627762 194.608864654002]"
+      },
+      {
+        "annotation_id": 1031,
+        "image_id": 199,
+        "reason": "Self-intersection[318.668077194402 246.206581286381]"
+      },
+      {
+        "annotation_id": 1070,
+        "image_id": 207,
+        "reason": "Self-intersection[93.5719440273639 196.198650874564]"
+      },
+      {
+        "annotation_id": 1191,
+        "image_id": 226,
+        "reason": "Ring Self-intersection[295.9936 249.0084]"
+      },
+      {
+        "annotation_id": 1255,
+        "image_id": 239,
+        "reason": "Self-intersection[245.92671894562 190.843576296444]"
+      },
+      {
+        "annotation_id": 1324,
+        "image_id": 253,
+        "reason": "Self-intersection[381.51065425499 176.421203390327]"
+      },
+      {
+        "annotation_id": 1479,
+        "image_id": 285,
+        "reason": "Self-intersection[193.509095306203 237.245352724149]"
+      },
+      {
+        "annotation_id": 2005,
+        "image_id": 378,
+        "reason": "Self-intersection[384.9984 235.16677228145]"
+      },
+      {
+        "annotation_id": 2177,
+        "image_id": 405,
+        "reason": "Self-intersection[300.258603313672 208.903110036605]"
+      },
+      {
+        "annotation_id": 2528,
+        "image_id": 462,
+        "reason": "Ring Self-intersection[46.9952 226.0044]"
+      },
+      {
+        "annotation_id": 2645,
+        "image_id": 483,
+        "reason": "Self-intersection[156.19243730421 198.508807156201]"
+      },
+      {
+        "annotation_id": 3013,
+        "image_id": 548,
+        "reason": "Self-intersection[90.1210762845131 201.179996162579]"
+      },
+      {
+        "annotation_id": 3093,
+        "image_id": 560,
+        "reason": "Self-intersection[28.1489741389513 266.150683056406]"
+      },
+      {
+        "annotation_id": 3284,
+        "image_id": 592,
+        "reason": "Self-intersection[385.2431425071 156.372080212172]"
+      },
+      {
+        "annotation_id": 3393,
+        "image_id": 613,
+        "reason": "Self-intersection[634.7532859128 210.378380737761]"
+      },
+      {
+        "annotation_id": 3575,
+        "image_id": 644,
+        "reason": "Self-intersection[265.742404477722 4.08561800284962]"
+      },
+      {
+        "annotation_id": 3615,
+        "image_id": 651,
+        "reason": "Self-intersection[67.4179264310778 29.5034757429423]"
+      },
+      {
+        "annotation_id": 3682,
+        "image_id": 662,
+        "reason": "Self-intersection[83.3645456146095 212.269118181818]"
+      },
+      {
+        "annotation_id": 3788,
+        "image_id": 686,
+        "reason": "Self-intersection[255.67210895519 247.18986032984]"
+      },
+      {
+        "annotation_id": 3865,
+        "image_id": 700,
+        "reason": "Self-intersection[81.1631390460901 243.082303732691]"
+      },
+      {
+        "annotation_id": 4193,
+        "image_id": 758,
+        "reason": "Self-intersection[360.551264664665 135.86028910437]"
+      },
+      {
+        "annotation_id": 4294,
+        "image_id": 776,
+        "reason": "Self-intersection[550.791436699061 130.394241327031]"
+      },
+      {
+        "annotation_id": 4348,
+        "image_id": 784,
+        "reason": "Self-intersection[339.162541106649 268.133845101359]"
+      },
+      {
+        "annotation_id": 4520,
+        "image_id": 814,
+        "reason": "Self-intersection[244.21710680508 204.534381645149]"
+      },
+      {
+        "annotation_id": 4565,
+        "image_id": 825,
+        "reason": "Self-intersection[347.111356534879 219.471855265262]"
+      },
+      {
+        "annotation_id": 4662,
+        "image_id": 844,
+        "reason": "Ring Self-intersection[323.0016 191.0016]"
+      },
+      {
+        "annotation_id": 4680,
+        "image_id": 847,
+        "reason": "Self-intersection[278.309644227641 249.691671804567]"
+      },
+      {
+        "annotation_id": 4701,
+        "image_id": 852,
+        "reason": "Ring Self-intersection[126.0096 146.9988]"
+      },
+      {
+        "annotation_id": 4843,
+        "image_id": 875,
+        "reason": "Self-intersection[333.899895694517 214.065992728472]"
+      },
+      {
+        "annotation_id": 5091,
+        "image_id": 919,
+        "reason": "Self-intersection[359.716932412002 206.188597659011]"
+      },
+      {
+        "annotation_id": 5206,
+        "image_id": 943,
+        "reason": "Self-intersection[269.203043678161 264.006]"
+      },
+      {
+        "annotation_id": 5315,
+        "image_id": 963,
+        "reason": "Ring Self-intersection[310.3488 185.0004]"
+      },
+      {
+        "annotation_id": 5348,
+        "image_id": 970,
+        "reason": "Self-intersection[472.616921013445 246.835218343166]"
+      },
+      {
+        "annotation_id": 5414,
+        "image_id": 978,
+        "reason": "Self-intersection[4.81751706475162 156.771392693877]"
+      },
+      {
+        "annotation_id": 5427,
+        "image_id": 979,
+        "reason": "Self-intersection[460.796589814648 252.0072]"
+      },
+      {
+        "annotation_id": 5471,
+        "image_id": 984,
+        "reason": "Self-intersection[10.6800852074342 219.219990758457]"
+      },
+      {
+        "annotation_id": 5540,
+        "image_id": 996,
+        "reason": "Self-intersection[489.938770933633 239.994]"
+      },
+      {
+        "annotation_id": 5582,
+        "image_id": 1003,
+        "reason": "Self-intersection[110.072436674709 141.625075117239]"
+      },
+      {
+        "annotation_id": 5604,
+        "image_id": 1008,
+        "reason": "Self-intersection[208.747905594061 218.199882673804]"
+      },
+      {
+        "annotation_id": 5790,
+        "image_id": 1037,
+        "reason": "Self-intersection[238.944836819145 189.095274521581]"
+      },
+      {
+        "annotation_id": 5957,
+        "image_id": 1061,
+        "reason": "Self-intersection[3.92827015705311 201.362598647474]"
+      },
+      {
+        "annotation_id": 5986,
+        "image_id": 1068,
+        "reason": "Ring Self-intersection[347.9936 191.0016]"
+      },
+      {
+        "annotation_id": 6020,
+        "image_id": 1075,
+        "reason": "Self-intersection[369.935745644573 204.822902395257]"
+      },
+      {
+        "annotation_id": 6428,
+        "image_id": 1142,
+        "reason": "Self-intersection[358.993841228475 196.005380971902]"
+      },
+      {
+        "annotation_id": 6772,
+        "image_id": 1195,
+        "reason": "Self-intersection[477.993384810614 237.013266157038]"
+      },
+      {
+        "annotation_id": 6831,
+        "image_id": 1204,
+        "reason": "Self-intersection[210.944130883375 209.571301516888]"
+      },
+      {
+        "annotation_id": 6832,
+        "image_id": 1204,
+        "reason": "Self-intersection[268.570440714981 207.587699433855]"
+      },
+      {
+        "annotation_id": 7088,
+        "image_id": 1242,
+        "reason": "Self-intersection[311.9872 162.50792238806]"
+      },
+      {
+        "annotation_id": 7119,
+        "image_id": 1248,
+        "reason": "Self-intersection[428.363478643525 193.250841356475]"
+      },
+      {
+        "annotation_id": 7127,
+        "image_id": 1249,
+        "reason": "Self-intersection[212.763237530629 208.956650518638]"
+      },
+      {
+        "annotation_id": 7128,
+        "image_id": 1249,
+        "reason": "Self-intersection[222.99780615805 213.505026494743]"
+      },
+      {
+        "annotation_id": 7267,
+        "image_id": 1272,
+        "reason": "Self-intersection[406.71106687858 258.578836069733]"
+      },
+      {
+        "annotation_id": 7268,
+        "image_id": 1272,
+        "reason": "Self-intersection[414.681044716936 245.321123037872]"
+      },
+      {
+        "annotation_id": 7399,
+        "image_id": 1294,
+        "reason": "Self-intersection[169.706032319786 157.415110800755]"
+      },
+      {
+        "annotation_id": 7428,
+        "image_id": 1297,
+        "reason": "Self-intersection[318.667561240461 189.221559803943]"
+      },
+      {
+        "annotation_id": 7429,
+        "image_id": 1297,
+        "reason": "Self-intersection[381.14506783589 183.144748046943]"
+      },
+      {
+        "annotation_id": 7448,
+        "image_id": 1303,
+        "reason": "Self-intersection[436.414707908454 226.368711418939]"
+      },
+      {
+        "annotation_id": 7549,
+        "image_id": 1321,
+        "reason": "Self-intersection[348.894072478598 240.125282117489]"
+      },
+      {
+        "annotation_id": 7688,
+        "image_id": 1346,
+        "reason": "Self-intersection[420.766768051118 196.920204572875]"
+      },
+      {
+        "annotation_id": 7821,
+        "image_id": 1368,
+        "reason": "Self-intersection[170.899268261967 230.925353671931]"
+      },
+      {
+        "annotation_id": 7939,
+        "image_id": 1385,
+        "reason": "Self-intersection[450.0096 204.401105398458]"
+      }
+    ],
+    "area_lt64_annotation_metadata": 314,
+    "bbox_short_lt8_annotation_metadata": 600,
+    "empty_images": [
+      "images/train/frame_002925_jpg.rf.QAGaCF8oAa2eUg8Ku5Ox.jpg",
+      "images/train/frame_003297_jpg.rf.P3S8FdgtAwzI04FY4bAM.jpg",
+      "images/train/frame_001091_jpg.rf.haXfV4zOCqrXl3X6W0tl.jpg",
+      "images/train/frame_001457_jpg.rf.pT753Hys3Dfag5isqZp0.jpg",
+      "images/train/frame_000738_jpg.rf.jgNONmvQMSovYZOKM4cg.jpg",
+      "images/train/frame_001554_jpg.rf.SBlR16h0XacZQitrbY5E.jpg",
+      "images/train/frame_003159_jpg.rf.wpPUq6kSE80j0Rjv90oT.jpg",
+      "images/train/frame_001553_jpg.rf.D2fVhZRBH4SbgCPWm93n.jpg",
+      "images/train/frame_000400_jpg.rf.Fmoa8t5yHF3ppFGEEYvl.jpg",
+      "images/train/frame_003146_jpg.rf.vggDn0SDIvrSXyXdu7D8.jpg",
+      "images/train/frame_001009_jpg.rf.eQmO3WWzIWeac5C8VRMx.jpg",
+      "images/train/frame_001397_jpg.rf.KZEddnhZeutTi99dejtF.jpg",
+      "images/train/frame_001055_jpg.rf.lEyD5V3jvWXDCjHUgtig.jpg",
+      "images/train/frame_001468_jpg.rf.Uf9TXyXKF0I4A82K0tD1.jpg",
+      "images/train/frame_000458_jpg.rf.N9e7DgiOsZvSjeEpZcvs.jpg",
+      "images/train/frame_001111_jpg.rf.A8ym9qPkbz8aZ78JmB8o.jpg",
+      "images/train/frame_003298_jpg.rf.x4lf1dSODVn0MeF6pGk4.jpg",
+      "images/train/frame_002746_jpg.rf.1ZU9Gexal0N3CuFVJlUF.jpg",
+      "images/train/frame_003284_jpg.rf.9tkKqAV6Ih1WKRVW17R5.jpg",
+      "images/train/frame_000436_jpg.rf.acH16AmK8TNQDJJ9V0y4.jpg",
+      "images/train/frame_002744_jpg.rf.4igINWrFqeYCyZR9tbVk.jpg",
+      "images/train/frame_001007_jpg.rf.m054RjOAEejc880yQH4P.jpg",
+      "images/train/frame_003138_jpg.rf.JxE3GZ0JOg25JB0568AK.jpg",
+      "images/train/frame_002876_jpg.rf.1k8iU9rR64phDaFeQDGU.jpg",
+      "images/train/frame_002692_jpg.rf.0MPXV4ZtTeBRXcgz3OQ6.jpg",
+      "images/train/frame_003261_jpg.rf.QXkqWn9FEOagzjwZaSxV.jpg",
+      "images/train/frame_000401_jpg.rf.CHfaiKZBjfkP95FXHut0.jpg",
+      "images/train/frame_002649_jpg.rf.4HxwSU6S0pC36ElhMgy2.jpg",
+      "images/train/frame_001292_jpg.rf.wlPh5PZUC3Gxs6yZD2QS.jpg",
+      "images/val/frame_000330_jpg.rf.3Tw6hQcym2854U0rO4Is.jpg",
+      "images/val/frame_000320_jpg.rf.rD7YZVyt7lW3hllwciMa.jpg",
+      "images/val/frame_000321_jpg.rf.Zy6J6ltictOXEbK7xe2N.jpg"
+    ],
+    "exact_duplicate_groups": [],
+    "near_duplicate_pairs_hamming4": [
+      {
+        "a": "images/train/frame_001343_jpg.rf.DksFcgRpr86XurwI9Pqg.jpg",
+        "b": "images/train/frame_001342_jpg.rf.WbaTmfKuMtNVUGAPgIy9.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001343_jpg.rf.DksFcgRpr86XurwI9Pqg.jpg",
+        "b": "images/train/frame_000412_jpg.rf.bhxQY7BncS8GblCwguJl.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001179_jpg.rf.nmLu88zKNGNpUjSjbFGu.jpg",
+        "b": "images/train/frame_000821_jpg.rf.kalnzsxd8jBgFtvps6cO.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001179_jpg.rf.nmLu88zKNGNpUjSjbFGu.jpg",
+        "b": "images/train/frame_000435_jpg.rf.lcbf1KjTYUbrYaiEjljj.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001179_jpg.rf.nmLu88zKNGNpUjSjbFGu.jpg",
+        "b": "images/train/frame_000359_jpg.rf.kZoNt2OINL0Hrh6Wf3Jv.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001179_jpg.rf.nmLu88zKNGNpUjSjbFGu.jpg",
+        "b": "images/train/frame_000350_jpg.rf.UlTDshi0YOKDSSluzYBE.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001179_jpg.rf.nmLu88zKNGNpUjSjbFGu.jpg",
+        "b": "images/train/frame_000354_jpg.rf.AztIjbAgcvUv2ZVRRTGp.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001178_jpg.rf.xe8w2ytvZHBg2kgKe5k4.jpg",
+        "b": "images/train/frame_000350_jpg.rf.UlTDshi0YOKDSSluzYBE.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001178_jpg.rf.xe8w2ytvZHBg2kgKe5k4.jpg",
+        "b": "images/train/frame_001613_jpg.rf.37OnOcJnlkRmyDeW4c0q.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001541_jpg.rf.Jz12iUErnk4MNm1Cmf26.jpg",
+        "b": "images/train/frame_001540_jpg.rf.fdI6V2zIxszH1rbBQMH9.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001324_jpg.rf.4Rkgvg2wDhlieN6Gu9XY.jpg",
+        "b": "images/train/frame_001325_jpg.rf.HPbpI62kY6a4ojwynLRG.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001324_jpg.rf.4Rkgvg2wDhlieN6Gu9XY.jpg",
+        "b": "images/train/frame_001326_jpg.rf.ltWCIPrtSEuAbP7AY0YF.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000457_jpg.rf.ZGMZxI4w77Xa7OK6tP74.jpg",
+        "b": "images/train/frame_000456_jpg.rf.4qtfP1F3TqjiduauUUxj.jpg",
+        "distance": 1,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000432_jpg.rf.deAh0dSddskF4u0CxLUa.jpg",
+        "b": "images/train/frame_001417_jpg.rf.90Js7LDWq9IGPjpjQmEF.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000432_jpg.rf.deAh0dSddskF4u0CxLUa.jpg",
+        "b": "images/train/frame_000350_jpg.rf.UlTDshi0YOKDSSluzYBE.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000820_jpg.rf.9MHVywrCKePjKY0ErYdb.jpg",
+        "b": "images/val/frame_000290_jpg.rf.UKx31bH9a4UdCTUXCgir.jpg",
+        "distance": 4,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_000358_jpg.rf.bTsfKILPoXYr3Z1aWfNC.jpg",
+        "b": "images/train/frame_000357_jpg.rf.QdjVMmqXl6MUmwSYxU1m.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000358_jpg.rf.bTsfKILPoXYr3Z1aWfNC.jpg",
+        "b": "images/val/frame_000300_jpg.rf.aghCpSlPzX37J9Z2XQq4.jpg",
+        "distance": 4,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_001093_jpg.rf.reljD0X55yMk3FRbJRO7.jpg",
+        "b": "images/train/frame_001092_jpg.rf.W65W6qzKA3WJTJzptBkQ.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000570_jpg.rf.fb2pGkX1lfvTsaKUUbDe.jpg",
+        "b": "images/train/frame_000571_jpg.rf.exmg73rSgVmK6DjSw7jm.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001010_jpg.rf.LOyhpWztPSReQBbgu3kh.jpg",
+        "b": "images/train/frame_001009_jpg.rf.eQmO3WWzIWeac5C8VRMx.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001325_jpg.rf.HPbpI62kY6a4ojwynLRG.jpg",
+        "b": "images/train/frame_001326_jpg.rf.ltWCIPrtSEuAbP7AY0YF.jpg",
+        "distance": 1,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001325_jpg.rf.HPbpI62kY6a4ojwynLRG.jpg",
+        "b": "images/train/frame_001327_jpg.rf.ZNM6ZUrRrrr8UvfPAsNM.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001162_jpg.rf.WqASOSaGNGJ1Wcbsk3o3.jpg",
+        "b": "images/train/frame_001163_jpg.rf.vgIC8DsbclW0HwEwZfdp.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000391_jpg.rf.bGkWplZnjZTGDdjIcgRW.jpg",
+        "b": "images/train/frame_000350_jpg.rf.UlTDshi0YOKDSSluzYBE.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000391_jpg.rf.bGkWplZnjZTGDdjIcgRW.jpg",
+        "b": "images/train/frame_000412_jpg.rf.bhxQY7BncS8GblCwguJl.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000391_jpg.rf.bGkWplZnjZTGDdjIcgRW.jpg",
+        "b": "images/val/frame_000300_jpg.rf.aghCpSlPzX37J9Z2XQq4.jpg",
+        "distance": 4,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_001071_jpg.rf.vAJz5aMxdAYmakpNTT6C.jpg",
+        "b": "images/train/frame_001070_jpg.rf.ugFbooYojP6XNp8vopN0.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001110_jpg.rf.HnwmKaSdWyoqSQ7wCUmm.jpg",
+        "b": "images/train/frame_001108_jpg.rf.15BxRy7sJJSGUHvkiCOL.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001110_jpg.rf.HnwmKaSdWyoqSQ7wCUmm.jpg",
+        "b": "images/train/frame_001111_jpg.rf.A8ym9qPkbz8aZ78JmB8o.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001110_jpg.rf.HnwmKaSdWyoqSQ7wCUmm.jpg",
+        "b": "images/train/frame_001109_jpg.rf.NGvEkot17x9jyU5PicsA.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001387_jpg.rf.n7UKMOq3kmEHIb8jS1g9.jpg",
+        "b": "images/train/frame_001342_jpg.rf.WbaTmfKuMtNVUGAPgIy9.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001522_jpg.rf.8nhRgEB450yGm689uQoO.jpg",
+        "b": "images/train/frame_001521_jpg.rf.m9rYRHKJUym2cf8wgO8E.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001606_jpg.rf.KTa3Y1W5XvX8zRFJ6Wyu.jpg",
+        "b": "images/train/frame_001605_jpg.rf.nnzssxyIid3EnRuFcODh.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001342_jpg.rf.WbaTmfKuMtNVUGAPgIy9.jpg",
+        "b": "images/val/frame_000193_jpg.rf.uGWOCvFPzitqkVcZ8WA1.jpg",
+        "distance": 4,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_001404_jpg.rf.9U8CnEevRRN6LocrgTic.jpg",
+        "b": "images/val/frame_000193_jpg.rf.uGWOCvFPzitqkVcZ8WA1.jpg",
+        "distance": 4,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_000622_jpg.rf.vEdhMCVLdiPr1zMpcPGz.jpg",
+        "b": "images/train/frame_000624_jpg.rf.LUf9dso8i8C1ahmSyn8e.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001363_jpg.rf.8wPxuTholN0pVMN1D4v4.jpg",
+        "b": "images/train/frame_001365_jpg.rf.iSwuUdBvX2FVt2dUdYMz.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000434_jpg.rf.JFhReszLi4mbor2vZpzx.jpg",
+        "b": "images/train/frame_000423_jpg.rf.7hMp2jPtlu8VDfDYCVgN.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000418_jpg.rf.KT2sVmoZewCKPuecwEQt.jpg",
+        "b": "images/train/frame_000412_jpg.rf.bhxQY7BncS8GblCwguJl.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000418_jpg.rf.KT2sVmoZewCKPuecwEQt.jpg",
+        "b": "images/val/frame_000300_jpg.rf.aghCpSlPzX37J9Z2XQq4.jpg",
+        "distance": 4,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_001108_jpg.rf.15BxRy7sJJSGUHvkiCOL.jpg",
+        "b": "images/train/frame_001111_jpg.rf.A8ym9qPkbz8aZ78JmB8o.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001111_jpg.rf.A8ym9qPkbz8aZ78JmB8o.jpg",
+        "b": "images/train/frame_001109_jpg.rf.NGvEkot17x9jyU5PicsA.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001160_jpg.rf.oJkPTrbjsHaUA5ntAUjk.jpg",
+        "b": "images/train/frame_001163_jpg.rf.vgIC8DsbclW0HwEwZfdp.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000388_jpg.rf.ePJBVSy5HCM66fNWJhAC.jpg",
+        "b": "images/train/frame_000387_jpg.rf.pyonbyj7d5gR4gmVSahn.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001008_jpg.rf.Lmwa9jfJvpe3OzhKdHi9.jpg",
+        "b": "images/train/frame_001260_jpg.rf.KuhXXaGhkq7UA0mD3vwW.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000641_jpg.rf.nL0tAqIbEIGNV1CAmbZz.jpg",
+        "b": "images/train/frame_000638_jpg.rf.C5jSDTjCjzNLGiP7yGf9.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000821_jpg.rf.kalnzsxd8jBgFtvps6cO.jpg",
+        "b": "images/train/frame_000396_jpg.rf.h6cUFxIKf2G30cwOE1GG.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000821_jpg.rf.kalnzsxd8jBgFtvps6cO.jpg",
+        "b": "images/train/frame_000435_jpg.rf.lcbf1KjTYUbrYaiEjljj.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000821_jpg.rf.kalnzsxd8jBgFtvps6cO.jpg",
+        "b": "images/train/frame_000359_jpg.rf.kZoNt2OINL0Hrh6Wf3Jv.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000821_jpg.rf.kalnzsxd8jBgFtvps6cO.jpg",
+        "b": "images/train/frame_000350_jpg.rf.UlTDshi0YOKDSSluzYBE.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000821_jpg.rf.kalnzsxd8jBgFtvps6cO.jpg",
+        "b": "images/train/frame_000354_jpg.rf.AztIjbAgcvUv2ZVRRTGp.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000821_jpg.rf.kalnzsxd8jBgFtvps6cO.jpg",
+        "b": "images/val/frame_000246_jpg.rf.WNabDs4rG2EOkx9NwAvY.jpg",
+        "distance": 3,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_000821_jpg.rf.kalnzsxd8jBgFtvps6cO.jpg",
+        "b": "images/val/frame_000209_jpg.rf.7EK9876FVc4WehPrxeNG.jpg",
+        "distance": 4,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_001221_jpg.rf.PCiAcVTV9ZYiGUyUHjuy.jpg",
+        "b": "images/train/frame_001225_jpg.rf.rmdQkD9s59upZcanVWuM.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001590_jpg.rf.E2oqC65jcN8ZHGCoGBjj.jpg",
+        "b": "images/train/frame_001591_jpg.rf.UZOIYLjMJKioxcqwqR7m.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001224_jpg.rf.I9zw5gnZ5fDrkoPoGtjb.jpg",
+        "b": "images/train/frame_001225_jpg.rf.rmdQkD9s59upZcanVWuM.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000396_jpg.rf.h6cUFxIKf2G30cwOE1GG.jpg",
+        "b": "images/train/frame_000435_jpg.rf.lcbf1KjTYUbrYaiEjljj.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000396_jpg.rf.h6cUFxIKf2G30cwOE1GG.jpg",
+        "b": "images/train/frame_000359_jpg.rf.kZoNt2OINL0Hrh6Wf3Jv.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000396_jpg.rf.h6cUFxIKf2G30cwOE1GG.jpg",
+        "b": "images/train/frame_000350_jpg.rf.UlTDshi0YOKDSSluzYBE.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000396_jpg.rf.h6cUFxIKf2G30cwOE1GG.jpg",
+        "b": "images/train/frame_000354_jpg.rf.AztIjbAgcvUv2ZVRRTGp.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001348_jpg.rf.tFwIek7O2PqyO5bmSVyk.jpg",
+        "b": "images/val/frame_000043_jpg.rf.9TmPq3tWuddJroTm1kZn.jpg",
+        "distance": 4,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_001326_jpg.rf.ltWCIPrtSEuAbP7AY0YF.jpg",
+        "b": "images/train/frame_001327_jpg.rf.ZNM6ZUrRrrr8UvfPAsNM.jpg",
+        "distance": 1,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001117_jpg.rf.uoswwI6irCLFcBmKqE9L.jpg",
+        "b": "images/train/frame_001119_jpg.rf.KqOv82XX9VTnetJJbNU7.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000435_jpg.rf.lcbf1KjTYUbrYaiEjljj.jpg",
+        "b": "images/train/frame_000359_jpg.rf.kZoNt2OINL0Hrh6Wf3Jv.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000435_jpg.rf.lcbf1KjTYUbrYaiEjljj.jpg",
+        "b": "images/train/frame_000350_jpg.rf.UlTDshi0YOKDSSluzYBE.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000435_jpg.rf.lcbf1KjTYUbrYaiEjljj.jpg",
+        "b": "images/train/frame_000354_jpg.rf.AztIjbAgcvUv2ZVRRTGp.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000435_jpg.rf.lcbf1KjTYUbrYaiEjljj.jpg",
+        "b": "images/val/frame_000211_jpg.rf.1D4W9IJHknPApGUcztwK.jpg",
+        "distance": 4,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_000435_jpg.rf.lcbf1KjTYUbrYaiEjljj.jpg",
+        "b": "images/val/frame_000052_jpg.rf.Z796o0Go1PELO0wYy8h2.jpg",
+        "distance": 4,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_001018_jpg.rf.Huyk9K1fTAsb0rBvfTRF.jpg",
+        "b": "images/train/frame_001016_jpg.rf.5YbNRH0TgB9gEQ9SOnM0.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000664_jpg.rf.RgUv9pOjKvekQ7iHldSz.jpg",
+        "b": "images/train/frame_000667_jpg.rf.8dNeldrpmEL36K7ov5Ab.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000664_jpg.rf.RgUv9pOjKvekQ7iHldSz.jpg",
+        "b": "images/train/frame_000668_jpg.rf.SyMABmN9FizzVg2nxUap.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000346_jpg.rf.AgdjcPv34uSuyH4iQhQ4.jpg",
+        "b": "images/train/frame_000345_jpg.rf.sytsXB6108LrT6mvlJEe.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000359_jpg.rf.kZoNt2OINL0Hrh6Wf3Jv.jpg",
+        "b": "images/train/frame_000349_jpg.rf.MZwrLaxYS0ttMZrGrKHK.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000359_jpg.rf.kZoNt2OINL0Hrh6Wf3Jv.jpg",
+        "b": "images/train/frame_000350_jpg.rf.UlTDshi0YOKDSSluzYBE.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000359_jpg.rf.kZoNt2OINL0Hrh6Wf3Jv.jpg",
+        "b": "images/train/frame_000354_jpg.rf.AztIjbAgcvUv2ZVRRTGp.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000359_jpg.rf.kZoNt2OINL0Hrh6Wf3Jv.jpg",
+        "b": "images/val/frame_000300_jpg.rf.aghCpSlPzX37J9Z2XQq4.jpg",
+        "distance": 3,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_000439_jpg.rf.J3sUxmrOk2YKZyUsAejy.jpg",
+        "b": "images/val/frame_000330_jpg.rf.3Tw6hQcym2854U0rO4Is.jpg",
+        "distance": 4,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_000356_jpg.rf.2aaDnc9Ed5FO9Q600QZ5.jpg",
+        "b": "images/val/frame_000246_jpg.rf.WNabDs4rG2EOkx9NwAvY.jpg",
+        "distance": 4,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_000387_jpg.rf.pyonbyj7d5gR4gmVSahn.jpg",
+        "b": "images/train/frame_000412_jpg.rf.bhxQY7BncS8GblCwguJl.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000387_jpg.rf.pyonbyj7d5gR4gmVSahn.jpg",
+        "b": "images/val/frame_000211_jpg.rf.1D4W9IJHknPApGUcztwK.jpg",
+        "distance": 4,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_001384_jpg.rf.4BAW9ZyEqwUshWrHBQCs.jpg",
+        "b": "images/train/frame_001386_jpg.rf.jobhncPC6EtHcsGhoGWj.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001384_jpg.rf.4BAW9ZyEqwUshWrHBQCs.jpg",
+        "b": "images/train/frame_001385_jpg.rf.YFMNeodsDOYMqRS1H5Xm.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000349_jpg.rf.MZwrLaxYS0ttMZrGrKHK.jpg",
+        "b": "images/train/frame_000350_jpg.rf.UlTDshi0YOKDSSluzYBE.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000350_jpg.rf.UlTDshi0YOKDSSluzYBE.jpg",
+        "b": "images/train/frame_000412_jpg.rf.bhxQY7BncS8GblCwguJl.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000350_jpg.rf.UlTDshi0YOKDSSluzYBE.jpg",
+        "b": "images/train/frame_000354_jpg.rf.AztIjbAgcvUv2ZVRRTGp.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_000350_jpg.rf.UlTDshi0YOKDSSluzYBE.jpg",
+        "b": "images/val/frame_000330_jpg.rf.3Tw6hQcym2854U0rO4Is.jpg",
+        "distance": 4,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_000350_jpg.rf.UlTDshi0YOKDSSluzYBE.jpg",
+        "b": "images/val/frame_000300_jpg.rf.aghCpSlPzX37J9Z2XQq4.jpg",
+        "distance": 3,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_000412_jpg.rf.bhxQY7BncS8GblCwguJl.jpg",
+        "b": "images/val/frame_000300_jpg.rf.aghCpSlPzX37J9Z2XQq4.jpg",
+        "distance": 4,
+        "cross_split": true
+      },
+      {
+        "a": "images/train/frame_001386_jpg.rf.jobhncPC6EtHcsGhoGWj.jpg",
+        "b": "images/train/frame_001385_jpg.rf.YFMNeodsDOYMqRS1H5Xm.jpg",
+        "distance": 1,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001364_jpg.rf.XWUgWmFMZvQ0T2Aza1Jh.jpg",
+        "b": "images/train/frame_001365_jpg.rf.iSwuUdBvX2FVt2dUdYMz.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/train/frame_001016_jpg.rf.5YbNRH0TgB9gEQ9SOnM0.jpg",
+        "b": "images/train/frame_001017_jpg.rf.goIa7I8eLrteRdHojeQ4.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000055_jpg.rf.Mq3VNtR76Wdl5DugjbWX.jpg",
+        "b": "images/val/frame_000042_jpg.rf.18YfZG5sCQNeEvYPuvGg.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000055_jpg.rf.Mq3VNtR76Wdl5DugjbWX.jpg",
+        "b": "images/val/frame_000044_jpg.rf.eqVEf810KpJAK6j0shPL.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000161_jpg.rf.ZqHcN3oWBeGwLfFvdGHT.jpg",
+        "b": "images/val/frame_000289_jpg.rf.KsA5DF9j1YI3r2uw2Fpp.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000330_jpg.rf.3Tw6hQcym2854U0rO4Is.jpg",
+        "b": "images/val/frame_000328_jpg.rf.lkQvxGKmasjK6Q8aJbgx.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000236_jpg.rf.9iI86eMWzzvsTzNH1TCd.jpg",
+        "b": "images/val/frame_000238_jpg.rf.eBbTSpyRyw9StYsAoe20.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000236_jpg.rf.9iI86eMWzzvsTzNH1TCd.jpg",
+        "b": "images/val/frame_000222_jpg.rf.8TMSmbd15INRDx1SEzZ9.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000236_jpg.rf.9iI86eMWzzvsTzNH1TCd.jpg",
+        "b": "images/val/frame_000221_jpg.rf.TZmNUhNPpkFNiNcnlpCU.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000236_jpg.rf.9iI86eMWzzvsTzNH1TCd.jpg",
+        "b": "images/val/frame_000234_jpg.rf.T2FQzfMOWN9lTfDx21kO.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000236_jpg.rf.9iI86eMWzzvsTzNH1TCd.jpg",
+        "b": "images/val/frame_000229_jpg.rf.liN5K8ccCGJG1JppeF1E.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000236_jpg.rf.9iI86eMWzzvsTzNH1TCd.jpg",
+        "b": "images/val/frame_000233_jpg.rf.Jbpe3HURqHxKcJ23jkUt.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000063_jpg.rf.J2AVU3ONvWXDjzCTBQPM.jpg",
+        "b": "images/val/frame_000072_jpg.rf.v5DZ6Qxo9oMW2b2MumgT.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000166_jpg.rf.NPhziJgcY2Urs3EoMjxh.jpg",
+        "b": "images/val/frame_000289_jpg.rf.KsA5DF9j1YI3r2uw2Fpp.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000036_jpg.rf.FxtSFuqJDvXtEPWGHRR0.jpg",
+        "b": "images/val/frame_000250_jpg.rf.SfL59ZwJbX7Cwu0grhiR.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000238_jpg.rf.eBbTSpyRyw9StYsAoe20.jpg",
+        "b": "images/val/frame_000222_jpg.rf.8TMSmbd15INRDx1SEzZ9.jpg",
+        "distance": 1,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000238_jpg.rf.eBbTSpyRyw9StYsAoe20.jpg",
+        "b": "images/val/frame_000221_jpg.rf.TZmNUhNPpkFNiNcnlpCU.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000238_jpg.rf.eBbTSpyRyw9StYsAoe20.jpg",
+        "b": "images/val/frame_000234_jpg.rf.T2FQzfMOWN9lTfDx21kO.jpg",
+        "distance": 0,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000238_jpg.rf.eBbTSpyRyw9StYsAoe20.jpg",
+        "b": "images/val/frame_000229_jpg.rf.liN5K8ccCGJG1JppeF1E.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000238_jpg.rf.eBbTSpyRyw9StYsAoe20.jpg",
+        "b": "images/val/frame_000233_jpg.rf.Jbpe3HURqHxKcJ23jkUt.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000091_jpg.rf.0n8UfWUStEq6YlV2EhTq.jpg",
+        "b": "images/val/frame_000100_jpg.rf.aslOTcvC4rQnBX6Eb2cX.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000193_jpg.rf.uGWOCvFPzitqkVcZ8WA1.jpg",
+        "b": "images/val/frame_000052_jpg.rf.Z796o0Go1PELO0wYy8h2.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000193_jpg.rf.uGWOCvFPzitqkVcZ8WA1.jpg",
+        "b": "images/val/frame_000079_jpg.rf.gLgdcKmm4mL8Sv46aH4n.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000093_jpg.rf.Y0rKHiKiWU6ZUF2dfBaT.jpg",
+        "b": "images/val/frame_000099_jpg.rf.LQJWExh0xbWHtpaIGZ3s.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000093_jpg.rf.Y0rKHiKiWU6ZUF2dfBaT.jpg",
+        "b": "images/val/frame_000107_jpg.rf.ztAhqvfyXgKoDQMzXGgx.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000093_jpg.rf.Y0rKHiKiWU6ZUF2dfBaT.jpg",
+        "b": "images/val/frame_000095_jpg.rf.P6Bi6qYvrEyJszgheaiy.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000060_jpg.rf.ZhauFBJb3siH7sXbj84T.jpg",
+        "b": "images/val/frame_000061_jpg.rf.wSVW25gHS05GpfKpYQYc.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000115_jpg.rf.fBdu3xzorc7vgX4pC7z5.jpg",
+        "b": "images/val/frame_000114_jpg.rf.BlZIWK3zqlLTRt6WvblN.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000131_jpg.rf.wVRLCCHuhLEfl5sfQfyA.jpg",
+        "b": "images/val/frame_000130_jpg.rf.cORxWL7SLfc6nsYvklpI.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000083_jpg.rf.uLT21Wn8IrPImZ4xHBdh.jpg",
+        "b": "images/val/frame_000099_jpg.rf.LQJWExh0xbWHtpaIGZ3s.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000083_jpg.rf.uLT21Wn8IrPImZ4xHBdh.jpg",
+        "b": "images/val/frame_000084_jpg.rf.REq1tunRyFdfAPXvo4bf.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000025_jpg.rf.1TFxN6olS4Rz1e1K4uvz.jpg",
+        "b": "images/val/frame_000022 - Copy_jpg.rf.Ca4xXLYJ7eYgYmMTWBdC.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000227_jpg.rf.SaZfz133yRwvbs7aEsuT.jpg",
+        "b": "images/val/frame_000222_jpg.rf.8TMSmbd15INRDx1SEzZ9.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000106_jpg.rf.ObF2iEV0meosfm8MsY2H.jpg",
+        "b": "images/val/frame_000107_jpg.rf.ztAhqvfyXgKoDQMzXGgx.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000042_jpg.rf.18YfZG5sCQNeEvYPuvGg.jpg",
+        "b": "images/val/frame_000041_jpg.rf.XQRtsoa8dbAFOkZUAKXt.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000042_jpg.rf.18YfZG5sCQNeEvYPuvGg.jpg",
+        "b": "images/val/frame_000044_jpg.rf.eqVEf810KpJAK6j0shPL.jpg",
+        "distance": 0,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000222_jpg.rf.8TMSmbd15INRDx1SEzZ9.jpg",
+        "b": "images/val/frame_000221_jpg.rf.TZmNUhNPpkFNiNcnlpCU.jpg",
+        "distance": 1,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000222_jpg.rf.8TMSmbd15INRDx1SEzZ9.jpg",
+        "b": "images/val/frame_000234_jpg.rf.T2FQzfMOWN9lTfDx21kO.jpg",
+        "distance": 1,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000222_jpg.rf.8TMSmbd15INRDx1SEzZ9.jpg",
+        "b": "images/val/frame_000229_jpg.rf.liN5K8ccCGJG1JppeF1E.jpg",
+        "distance": 1,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000222_jpg.rf.8TMSmbd15INRDx1SEzZ9.jpg",
+        "b": "images/val/frame_000233_jpg.rf.Jbpe3HURqHxKcJ23jkUt.jpg",
+        "distance": 1,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000081_jpg.rf.IAGeT7nMNAQmrxy1vmbo.jpg",
+        "b": "images/val/frame_000099_jpg.rf.LQJWExh0xbWHtpaIGZ3s.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000081_jpg.rf.IAGeT7nMNAQmrxy1vmbo.jpg",
+        "b": "images/val/frame_000088_jpg.rf.ATJJijdrSdCOeuRY7M5K.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000081_jpg.rf.IAGeT7nMNAQmrxy1vmbo.jpg",
+        "b": "images/val/frame_000077_jpg.rf.JXFwp70usf0rs52hhNf3.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000062_jpg.rf.RbB999foPGLClxaGu58c.jpg",
+        "b": "images/val/frame_000061_jpg.rf.wSVW25gHS05GpfKpYQYc.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000221_jpg.rf.TZmNUhNPpkFNiNcnlpCU.jpg",
+        "b": "images/val/frame_000234_jpg.rf.T2FQzfMOWN9lTfDx21kO.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000221_jpg.rf.TZmNUhNPpkFNiNcnlpCU.jpg",
+        "b": "images/val/frame_000229_jpg.rf.liN5K8ccCGJG1JppeF1E.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000221_jpg.rf.TZmNUhNPpkFNiNcnlpCU.jpg",
+        "b": "images/val/frame_000233_jpg.rf.Jbpe3HURqHxKcJ23jkUt.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000342_jpg.rf.diaE3qP3BAwRnM4In2oh.jpg",
+        "b": "images/val/frame_000343_jpg.rf.gzj5YWt541PZEkcj5uvf.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000100_jpg.rf.aslOTcvC4rQnBX6Eb2cX.jpg",
+        "b": "images/val/frame_000099_jpg.rf.LQJWExh0xbWHtpaIGZ3s.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000100_jpg.rf.aslOTcvC4rQnBX6Eb2cX.jpg",
+        "b": "images/val/frame_000097_jpg.rf.pISHMj06KpzNK66PZyRR.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000108_jpg.rf.G10jHWn2SsN6CUaLVOTi.jpg",
+        "b": "images/val/frame_000103_jpg.rf.MN798Mmqf5u6c2U5pb27.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000099_jpg.rf.LQJWExh0xbWHtpaIGZ3s.jpg",
+        "b": "images/val/frame_000103_jpg.rf.MN798Mmqf5u6c2U5pb27.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000099_jpg.rf.LQJWExh0xbWHtpaIGZ3s.jpg",
+        "b": "images/val/frame_000107_jpg.rf.ztAhqvfyXgKoDQMzXGgx.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000079_jpg.rf.gLgdcKmm4mL8Sv46aH4n.jpg",
+        "b": "images/val/frame_000094_jpg.rf.rH1sEZQRo0e5u29BMZSk.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000084_jpg.rf.REq1tunRyFdfAPXvo4bf.jpg",
+        "b": "images/val/frame_000107_jpg.rf.ztAhqvfyXgKoDQMzXGgx.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000339_jpg.rf.OP8LzAEH0934dWmMawgF.jpg",
+        "b": "images/val/frame_000340_jpg.rf.r1kZzuVKRj2bShdIahiC.jpg",
+        "distance": 3,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000341_jpg.rf.pbI4GV831EaOOQxNCrJF.jpg",
+        "b": "images/val/frame_000340_jpg.rf.r1kZzuVKRj2bShdIahiC.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000041_jpg.rf.XQRtsoa8dbAFOkZUAKXt.jpg",
+        "b": "images/val/frame_000044_jpg.rf.eqVEf810KpJAK6j0shPL.jpg",
+        "distance": 4,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000234_jpg.rf.T2FQzfMOWN9lTfDx21kO.jpg",
+        "b": "images/val/frame_000229_jpg.rf.liN5K8ccCGJG1JppeF1E.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000234_jpg.rf.T2FQzfMOWN9lTfDx21kO.jpg",
+        "b": "images/val/frame_000233_jpg.rf.Jbpe3HURqHxKcJ23jkUt.jpg",
+        "distance": 2,
+        "cross_split": false
+      },
+      {
+        "a": "images/val/frame_000229_jpg.rf.liN5K8ccCGJG1JppeF1E.jpg",
+        "b": "images/val/frame_000233_jpg.rf.Jbpe3HURqHxKcJ23jkUt.jpg",
+        "distance": 2,
+        "cross_split": false
+      }
+    ],
+    "sample_ids": [
+      1380,
+      1370,
+      1219,
+      57,
+      555,
+      900,
+      546,
+      507,
+      15,
+      1057,
+      123,
+      553
+    ]
+  },
+  "geometry_repairs": {
+    "invalid_source_polygons": 72,
+    "canonicalized_after_size_policy": 42,
+    "excluded_by_size": 30,
+    "pixel_exact": 41,
+    "nonexact_within_gate": 1,
+    "below_gate": 0,
+    "records": [
+      {
+        "image": "images/train/frame_000355_jpg.rf.9DWgQpBrn4qOuNEMmaoL.jpg",
+        "instance_id": "3013",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 78,
+        "original_pixels": 200,
+        "decoded_pixels": 200,
+        "issues": [],
+        "short_side_ratio": 0.0375
+      },
+      {
+        "image": "images/train/frame_000378_jpg.rf.fUePPDH28SB3oY4kifs2.jpg",
+        "instance_id": "5471",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 3,
+        "vertices": 48,
+        "original_pixels": 169,
+        "decoded_pixels": 169,
+        "issues": [],
+        "short_side_ratio": 0.014063
+      },
+      {
+        "image": "images/train/frame_000379_jpg.rf.YQxHsBRxfRnHKSTlMaai.jpg",
+        "instance_id": "4565",
+        "class_id": 5,
+        "class_name": "Motorcyclist",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 68,
+        "original_pixels": 267,
+        "decoded_pixels": 267,
+        "issues": [],
+        "short_side_ratio": 0.02343800000000007
+      },
+      {
+        "image": "images/train/frame_000384_jpg.rf.ySqNNJ4jIwr6iaXhFzc5.jpg",
+        "instance_id": "3615",
+        "class_id": 10,
+        "class_name": "Traffic light",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 46,
+        "original_pixels": 80,
+        "decoded_pixels": 80,
+        "issues": [],
+        "short_side_ratio": 0.015625
+      },
+      {
+        "image": "images/train/frame_000393_jpg.rf.CGwKYEg3bo5zCsYhEAKW.jpg",
+        "instance_id": "945",
+        "class_id": 5,
+        "class_name": "Motorcyclist",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 44,
+        "original_pixels": 63,
+        "decoded_pixels": 63,
+        "issues": [],
+        "short_side_ratio": 0.0125
+      },
+      {
+        "image": "images/train/frame_000396_jpg.rf.h6cUFxIKf2G30cwOE1GG.jpg",
+        "instance_id": "3393",
+        "class_id": 5,
+        "class_name": "Motorcyclist",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 1,
+        "vertices": 124,
+        "original_pixels": 3558,
+        "decoded_pixels": 3558,
+        "issues": [],
+        "short_side_ratio": 0.08593700000000001
+      },
+      {
+        "image": "images/train/frame_000406_jpg.rf.7DNZabSi5haV4wOVB4ra.jpg",
+        "instance_id": "2177",
+        "class_id": 5,
+        "class_name": "Motorcyclist",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 5,
+        "vertices": 62,
+        "original_pixels": 162,
+        "decoded_pixels": 162,
+        "issues": [],
+        "short_side_ratio": 0.01718799999999998
+      },
+      {
+        "image": "images/train/frame_000420_jpg.rf.NXsvPWLpgth33p9P41ym.jpg",
+        "instance_id": "5604",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 3,
+        "vertices": 70,
+        "original_pixels": 320,
+        "decoded_pixels": 320,
+        "issues": [],
+        "short_side_ratio": 0.021875
+      },
+      {
+        "image": "images/train/frame_000444_jpg.rf.WDHZdk6nK6nqZxnq1xcd.jpg",
+        "instance_id": "3865",
+        "class_id": 5,
+        "class_name": "Motorcyclist",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 3,
+        "vertices": 250,
+        "original_pixels": 4076,
+        "decoded_pixels": 4076,
+        "issues": [],
+        "short_side_ratio": 0.10625
+      },
+      {
+        "image": "images/train/frame_000452_jpg.rf.iyRBpnNdzmZKlSB7S610.jpg",
+        "instance_id": "573",
+        "class_id": 5,
+        "class_name": "Motorcyclist",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 1,
+        "vertices": 46,
+        "original_pixels": 63,
+        "decoded_pixels": 63,
+        "issues": [],
+        "short_side_ratio": 0.0125
+      },
+      {
+        "image": "images/train/frame_000514_jpg.rf.8NkV8oXotwo05rDE0tZh.jpg",
+        "instance_id": "814",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 3,
+        "vertices": 66,
+        "original_pixels": 317,
+        "decoded_pixels": 317,
+        "issues": [],
+        "short_side_ratio": 0.02343700000000002
+      },
+      {
+        "image": "images/train/frame_000558_jpg.rf.w1tdZsGROhEJOKLB6TLO.jpg",
+        "instance_id": "5957",
+        "class_id": 5,
+        "class_name": "Motorcyclist",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 62,
+        "original_pixels": 563,
+        "decoded_pixels": 563,
+        "issues": [],
+        "short_side_ratio": 0.029688
+      },
+      {
+        "image": "images/train/frame_000635_jpg.rf.TCem16OdDea0Qq7QWHhJ.jpg",
+        "instance_id": "3682",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 78,
+        "original_pixels": 238,
+        "decoded_pixels": 238,
+        "issues": [],
+        "short_side_ratio": 0.020311999999999997
+      },
+      {
+        "image": "images/train/frame_001089_jpg.rf.SQ2BwIiZ3c92r02A2dQQ.jpg",
+        "instance_id": "853",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 3,
+        "vertices": 36,
+        "original_pixels": 151,
+        "decoded_pixels": 151,
+        "issues": [],
+        "short_side_ratio": 0.0125
+      },
+      {
+        "image": "images/train/frame_001129_jpg.rf.pHOAayZjldSO5JykuLOl.jpg",
+        "instance_id": "2645",
+        "class_id": 2,
+        "class_name": "Truck",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 3,
+        "vertices": 308,
+        "original_pixels": 32199,
+        "decoded_pixels": 32199,
+        "issues": [],
+        "short_side_ratio": 0.28125
+      },
+      {
+        "image": "images/train/frame_001183_jpg.rf.KG9NBMW9TMNtnNSPoCn6.jpg",
+        "instance_id": "4294",
+        "class_id": 5,
+        "class_name": "Motorcyclist",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 4,
+        "vertices": 52,
+        "original_pixels": 106,
+        "decoded_pixels": 106,
+        "issues": [],
+        "short_side_ratio": 0.015625
+      },
+      {
+        "image": "images/train/frame_001233_jpg.rf.mr75klgoGNyGckS1Xxm8.jpg",
+        "instance_id": "1070",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 3,
+        "vertices": 64,
+        "original_pixels": 111,
+        "decoded_pixels": 111,
+        "issues": [],
+        "short_side_ratio": 0.014061999999999996
+      },
+      {
+        "image": "images/train/frame_001237_jpg.rf.qmx5IGvi2NbDTxp5gYae.jpg",
+        "instance_id": "5790",
+        "class_id": 0,
+        "class_name": "Car",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 1,
+        "vertices": 22,
+        "original_pixels": 89,
+        "decoded_pixels": 89,
+        "issues": [],
+        "short_side_ratio": 0.01249987500000005
+      },
+      {
+        "image": "images/train/frame_001293_jpg.rf.MOP7cvmxKHTBrVwKlch5.jpg",
+        "instance_id": "3575",
+        "class_id": 0,
+        "class_name": "Car",
+        "roundtrip_iou": 0.99915835334307,
+        "lost_pixels": 49,
+        "added_pixels": 53,
+        "rings": 5,
+        "vertices": 382,
+        "original_pixels": 121138,
+        "decoded_pixels": 121142,
+        "issues": [],
+        "short_side_ratio": 0.55937475
+      },
+      {
+        "image": "images/train/frame_001529_jpg.rf.YksjzPZLvZCnHij3CBFl.jpg",
+        "instance_id": "4193",
+        "class_id": 5,
+        "class_name": "Motorcyclist",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 4,
+        "vertices": 34,
+        "original_pixels": 31,
+        "decoded_pixels": 31,
+        "issues": [],
+        "short_side_ratio": 0.0125
+      },
+      {
+        "image": "images/train/frame_001588_jpg.rf.Pcn655zx5vpq5gHs1n6p.jpg",
+        "instance_id": "5315",
+        "class_id": 0,
+        "class_name": "Car",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 46,
+        "original_pixels": 169,
+        "decoded_pixels": 169,
+        "issues": [],
+        "short_side_ratio": 0.01249987499999996
+      },
+      {
+        "image": "images/train/frame_001591_jpg.rf.UZOIYLjMJKioxcqwqR7m.jpg",
+        "instance_id": "6020",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 1,
+        "vertices": 30,
+        "original_pixels": 137,
+        "decoded_pixels": 137,
+        "issues": [],
+        "short_side_ratio": 0.014062999999999982
+      },
+      {
+        "image": "images/train/frame_002551_jpg.rf.jRFliajeIcZmH37F3926.jpg",
+        "instance_id": "151",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 5,
+        "vertices": 64,
+        "original_pixels": 104,
+        "decoded_pixels": 104,
+        "issues": [],
+        "short_side_ratio": 0.0125
+      },
+      {
+        "image": "images/train/frame_002554_jpg.rf.QFegF0Ec60WeWfbQvTvm.jpg",
+        "instance_id": "72",
+        "class_id": 4,
+        "class_name": "Motorcycle",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 56,
+        "original_pixels": 484,
+        "decoded_pixels": 484,
+        "issues": [],
+        "short_side_ratio": 0.040624875000000005
+      },
+      {
+        "image": "images/train/frame_002565_jpg.rf.T5H9dAqp4eMTMBwuB3cm.jpg",
+        "instance_id": "3788",
+        "class_id": 5,
+        "class_name": "Motorcyclist",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 4,
+        "vertices": 44,
+        "original_pixels": 45,
+        "decoded_pixels": 45,
+        "issues": [],
+        "short_side_ratio": 0.0125
+      },
+      {
+        "image": "images/train/frame_002606_jpg.rf.SOsy3xawKiOFVgKwo872.jpg",
+        "instance_id": "5540",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 38,
+        "original_pixels": 70,
+        "decoded_pixels": 70,
+        "issues": [],
+        "short_side_ratio": 0.0125
+      },
+      {
+        "image": "images/train/frame_002656_jpg.rf.DTD6ziCgBqz9lQjKo1uD.jpg",
+        "instance_id": "4680",
+        "class_id": 5,
+        "class_name": "Motorcyclist",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 54,
+        "original_pixels": 153,
+        "decoded_pixels": 153,
+        "issues": [],
+        "short_side_ratio": 0.017187000000000018
+      },
+      {
+        "image": "images/train/frame_002678_jpg.rf.KlpCURt6rbfksltumdN7.jpg",
+        "instance_id": "5206",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 64,
+        "original_pixels": 252,
+        "decoded_pixels": 252,
+        "issues": [],
+        "short_side_ratio": 0.025
+      },
+      {
+        "image": "images/train/frame_002902_jpg.rf.xujytEX9h816ab7gwkWq.jpg",
+        "instance_id": "1479",
+        "class_id": 7,
+        "class_name": "Cyclist",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 36,
+        "original_pixels": 55,
+        "decoded_pixels": 55,
+        "issues": [],
+        "short_side_ratio": 0.0125
+      },
+      {
+        "image": "images/train/frame_003229_jpg.rf.vtrqg4x5EjIl8cs0GBeu.jpg",
+        "instance_id": "5348",
+        "class_id": 5,
+        "class_name": "Motorcyclist",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 6,
+        "vertices": 84,
+        "original_pixels": 119,
+        "decoded_pixels": 119,
+        "issues": [],
+        "short_side_ratio": 0.015625999999999963
+      },
+      {
+        "image": "images/train/frame_003494_jpg.rf.Zrz1Dz4cqq7uPwJGBqYr.jpg",
+        "instance_id": "3093",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 4,
+        "vertices": 42,
+        "original_pixels": 82,
+        "decoded_pixels": 82,
+        "issues": [],
+        "short_side_ratio": 0.012500000000000006
+      },
+      {
+        "image": "images/val/frame_000084_jpg.rf.REq1tunRyFdfAPXvo4bf.jpg",
+        "instance_id": "7688",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 42,
+        "original_pixels": 63,
+        "decoded_pixels": 63,
+        "issues": [],
+        "short_side_ratio": 0.0125
+      },
+      {
+        "image": "images/val/frame_000103_jpg.rf.MN798Mmqf5u6c2U5pb27.jpg",
+        "instance_id": "7939",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 1,
+        "vertices": 22,
+        "original_pixels": 88,
+        "decoded_pixels": 88,
+        "issues": [],
+        "short_side_ratio": 0.0125
+      },
+      {
+        "image": "images/val/frame_000113_jpg.rf.5QTivS8QyOY0w2xYcZKL.jpg",
+        "instance_id": "6831",
+        "class_id": 0,
+        "class_name": "Car",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 5,
+        "vertices": 70,
+        "original_pixels": 84,
+        "decoded_pixels": 84,
+        "issues": [],
+        "short_side_ratio": 0.01249987500000005
+      },
+      {
+        "image": "images/val/frame_000163_jpg.rf.y1wTshDxu4ehOTgpJ5Lj.jpg",
+        "instance_id": "6772",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 1,
+        "vertices": 42,
+        "original_pixels": 181,
+        "decoded_pixels": 181,
+        "issues": [],
+        "short_side_ratio": 0.01406199999999993
+      },
+      {
+        "image": "images/val/frame_000203_jpg.rf.pZ53PnFQGIMwjW5yzKRu.jpg",
+        "instance_id": "7448",
+        "class_id": 5,
+        "class_name": "Motorcyclist",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 62,
+        "original_pixels": 191,
+        "decoded_pixels": 191,
+        "issues": [],
+        "short_side_ratio": 0.02031300000000007
+      },
+      {
+        "image": "images/val/frame_000263_jpg.rf.wkjku8kVpETuKoSQBgVz.jpg",
+        "instance_id": "7429",
+        "class_id": 0,
+        "class_name": "Car",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 54,
+        "original_pixels": 110,
+        "decoded_pixels": 110,
+        "issues": [],
+        "short_side_ratio": 0.015624562499999994
+      },
+      {
+        "image": "images/val/frame_000274_jpg.rf.ERLFjLJ1KaNcvtasQiKZ.jpg",
+        "instance_id": "7119",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 4,
+        "vertices": 52,
+        "original_pixels": 96,
+        "decoded_pixels": 96,
+        "issues": [],
+        "short_side_ratio": 0.01718799999999998
+      },
+      {
+        "image": "images/val/frame_000295_jpg.rf.l46ogKx3f73a9wiUGSsK.jpg",
+        "instance_id": "7267",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 3,
+        "vertices": 48,
+        "original_pixels": 142,
+        "decoded_pixels": 142,
+        "issues": [],
+        "short_side_ratio": 0.014062000000000019
+      },
+      {
+        "image": "images/val/frame_000295_jpg.rf.l46ogKx3f73a9wiUGSsK.jpg",
+        "instance_id": "7268",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 1,
+        "vertices": 38,
+        "original_pixels": 144,
+        "decoded_pixels": 144,
+        "issues": [],
+        "short_side_ratio": 0.0125
+      },
+      {
+        "image": "images/val/frame_000297_jpg.rf.yIz0e8CX2IpoaCHdWQAG.jpg",
+        "instance_id": "7549",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 1,
+        "vertices": 52,
+        "original_pixels": 116,
+        "decoded_pixels": 116,
+        "issues": [],
+        "short_side_ratio": 0.014062000000000019
+      },
+      {
+        "image": "images/val/frame_000300_jpg.rf.aghCpSlPzX37J9Z2XQq4.jpg",
+        "instance_id": "7821",
+        "class_id": 8,
+        "class_name": "Pedestrian",
+        "roundtrip_iou": 1.0,
+        "lost_pixels": 0,
+        "added_pixels": 0,
+        "rings": 2,
+        "vertices": 40,
+        "original_pixels": 93,
+        "decoded_pixels": 93,
+        "issues": [],
+        "short_side_ratio": 0.012500000000000044
+      }
+    ],
+    "exclusions": [
+      {
+        "image": "images/train/frame_000358_jpg.rf.bTsfKILPoXYr3Z1aWfNC.jpg",
+        "instance_id": "894",
+        "class_id": 5,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_000361_jpg.rf.849LuDq70zjfu6ZA2a8g.jpg",
+        "instance_id": "4520",
+        "class_id": 8,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_000409_jpg.rf.gker4fls1c73tkwkR6ip.jpg",
+        "instance_id": "919",
+        "class_id": 8,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_000473_jpg.rf.Dopy0XQp7jqfiG9cRbQS.jpg",
+        "instance_id": "5091",
+        "class_id": 5,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_000497_jpg.rf.EqcMvnXzZ8OtuPOCRmhc.jpg",
+        "instance_id": "2528",
+        "class_id": 8,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_000503_jpg.rf.tBPyLk0LQVocYaj33yFD.jpg",
+        "instance_id": "1191",
+        "class_id": 5,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_000528_jpg.rf.ns3xpzkerkXTvB4wLkcG.jpg",
+        "instance_id": "791",
+        "class_id": 8,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_000530_jpg.rf.Fh7ijqBrWkhFVMeMw7Ef.jpg",
+        "instance_id": "1255",
+        "class_id": 8,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_000584_jpg.rf.DEwTvBCGSqFqwYeUx9WI.jpg",
+        "instance_id": "4662",
+        "class_id": 5,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_000638_jpg.rf.C5jSDTjCjzNLGiP7yGf9.jpg",
+        "instance_id": "5986",
+        "class_id": 5,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_000815_jpg.rf.4ZYxrNknmYPA2nlRo8D6.jpg",
+        "instance_id": "4843",
+        "class_id": 5,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_001071_jpg.rf.vAJz5aMxdAYmakpNTT6C.jpg",
+        "instance_id": "1324",
+        "class_id": 8,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_001179_jpg.rf.nmLu88zKNGNpUjSjbFGu.jpg",
+        "instance_id": "53",
+        "class_id": 8,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_001362_jpg.rf.USlJyEUJ1qamzjuBQhdR.jpg",
+        "instance_id": "4701",
+        "class_id": 8,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_001364_jpg.rf.XWUgWmFMZvQ0T2Aza1Jh.jpg",
+        "instance_id": "5414",
+        "class_id": 8,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_001365_jpg.rf.iSwuUdBvX2FVt2dUdYMz.jpg",
+        "instance_id": "5582",
+        "class_id": 8,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_001445_jpg.rf.urTpZex5xGlh8uWijpKS.jpg",
+        "instance_id": "3284",
+        "class_id": 5,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_002299_jpg.rf.O8zXlwuTbk5MAhBDKXDh.jpg",
+        "instance_id": "4348",
+        "class_id": 5,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_002551_jpg.rf.jRFliajeIcZmH37F3926.jpg",
+        "instance_id": "152",
+        "class_id": 8,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_002607_jpg.rf.AiUlzcNemEc4tY070DUW.jpg",
+        "instance_id": "2005",
+        "class_id": 5,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_003056_jpg.rf.hw9Ai5fSRwu78IdG9nDf.jpg",
+        "instance_id": "1031",
+        "class_id": 5,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_003120_jpg.rf.yZekd4kWbszKlLwCOYeV.jpg",
+        "instance_id": "5427",
+        "class_id": 8,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/train/frame_003370_jpg.rf.lLCrYmGhTN9LVWDvEKmX.jpg",
+        "instance_id": "185",
+        "class_id": 10,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/val/frame_000111_jpg.rf.OBMsuAH779sulLgle1Ct.jpg",
+        "instance_id": "7127",
+        "class_id": 5,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/val/frame_000111_jpg.rf.OBMsuAH779sulLgle1Ct.jpg",
+        "instance_id": "7128",
+        "class_id": 5,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/val/frame_000113_jpg.rf.5QTivS8QyOY0w2xYcZKL.jpg",
+        "instance_id": "6832",
+        "class_id": 0,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/val/frame_000192_jpg.rf.lfBEUGESqQqy93wnoHjp.jpg",
+        "instance_id": "7088",
+        "class_id": 5,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/val/frame_000197_jpg.rf.1FjhxTKw0W1GQohjuKYL.jpg",
+        "instance_id": "7399",
+        "class_id": 8,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/val/frame_000255_jpg.rf.galVOiECpgAzUWw00Xa4.jpg",
+        "instance_id": "6428",
+        "class_id": 5,
+        "reason": "final_instance_short_side_below_0.0125"
+      },
+      {
+        "image": "images/val/frame_000263_jpg.rf.wkjku8kVpETuKoSQBgVz.jpg",
+        "instance_id": "7428",
+        "class_id": 5,
+        "reason": "final_instance_short_side_below_0.0125"
+      }
+    ]
+  },
+  "converted_images": 1407,
+  "converted_instances": 7635,
+  "converted_class_counts": {
+    "train": {
+      "Car": 1409,
+      "Bus": 182,
+      "Truck": 405,
+      "Other vehicle": 31,
+      "Motorcycle": 386,
+      "Motorcyclist": 2047,
+      "Bicycle": 17,
+      "Cyclist": 78,
+      "Pedestrian": 620,
+      "Sign": 651,
+      "Traffic light": 175
+    },
+    "val": {
+      "Car": 369,
+      "Bus": 20,
+      "Truck": 36,
+      "Other vehicle": 4,
+      "Motorcycle": 131,
+      "Motorcyclist": 640,
+      "Bicycle": 2,
+      "Cyclist": 12,
+      "Pedestrian": 178,
+      "Sign": 202,
+      "Traffic light": 40
+    }
+  },
+  "size_exclusions": 420,
+  "official_validator_invalid_polygons": 0,
+  "source_overlapping_images": 16,
+  "coverage_screen": {
+    "candidate_images": 562,
+    "original_split_counts": {
+      "train": 408,
+      "val": 154
+    },
+    "instances": {
+      "Car": 832,
+      "Bus": 88,
+      "Truck": 241,
+      "Other vehicle": 21,
+      "Motorcycle": 205,
+      "Motorcyclist": 1088,
+      "Bicycle": 5,
+      "Cyclist": 30,
+      "Pedestrian": 324,
+      "Sign": 279,
+      "Traffic light": 34
+    },
+    "quarantine_reasons": {
+      "model_missing_coverage_candidate_not_confirmed": 828,
+      "overlapping_instances": 16,
+      "source_empty_annotation_requires_check": 32,
+      "no_remaining_eligible_instances": 34,
+      "invalid_source_geometry_not_pixel_exact": 1
+    },
+    "coverage_model": "COCO yolo26n-seg, conf0.5, CPU, unreviewed suggestions kept separate",
+    "proposals": {
+      "Car": 881,
+      "Truck": 200,
+      "Pedestrian": 580,
+      "Motorcycle": 139,
+      "Traffic light": 30,
+      "Motorcyclist": 182,
+      "Bus": 78,
+      "Cyclist": 12,
+      "Bicycle": 1
+    },
+    "proposal_images": 828,
+    "ready": false,
+    "remaining_blockers": [
+      "derivative mask annotation process unconfirmed",
+      "third-party footage rights unconfirmed",
+      "capture sequence split independence not established",
+      "candidate source/sample completeness not approved"
+    ]
+  },
+  "human_qa": false,
+  "source_masks_merged_with_model_predictions": false,
+  "sample_confirmed_coverage_exceptions": [
+    {
+      "image_id": 621,
+      "reason": "Visible central-right motorcycle/rider lacks source annotation; COCO conf0.5 screening missed this exception.",
+      "evidence": "runs/review/team_dashcam_intake001/semantic_621.png"
+    },
+    {
+      "image_id": 954,
+      "reason": "Large rear bus visible, absent source bus mask; source sample overlay."
+    },
+    {
+      "image_id": 313,
+      "reason": "Several visible cars lack masks in source sample overlay."
+    }
+  ],
+  "handoff": {
+    "status": "BLOCKED",
+    "version": "team_dashcam_yolo_intake001_REVIEW",
+    "source": "drive:/content/drive/MyDrive/VietSight/datasets/team_dashcam_yolo_intake001_REVIEW.zip",
+    "images": {
+      "train": 1120,
+      "val": 287
+    },
+    "fingerprint_sha256": "3c13dcc7ca1510f725b3b3a0188c982fee717d03287a5ebfe8948d6b2e9273e6",
+    "vn_val_sha256": "5a8507f364678c9559ab21c7e9b6b0ec09b5362062ea09b052d09abbf6830a2a"
+  },
+  "no_source_search_or_sam3": true,
+  "team_relabel_confirmation": {
+    "date": "2026-11-27",
+    "confirmed_by": "user in chat",
+    "contributor": "one team member, name not supplied",
+    "classes": "11 BTC classes",
+    "ai_assistance": "unspecified",
+    "full_human_qa": "not claimed",
+    "separate_third_party_footage_rights": "not confirmed"
+  },
+  "split_repair": {
+    "method": "source timestamps and visual continuity; AI inspection, not human reviewer",
+    "boundary_val": "frame000344 at 2020-08-12 16:25:15",
+    "boundary_train": "frame000345 at2020-08-12 16:25:20",
+    "evidence": "qa_evidence/split_boundary.jpg",
+    "next_clip_starts": 351,
+    "moved_images": [
+      {
+        "original": "images/train/frame_000348_jpg.rf.WPxew2M72fP8dZvuzjTC.jpg",
+        "image_id": 376,
+        "frame": 348,
+        "new_split": "val",
+        "reason": "same HIKVISION 2020-08-12 trip spans source split at 344/345; clip ends at350, source351 is a different video"
+      },
+      {
+        "original": "images/train/frame_000347_jpg.rf.bkUES7ZXShCYBhlcQoUe.jpg",
+        "image_id": 515,
+        "frame": 347,
+        "new_split": "val",
+        "reason": "same HIKVISION 2020-08-12 trip spans source split at 344/345; clip ends at350, source351 is a different video"
+      },
+      {
+        "original": "images/train/frame_000346_jpg.rf.AgdjcPv34uSuyH4iQhQ4.jpg",
+        "image_id": 768,
+        "frame": 346,
+        "new_split": "val",
+        "reason": "same HIKVISION 2020-08-12 trip spans source split at 344/345; clip ends at350, source351 is a different video"
+      },
+      {
+        "original": "images/train/frame_000349_jpg.rf.MZwrLaxYS0ttMZrGrKHK.jpg",
+        "image_id": 885,
+        "frame": 349,
+        "new_split": "val",
+        "reason": "same HIKVISION 2020-08-12 trip spans source split at 344/345; clip ends at350, source351 is a different video"
+      },
+      {
+        "original": "images/train/frame_000350_jpg.rf.UlTDshi0YOKDSSluzYBE.jpg",
+        "image_id": 898,
+        "frame": 350,
+        "new_split": "val",
+        "reason": "same HIKVISION 2020-08-12 trip spans source split at 344/345; clip ends at350, source351 is a different video"
+      },
+      {
+        "original": "images/train/frame_000345_jpg.rf.sytsXB6108LrT6mvlJEe.jpg",
+        "image_id": 983,
+        "frame": 345,
+        "new_split": "val",
+        "reason": "same HIKVISION 2020-08-12 trip spans source split at 344/345; clip ends at350, source351 is a different video"
+      }
+    ],
+    "limits": "No complete original-video manifest; this resolves the confirmed boundary leakage only."
+  },
+  "official_final_audit_summary": {
+    "splits": {
+      "train": {
+        "images": 1120,
+        "empty_images": 30,
+        "instances": 5977
+      },
+      "val": {
+        "images": 287,
+        "empty_images": 4,
+        "instances": 1658
+      }
+    },
+    "per_class": {
+      "Car": {
+        "train_instances": 1392,
+        "val_instances": 386,
+        "train_images": 726,
+        "val_images": 212,
+        "tiny": 33
+      },
+      "Bus": {
+        "train_instances": 182,
+        "val_instances": 20,
+        "train_images": 160,
+        "val_images": 18,
+        "tiny": 0
+      },
+      "Truck": {
+        "train_instances": 398,
+        "val_instances": 43,
+        "train_images": 308,
+        "val_images": 40,
+        "tiny": 1
+      },
+      "Other vehicle": {
+        "train_instances": 31,
+        "val_instances": 4,
+        "train_images": 31,
+        "val_images": 4,
+        "tiny": 0
+      },
+      "Motorcycle": {
+        "train_instances": 386,
+        "val_instances": 131,
+        "train_images": 236,
+        "val_images": 67,
+        "tiny": 2
+      },
+      "Motorcyclist": {
+        "train_instances": 2047,
+        "val_instances": 640,
+        "train_images": 771,
+        "val_images": 217,
+        "tiny": 28
+      },
+      "Bicycle": {
+        "train_instances": 17,
+        "val_instances": 2,
+        "train_images": 15,
+        "val_images": 2,
+        "tiny": 0
+      },
+      "Cyclist": {
+        "train_instances": 78,
+        "val_instances": 12,
+        "train_images": 65,
+        "val_images": 12,
+        "tiny": 2
+      },
+      "Pedestrian": {
+        "train_instances": 620,
+        "val_instances": 178,
+        "train_images": 390,
+        "val_images": 108,
+        "tiny": 7
+      },
+      "Sign": {
+        "train_instances": 651,
+        "val_instances": 202,
+        "train_images": 379,
+        "val_images": 114,
+        "tiny": 54
+      },
+      "Traffic light": {
+        "train_instances": 175,
+        "val_instances": 40,
+        "train_images": 85,
+        "val_images": 24,
+        "tiny": 4
+      }
+    },
+    "tiny_total": 131,
+    "invalid_polygons": [],
+    "warnings": [
+      "RẤT ÍT ví dụ trong train (< 25 đối tượng): Bicycle (17)",
+      "Ít ví dụ trong train (< 100 đối tượng): Other vehicle (31), Cyclist (78)",
+      "Mất cân bằng lớp: Motorcyclist có 2047 đối tượng, Bicycle chỉ có 17 (tỉ lệ 120:1 > 30:1). Bổ sung ảnh cho lớp hiếm.",
+      "Tập val có < 10 đối tượng ở các lớp: Other vehicle (4), Bicycle (2). AP của các lớp này trên val rất nhiễu (một vài vật thể đổi điểm nhiều).",
+      "131 đối tượng có diện tích < 64 px ở thang 640: hệ thống chấm BỎ QUA vật thể nhỏ như vậy. Chúng không làm tăng điểm; nếu nhiều thì xem lại quy tắc nhãn (không gán vật quá nhỏ).",
+      "35 cặp ảnh GẦN GIỐNG nhau (perceptual hash, khoảng cách <= 2); có thể là các khung hình liền nhau của một video.",
+      "RÒ RỈ train/val: 0 nhóm trùng hệt và 2 cặp gần giống nằm ở CẢ HAI tập. Điểm trên val sẽ cao giả tạo, điểm trên bộ test ẩn thì không. Xóa bản thừa khỏi train (REMOVE_LEAKAGE_FROM_TRAIN = True) hoặc chia lại dữ liệu theo cảnh/video."
+    ],
+    "fatal": [],
+    "ok": true
+  },
+  "dataset_fingerprint_method": "official notebook dataset_fingerprint",
+  "gt_model_predictions_merged": false,
+  "ready_train_images": 0,
+  "ready_val_images": 0,
+  "supplemental_coverage003": {
+    "images_scanned": 562,
+    "images_with_proposals": 418,
+    "proposals": {
+      "Pedestrian": 124,
+      "Car": 289,
+      "Sign": 399,
+      "Other vehicle": 8,
+      "Cyclist": 43,
+      "Motorcyclist": 88,
+      "Bicycle": 29,
+      "Motorcycle": 67,
+      "Bus": 11,
+      "Truck": 22,
+      "Traffic light": 20
+    },
+    "model_proposals": 1100,
+    "images_without_proposals": 144,
+    "not_a_human_qa_pass": true,
+    "source_gt_changed": false,
+    "backend": "V1 e25 + COCO YOLO26n-seg, confidence0.25, CPU only",
+    "e25_zip_sha256": "f0b874634ed90bcacd23238c3eb517fa3169bcbefd149a34f6f103a62c56e0de",
+    "execution_note": "Outer PowerShell session reported exit1; CLI emitted final complete562-image summary and artifacts verified below. No exit0 assertion.",
+    "proposal_image_files": 418,
+    "proposal_label_files": 418,
+    "example621": [
+      {
+        "file": "team_dashcam_intake002_v2__frame_000613_jpg-rf-1iqGWcitrZbUvFcwyhIC__0e8044a4.jpg",
+        "proposals": [
+          {
+            "line": 8,
+            "class": "Motorcyclist",
+            "score": 0.729,
+            "backends": [
+              "coco",
+              "vietsight"
+            ],
+            "alt_class": [
+              "vietsight:Cyclist"
+            ],
+            "source_box": null,
+            "status": "pseudo_unreviewed"
+          },
+          {
+            "line": 9,
+            "class": "Bus",
+            "score": 0.388,
+            "backends": [
+              "coco"
+            ],
+            "alt_class": [],
+            "source_box": null,
+            "status": "pseudo_unreviewed"
+          },
+          {
+            "line": 10,
+            "class": "Cyclist",
+            "score": 0.335,
+            "backends": [
+              "vietsight"
+            ],
+            "alt_class": [],
+            "source_box": null,
+            "status": "pseudo_unreviewed"
+          }
+        ]
+      }
+    ]
+  },
+  "packaging": {
+    "archive": "C:\\My Future\\VietSight-data-qa\\data\\versions\\team_dashcam_yolo_intake001_REVIEW.zip",
+    "bytes": 97049751,
+    "archive_sha256": "fc0ac30c5ef477650c14a270ee65eeadd1f5c12b5e2f28edec26ceeb74f2c312",
+    "fingerprint_sha256": "3c13dcc7ca1510f725b3b3a0188c982fee717d03287a5ebfe8948d6b2e9273e6",
+    "vn_val_sha256": "5a8507f364678c9559ab21c7e9b6b0ec09b5362062ea09b052d09abbf6830a2a",
+    "status": "BLOCKED",
+    "source_jpegs_retained_byte_exact": 1407,
+    "zip_crc_passed": true,
+    "images": {
+      "train": 1120,
+      "val": 287
+    },
+    "upload_performed": false
+  }
+}

@@ -1,0 +1,299 @@
+{
+  "status": "REVIEW_ONLY_RIGHTS_PENDING",
+  "total_images": 100,
+  "train_candidates": 70,
+  "val_candidates": 30,
+  "draft_instances": 862,
+  "ai_proposals": {
+    "script": "scripts/propose_labels.py",
+    "script_sha256": "c8507924bdd9ec1ba8027a362cd7109041421bd2e197ee0a89093383b59cb2d4",
+    "device": "cpu",
+    "threads": 2,
+    "conf": 0.2,
+    "backends": [
+      "VietSight V1 e3 (not e25/e50)",
+      "COCO pretrained YOLO26n-seg"
+    ],
+    "images_processed": 100,
+    "images_with_proposals": 85,
+    "new_proposals": 237,
+    "classes": {
+      "Car": 52,
+      "Bus": 1,
+      "Truck": 4,
+      "Other vehicle": 0,
+      "Motorcycle": 4,
+      "Motorcyclist": 6,
+      "Bicycle": 2,
+      "Cyclist": 3,
+      "Pedestrian": 87,
+      "Sign": 71,
+      "Traffic light": 7
+    },
+    "status": "pseudo_unreviewed",
+    "user_authorized_for_review": true,
+    "full_btc_policy_confirmation": "pending"
+  },
+  "ready_images": 0,
+  "val_groups_reserved": [
+    "youtube:7ocqS1NUED4",
+    "youtube:8kMuzBnyP98",
+    "youtube:tb4DAW3BJeU"
+  ],
+  "packages": [
+    {
+      "package": "member_01",
+      "images": 20,
+      "train_candidates": 14,
+      "val_candidates": 6,
+      "draft_instances": 145,
+      "instances_by_class": {
+        "Car": 41,
+        "Bus": 5,
+        "Truck": 20,
+        "Other vehicle": 0,
+        "Motorcycle": 40,
+        "Motorcyclist": 0,
+        "Bicycle": 2,
+        "Cyclist": 1,
+        "Pedestrian": 24,
+        "Sign": 10,
+        "Traffic light": 2
+      },
+      "ai_proposals": 39,
+      "geometry_flagged_images": 12,
+      "ready_images": 0,
+      "status": "REVIEW_ONLY_RIGHTS_PENDING",
+      "path": "C:\\My Future\\VietSight-data-qa\\data\\versions\\v2_cvat_round001\\RIGHTS_PENDING\\VietSight_V2_CVAT_member_01_REVIEW_ONLY.zip",
+      "bytes": 3257648,
+      "sha256": "8d5598f15635bd26ab89346611d334aec3fe76e01b7e48f00a5c9c8ec9c19c08"
+    },
+    {
+      "package": "member_02",
+      "images": 20,
+      "train_candidates": 14,
+      "val_candidates": 6,
+      "draft_instances": 169,
+      "instances_by_class": {
+        "Car": 39,
+        "Bus": 6,
+        "Truck": 21,
+        "Other vehicle": 0,
+        "Motorcycle": 51,
+        "Motorcyclist": 1,
+        "Bicycle": 0,
+        "Cyclist": 1,
+        "Pedestrian": 37,
+        "Sign": 13,
+        "Traffic light": 0
+      },
+      "ai_proposals": 43,
+      "geometry_flagged_images": 11,
+      "ready_images": 0,
+      "status": "REVIEW_ONLY_RIGHTS_PENDING",
+      "path": "C:\\My Future\\VietSight-data-qa\\data\\versions\\v2_cvat_round001\\RIGHTS_PENDING\\VietSight_V2_CVAT_member_02_REVIEW_ONLY.zip",
+      "bytes": 3255824,
+      "sha256": "6ec7df38dd94d86bd70b53e5466f3c8b422b4f3b62406dd6066d98f757311b8d"
+    },
+    {
+      "package": "member_03",
+      "images": 20,
+      "train_candidates": 14,
+      "val_candidates": 6,
+      "draft_instances": 166,
+      "instances_by_class": {
+        "Car": 48,
+        "Bus": 9,
+        "Truck": 19,
+        "Other vehicle": 0,
+        "Motorcycle": 42,
+        "Motorcyclist": 1,
+        "Bicycle": 0,
+        "Cyclist": 1,
+        "Pedestrian": 34,
+        "Sign": 12,
+        "Traffic light": 0
+      },
+      "ai_proposals": 39,
+      "geometry_flagged_images": 10,
+      "ready_images": 0,
+      "status": "REVIEW_ONLY_RIGHTS_PENDING",
+      "path": "C:\\My Future\\VietSight-data-qa\\data\\versions\\v2_cvat_round001\\RIGHTS_PENDING\\VietSight_V2_CVAT_member_03_REVIEW_ONLY.zip",
+      "bytes": 3219260,
+      "sha256": "a06d35c297cfe8a389928322d7255e50e791e23ffb8236981f5dbe1a9a2953b2"
+    },
+    {
+      "package": "member_04",
+      "images": 20,
+      "train_candidates": 14,
+      "val_candidates": 6,
+      "draft_instances": 185,
+      "instances_by_class": {
+        "Car": 43,
+        "Bus": 1,
+        "Truck": 15,
+        "Other vehicle": 0,
+        "Motorcycle": 62,
+        "Motorcyclist": 1,
+        "Bicycle": 0,
+        "Cyclist": 0,
+        "Pedestrian": 36,
+        "Sign": 23,
+        "Traffic light": 4
+      },
+      "ai_proposals": 56,
+      "geometry_flagged_images": 13,
+      "ready_images": 0,
+      "status": "REVIEW_ONLY_RIGHTS_PENDING",
+      "path": "C:\\My Future\\VietSight-data-qa\\data\\versions\\v2_cvat_round001\\RIGHTS_PENDING\\VietSight_V2_CVAT_member_04_REVIEW_ONLY.zip",
+      "bytes": 3149725,
+      "sha256": "edd1ec40d2d172c6dae7d2d8db44bcb7f2fcd3fbf02c65d60cf1e69f2f5ee2c9"
+    },
+    {
+      "package": "member_05",
+      "images": 20,
+      "train_candidates": 14,
+      "val_candidates": 6,
+      "draft_instances": 197,
+      "instances_by_class": {
+        "Car": 57,
+        "Bus": 5,
+        "Truck": 16,
+        "Other vehicle": 0,
+        "Motorcycle": 50,
+        "Motorcyclist": 3,
+        "Bicycle": 0,
+        "Cyclist": 0,
+        "Pedestrian": 52,
+        "Sign": 13,
+        "Traffic light": 1
+      },
+      "ai_proposals": 60,
+      "geometry_flagged_images": 15,
+      "ready_images": 0,
+      "status": "REVIEW_ONLY_RIGHTS_PENDING",
+      "path": "C:\\My Future\\VietSight-data-qa\\data\\versions\\v2_cvat_round001\\RIGHTS_PENDING\\VietSight_V2_CVAT_member_05_REVIEW_ONLY.zip",
+      "bytes": 3263085,
+      "sha256": "c9868fd41c8a89a405858d76c63ba5be00984602defbefadde6a3fb2501d5faf"
+    }
+  ],
+  "verification": {
+    "zip_crc": true,
+    "nested_zip_crc": true,
+    "all_file_checksums": true,
+    "unique_images": 100,
+    "cross_member_overlap": 0,
+    "near_duplicate_pairs_at_hamming_2": 0,
+    "class_order": true,
+    "reviewers_blank": true,
+    "ready_images": 0
+  },
+  "native_source_selection": {
+    "review100_images_considered": 100,
+    "vehicle_view_candidates": 72,
+    "near_duplicate_removed": 2,
+    "selected_dashcam_candidates": 70,
+    "other_view_or_mosaic_deferred": 28,
+    "source_images_deferred_total": 30
+  },
+  "rights_evidence": [
+    {
+      "id": "phan-ky-dat/vietnam-traffic-vehicle-detectio",
+      "name": "Vietnam Traffic Vehicle Detectio",
+      "type": "object-detection",
+      "license": "CC BY 4.0",
+      "images": 859,
+      "classes": {
+        "bicycle": 15,
+        "truck": 872,
+        "motorcycle": 2576,
+        "bus": 334,
+        "car": 3366
+      },
+      "public": true,
+      "source_url": "https://universe.roboflow.com/phan-ky-dat/vietnam-traffic-vehicle-detectio",
+      "checked_date": "2026-11-27",
+      "original_creator_permission": "unverified",
+      "training_permission_status": "pending_original_footage_rights"
+    },
+    {
+      "id": "khaipixel/sidewalk-srgyh",
+      "name": "SideWalk",
+      "type": "instance-segmentation",
+      "license": "CC BY 4.0",
+      "images": 279,
+      "classes": {
+        "bicycle": 21,
+        "parking_zone": 168,
+        "road": 199,
+        "car": 533,
+        "sidewalk": 325,
+        "motorbike": 1414,
+        "person": 1471,
+        "object": 584
+      },
+      "public": true,
+      "source_url": "https://universe.roboflow.com/khaipixel/sidewalk-srgyh",
+      "checked_date": "2026-11-27",
+      "original_creator_permission": "unverified",
+      "training_permission_status": "pending_original_footage_rights"
+    }
+  ],
+  "user_confirmed_original_footage_rights": "No evidence for Camera Giao Thong/VOV; all packages rights-pending",
+  "draft_instances_by_class": {
+    "Car": 228,
+    "Bus": 26,
+    "Truck": 91,
+    "Other vehicle": 0,
+    "Motorcycle": 245,
+    "Motorcyclist": 6,
+    "Bicycle": 2,
+    "Cyclist": 3,
+    "Pedestrian": 183,
+    "Sign": 71,
+    "Traffic light": 7
+  },
+  "audit": {
+    "images_audited": 100,
+    "images_flagged": 61,
+    "invalid_polygon_instances": 2,
+    "note": "Native self-crossing polygons retained for repair, no silent mask loss. Flags are not human defect confirmations."
+  },
+  "human_reviewed_images": 0,
+  "human_reviewers": [],
+  "training_started": false,
+  "gpu_used": false,
+  "alternative_source": {
+    "id": "vietnam-traffic-sign-recognition-benchmark/vr-tsd",
+    "name": "VR-TSD",
+    "type": "object-detection",
+    "license": "CC BY 4.0",
+    "images": 8078,
+    "public": true,
+    "versions": [
+      {
+        "id": "vietnam-traffic-sign-recognition-benchmark/vr-tsd/2",
+        "name": "2025-07-21 3:01pm",
+        "images": 8078,
+        "splits": {
+          "valid": 1259,
+          "test": 1151,
+          "train": 5668
+        }
+      },
+      {
+        "id": "vietnam-traffic-sign-recognition-benchmark/vr-tsd/1",
+        "name": "2025-06-13 11:52pm",
+        "images": 7064,
+        "splits": {
+          "valid": 1122,
+          "test": 711,
+          "train": 5231
+        }
+      }
+    ],
+    "source_origin_evidence": "https://github.com/LinhNhat07/VR-TSD-Vietnamese-Traffic-Sign-Recognition",
+    "mask_status": "Author describes bounding boxes; not segmentation, no bbox-to-mask substitution",
+    "status": "candidate_rights_audit_only_not_admitted"
+  }
+}

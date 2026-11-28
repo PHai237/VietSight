@@ -1,0 +1,48 @@
+{
+  "source": "Official V1 public results supplied by the user in chat, 2026-11-27 Asia/Saigon",
+  "scale": "public values as supplied, 0..100; not local validation AP",
+  "checkpoint_sha256": null,
+  "submission_id": null,
+  "per_class": {
+    "Car": 29.67,
+    "Bus": 12.6,
+    "Truck": 20.41,
+    "Other vehicle": 2.57,
+    "Motorcycle": 1.95,
+    "Motorcyclist": 15.02,
+    "Bicycle": 6.53,
+    "Cyclist": 17.05,
+    "Pedestrian": 12.54,
+    "Sign": 6.05,
+    "Traffic light": 17.56
+  },
+  "total_score": 12.9,
+  "v2_data_priority": [
+    "Motorcycle",
+    "Other vehicle",
+    "Sign",
+    "Bicycle"
+  ],
+  "notes": "Preserve total as reported by server; do not recompute it from rounded per-class values. No V2 metrics yet.",
+  "run_id": "v1_e25",
+  "artifact_source": "runs/v1_colab_e25/run_report.json + runs/RESULTS.md received in origin/main 95dee96/b09aa2a",
+  "epochs": 25,
+  "onnx_sha256": "87c81673e92feeea0e194d15bb7d69b81c783328b8ca7133b1a2ea5159b607eb",
+  "zip_sha256": "f0b874634ed90bcacd23238c3eb517fa3169bcbefd149a34f6f103a62c56e0de",
+  "local_val_map50_95": 0.22970689104806416,
+  "local_val_n_images": 262,
+  "local_val_per_class_ap": {
+    "Bicycle": 0.060772130979258175,
+    "Bus": 0.32744522734138554,
+    "Car": 0.48984090770273997,
+    "Cyclist": 0.2074108185228023,
+    "Motorcycle": 0.08476379682357424,
+    "Motorcyclist": 0.3031465620705172,
+    "Other vehicle": 0.07503958999320845,
+    "Pedestrian": 0.2017280358411167,
+    "Sign": 0.2912839786804537,
+    "Traffic light": 0.25074028525787434,
+    "Truck": 0.23460446831577486
+  },
+  "prepared_dataset_sha256": "fb6eaedd6639d8039ecb2556b9490a12bd15d4f46b25d2e1ef402f1efd367b2e"
+}

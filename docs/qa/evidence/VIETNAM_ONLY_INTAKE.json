@@ -1,0 +1,187 @@
+{
+  "date_local": "2026-11-27",
+  "timezone": "Asia/Saigon",
+  "policy": "VN_ONLY",
+  "accepted_train_images": 0,
+  "complete_vn_validation_mask_images": 0,
+  "training_started": false,
+  "roboflow_export_probe": {
+    "endpoint": "https://api.roboflow.com/jose-89vn1/vietnam-traffic-5classes-xthnt/1/coco-segmentation",
+    "http_status": 401,
+    "reason": "API key required; no key in current environment"
+  },
+  "jose_preview_check": {
+    "page": "https://universe.roboflow.com/jose-89vn1/vietnam-traffic-5classes-xthnt",
+    "preview_images_viewed": 4,
+    "sports_scenes": 3,
+    "unverified_street_scene": 1,
+    "vn_location_verified": 0,
+    "limits": "Public model previews, not an archive census; no claim of dataset-wide contamination rate",
+    "image_urls": [
+      "https://source.roboflow.com/dHGwdJwEQeP8xKvG8YCl9J73AQz2/005v8lgoskH0yU1D9hXM/thumb.jpg",
+      "https://source.roboflow.com/dHGwdJwEQeP8xKvG8YCl9J73AQz2/00D0ZpMpYRrlVBSJjf6T/thumb.jpg",
+      "https://source.roboflow.com/dHGwdJwEQeP8xKvG8YCl9J73AQz2/00TuCmkCjZsmtxQTNqGx/thumb.jpg",
+      "https://source.roboflow.com/dHGwdJwEQeP8xKvG8YCl9J73AQz2/00xgHeCipuM1mtNdsKMm/thumb.jpg"
+    ]
+  },
+  "hcm_validation_candidates": {
+    "source": "khoakait/transportation-in-ho-chi-minh-city",
+    "role": "VN_VALIDATION_CANDIDATES_ONLY",
+    "status": "blocked_bbox_only_and_provenance_review_pending",
+    "images_downloaded": 12,
+    "bytes_images_and_labels": 1197068,
+    "records": [
+      {
+        "image": "test/images/2023-10-07_10_42_06-407744_image__jpg.rf.11fd62e06099a30c9919aae04310bd85.jpg",
+        "image_sha256": "1297b35d13ed6fee86c6a85b7fe147d4aa3e6cae138cf9639e24642c1fb27b89",
+        "label_sha256": "38623a6bb587a6c122fec78a04d7afd42704a8a38a0faef15ea8c24a445d13cb",
+        "label_rows": 6,
+        "label_token_counts": [
+          5
+        ]
+      },
+      {
+        "image": "test/images/2023-10-08_03_12_50-756000_image__jpg.rf.261755cf26864dbfda7a041d19518f9e.jpg",
+        "image_sha256": "11b0c8bca2d5e4f37b44af24d18789fbffe99607deafdc22f000815a460fa0f0",
+        "label_sha256": "2216d15e51c732f65a8887426d1626ed760d87d420d6d5c222fd2c9165401ec4",
+        "label_rows": 1,
+        "label_token_counts": [
+          5
+        ]
+      },
+      {
+        "image": "test/images/2023-10-08_08_07_27-935271_image__jpg.rf.515d202631338b7bfc28861686bdf86c.jpg",
+        "image_sha256": "bb0278e57e6e344409f3dfc5b73b3d39332fb61385b9ab64c8b69e472655d432",
+        "label_sha256": "e74409a2278751e7d5a43499b630f496d249467a8f1b56f82cec45bad6d4e1e7",
+        "label_rows": 102,
+        "label_token_counts": [
+          5
+        ]
+      },
+      {
+        "image": "test/images/2023-10-08_11_12_33-781245_image__jpg.rf.a9ab42437db2dcd2342bdedc71b0b7dc.jpg",
+        "image_sha256": "b157a56f292fa503a273bab9bd3c6277ea2b903c535a8e0e73bb58716f9f6516",
+        "label_sha256": "4489fb292a6468a468d58a526090570bb8eced029e05d75c7828be35b83534aa",
+        "label_rows": 2,
+        "label_token_counts": [
+          5
+        ]
+      },
+      {
+        "image": "test/images/2023-10-08_11_39_11-866654_image__jpg.rf.7c4f626f2675af2e7bb6ad0c9b98bb84.jpg",
+        "image_sha256": "1630d3f67479b06b16699678c30eaf3cecef6a4663bb5cdd5cf2773b7c774458",
+        "label_sha256": "d2127464a95c0ce0396a3e4bb42e0ef826f8b292b99572adbeb087917e924d95",
+        "label_rows": 1,
+        "label_token_counts": [
+          5
+        ]
+      },
+      {
+        "image": "test/images/2023-10-08_171927-048791_image__jpg.rf.2154b4fc8972cd32c95c008834d26968.jpg",
+        "image_sha256": "b1960b12979465b6b9f7f042982fa0cbd9941183c9d7583eb7f964a231203b2f",
+        "label_sha256": "1e5ac0074bbe3f02e634a97c9f3d7db222ec8e1041de6a94d8e10aec3ebaa341",
+        "label_rows": 37,
+        "label_token_counts": [
+          5
+        ]
+      },
+      {
+        "image": "test/images/2023-10-08_174922-570984_image__jpg.rf.db0e43ccc2e1d9bcae383c69fa7c8ae4.jpg",
+        "image_sha256": "86034826ab324d5ea87c718f9f3232a8e638d09c005bef029e7b5b555863c68b",
+        "label_sha256": "18a01cc2ff9f3d4fbdf4c5056d9efaf7815febae54f579ea6d78aad0f7822f04",
+        "label_rows": 14,
+        "label_token_counts": [
+          5
+        ]
+      },
+      {
+        "image": "test/images/2023-11-11_155215-980505_image__jpg.rf.53cfb0b6f6e261c1dc6395ac32fedb38.jpg",
+        "image_sha256": "f3c64650daa970bc57db3816c88e9d777e57a9b0ed4de7af12a90bfff26e6947",
+        "label_sha256": "9999e620d93d3bdb9ee8164dd32156fa1c0cc3a450efb4f96864b61d11eed4b7",
+        "label_rows": 1,
+        "label_token_counts": [
+          5
+        ]
+      },
+      {
+        "image": "test/images/2023-11-12_175522-165775_image__jpg.rf.c5f410bc713e6ea27f27010c68b7346d.jpg",
+        "image_sha256": "7b48b1109cceef793d76335aa6c14d24e3b90c75d6938b902052de204e76da70",
+        "label_sha256": "d06a196615e1ea5eb5b1991e2d760eb38fc2fb07ea9c651e4ae1d6729ecb20dc",
+        "label_rows": 1,
+        "label_token_counts": [
+          5
+        ]
+      },
+      {
+        "image": "test/images/2023-11-13_144729-684979_image__jpg.rf.71a95858b028df3c787c2ea3d3f4a5fe.jpg",
+        "image_sha256": "cc3894dd250928134b49f1e2014a6c5f4a05166241067aa6d81bea14761c68c3",
+        "label_sha256": "a1fa36c362a6d9de2a2f955b12dbdd8a781e815c87bfb7d692561b51d87108e5",
+        "label_rows": 2,
+        "label_token_counts": [
+          5
+        ]
+      },
+      {
+        "image": "test/images/2025-05-13_135526_960301_image__jpg.rf.af096cecdb7a56db05769423fc65f03c.jpg",
+        "image_sha256": "2bd48bf326bb364a2722a2326017d35a495eb814eadfa8eb0e5ec4424c9147e1",
+        "label_sha256": "2aede0c0d0197b5f6f8f38781573b94896792e2dfee4047358f1a7d975e98502",
+        "label_rows": 2,
+        "label_token_counts": [
+          5
+        ]
+      },
+      {
+        "image": "test/images/image_180_2023-10-07_15-51-30_jpg.rf.52695b9f70e6f6047f7b07bfb11ee0a2.jpg",
+        "image_sha256": "9ab5b278a26040e7ce1fc54697c3e0a1eb6546130bc1c97be91e189a241384ae",
+        "label_sha256": "68789bafc6d01eb847e8ad8200e79161987df1c07e65396f762e1d9b1f8dec40",
+        "label_rows": 1,
+        "label_token_counts": [
+          5
+        ]
+      }
+    ],
+    "location_claim": "Publisher states traffic cameras in Ho Chi Minh City, Vietnam; visual verification pending",
+    "license": "Kaggle other; exported data.yaml declares original Roboflow publisher CC BY 4.0; reconcile before admission",
+    "reserved_for_train": false,
+    "masks_ready": false,
+    "training_started": false
+  },
+  "sign_coco_probe": {
+    "source": "lvnduy/street-traffic-signs-in-vietnam-coco",
+    "files_in_api_listing": 10940,
+    "images_in_api_listing": 10933,
+    "image_files_downloaded": 0,
+    "annotation_split": "test",
+    "image_records": 613,
+    "annotations": 967,
+    "nonempty_segmentations": 0,
+    "kaggle_license": "unknown",
+    "export_annotation_license": [
+      {
+        "id": 1,
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "name": "Public Domain"
+      }
+    ],
+    "status": "C_bbox_only; D_pending_image_rights"
+  },
+  "hcm_v2_conversion": {
+    "images_ok": 0,
+    "images_review": 12,
+    "missing_instance_masks": 170,
+    "complete_coverage_review": false,
+    "license_review_complete": false
+  },
+  "probe_file_hashes": {
+    "street-traffic-signs-in-vietnam-coco\\dataset-metadata.json": "d9eaaa8384b2eb3e06af8e88de6df6d9cad512687ec737f71efb6cc0c96c507f",
+    "street-traffic-signs-in-vietnam-coco\\listing.json": "5ffd6a2a7dec0869ebd2ba51df9b69d6d0d5a58634cee0b4a229f58d840ca975",
+    "transportation-in-ho-chi-minh-city\\data.yaml": "d3757a9c468dee6046c708de032264f17fe29c01839db2583a00a0b2bff1468f",
+    "transportation-in-ho-chi-minh-city\\dataset-metadata.json": "4cdb8dbc0715a2746d66feaaaae4ee0af03e369da8acbe468eabcf58b2471ad2",
+    "transportation-in-ho-chi-minh-city\\listing.json": "1d5e9a9a2b90684096f35e408def69c287dcdfb79fc60b821b6f2c0b0f1edf4d",
+    "transportation-in-ho-chi-minh-city\\validation_candidate_manifest.json": "3f4815b065ff56c180bd673e79c7714e3a0d8895d3be65e3c0a9f93ae81afc7d",
+    "vietnamese-vehicles-dataset\\dataset-metadata.json": "4d6a183be2cb105180f02861ba6a9e676bb086cb8dd3606edf19d0c834790568",
+    "street-traffic-signs-in-vietnam-coco\\Vietnam-Traffic-Sign-Detection.v5i.coco\\README.roboflow.txt": "d0d09998111aca5d1161836d52f1bbd0751a0e7e78cefb1436dd8b5e35620f36",
+    "street-traffic-signs-in-vietnam-coco\\Vietnam-Traffic-Sign-Detection.v5i.coco\\test\\_annotations.coco.json": "0a04742656d9200fcd4be73bc18872f0c948155fab6714be1ed2c606cdabc561"
+  },
+  "frozen_v1_sha256": "04b9cbb2d7f3ca0058d2eb9e9d9ceac2ddd19c12be5607d2a7faead91b723514"
+}

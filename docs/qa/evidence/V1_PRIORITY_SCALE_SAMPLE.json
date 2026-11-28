@@ -1,0 +1,18 @@
+{
+  "Other vehicle": {
+    "sample_instances": 30,
+    "short_side_under_1_25_percent": 0
+  },
+  "Motorcycle": {
+    "sample_instances": 45,
+    "short_side_under_1_25_percent": 0
+  },
+  "Bicycle": {
+    "sample_instances": 56,
+    "short_side_under_1_25_percent": 2
+  },
+  "Sign": {
+    "sample_instances": 233,
+    "short_side_under_1_25_percent": 43
+  }
+}

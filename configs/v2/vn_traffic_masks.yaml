@@ -1,0 +1,24 @@
+name: vn_traffic_masks_v2
+format: coco
+url: https://universe.roboflow.com/jose-89vn1/vietnam-traffic-5classes-xthnt
+license: CC BY 4.0 as declared by publisher; verify origin/attribution before intake
+status: blocked_mixed_geography
+mapping:
+  Car: Car
+  Bus: Bus
+  Bicycle: {role: vehicle2, sub: bicycle}
+  Motorbike: {role: vehicle2, sub: motorcycle}
+  Person: {role: person}
+unmapped: ignore
+missing_classes: [Truck, Other vehicle, Sign, Traffic light]
+notes: >-
+  Publisher declares instance segmentation but 3 of 4 public model preview images
+  inspected on 2026-11-27 are sports scenes. These previews do not prove dataset-wide
+  contamination, but the project name is not evidence of Vietnam capture location.
+  API access now works via the User environment key, which is never logged.
+  The 1.185 GB archive was sampled with HTTP ranges: test annotations and 37 images,
+  6.86 MB network transfer. The real sample includes international imagery; the
+  archive listing mixes Cityscapes-style and COCO-style names with other sources.
+  Do not select this source for VN-only V2 without per-image origin/license verification.
+  Motorcycle/Bicycle labels may contain ridden vehicles; all 11-class coverage and
+  rider/passenger associations require human review. Not automatically admitted to train.

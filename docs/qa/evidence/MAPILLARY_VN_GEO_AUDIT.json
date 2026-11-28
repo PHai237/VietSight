@@ -1,0 +1,1226 @@
+{
+  "geography": {
+    "rows": 20000,
+    "valid_coordinates": 11300,
+    "missing_or_invalid_coordinates": 8700,
+    "schema": [
+      "index",
+      "Mapillary_ID",
+      "Latitude",
+      "Longitude"
+    ],
+    "unique_ids": 20000,
+    "bbox_candidates": 10,
+    "vietnam_polygon_matches": 10,
+    "boundary_id": "VNM-ADM0-46766057",
+    "boundary_bounds": [
+      102.14367612700005,
+      8.403122515000064,
+      109.46302527100005,
+      23.39357409300004
+    ],
+    "inside": [
+      {
+        "index": "1298",
+        "Mapillary_ID": "Ua_bgqpPpJRkHZqH-fU2tw",
+        "Latitude": "10.74579826",
+        "Longitude": "106.653119925",
+        "lat": 10.74579826,
+        "lon": 106.653119925
+      },
+      {
+        "index": "1670",
+        "Mapillary_ID": "JARwgsAxhLIpv5YnMJgZ_A",
+        "Latitude": "10.76286323999",
+        "Longitude": "106.65855400996",
+        "lat": 10.76286323999,
+        "lon": 106.65855400996
+      },
+      {
+        "index": "2393",
+        "Mapillary_ID": "UK7t19FMgwvNeluFwy3tOw",
+        "Latitude": "10.75255528",
+        "Longitude": "106.68010264",
+        "lat": 10.75255528,
+        "lon": 106.68010264
+      },
+      {
+        "index": "6054",
+        "Mapillary_ID": "Qhd_ZpAkyRpB-pLxJs2Zhg",
+        "Latitude": "10.780699575",
+        "Longitude": "106.679877045",
+        "lat": 10.780699575,
+        "lon": 106.679877045
+      },
+      {
+        "index": "6771",
+        "Mapillary_ID": "630R_r2tSsx5psiy0M6eCg",
+        "Latitude": "10.76589172",
+        "Longitude": "106.64217356",
+        "lat": 10.76589172,
+        "lon": 106.64217356
+      },
+      {
+        "index": "6798",
+        "Mapillary_ID": "j7__n4nGaeRrsRhqpqU71Q",
+        "Latitude": "10.849170130009",
+        "Longitude": "106.76796964001",
+        "lat": 10.849170130009,
+        "lon": 106.76796964001
+      },
+      {
+        "index": "10553",
+        "Mapillary_ID": "bpqabUdDEwaw9gVaiRoQUw",
+        "Latitude": "10.754386825",
+        "Longitude": "106.65846212",
+        "lat": 10.754386825,
+        "lon": 106.65846212
+      },
+      {
+        "index": "13923",
+        "Mapillary_ID": "PnQCZsOv-TJZbyY-vwOdGw",
+        "Latitude": "10.79534884",
+        "Longitude": "106.69044659",
+        "lat": 10.79534884,
+        "lon": 106.69044659
+      },
+      {
+        "index": "14277",
+        "Mapillary_ID": "lFr49FF9fjS6doEXbt1Zkw",
+        "Latitude": "10.79871009",
+        "Longitude": "106.73003639",
+        "lat": 10.79871009,
+        "lon": 106.73003639
+      },
+      {
+        "index": "15741",
+        "Mapillary_ID": "Fau3ybaTE-9u5jxbutbgoA",
+        "Latitude": "10.790847710002",
+        "Longitude": "106.79153661999",
+        "lat": 10.790847710002,
+        "lon": 106.79153661999
+      }
+    ],
+    "bbox_excluded": [],
+    "min_approx_distance_to_boundary_km": 42.882810943932064
+  },
+  "csv_sha256": "8678a2bc9bf8795b8113ff11a42d3beee5b57b620b39f36b5f07fe550d19a056",
+  "csv_md5_matches_zenodo": true,
+  "boundary_sha256": "841ec6e5276e96d1fb4ef924b23f725fa23e5155f15767c189970ca9704a5a2a",
+  "native_id_matches": [
+    {
+      "id": "Ua_bgqpPpJRkHZqH-fU2tw",
+      "source_split": "training",
+      "annotation_bytes": 119978,
+      "image_bytes": 985604
+    },
+    {
+      "id": "JARwgsAxhLIpv5YnMJgZ_A",
+      "source_split": "validation",
+      "annotation_bytes": 137170,
+      "image_bytes": 272853
+    },
+    {
+      "id": "UK7t19FMgwvNeluFwy3tOw",
+      "source_split": "training",
+      "annotation_bytes": 136277,
+      "image_bytes": 1212610
+    },
+    {
+      "id": "Qhd_ZpAkyRpB-pLxJs2Zhg",
+      "source_split": "training",
+      "annotation_bytes": 106423,
+      "image_bytes": 1023272
+    },
+    {
+      "id": "630R_r2tSsx5psiy0M6eCg",
+      "source_split": "training",
+      "annotation_bytes": 108458,
+      "image_bytes": 1100417
+    },
+    {
+      "id": "j7__n4nGaeRrsRhqpqU71Q",
+      "source_split": "training",
+      "annotation_bytes": 128673,
+      "image_bytes": 201253
+    },
+    {
+      "id": "bpqabUdDEwaw9gVaiRoQUw",
+      "source_split": "validation",
+      "annotation_bytes": 158705,
+      "image_bytes": 1214866
+    },
+    {
+      "id": "PnQCZsOv-TJZbyY-vwOdGw",
+      "source_split": "training",
+      "annotation_bytes": 172166,
+      "image_bytes": 1022893
+    },
+    {
+      "id": "lFr49FF9fjS6doEXbt1Zkw",
+      "source_split": "training",
+      "annotation_bytes": 59861,
+      "image_bytes": 1207507
+    },
+    {
+      "id": "Fau3ybaTE-9u5jxbutbgoA",
+      "source_split": "training",
+      "annotation_bytes": 61546,
+      "image_bytes": 212146
+    }
+  ],
+  "pixel_gt_verification": [
+    {
+      "id": "Ua_bgqpPpJRkHZqH-fU2tw",
+      "source_split": "training",
+      "semantic_high_byte_match": true,
+      "instance_sha256": "e37107d5805e01f9b661cb7e8a0d7af8fc620280ad3cd77c9e939ce55a2ef519",
+      "v1_frozen": false
+    },
+    {
+      "id": "JARwgsAxhLIpv5YnMJgZ_A",
+      "source_split": "validation",
+      "semantic_high_byte_match": true,
+      "instance_sha256": "f819fda22d2b3a42c5738ef190ecedaff24045b2aab450a0153908e169d53c7e",
+      "v1_frozen": true
+    },
+    {
+      "id": "UK7t19FMgwvNeluFwy3tOw",
+      "source_split": "training",
+      "semantic_high_byte_match": true,
+      "instance_sha256": "3269d6dc0accdaadb54c39ab1fddae645ca423d1800dbedabe04cf27beaeac1e",
+      "v1_frozen": false
+    },
+    {
+      "id": "Qhd_ZpAkyRpB-pLxJs2Zhg",
+      "source_split": "training",
+      "semantic_high_byte_match": true,
+      "instance_sha256": "4e62310bb6b257e7e877287245780c1272ecaac27244eac65bceaf3a6ef61bfe",
+      "v1_frozen": false
+    },
+    {
+      "id": "630R_r2tSsx5psiy0M6eCg",
+      "source_split": "training",
+      "semantic_high_byte_match": true,
+      "instance_sha256": "9d66da7b944315d782632b72304bfc0095f32d69846294ceb997beebd1a88c61",
+      "v1_frozen": false
+    },
+    {
+      "id": "j7__n4nGaeRrsRhqpqU71Q",
+      "source_split": "training",
+      "semantic_high_byte_match": true,
+      "instance_sha256": "28f83c8fe5397370778dbad60e6ad8182f3e4e3e1dd2ffabb5b7cacde86b063e",
+      "v1_frozen": false
+    },
+    {
+      "id": "bpqabUdDEwaw9gVaiRoQUw",
+      "source_split": "validation",
+      "semantic_high_byte_match": true,
+      "instance_sha256": "d10bd61f68c2efe11a33e58f7111b23e0c61abf5d5dc843133adc775da9f6e0a",
+      "v1_frozen": false
+    },
+    {
+      "id": "PnQCZsOv-TJZbyY-vwOdGw",
+      "source_split": "training",
+      "semantic_high_byte_match": true,
+      "instance_sha256": "7d3fb4bc3b3f5ab705750499083c6e894d6f7221b4eeaa6c9b6d5666a39f3315",
+      "v1_frozen": false
+    },
+    {
+      "id": "lFr49FF9fjS6doEXbt1Zkw",
+      "source_split": "training",
+      "semantic_high_byte_match": true,
+      "instance_sha256": "758103f40a35ec035a014aa96d28e93407ce63df39e73d156ac6c5aa0f36b03b",
+      "v1_frozen": false
+    },
+    {
+      "id": "Fau3ybaTE-9u5jxbutbgoA",
+      "source_split": "training",
+      "semantic_high_byte_match": true,
+      "instance_sha256": "0ccb8ed55ed3b2d0f8ff866313cc9aca171a2125a5ef571eeec029557475cd8c",
+      "v1_frozen": false
+    }
+  ],
+  "native_classes_before_conversion": {
+    "sky": 10,
+    "static": 95,
+    "road": 10,
+    "sidewalk": 15,
+    "building": 15,
+    "signage - store": 105,
+    "ground": 6,
+    "utility pole": 45,
+    "vegetation": 45,
+    "curb": 28,
+    "car": 13,
+    "lane marking - crosswalk": 8,
+    "lane marking - dashed line": 13,
+    "signage - advertisement": 40,
+    "signage - back": 2,
+    "pole": 111,
+    "dynamic": 30,
+    "person": 42,
+    "other vehicle": 4,
+    "banner": 19,
+    "street light": 81,
+    "motorcycle": 95,
+    "motorcyclist": 107,
+    "bicycle": 5,
+    "signage - ambiguous": 16,
+    "traffic sign (front)": 28,
+    "ego vehicle": 5,
+    "catch basin": 3,
+    "water valve": 2,
+    "manhole": 6,
+    "junction box": 10,
+    "traffic island": 8,
+    "vehicle group": 5,
+    "pole group": 2,
+    "traffic light - general (upright)": 4,
+    "terrain": 7,
+    "truck": 1,
+    "wall": 4,
+    "traffic sign (back)": 6,
+    "bridge": 3,
+    "lane marking - hatched (diagonal)": 1,
+    "lane marking - straight line": 4,
+    "concrete block": 2,
+    "lane marking - stop line": 1,
+    "curb cut": 7,
+    "other rider": 2,
+    "fence": 8,
+    "person group": 2,
+    "traffic light - pedestrians": 1,
+    "traffic light - cyclists": 1,
+    "wheeled slow": 2,
+    "bus": 1,
+    "fire hydrant": 1,
+    "bicyclist": 1,
+    "traffic sign frame": 1,
+    "traffic sign - direction (front)": 1,
+    "driveway": 1,
+    "lane marking - other": 1,
+    "signage - information": 1
+  },
+  "conversion": {
+    "status": "BLOCKED_TARGETED_ASSOCIATION_GEOMETRY_AND_COVERAGE",
+    "images": 9,
+    "source_original_splits": {
+      "training": 8,
+      "validation": 1
+    },
+    "v1_frozen_excluded": [
+      "JARwgsAxhLIpv5YnMJgZ_A"
+    ],
+    "source_annotations": "Mapillary Vistas official uint16 instances and semantic PNGs, plus native polygons",
+    "qa_all_automatic": true,
+    "ai_visual_overview_images": 10,
+    "human_qa_by_team": 0,
+    "reviewer": null,
+    "draft_instances": 201,
+    "instances_by_class": {
+      "Pedestrian": 66,
+      "Bicycle": 3,
+      "Motorcyclist": 48,
+      "Motorcycle": 33,
+      "Sign": 27,
+      "Car": 12,
+      "Other vehicle": 4,
+      "Truck": 1,
+      "Cyclist": 1,
+      "Traffic light": 6
+    },
+    "flag_counts": {
+      "ambiguous_association": 19,
+      "coverage_review_required_all_11_classes": 9,
+      "decoded_overlap": 7,
+      "ontology_review_required": 5,
+      "rider_without_vehicle": 9,
+      "roundtrip_iou_below_gate": 4,
+      "scorer_area_under_64": 80,
+      "short_side_guideline_review": 80,
+      "source_license_evidence_required": 9,
+      "unresolved_crowd_or_group": 6,
+      "unrepresentable_polygon_without_pixel_loss": 2
+    },
+    "ready_train_images": 0,
+    "ready_val_images": 0,
+    "notes": "Native labels retained. Flags require targeted decisions, not blanket reannotation/human review. Bus absent after V1 holdout exclusion. No training data.yaml."
+  },
+  "package": {
+    "path": "C:\\My Future\\VietSight-data-qa\\data\\versions\\mapillary_vn_native_pixels_intake001_REVIEW.zip",
+    "bytes": 12337270,
+    "sha256": "b38f408b1f6987c6ff6a4ea55675aa4aea20c497a21ef1c973451f5c8b2af39c",
+    "zip_crc": "pass",
+    "checksums": "pass"
+  },
+  "roboflow_metadata": [
+    {
+      "source": "zibot/vehicle-segmentation-7picx",
+      "http_status": 200,
+      "id": "zibot/vehicle-segmentation-7picx",
+      "name": "vehicle-segmentation",
+      "type": "instance-segmentation",
+      "license": "MIT",
+      "images": 787,
+      "classes": {
+        "bus": 1918,
+        "truck": 15450,
+        "tricycle": 305,
+        "motorcycle": 9062,
+        "car": 31180
+      },
+      "public": true,
+      "versions": [
+        {
+          "id": "zibot/vehicle-segmentation-7picx/9",
+          "name": "2025-01-07 11:19pm",
+          "images": 1415,
+          "splits": {
+            "valid": 159,
+            "train": 1256
+          }
+        },
+        {
+          "id": "zibot/vehicle-segmentation-7picx/8",
+          "name": "2025-01-07 2:45pm",
+          "images": 1413,
+          "splits": {
+            "valid": 157,
+            "train": 1256
+          }
+        },
+        {
+          "id": "zibot/vehicle-segmentation-7picx/7",
+          "name": "2025-01-07 1:34pm",
+          "images": 1413,
+          "splits": {
+            "valid": 157,
+            "train": 1256
+          }
+        },
+        {
+          "id": "zibot/vehicle-segmentation-7picx/6",
+          "name": "2025-01-06 9:29pm",
+          "images": 785,
+          "splits": {
+            "valid": 157,
+            "train": 628
+          }
+        },
+        {
+          "id": "zibot/vehicle-segmentation-7picx/5",
+          "name": "2025-01-05 5:17pm",
+          "images": 737,
+          "splits": {
+            "valid": 146,
+            "train": 591
+          }
+        },
+        {
+          "id": "zibot/vehicle-segmentation-7picx/4",
+          "name": "2025-01-04 5:39pm",
+          "images": 731,
+          "splits": {
+            "valid": 146,
+            "train": 585
+          }
+        },
+        {
+          "id": "zibot/vehicle-segmentation-7picx/3",
+          "name": "2025-01-02 9:13pm",
+          "images": 728,
+          "splits": {
+            "valid": 145,
+            "train": 583
+          }
+        },
+        {
+          "id": "zibot/vehicle-segmentation-7picx/2",
+          "name": "2024-12-28 5:33pm",
+          "images": 683,
+          "splits": {
+            "valid": 130,
+            "train": 553
+          }
+        },
+        {
+          "id": "zibot/vehicle-segmentation-7picx/1",
+          "name": "2024-12-28 4:44pm",
+          "images": 31,
+          "splits": {
+            "train": 31
+          }
+        }
+      ]
+    },
+    {
+      "source": "has-workspace-0wbbm/sidewalk-violation-detection-luhlt",
+      "http_status": 200,
+      "id": "has-workspace-0wbbm/sidewalk-violation-detection-luhlt",
+      "name": "sidewalk-violation-detection",
+      "type": "instance-segmentation",
+      "license": "CC BY 4.0",
+      "images": 5002,
+      "classes": {
+        "stalls_goods": 1064,
+        "car": 3438,
+        "sidewalk": 4937,
+        "street_cart": 1324,
+        "sign_board": 2420,
+        "motorcycle": 21188
+      },
+      "public": true,
+      "versions": []
+    },
+    {
+      "source": "has-workspace-0wbbm/sidewalk-violation-detection-2",
+      "http_status": 200,
+      "id": "has-workspace-0wbbm/sidewalk-violation-detection-2",
+      "name": "sidewalk-violation-detection-2",
+      "type": "instance-segmentation",
+      "license": "CC BY 4.0",
+      "images": 720,
+      "classes": {
+        "stalls_goods": 129,
+        "street_cart": 232,
+        "car": 346,
+        "sign_board": 512,
+        "sidewalk": 773,
+        "motorcycle": 3415
+      },
+      "public": true,
+      "versions": [
+        {
+          "id": "has-workspace-0wbbm/sidewalk-violation-detection-2/7",
+          "name": "2026-05-22 1:44am",
+          "images": 720,
+          "splits": {
+            "valid": 60,
+            "test": 30,
+            "train": 630
+          }
+        },
+        {
+          "id": "has-workspace-0wbbm/sidewalk-violation-detection-2/6",
+          "name": "2026-05-22 1:23am",
+          "images": 720,
+          "splits": {
+            "valid": 60,
+            "test": 30,
+            "train": 630
+          }
+        },
+        {
+          "id": "has-workspace-0wbbm/sidewalk-violation-detection-2/5",
+          "name": "2026-05-21 5:20pm",
+          "images": 720,
+          "splits": {
+            "valid": 60,
+            "test": 30,
+            "train": 630
+          }
+        },
+        {
+          "id": "has-workspace-0wbbm/sidewalk-violation-detection-2/4",
+          "name": "2026-05-21 11:26am",
+          "images": 497,
+          "splits": {
+            "valid": 41,
+            "test": 21,
+            "train": 435
+          }
+        },
+        {
+          "id": "has-workspace-0wbbm/sidewalk-violation-detection-2/3",
+          "name": "2026-05-21 12:24am",
+          "images": 349,
+          "splits": {
+            "valid": 29,
+            "test": 14,
+            "train": 306
+          }
+        },
+        {
+          "id": "has-workspace-0wbbm/sidewalk-violation-detection-2/2",
+          "name": "2026-05-20 8:04pm",
+          "images": 222,
+          "splits": {
+            "valid": 18,
+            "test": 9,
+            "train": 195
+          }
+        },
+        {
+          "id": "has-workspace-0wbbm/sidewalk-violation-detection-2/1",
+          "name": "2026-05-20 2:24am",
+          "images": 65,
+          "splits": {
+            "valid": 5,
+            "test": 3,
+            "train": 57
+          }
+        }
+      ]
+    },
+    {
+      "source": "khanhs-workspace-tcnac/pbl5-segmentation",
+      "http_status": 200,
+      "id": "khanhs-workspace-tcnac/pbl5-segmentation",
+      "name": "PBL5-segmentation",
+      "type": "instance-segmentation",
+      "license": "CC BY 4.0",
+      "images": 633,
+      "classes": {
+        "cross-walk": 0,
+        "PBL5-segmentation": 0,
+        "side-walk": 1309
+      },
+      "public": true,
+      "versions": [
+        {
+          "id": "khanhs-workspace-tcnac/pbl5-segmentation/9",
+          "name": "2026-05-06 11:35pm",
+          "images": 1517,
+          "splits": {
+            "valid": 127,
+            "test": 64,
+            "train": 1326
+          }
+        },
+        {
+          "id": "khanhs-workspace-tcnac/pbl5-segmentation/8",
+          "name": "2026-05-05 2:01am",
+          "images": 1540,
+          "splits": {
+            "valid": 130,
+            "test": 66,
+            "train": 1344
+          }
+        },
+        {
+          "id": "khanhs-workspace-tcnac/pbl5-segmentation/7",
+          "name": "2026-05-02 2:59pm",
+          "images": 1561,
+          "splits": {
+            "valid": 131,
+            "test": 68,
+            "train": 1362
+          }
+        },
+        {
+          "id": "khanhs-workspace-tcnac/pbl5-segmentation/6",
+          "name": "2026-04-30 12:59pm",
+          "images": 1452,
+          "splits": {
+            "valid": 122,
+            "test": 64,
+            "train": 1266
+          }
+        },
+        {
+          "id": "khanhs-workspace-tcnac/pbl5-segmentation/5",
+          "name": "2026-04-15 3:47pm",
+          "images": 1380,
+          "splits": {
+            "valid": 117,
+            "test": 60,
+            "train": 1203
+          }
+        },
+        {
+          "id": "khanhs-workspace-tcnac/pbl5-segmentation/4",
+          "name": "2026-04-10 9:50pm",
+          "images": 1423,
+          "splits": {
+            "valid": 118,
+            "test": 60,
+            "train": 1245
+          }
+        },
+        {
+          "id": "khanhs-workspace-tcnac/pbl5-segmentation/3",
+          "name": "2026-04-10 4:28pm",
+          "images": 1289,
+          "splits": {
+            "valid": 107,
+            "test": 54,
+            "train": 1128
+          }
+        },
+        {
+          "id": "khanhs-workspace-tcnac/pbl5-segmentation/2",
+          "name": "2026-04-10 1:37pm",
+          "images": 936,
+          "splits": {
+            "valid": 78,
+            "test": 39,
+            "train": 819
+          }
+        },
+        {
+          "id": "khanhs-workspace-tcnac/pbl5-segmentation/1",
+          "name": "2026-04-09 2:19pm",
+          "images": 965,
+          "splits": {
+            "valid": 79,
+            "test": 40,
+            "train": 846
+          }
+        }
+      ]
+    }
+  ],
+  "roboflow_audits": [
+    {
+      "source": "pbl5-segmentation",
+      "scope": "all downloaded COCO annotation splits; image inspection is sampled only",
+      "counts": {
+        "images": 1517,
+        "annotations": 3101,
+        "polygon_annotations": 3101,
+        "rings": 3101,
+        "four_corner_rings": 212
+      },
+      "source_class_instances": {
+        "side-walk": 3101
+      },
+      "original_filename_families_cross_split": 0,
+      "human_qa": false,
+      "notes": "Quadrilateral/rectangle counts are review heuristics, not proof every mask is wrong. Source class labels do not prove all 11 BTC object classes have coverage."
+    },
+    {
+      "source": "sidewalk-violation-detection-2",
+      "scope": "all three downloaded COCO annotation splits; RGB sampled only",
+      "counts": {
+        "images": 720,
+        "annotations": 3906,
+        "polygon_annotations": 3906,
+        "rings": 3906,
+        "four_corner_rings": 2234,
+        "axis_aligned_rectangles": 2234
+      },
+      "source_class_instances": {
+        "sidewalk": 742,
+        "sign_board": 640,
+        "stalls_goods": 221,
+        "street_cart": 342,
+        "motorcycle": 1820,
+        "car": 141
+      },
+      "axis_aligned_rectangles_by_class": {
+        "stalls_goods": 196,
+        "street_cart": 311,
+        "motorcycle": 1153,
+        "sign_board": 448,
+        "car": 126
+      },
+      "filename_clip_groups_cross_split": 13,
+      "filename_clip_group_count": 19,
+      "human_qa": false
+    },
+    {
+      "source": "vehicle-segmentation-7picx",
+      "scope": "all downloaded COCO annotation splits; image inspection is sampled only",
+      "counts": {
+        "images": 1415,
+        "annotations": 28385,
+        "polygon_annotations": 28385,
+        "rings": 28385,
+        "four_corner_rings": 394,
+        "axis_aligned_rectangles": 12
+      },
+      "source_class_instances": {
+        "bus": 673,
+        "car": 7795,
+        "truck": 3547,
+        "motorcycle": 15822,
+        "tricycle": 548
+      },
+      "original_filename_families_cross_split": 1,
+      "human_qa": false,
+      "notes": "Quadrilateral/rectangle counts are review heuristics, not proof every mask is wrong. Source class labels do not prove all 11 BTC object classes have coverage."
+    }
+  ],
+  "roboflow_samples": [
+    {
+      "project": "khanhs-workspace-tcnac/pbl5-segmentation",
+      "version": 9,
+      "http_status": 200,
+      "archive_bytes": 64272255,
+      "network_bytes_read": 1365319,
+      "annotations": {
+        "test/_annotations.coco.json": {
+          "images": 64,
+          "annotations": 146,
+          "nonempty_segmentation": 146,
+          "categories": [
+            {
+              "id": 0,
+              "name": "PBL5-segmentation",
+              "supercategory": "none"
+            },
+            {
+              "id": 1,
+              "name": "side-walk",
+              "supercategory": "PBL5-segmentation"
+            }
+          ]
+        },
+        "train/_annotations.coco.json": {
+          "images": 1326,
+          "annotations": 2699,
+          "nonempty_segmentation": 2699,
+          "categories": [
+            {
+              "id": 0,
+              "name": "PBL5-segmentation",
+              "supercategory": "none"
+            },
+            {
+              "id": 1,
+              "name": "side-walk",
+              "supercategory": "PBL5-segmentation"
+            }
+          ]
+        },
+        "valid/_annotations.coco.json": {
+          "images": 127,
+          "annotations": 256,
+          "nonempty_segmentation": 256,
+          "categories": [
+            {
+              "id": 0,
+              "name": "PBL5-segmentation",
+              "supercategory": "none"
+            },
+            {
+              "id": 1,
+              "name": "side-walk",
+              "supercategory": "PBL5-segmentation"
+            }
+          ]
+        }
+      },
+      "sample_images": [
+        {
+          "file": "Screenshot-2026-04-07-134215_png.rf.e8b74c201beaf18f562a52d043d8e8a5.jpg",
+          "source_split": "test",
+          "sha256": "84a2e9d9d0ffed6412208b109e73b3748b6239e2ebedb92059b13f4576557852"
+        },
+        {
+          "file": "Screenshot-2026-04-09-180300_png.rf.276e8405f636e37181a698477cc8ff14.jpg",
+          "source_split": "test",
+          "sha256": "a5ff914dafc5548d65d7e6b2b67e97a794b385ebe6ce48838fdd09784b7248e9"
+        },
+        {
+          "file": "Screenshot-2026-04-07-135845_png.rf.0d572e533f5b5b49a915865d69fb611f.jpg",
+          "source_split": "test",
+          "sha256": "7343aeb7c58efa709f4d71ef5ad1081d4eda758600f82741fba956a5daf9eed1"
+        },
+        {
+          "file": "Screenshot-2026-04-09-182152_png.rf.1901c8f10ad4f883f1b819ae4c28f68a.jpg",
+          "source_split": "test",
+          "sha256": "35988683fd303c7c417158c0dd14eed173ef0449771ac06529a00c03b3f2409f"
+        },
+        {
+          "file": "IMG_7049_HEIC.rf.6ec204572aebc7f00f3a0176ed03e65f.jpg",
+          "source_split": "train",
+          "sha256": "4d7e1c075dd34fb12987e64af7e1a258be386dd9a0f8a64731c1ac085793a891"
+        },
+        {
+          "file": "Screenshot-2026-04-07-140245_png.rf.3f25e628ec7585e54caebcd65c465ebc.jpg",
+          "source_split": "train",
+          "sha256": "91ec22dc5d8515a514270128df71256aa67ccc77813df5cc96645aa15e73e480"
+        },
+        {
+          "file": "Screenshot-2026-04-09-181118_png.rf.054493da4aeef838bf2b2afbdb2cb6a6.jpg",
+          "source_split": "train",
+          "sha256": "f088513d9474667afedd008d482c11c6e2fa80e2bfe0d7b379b09029a2bcbaf5"
+        },
+        {
+          "file": "Screenshot-2026-04-09-181328_png.rf.17e8cd684edef17793cb1b9d0ac0dcde.jpg",
+          "source_split": "train",
+          "sha256": "2dd64e12a00b2ff23cd8e3fa947103091fa8f731f91ca4484c26274555b24dca"
+        },
+        {
+          "file": "Screenshot-2026-05-02-142129_png.rf.1fb31873bec55cef4eccd4f40cb5a825.jpg",
+          "source_split": "valid",
+          "sha256": "d5f583128584453d5198ca5544270dd9ee5c5d27f76fc0c58ccd9f3a6a1a30d1"
+        },
+        {
+          "file": "Screenshot-2026-04-07-134439_png.rf.a71eebb460b64732670ac591f8cf6bbd.jpg",
+          "source_split": "valid",
+          "sha256": "32efd30d07a5308471af92067b6c6ff11f79868ad16d870fb6c1f190c340166b"
+        },
+        {
+          "file": "Screenshot-2026-04-07-135110_png.rf.107df63c2deaaba5f140eaaa26208d48.jpg",
+          "source_split": "valid",
+          "sha256": "c5275cdaf98feadaae2354742432a1c4973ca8dcee3f1384db4357ea5b2b08e7"
+        },
+        {
+          "file": "Anh-chup-man-hinh-2026-04-09-174316_png.rf.ef33145e7d9ed0d718714553ab4cb1fc.jpg",
+          "source_split": "valid",
+          "sha256": "c5f4a4394b41df1eb2376cd181c14333d128de6e20e630b75ccc230e1ff75b92"
+        }
+      ]
+    },
+    {
+      "project": "has-workspace-0wbbm/sidewalk-violation-detection-2/7",
+      "http_status": 200,
+      "archive_bytes": 50455814,
+      "network_bytes_read": 1448739,
+      "annotations": {
+        "test/_annotations.coco.json": {
+          "images": 30,
+          "annotations": 163,
+          "nonempty_segmentation": 163,
+          "categories": [
+            {
+              "id": 0,
+              "name": "sidewalk-violation-detection-2",
+              "supercategory": "none"
+            },
+            {
+              "id": 1,
+              "name": "car",
+              "supercategory": "sidewalk-violation-detection-2"
+            },
+            {
+              "id": 2,
+              "name": "motorcycle",
+              "supercategory": "sidewalk-violation-detection-2"
+            },
+            {
+              "id": 3,
+              "name": "sidewalk",
+              "supercategory": "sidewalk-violation-detection-2"
+            },
+            {
+              "id": 4,
+              "name": "sign_board",
+              "supercategory": "sidewalk-violation-detection-2"
+            },
+            {
+              "id": 5,
+              "name": "stalls_goods",
+              "supercategory": "sidewalk-violation-detection-2"
+            },
+            {
+              "id": 6,
+              "name": "street_cart",
+              "supercategory": "sidewalk-violation-detection-2"
+            }
+          ]
+        },
+        "train/_annotations.coco.json": {
+          "images": 630,
+          "annotations": 3456,
+          "nonempty_segmentation": 3456,
+          "categories": [
+            {
+              "id": 0,
+              "name": "sidewalk-violation-detection-2",
+              "supercategory": "none"
+            },
+            {
+              "id": 1,
+              "name": "car",
+              "supercategory": "sidewalk-violation-detection-2"
+            },
+            {
+              "id": 2,
+              "name": "motorcycle",
+              "supercategory": "sidewalk-violation-detection-2"
+            },
+            {
+              "id": 3,
+              "name": "sidewalk",
+              "supercategory": "sidewalk-violation-detection-2"
+            },
+            {
+              "id": 4,
+              "name": "sign_board",
+              "supercategory": "sidewalk-violation-detection-2"
+            },
+            {
+              "id": 5,
+              "name": "stalls_goods",
+              "supercategory": "sidewalk-violation-detection-2"
+            },
+            {
+              "id": 6,
+              "name": "street_cart",
+              "supercategory": "sidewalk-violation-detection-2"
+            }
+          ]
+        },
+        "valid/_annotations.coco.json": {
+          "images": 60,
+          "annotations": 287,
+          "nonempty_segmentation": 287,
+          "categories": [
+            {
+              "id": 0,
+              "name": "sidewalk-violation-detection-2",
+              "supercategory": "none"
+            },
+            {
+              "id": 1,
+              "name": "car",
+              "supercategory": "sidewalk-violation-detection-2"
+            },
+            {
+              "id": 2,
+              "name": "motorcycle",
+              "supercategory": "sidewalk-violation-detection-2"
+            },
+            {
+              "id": 3,
+              "name": "sidewalk",
+              "supercategory": "sidewalk-violation-detection-2"
+            },
+            {
+              "id": 4,
+              "name": "sign_board",
+              "supercategory": "sidewalk-violation-detection-2"
+            },
+            {
+              "id": 5,
+              "name": "stalls_goods",
+              "supercategory": "sidewalk-violation-detection-2"
+            },
+            {
+              "id": 6,
+              "name": "street_cart",
+              "supercategory": "sidewalk-violation-detection-2"
+            }
+          ]
+        }
+      },
+      "sample_images": [
+        {
+          "file": "20260420_0658_To_Vinh_Dien_r02__T00004971__F000149_jpg.rf.e1cb0c9bd501a4f46d993323b04e9617.jpg",
+          "source_split": "test",
+          "sha256": "0ac92de431007eb29763ed0f4371f3818fe2e68f6e073eed71d7c2012d3b1cc9"
+        },
+        {
+          "file": "20260420_0705_Vanh_Dai_3_r01__T00035969__F001078_jpg.rf.8d6ed37c5e272aa6bc598fdffbef0481.jpg",
+          "source_split": "test",
+          "sha256": "98666093448f678ef211e66f7b5403cbce86ed45a651b272490b3119224ce415"
+        },
+        {
+          "file": "20260420_0708_Duong_So_8_r01__T00045979__F001378_jpg.rf.3520a96e68c858bfe277b283158859e7.jpg",
+          "source_split": "test",
+          "sha256": "3554d93c8cdcea6c64e5665f1c997ccb5869c26c6de5d318a04138b7f56eafae"
+        },
+        {
+          "file": "20260420_0658_To_Vinh_Dien_r02__T00057991__F001738_jpg.rf.665dac5f2357860469b7eb9c32ed8098.jpg",
+          "source_split": "test",
+          "sha256": "5395db9a5ea5be4de8e1297be928abf88f0570ee10fb915af9452cedc0eb0f30"
+        },
+        {
+          "file": "20260420_0649_Luong_Dinh_Cua__T00042976__F001288_jpg.rf.508aa75812f0a98bbdde628f869dec46.jpg",
+          "source_split": "train",
+          "sha256": "7967e9d1001b12b1325cb6f814897bb6f06450c78ac9ad399b6827b04c837bf3"
+        },
+        {
+          "file": "20260420_0649_Luong_Dinh_Cua__T00078978__F002367_jpg.rf.04f40e3190e5fd19d8e2fbdee9709ea0.jpg",
+          "source_split": "train",
+          "sha256": "19ced81ff9393e5d53cccc95c82fb84ea3aa7eefd0fd78f158ad933c040c9e69"
+        },
+        {
+          "file": "20260420_0705_Vanh_Dai_3_r01__T00040974__F001228_jpg.rf.0787acd988b25637491ddef3393e163f.jpg",
+          "source_split": "train",
+          "sha256": "ee77fef4565f6c71c1e417c4ee45b0e59ebd0f3e3fd76b6c177f0dc9d36ec631"
+        },
+        {
+          "file": "20260519_1734_Nguyen_Binh_Khiem_r01__T00019986__F001198_jpg.rf.bf2882c37e559f02e7f1ac70d1465eb1.jpg",
+          "source_split": "train",
+          "sha256": "4a11bce56464a849c1994be103a2e7920096ff00bede518b67491736d921c25c"
+        },
+        {
+          "file": "20260420_0658_To_Vinh_Dien_r02__T00007974__F000239_jpg.rf.2efba7098bda57e92c9f5ba2142f7e47.jpg",
+          "source_split": "valid",
+          "sha256": "8966d091d6bd73748dede089c86ce484966b650f835b241966e74f7e6c747839"
+        },
+        {
+          "file": "20260420_0705_Vanh_Dai_3_r01__T00031998__F000959_jpg.rf.15c665bf5503fc089d7027df231ce6d9.jpg",
+          "source_split": "valid",
+          "sha256": "e5fab73bcca71538f4e7ec08f360a74ee32b3fccca9b1d641e3c0762f7f6bd89"
+        },
+        {
+          "file": "20260519_0551_Tran_Hung_Dao_r01__T00035985__F002157_jpg.rf.86179ae9c16135d68a28629274413202.jpg",
+          "source_split": "valid",
+          "sha256": "fc16f66e5046a3474e61e7a6a6b88d4d9650baa6d6447168fa64d6129095566a"
+        },
+        {
+          "file": "20260420_0649_Luong_Dinh_Cua__T00076976__F002307_jpg.rf.8ebc94c0e0da48af5a463b56f66b2b7a.jpg",
+          "source_split": "valid",
+          "sha256": "60f025995c7e31b731480cf58966420c6c79300130647a4dff0669c6ca1312a7"
+        }
+      ]
+    },
+    {
+      "project": "zibot/vehicle-segmentation-7picx",
+      "version": 9,
+      "http_status": 200,
+      "archive_bytes": 224553169,
+      "network_bytes_read": 4209564,
+      "annotations": {
+        "train/_annotations.coco.json": {
+          "images": 1256,
+          "annotations": 25249,
+          "nonempty_segmentation": 25249,
+          "categories": [
+            {
+              "id": 0,
+              "name": "vehicle-annotation",
+              "supercategory": "none"
+            },
+            {
+              "id": 1,
+              "name": "bus",
+              "supercategory": "vehicle-annotation"
+            },
+            {
+              "id": 2,
+              "name": "car",
+              "supercategory": "vehicle-annotation"
+            },
+            {
+              "id": 3,
+              "name": "motorcycle",
+              "supercategory": "vehicle-annotation"
+            },
+            {
+              "id": 4,
+              "name": "tricycle",
+              "supercategory": "vehicle-annotation"
+            },
+            {
+              "id": 5,
+              "name": "truck",
+              "supercategory": "vehicle-annotation"
+            }
+          ]
+        },
+        "valid/_annotations.coco.json": {
+          "images": 159,
+          "annotations": 3136,
+          "nonempty_segmentation": 3136,
+          "categories": [
+            {
+              "id": 0,
+              "name": "vehicle-annotation",
+              "supercategory": "none"
+            },
+            {
+              "id": 1,
+              "name": "bus",
+              "supercategory": "vehicle-annotation"
+            },
+            {
+              "id": 2,
+              "name": "car",
+              "supercategory": "vehicle-annotation"
+            },
+            {
+              "id": 3,
+              "name": "motorcycle",
+              "supercategory": "vehicle-annotation"
+            },
+            {
+              "id": 4,
+              "name": "tricycle",
+              "supercategory": "vehicle-annotation"
+            },
+            {
+              "id": 5,
+              "name": "truck",
+              "supercategory": "vehicle-annotation"
+            }
+          ]
+        }
+      },
+      "sample_images": [
+        {
+          "file": "img354_jpg.rf.69affddd9d36102c4da2cb9286a804bf.jpg",
+          "source_split": "train",
+          "sha256": "ea8c0e646bc3551f70d0996d4e87f0ffc1807fcafb6afd9a7536530a8fc69247"
+        },
+        {
+          "file": "img320_jpg.rf.88d93cc10f71224d8d2eb65fcf2c3d0f.jpg",
+          "source_split": "train",
+          "sha256": "3f628b89c90b448b2c31bf235469865ba1249f50e8bff4486cdddd59764cf8d6"
+        },
+        {
+          "file": "000297_png_jpg.rf.c1556c4047a53e184c06f31a6c526655.jpg",
+          "source_split": "train",
+          "sha256": "0616cf9f81973d59d4a906ab7ec0e46665628ff3f7e744d3a940f3a4d3d43c0c"
+        },
+        {
+          "file": "img334_jpg.rf.6a6bed92ed02d4027d141e544a8f389c.jpg",
+          "source_split": "train",
+          "sha256": "e40168948dafdb1c5200f640258673f4929f68915ab205dff4cb824a8e93387d"
+        },
+        {
+          "file": "000559_png_jpg.rf.80be82ca90758d8b46392f7111a48a6e.jpg",
+          "source_split": "valid",
+          "sha256": "fb9455589849c984a5e06457a011a3e4cde55c83bd2b40b647fe21277c8a84cd"
+        },
+        {
+          "file": "384d344516bbe06da0c2a4cab6e3ed13_jpg.rf.f042101cdcd228b4743a8bdadfb226c9.jpg",
+          "source_split": "valid",
+          "sha256": "b049f597466b0fb2d48c343485926ec3b4d47267de6d304ebd938310cfaacacd"
+        },
+        {
+          "file": "img82_jpg.rf.e57c38e88611838fc5462d944b1e29b0.jpg",
+          "source_split": "valid",
+          "sha256": "e8af31f39525b5da2f7c68f05bc2bab8cb31eaa2269e61ca838cd1491f606847"
+        },
+        {
+          "file": "img22_jpg.rf.bec2564c134dee519fefbe1b9f4c31bc.jpg",
+          "source_split": "valid",
+          "sha256": "ab401796c60b5197cecf8330717ade75cc3b8ecc783d188015ac27cf18ab52bb"
+        }
+      ]
+    }
+  ],
+  "claude_received": {
+    "records": 148,
+    "proposals": 302,
+    "by_class": {
+      "Sign": 170,
+      "Traffic light": 18,
+      "Motorcycle": 97,
+      "Motorcyclist": 10,
+      "Other vehicle": 7
+    },
+    "pipeline_audit_images": 148,
+    "pipeline_audit_flagged": 132,
+    "status": "pseudo_unreviewed",
+    "source_modified": false
+  },
+  "training_started": false,
+  "gpu_used": false,
+  "serialized_geometry_audit": {
+    "images": 9,
+    "images_flagged": 9,
+    "instances": {
+      "Car": 12,
+      "Bus": 0,
+      "Truck": 1,
+      "Other vehicle": 4,
+      "Motorcycle": 33,
+      "Motorcyclist": 48,
+      "Bicycle": 3,
+      "Cyclist": 1,
+      "Pedestrian": 66,
+      "Sign": 27,
+      "Traffic light": 6
+    },
+    "invalid_polygon_flags": 0,
+    "human_qa": false
+  }
+}

@@ -1,8 +1,24 @@
 # VietSight — Experiment log và mẫu báo cáo cuộc thi
 
+## Lô DATA V2 Local Vision 001 — chưa train
+
+Người dùng cập nhật **e50 public 12,37**, sau e25 12,90; đã dùng **2/20** lượt nộp. Chưa có artifact/AP từng class e50 mới để điền. Không thay số liệu e25 bằng e50. DATA đã có snapshot **377 ảnh ứng viên, 309 train/68 val dự kiến, 4.279 polygon draft**, trạng thái **BLOCKED** do coverage/mapping/mask và quyền nguồn còn cần giải quyết; human QA chưa xác nhận, số nhãn được sửa/duyệt tay vẫn **0**. Có 317 AI mask Sign/TL bổ sung và 157 gợi ý rider riêng, không ghi chúng là nhãn sửa đúng. Chi tiết/hash/cách chuyển: [bàn giao DATA](../V2_DATA_HANDOFF.md).
+
+## Cập nhật V2 chỉ Việt Nam — 27/11/2026
+
+Yêu cầu mới thay cách ghép V1+additions: train V2 chỉ nhận ảnh có bằng chứng chụp tại Việt Nam. Validation Việt Nam khóa riêng; V1 val giữ nguyên để đối chiếu. Chưa có train V2 hoặc AP V2. 12 ảnh TP.HCM (170 bbox, **0 mask**) là ứng viên validation dự phòng, converter đưa cả 12 vào review; không tính là nhãn đã sửa hoặc tập validation hoàn chỉnh. [Trạng thái hiện tại](V2_PROGRESS.md), [evidence nguồn](evidence/VIETNAM_ONLY_INTAKE.json), [kiểm thử](evidence/VIETNAM_ONLY_CHECKS.json). Các kết quả snapshot cũ bên dưới là lịch sử, không cấp phép nhập ảnh quốc tế vào V2.
+
 Team seed/ID: **55**. Deadline: **10:30 ngày 28/11/2026, GMT+7**. Model/validator/export do Claude/Lead phụ trách, không thay trong nhánh QA.
 
 Nguyên tắc: chỉ điền metric từ artifact thật; `chưa đo` không phải 0. Phân biệt kết quả GPU training, chấm ONNX theo notebook, public leaderboard và kiểm thử pipeline synthetic. Mọi so sánh cần cùng val revision, không chỉ cùng seed/tên file.
+
+## Cập nhật public V1 và audit trực tiếp
+
+Người dùng đã cung cấp public chính thức V1: **12,90** tổng điểm; Car 29,67; Bus 12,60; Truck 20,41; Other vehicle 2,57; Motorcycle 1,95; Motorcyclist 15,02; Bicycle 6,53; Cyclist 17,05; Pedestrian 12,54; Sign 6,05; Traffic light 17,56. Giữ thang **0..100** như public, không điền vào bảng local-val AP 0..1 bên dưới. Sau đó fetch được `runs/RESULTS.md` và `runs/v1_colab_e25/run_report.json` mới: public gắn với **v1_e25**, val mask mAP50-95 **0,2297068910** trên 262 ảnh. Sign local **0,2912839787**, khác public 6,05. ONNX SHA lưu ở public JSON; submission ID và SHA file `.pt` chưa được cung cấp.
+
+Stats V1 đã commit xác nhận **1.469 train / 262 val**, dataset fingerprint `5612ab422858c4289690d68d0ac69092bd4f05400133f3af459acdcd271fb529`. Đã tải độc lập toàn bộ 1.469 nhãn train và 80 ảnh mẫu từ output Kaggle, đối soát counts class khớp stats; không tải full dataset/val hoặc đo lại fingerprint toàn dataset. Các ô `chưa nhận` ở mẫu ban đầu bên dưới là trạng thái lịch sử; snapshot cập nhật ở [V2_PROGRESS.md](V2_PROGRESS.md).
+
+Ưu tiên V2: **Motorcycle → Other vehicle → Sign → Bicycle**. Sign có 3.502 instance trên 1.113 ảnh train nhưng public 6,05; kiểm tra 233 Sign trong 80 ảnh mẫu thấy 43 instance cạnh ngắn dưới 8 px ở 640. Nhóm 42 Sign/12 ảnh so reference tái dựng có V1 IoU trung vị 0,923, V2 đạt 1,0; **đây là độ trung thực mask, không phải mAP V2**. Xem [SIGN_FORENSICS.md](SIGN_FORENSICS.md). Chưa có kết quả training/public V2 hoặc nhãn Việt Nam mới đã duyệt để ghi số lượng bổ sung.
 
 ## Bản kê provenance mỗi dataset version
 
