@@ -109,3 +109,11 @@ Motorcycle 1.95, Other vehicle 2.57, Sign 6.05, Bicycle 6.53 → ưu tiên dữ 
 4. Sign public 6 so với val 29 (xem SIGN_FORENSICS của Codex) cho thấy lệch quy ước nhãn hoặc lệch miền. Điều này đúng cho cả hai run, nên không giải thích phần giảm.
 
 **Quyết định:** dừng tăng epoch trên Mapillary. V2 khởi tạo từ **e25 best.pt** (public cao hơn) và fine-tune chỉ trên ảnh VN với optimizer và lịch LR mới (AdamW lr0 3e-4, cos, lrf 0.1, warmup 1, close_mosaic 3). Đánh giá trên cả val VN cố định lẫn val Mapillary (`eval_compare.json`).
+
+## Final — 2 checkpoint chấm private (người dùng chọn 28/11)
+| Checkpoint | Zip sha256 | Val Mapillary | Val VN | Public |
+|---|---|---|---|---|
+| v3_final002_e50 | `f616e1ae…` | 23.09 | 13.20 | 52.20 |
+| v4_balanced_e15 (fine-tune từ V3 best.pt, V4 weighted) | `9d1a2114…` | 22.86 | 12.93 | người dùng báo nằm trong 2 lượt cao nhất; chưa ghi số |
+
+Cả hai là run EXPERIMENT: handoff ghi `rights_confirmed=false`, `submission_eligible=false`.
