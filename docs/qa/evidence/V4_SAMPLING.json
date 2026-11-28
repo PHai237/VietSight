@@ -1,0 +1,79 @@
+{
+  "sources": {
+    "V1": {
+      "unique_images": 1469,
+      "epoch_draws": 2025,
+      "repeated_images": 556
+    },
+    "V2": {
+      "unique_images": 1070,
+      "epoch_draws": 2025,
+      "repeated_images": 955
+    }
+  },
+  "class_weights": {
+    "V1": {
+      "Car": 1,
+      "Sign": 1,
+      "Pedestrian": 1,
+      "Bus": 1,
+      "Other vehicle": 2,
+      "Truck": 1,
+      "Bicycle": 2,
+      "Traffic light": 1,
+      "Motorcyclist": 1,
+      "Motorcycle": 2,
+      "Cyclist": 1
+    },
+    "V2": {
+      "Motorcyclist": 1,
+      "Truck": 1,
+      "Motorcycle": 1.2764444150951448,
+      "Car": 1,
+      "Pedestrian": 1,
+      "Sign": 1,
+      "Other vehicle": 2,
+      "Traffic light": 1,
+      "Bus": 1,
+      "Bicycle": 2,
+      "Cyclist": 1
+    }
+  },
+  "unique_instances": {
+    "Motorcyclist": 2274,
+    "Truck": 859,
+    "Motorcycle": 734,
+    "Car": 8793,
+    "Pedestrian": 3402,
+    "Sign": 4152,
+    "Other vehicle": 255,
+    "Traffic light": 2635,
+    "Bus": 522,
+    "Bicycle": 436,
+    "Cyclist": 460
+  },
+  "epoch_instances": {
+    "Car": 12845,
+    "Sign": 6170,
+    "Pedestrian": 5403,
+    "Bus": 825,
+    "Other vehicle": 510,
+    "Truck": 1394,
+    "Bicycle": 872,
+    "Traffic light": 3695,
+    "Motorcyclist": 4172,
+    "Motorcycle": 1468,
+    "Cyclist": 670
+  },
+  "verification": {
+    "all_image_and_label_hashes_match_parent": true,
+    "native_ultralytics_dataset_entries": 4050,
+    "native_ultralytics_unique_train_images": 2539,
+    "train_val_exact_overlap": 0,
+    "validation_subsets_unchanged": true,
+    "gpu_used": false,
+    "training_run": false
+  },
+  "sampling_sha256": "4c456e89665dcff46f41f3dbde6503393c0de25aee34c1f340fd42ee6b673c4f",
+  "zip_sha256": "0237130db4945e644cd32b3bc6112053f7bbf8871c4e15632fed299e246e7329"
+}
