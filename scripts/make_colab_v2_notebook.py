@@ -38,8 +38,10 @@ from pathlib import Path
 #         | "kaggle-kernel:<owner>/<kernel>:<file regex>"
 HANDOFF = __HANDOFF__
 HANDOFF.update(globals().get("HANDOFF_OVERRIDE", {}))
-E25 = {"best": "__DRIVE__/vietsight_v1_e25/runs/vietsight_v1_e25/weights/best.pt", "best_sha256": "__E25_BEST_SHA__",
-       "zip": "__DRIVE__/vietsight_v1_e25/submission.zip", "zip_sha256": "__E25_ZIP_SHA__"}
+# baseline/init checkpoint (V1 e25, or V3 final002 e50 best.pt for --init v3best); its Drive copy is only read
+BASE_TAG = "__BASE_TAG__"
+E25 = {"best": "__BASE_BEST__", "best_sha256": "__E25_BEST_SHA__",
+       "zip": "__BASE_ZIP__", "zip_sha256": "__E25_ZIP_SHA__"}
 E25.update(globals().get("E25_OVERRIDE", {}))
 MAPILLARY_VAL = {"source": "kaggle-kernel:__PREP_KERNEL__:versions/vietsight_v1/(images|labels)/val/.*",
                  "dir": "/content/vietsight_data/mapillary_val", "n": __V1_NVAL__, "val_sha256": "__V1_VAL_SHA__"}
@@ -53,8 +55,8 @@ if EXPORT_ONLY_CKPT:
     REQUIRE_GPU = False  # read by the official environment cell below
     print("*** CHẾ ĐỘ CHỈ EXPORT:", EXPORT_ONLY_CKPT, "— không train ***")
 
-if Path(DRIVE_OUTPUT_DIR).name in ("vietsight_v1_e25", "vietsight_v1_e50"):
-    raise NotebookError("DRIVE_OUTPUT_DIR trỏ vào run V1 đã nộp: đặt thư mục mới cho run V2.", "PARAMS")
+if Path(DRIVE_OUTPUT_DIR).name in ("vietsight_v1_e25", "vietsight_v1_e50", "vietsight_mixed_final002_v3_pretrained_e50_EXPERIMENT"):
+    raise NotebookError("DRIVE_OUTPUT_DIR trỏ vào run đã nộp: đặt thư mục mới cho run này.", "PARAMS")
 if HANDOFF.get("status") != "READY" or not HANDOFF.get("fingerprint_sha256"):
     raise NotebookError(f"Dataset V2 chưa bàn giao ở trạng thái READY (status={HANDOFF.get('status')!r}). "
                         "Chờ docs/V2_DATA_HANDOFF.md của Codex rồi điền HANDOFF; không huấn luyện.", "DATA")
@@ -201,7 +203,9 @@ def names_sha(d):
 
 # ---- 1. V2 dataset -> DATASET_PATH (the fixed folder named in the parameter cell) ----
 target, marker = Path(DATASET_PATH), Path(DATASET_PATH) / ".vietsight_ok"
-if marker.is_file() and marker.read_text().strip() == HANDOFF["fingerprint_sha256"]:
+# V4: same image/label payload (fingerprint) as V3, told apart only by the sampling list -> both in the cache key
+DATA_KEY = HANDOFF["fingerprint_sha256"] + (":" + HANDOFF["sampling_sha256"] if HANDOFF.get("sampling_sha256") else "")
+if marker.is_file() and marker.read_text().strip() == DATA_KEY and (not HANDOFF.get("training_yaml") or (target / HANDOFF["training_yaml"]).is_file()):
     print("Dataset V2 đã có sẵn ở", target)
 else:
     print(f"Tải dataset V2 {HANDOFF.get('version')} từ {HANDOFF['source']}")
@@ -257,7 +261,28 @@ if VAL_SETS:
         raise NotebookError(f"Ảnh val nằm cả trong train: {sorted(leak)[:3]}", "DATA")
     V1_VAL_SET = next((k for k, (s, _) in VAL_SETS.items() if _names_sha(s) == MAPILLARY_VAL["val_sha256"]), None)
     print("val chấm riêng:", {k: len(s) for k, (s, _) in VAL_SETS.items()}, "| val_frozen V1 =", V1_VAL_SET or "không có")
-marker.write_text(fp)
+# ---- weighted sampling (V4 handoff: training_yaml + sampling_sha256): check the list BEFORE any training ----
+WEIGHTED = None
+if HANDOFF.get("training_yaml"):
+    import yaml
+    wy = yaml.safe_load((target / HANDOFF["training_yaml"]).read_text(encoding="utf-8"))
+    wtxt = target / wy["train"]
+    if _sha(wtxt) != HANDOFF["sampling_sha256"]:
+        raise NotebookError(f"{wtxt.name} sha256 {_sha(wtxt)[:16]} khác sampling_sha256 {HANDOFF['sampling_sha256'][:16]} của handoff", "DATA")
+    draws = [ln.strip() for ln in wtxt.read_text(encoding="utf-8").splitlines() if ln.strip()]
+    names = [Path(d).name for d in draws]
+    if any(Path(d).parent.as_posix().lstrip("./") != "images/train" for d in draws):
+        raise NotebookError(f"{wtxt.name}: mọi dòng phải trỏ vào images/train", "DATA")
+    missing = set(names) - {q.name for q in (target / "images" / "train").iterdir()}
+    per_src = {"V1": sum(n.startswith("mapillary_vistas__") for n in names)}
+    per_src["V2"] = len(names) - per_src["V1"]
+    exp_src = {k: v["epoch_draws"] for k, v in HANDOFF["sampling"]["source_draws"].items()}
+    print(f"Sampling weighted: {len(draws)} lượt/epoch, {len(set(names))} ảnh unique, theo nguồn {per_src} | sha {HANDOFF['sampling_sha256'][:16]}")
+    if missing or len(draws) != HANDOFF["train_epoch_draws"] or len(set(names)) != counts["train"] or per_src != exp_src:
+        raise NotebookError(f"Sampling sai: {len(draws)} lượt (cần {HANDOFF['train_epoch_draws']}), {len(set(names))} unique "
+                            f"(cần {counts['train']}), nguồn {per_src} (cần {exp_src}), thiếu ảnh {sorted(missing)[:3]}", "DATA")
+    WEIGHTED = {"yaml": HANDOFF["training_yaml"], "names": names, "per_source": per_src, "sha256": HANDOFF["sampling_sha256"]}
+marker.write_text(DATA_KEY)
 print("Dataset OK: fingerprint", fp[:16], "| val khóa OK")
 
 # ---- 2. Mapillary V1 val (separate comparison only, never trained on) ----
@@ -281,15 +306,15 @@ except Exception as e:  # comparison only: never blocks training
     print("CẢNH BÁO: bỏ qua đánh giá Mapillary val:", e)
 
 INIT_MODE = "__INIT_MODE__"
-if INIT_MODE == "e25":
-    # ---- 3. init weights = V1 e25 best.pt (Drive copy is only read) ----
+if INIT_MODE in ("e25", "v3best"):
+    # ---- 3. init weights = BASE_TAG best.pt (Drive copy is only read) ----
     INIT_SRC = Path(E25["best"])
-    INIT_WEIGHTS = Path("/content/init/e25_best.pt") if IN_COLAB else Path(WORK_DIR) / "init" / "e25_best.pt"
+    INIT_WEIGHTS = Path(f"/content/init/{BASE_TAG}_best.pt") if IN_COLAB else Path(WORK_DIR) / "init" / f"{BASE_TAG}_best.pt"
     INIT_WEIGHTS.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(INIT_SRC, INIT_WEIGHTS)
     if _sha(INIT_WEIGHTS) != E25["best_sha256"]:
-        raise NotebookError(f"{INIT_SRC} không phải best.pt e25 đã nộp (sha256 khác run_report)", "MODEL")
-    print("Khởi tạo từ e25 best.pt OK:", E25["best_sha256"][:16])
+        raise NotebookError(f"{INIT_SRC} không phải best.pt {BASE_TAG} đã nộp (sha256 khác run_report)", "MODEL")
+    print(f"Khởi tạo từ {BASE_TAG} best.pt OK:", E25["best_sha256"][:16])
 else:
     # ---- 3. init weights = official COCO-pretrained yolo26n-seg.pt (Ultralytics release asset), sha256 pinned ----
     # Defined here, CALLED in the training cell: ultralytics is only importable after the official install cell
@@ -322,6 +347,28 @@ if REQUIRE_CUDA and not EXPORT_ONLY_CKPT:
 '''
 
 TRAIN = r'''from ultralytics import YOLO
+
+# [VietSight V4] weighted sampling: the official prepare step above wrote its own data.yaml (images/train, no repeats).
+# Point training at the checked weighted list instead, mapped onto the prepared folder; the official data.yaml is untouched.
+if WEIGHTED is not None:
+    _out = Path(DATASET["out_dir"]).resolve()
+    _have = {q.name for q in (_out / "images" / "train").iterdir()}
+    if set(WEIGHTED["names"]) - _have:
+        raise NotebookError(f"Bước chuẩn bị đổi tên ảnh: thiếu {sorted(set(WEIGHTED['names']) - _have)[:3]} trong {_out}/images/train", "DATA")
+    (_out / "train_weighted.txt").write_text("".join(f"./images/train/{n}\n" for n in WEIGHTED["names"]), encoding="utf-8")
+    _wyaml = _out / "data_weighted.yaml"
+    _wyaml.write_text(f"path: {_out}\ntrain: train_weighted.txt\nval: images/val\nnames:\n"
+                      + "".join(f"  {i}: {c}\n" for i, c in enumerate(CLASSES)), encoding="utf-8")
+    from ultralytics.data import YOLODataset
+    from ultralytics.data.utils import check_det_dataset
+    _ds = YOLODataset(img_path=check_det_dataset(str(_wyaml))["train"], imgsz=TRAIN_IMGSZ, augment=False,
+                      data=check_det_dataset(str(_wyaml)), task="segment")
+    _lens = (len(_ds), len(set(_ds.im_files)))
+    print(f"Loader Ultralytics (weighted): {_lens[0]} lượt/epoch, {_lens[1]} ảnh unique")
+    if _lens != (HANDOFF["train_epoch_draws"], DATASET["counts"]["train"]["images"]):
+        raise NotebookError(f"Loader thấy {_lens}, cần ({HANDOFF['train_epoch_draws']}, {DATASET['counts']['train']['images']})", "DATA")
+    del _ds
+    DATASET["data_yaml"] = str(_wyaml)
 
 # [VietSight V2] Step 3 (free to edit per the official notebook): FINE-TUNE V1 e25 best.pt on the Vietnam-only V2 data.
 # Fresh train() = new optimizer + new LR schedule (never resume=True across datasets). resume=True is used only to continue
@@ -369,7 +416,7 @@ if EXPORT_CK is not None:
     Path(DRIVE_OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
 if STAMP.is_file() and EXPORT_CK is None:
     stamp = json.loads(STAMP.read_text())
-    if (stamp["dataset_sha256"], stamp["init_sha256"], stamp["epochs"]) != (DATASET["sha256"], INIT_SHA, EPOCHS):
+    if (stamp["dataset_sha256"], stamp["init_sha256"], stamp["epochs"], stamp.get("sampling_sha256")) != (DATASET["sha256"], INIT_SHA, EPOCHS, HANDOFF.get("sampling_sha256")):
         raise NotebookError(f"{RUN_DIR} đã bắt đầu với dataset/khởi tạo/EPOCHS khác. Đặt DRIVE_OUTPUT_DIR mới (run mới, "
                             "fine-tune mới); không resume sang dataset hay lịch học khác.", "TRAIN")
 done_epochs = len((RUN_DIR / "results.csv").read_text().splitlines()) - 1 if (RUN_DIR / "results.csv").is_file() else 0
@@ -389,7 +436,7 @@ elif LAST.is_file():
     model = YOLO(str(RUN_DIR / "weights" / "best.pt"))
 else:
     RUN_DIR.mkdir(parents=True, exist_ok=True)
-    STAMP.write_text(json.dumps({"dataset_sha256": DATASET["sha256"], "handoff": HANDOFF, "init_weights": str(INIT_SRC),
+    STAMP.write_text(json.dumps({"dataset_sha256": DATASET["sha256"], "sampling_sha256": HANDOFF.get("sampling_sha256"), "handoff": HANDOFF, "init_weights": str(INIT_SRC),
                                  "init_sha256": INIT_SHA, "epochs": EPOCHS, "ft_args": FT_ARGS}, indent=1))
     print(f"FINE-TUNE mới từ {INIT_SRC} -> {RUN_DIR} ({EPOCHS} epoch, {FT_ARGS})")
     model = YOLO(str(INIT_WEIGHTS))
@@ -421,8 +468,8 @@ e25_zip = WORK / "xeval" / "e25_submission.zip"
 e25_zip.parent.mkdir(parents=True, exist_ok=True)
 if Path(E25["zip"]).is_file() and _sha(E25["zip"]) == E25["zip_sha256"]:
     shutil.copyfile(E25["zip"], e25_zip)
-elif INIT_MODE == "e25":  # same official export of the same e25 best.pt, in a separate folder (V2 submission untouched)
-    print("Không thấy submission.zip e25 trên Drive: xuất lại từ best.pt e25")
+elif INIT_MODE in ("e25", "v3best"):  # same official export of the same e25 best.pt, in a separate folder (V2 submission untouched)
+    print(f"Không thấy submission.zip {BASE_TAG} trên Drive: xuất lại từ best.pt {BASE_TAG}")
     shutil.copyfile(make_submission(INIT_WEIGHTS, WORK / "xeval" / "e25_export", YOLO, SELFCHECK)["zip"], e25_zip)
 else:  # pretrained init: no e25 weights here -> baseline only from the sha-checked e25 submission.zip
     print(f"Bỏ qua mốc e25: không có {E25['zip']} đúng sha256 (upload runs/v1_colab_e25/submission.zip của repo vào đó)")
@@ -435,7 +482,7 @@ else:
         sets["mapillary_val"] = (sample_stems(Path(MAPILLARY_VAL["dir"]) / "images" / "val", SELFCHECK_MAX_IMAGES, SEED),
                                  Path(MAPILLARY_VAL["dir"]) / "labels" / "val")
 EVAL_COMPARE = {"run": RUN_NAME, "dataset_sha256": DATASET["sha256"], "handoff": HANDOFF, "results": {}}
-for model_tag, zp in [*([("e25", e25_zip)] if e25_zip else []), (RUN_NAME, SUBMISSION["zip"])]:
+for model_tag, zp in [*([(BASE_TAG, e25_zip)] if e25_zip else []), (RUN_NAME, SUBMISSION["zip"])]:
     for set_tag, (imgs, lab_dir) in sets.items():
         EVAL_COMPARE["results"].setdefault(model_tag, {})[set_tag] = _xscore(zp, imgs, lab_dir, f"{model_tag}_{set_tag}")
 print(f"{'model':<28}" + "".join(f"{s:>16}" for s in sets))
@@ -497,7 +544,7 @@ def main():
     ap.add_argument("--freeze", type=int, default=None, help="freeze first N layers (small READY set: 10 = backbone w/o C2PSA)")
     ap.add_argument("--handoff", type=Path, help="JSON: status, version, source, images{train,val}, fingerprint_sha256, vn_val_sha256")
     ap.add_argument("--prep-kernel", default="mangashounen/vietsight-prep-vietsight-v1")
-    ap.add_argument("--init", choices=["e25", "pretrained"], default="e25",
+    ap.add_argument("--init", choices=["e25", "pretrained", "v3best"], default="e25",
                     help="pretrained = official COCO yolo26n-seg.pt (sha pinned), official default train args like V1 e25")
     ap.add_argument("--eval-ckpts", nargs="*", default=[], help="periodic checkpoints to export+score, e.g. epoch20.pt epoch30.pt")
     ap.add_argument("--out-name", help="notebook file name in notebooks/colab/ (default by --init)")
@@ -507,11 +554,15 @@ def main():
         handoff.update(json.loads(a.handoff.read_text(encoding="utf-8")))
     # rights_confirmed != true -> EXPERIMENT run: own Drive folder, NOT_FOR_SUBMISSION.txt, never a competition submission
     handoff["submission_eligible"] = handoff.get("rights_confirmed") is True
-    kind = "ft" if a.init == "e25" else "pretrained"
+    kind = {"e25": "ft", "pretrained": "pretrained", "v3best": "ftv3best"}[a.init]
     run_name = f"{handoff['version'] or 'vietsight_v2'}_{kind}_e{a.epochs}" + ("" if handoff["submission_eligible"] else "_EXPERIMENT")
     if a.freeze:
         run_name += f"_frz{a.freeze}_lr{a.lr0:g}"
-    e25 = json.loads((ROOT / "runs" / "v1_colab_e25" / "run_report.json").read_text(encoding="utf-8"))
+    base_dir = "v3_final002_e50" if a.init == "v3best" else "v1_colab_e25"
+    e25 = json.loads((ROOT / "runs" / base_dir / "run_report.json").read_text(encoding="utf-8"))
+    base_tag = "v3e50" if a.init == "v3best" else "e25"
+    base_drive = (f"{DRIVE}/vietsight_mixed_final002_v3_pretrained_e50_EXPERIMENT" if a.init == "v3best" else f"{DRIVE}/vietsight_v1_e25")
+    base_best = e25["train"]["best_weights"] if a.init == "v3best" else f"{base_drive}/runs/vietsight_v1_e25/weights/best.pt"
     frozen = [x.strip() for x in (ROOT / "configs" / "val_frozen.txt").read_text(encoding="utf-8").splitlines() if x.strip() and not x.startswith("#")]
     v1_val_sha = hashlib.sha256("\n".join(sorted(k.split("/", 1)[1] for k in frozen)).encode()).hexdigest()
 
@@ -530,21 +581,25 @@ def main():
     if a.init == "e25":
         ft_args = ('dict(optimizer="AdamW", lr0=__LR0__, lrf=0.1, cos_lr=True, warmup_epochs=1, warmup_bias_lr=__LR0__,\n'
                    '               freeze=__FREEZE__, close_mosaic=__CLOSE_MOSAIC__)')
+    elif a.init == "v3best":  # V3 final002 e50 best.pt: AdamW low LR, warmup 1, mosaic OFF, no freeze
+        ft_args = ('dict(optimizer="AdamW", lr0=__LR0__, lrf=0.1, cos_lr=True, warmup_epochs=1, warmup_bias_lr=__LR0__,\n'
+                   '               freeze=__FREEZE__, mosaic=0.0, close_mosaic=0)')
     else:  # from COCO pretrained: the official defaults, i.e. the same recipe as V1 e25 (optimizer=auto, warmup 3, ...)
         ft_args = "dict()  # pretrained COCO init: official default args (same recipe as V1 e25)"
     cells[it]["source"] = (TRAIN.replace("__FT_ARGS__", ft_args).replace("__SAVE_PERIOD__", str(a.save_period)).replace("__LR0__", repr(a.lr0))
                            .replace("__CLOSE_MOSAIC__", str(a.close_mosaic)).replace("__FREEZE__", repr(a.freeze))).splitlines(True)
     pretrained_sha = hashlib.sha256((ROOT / "yolo26n-seg.pt").read_bytes()).hexdigest()
     setup = (SETUP.replace("__HANDOFF__", repr(handoff)).replace("__INIT_MODE__", a.init).replace("__PRETRAINED_SHA__", pretrained_sha)
+             .replace("__BASE_TAG__", base_tag).replace("__BASE_BEST__", base_best).replace("__BASE_ZIP__", f"{base_drive}/submission.zip")
              .replace("__DRIVE__", DRIVE)
              .replace("__E25_BEST_SHA__", e25["train"]["best_sha256"]).replace("__E25_ZIP_SHA__", e25["submission"]["zip_sha256"])
              .replace("__PREP_KERNEL__", a.prep_kernel).replace("__V1_NVAL__", str(len(frozen))).replace("__V1_VAL_SHA__", v1_val_sha))
     cells.insert(ip + 1, code(setup))
-    init_vi = "e25 best.pt" if a.init == "e25" else "yolo26n-seg.pt pretrained chính thức"
+    init_vi = {"e25": "e25 best.pt", "v3best": "V3 final002 e50 best.pt", "pretrained": "yolo26n-seg.pt pretrained chính thức"}[a.init]
     cells.insert(ip + 1, md(f"## [VietSight V2] Bàn giao dataset (chỉ READY) → tải + kiểm tra → Mapillary val → khởi tạo {init_vi} → GPU"))
     cells.append(code(XEVAL))
     cells.append(code(CKPT.replace("__EVAL_CKPTS__", repr(list(a.eval_ckpts)))))
-    dst = ROOT / "notebooks" / "colab" / (a.out_name or ("VietSight_TEAM55_colab_v2.ipynb" if a.init == "e25" else "VietSight_TEAM55_colab_v2_pretrained.ipynb"))
+    dst = ROOT / "notebooks" / "colab" / (a.out_name or {"e25": "VietSight_TEAM55_colab_v2.ipynb", "pretrained": "VietSight_TEAM55_colab_v2_pretrained.ipynb", "v3best": "VietSight_TEAM55_colab_v4_ft_v3best.ipynb"}[a.init])
     data_vi = ("dữ liệu trộn, val chấm riêng: " + ", ".join(handoff["val_subsets"])) if handoff.get("val_subsets") else "chỉ dữ liệu Việt Nam"
     cells.insert(0, md(f"[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PHai237/VietSight/blob/main/notebooks/colab/{dst.name})\n\n"
                        f"VietSight TEAM 55 — `{run_name}` từ {init_vi}, {data_vi}, {a.epochs} epoch, checkpoint mỗi {a.save_period} epoch: "
