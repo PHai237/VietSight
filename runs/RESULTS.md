@@ -16,12 +16,13 @@ Public score là con số tổng hợp do leaderboard hiển thị; công thức
 | 3 | **chưa xác định** | 46.75 | 21.86 | 10.84 | | | | một trong hai lượt 3–4 là v2_pretrained_e25 |
 | 4 | **chưa xác định** | 40.08 | 16.06 | 8.72 | | | | lượt còn lại không có run nào trong repo/máy này |
 | 5 | **v3_final002_e50** | **52.20** | **27.25** | **14.89** | 23.09 | 13.20 | `f616e1ae…` | người dùng xác nhận; run EXPERIMENT (rights_confirmed=false) |
+| 6 | v4_balanced_e15 (nộp 09:49 28/11) | 51.15 | 26.17 | 14.24 | 22.86 | 12.93 | `9d1a2114…` | người dùng xác nhận; run EXPERIMENT (rights_confirmed=false) |
 
 | Run | Nền tảng | Epoch | Khởi tạo / dữ liệu | Ghi chú |
 |---|---|---|---|---|
 | v2_pretrained_e25 (`vietsight_vn_dashcam_final001_v2_pretrained_e25_EXPERIMENT`) | Colab T4 | 25 | `yolo26n-seg.pt` COCO (sha `361fbfab…`), chỉ dashcam VN 1070/283 | **EXPERIMENT, rights_confirmed=false: không đủ điều kiện nộp.** zip `ed371061…`, best.pt `0801ab13…`, val VN 12.48. Checkpoint trên Drive (save_period 3) |
 | v3_final002_e50 (`vietsight_mixed_final002_v3_pretrained_e50_EXPERIMENT`) | Colab T4 | 50 | `yolo26n-seg.pt` COCO, mixed final002 2539/545 | EXPERIMENT, rights_confirmed=false. best.pt `8bd34af8…` (= epoch 50), backup `runs/v3_final002_e50/` (không commit weights) |
-| v4_ft_v3best_e15 | Colab T4 | 15 | V3 best.pt, chờ handoff V4 | notebook `VietSight_TEAM55_colab_v4_ft_v3best.ipynb` (PENDING): AdamW lr0 1e-4 cos lrf 0.1, warmup 1, mosaic 0, không freeze, batch 16, save_period 5 |
+| v4_ft_v3best_e15 | Colab T4 | 15 | V3 best.pt, V4 weighted 50:50 Mapillary/VN (2539 ảnh unique, 4050 lượt/epoch) — ĐÃ CHẠY, public 51.15 | notebook `VietSight_TEAM55_colab_v4_ft_v3best.ipynb` (PENDING): AdamW lr0 1e-4 cos lrf 0.1, warmup 1, mosaic 0, không freeze, batch 16, save_period 5 |
 | v2_ft_e12 | — | — | từ e25 best.pt | không chạy: best.pt e25/e50 không còn trên Drive lẫn máy (đã băm mọi `.pt`) |
 
 **So với số cũ của cùng run:** e25 12.90 → 13.49 mAP50-95 (+0.59), mAP50 23.68 → 25.18 (+1.50); e50 12.37 → 12.96 (+0.59),
@@ -117,3 +118,11 @@ Motorcycle 1.95, Other vehicle 2.57, Sign 6.05, Bicycle 6.53 → ưu tiên dữ 
 | v4_balanced_e15 (fine-tune từ V3 best.pt, V4 weighted) | `9d1a2114…` | 22.86 | 12.93 | 51.15 |
 
 Cả hai là run EXPERIMENT: handoff ghi `rights_confirmed=false`, `submission_eligible=false`.
+
+### V4 so với V3 (28/11)
+- V4 = fine-tune 15 epoch từ V3 best.pt; sampling 50:50 Mapillary/VN (2539 ảnh unique, 4050 lượt/epoch); AdamW lr0 1e-4 cos, warmup 1, mosaic 0.
+- Public: V4 51.15 / mAP50 26.17 / mAP50-95 14.24 so với V3 52.20 / 27.25 / 14.89. Val Mapillary 22.86 vs 23.09; val VN 12.93 vs 13.20.
+- Theo người dùng: Bicycle và Truck cải thiện, nhưng tổng điểm giảm.
+- Không quy toàn bộ mức giảm cho sampling: cấu hình training cũng đổi cùng lúc (khởi tạo, số epoch, LR, mosaic), chưa có run tách riêng từng yếu tố.
+- **V3 vẫn là phiên bản tốt nhất trên public (52.20).**
+- Tái lập: notebook V4 đã sửa để ánh xạ `train_weighted.txt` qua `source_map.json` khi bước chuẩn bị chính thức đổi tên ảnh. Backup run: `runs/v4_balanced_e15/` (submission.zip, weights.zip không commit).
